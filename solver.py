@@ -4,7 +4,7 @@ import re  # For regular expression operations
 import time  # For adding delays in the script
 import random  # For making random selections
 import undetected_chromedriver as uc  # For using an undetected version of Chrome WebDriver
-import openai  # For interacting with OpenAI's GPT-4 API
+import anthropic  # For interacting with the Claude AI API
 
 # Import Selenium WebDriver and related modules for web automation
 from selenium import webdriver
@@ -18,21 +18,21 @@ from selenium.common.exceptions import TimeoutException  # For handling timeout 
 from bs4 import BeautifulSoup  # For parsing HTML content
 
 # Constants and Global Variables
-OPENAI_MODEL = "gpt-4o"  # Specifies the version of GPT AI to use
-MAX_TOKENS = 1000  # Maximum number of tokens for GPT API responses
-TEMPERATURE = 0  # Controls randomness in GPT's responses (0 means deterministic)
+CLAUDE_MODEL = "claude-3-sonnet-20240229"  # Specifies the version of Claude AI to use
+MAX_TOKENS = 1000  # Maximum number of tokens for Claude API responses
+TEMPERATURE = 0  # Controls randomness in Claude's responses (0 means deterministic)
 FAILED_PROBLEMS = set()  # Stores problems that couldn't be solved
-API_KEY = os.environ.get("OPENAI_API_KEY")  # Placeholder for GPT API key
-STARTING_A_NEW_PROBLEM_PROMPT = "Solve this LeetCode problem in Python, optimizing for the fastest runtime approach with the best time complexity unless there is a required time complexity in the description, in that case your solution must match that time complexity. Provide only the Python code solution, with no additional text, comments, or questions before or after the code:"  # Prompt for GPT when starting a new problem
-SUBMITTING_A_CODE_ERROR_PROMPT = "We need to fix our code for a leetcode python problem. Here's what the problem description was: "  # Prompt for GPT when submitting a code with errors
-OUR_CURRENT_CODE_PROMPT = "Here's what the Python code we tried was:"  # Prompt to introduce the current code to GPT
-END_OF_PROMPT_INSTRUCTIONS_FOR_CLEAR_RESPONSE = "Provide only the Python code solution, with no additional text, comments, or questions before or after the code. The solution must start with the same class solution object and function definition(s) and their parameter(s) that the starting code had."  # Instructions for GPT to provide a clear response
-ADVOCATE_FOR_BETTER_SOLUTION_ON_RETRY = "Don't use the same approach as the current code which looks like this, review what part of the description we're likely not meeting the requirements of and make a new solution with an approach that likely is a better fix."  # Prompt for GPT to suggest a better solution on retry
-CODE_EXAMPLE_PREFIX = "Here's the starting code provided by LeetCode:"  # Prefix for introducing LeetCode's starting code to GPT
+API_KEY = "Your API Key Here"  # Placeholder for Claude API key
+STARTING_A_NEW_PROBLEM_PROMPT = "Solve this LeetCode problem in Python, optimizing for the fastest runtime approach with the best time complexity unless there is a required time complexity in the description, in that case your solution must match that time complexity. Provide only the Python code solution, with no additional text, comments, or questions before or after the code:"  # Prompt for Claude when starting a new problem
+SUBMITTING_A_CODE_ERROR_PROMPT = "We need to fix our code for a leetcode python problem. Here's what the problem description was: "  # Prompt for Claude when submitting a code with errors
+OUR_CURRENT_CODE_PROMPT = "Here's what the Python code we tried was:"  # Prompt to introduce the current code to Claude
+END_OF_PROMPT_INSTRUCTIONS_FOR_CLEAR_RESPONSE = "Provide only the Python code solution, with no additional text, comments, or questions before or after the code. The solution must start with the same class solution object and function definition(s) and their parameter(s) that the starting code had."  # Instructions for Claude to provide a clear response
+ADVOCATE_FOR_BETTER_SOLUTION_ON_RETRY = "Don't use the same approach as the current code which looks like this, review what part of the description we're likely not meeting the requirements of and make a new solution with an approach that likely is a better fix."  # Prompt for Claude to suggest a better solution on retry
+CODE_EXAMPLE_PREFIX = "Here's the starting code provided by LeetCode:"  # Prefix for introducing LeetCode's starting code to Claude
 
 CURRENT_PAGE = 1  # Tracks the current page of LeetCode problems
 
-MAX_RETRIES = 3  # Maximum number of attempts to solve a problem
+MAX_RETRIES = 2  # Maximum number of attempts to solve a problem
 LEETCODE_PROBLEMSET_URL = "https://leetcode.com/problemset/?page=1&topicSlugs=array&status=NOT_STARTED"  # URL for LeetCode problem set
 LEETCODEFILTER = 'https://leetcode.com/problemset/?page='  # Base URL for filtered LeetCode problems
 LEETCODEPOSTFILTER = '&topicSlugs=array&status=NOT_STARTED'  # Additional filter parameters for LeetCode problems
@@ -40,8 +40,8 @@ LEETCODEPOSTFILTER = '&topicSlugs=array&status=NOT_STARTED'  # Additional filter
 LEETCODE_PROBLEM_URL_PREFIX = "https://leetcode.com/problems/"  # Prefix for individual LeetCode problem URLs
 LEETCODE_LOGIN_URL = "https://leetcode.com/accounts/login/"  # URL for LeetCode login page
 problem_title = ''  # Placeholder for storing the current problem title
-LEETCODE_USERNAME = os.environ.get("LEETCODE_USERNAME")  # Placeholder for LeetCode username
-LEETCODE_PASSWORD = os.environ.get("LEETCODE_PASSWORD")  # Placeholder for LeetCode password
+LEETCODE_USERNAME = 'Hermesroblox'  # LeetCode username, replace with your own.
+LEETCODE_PASSWORD = ''  # Placeholder for LeetCode password (left blank for security)
 
 
 
@@ -275,10 +275,12 @@ class LeetCodeInteraction:
     def clear_code_editor(self):
         print("Clearing code editor...")
         try:
-            # Use Ctrl+A to select all text and then delete
-            editor = self.web.find_element(By.CSS_SELECTOR, '.monaco-editor textarea')
-            editor.send_keys(Keys.CONTROL + 'a')
-            editor.send_keys(Keys.DELETE)
+            # Use JavaScript to clear the editor
+            js_clear_editor = """
+            var editor = monaco.editor.getEditors()[0];
+            editor.setValue('');
+            """
+            self.web.driver.execute_script(js_clear_editor)  # Execute JavaScript to clear the editor
             print("Code editor cleared.")
         except Exception as e:
             print(f"Error clearing code editor: {str(e)}")
@@ -287,25 +289,15 @@ class LeetCodeInteraction:
         print("Inputting code into editor...")
         self.clear_code_editor()  # Clear the existing code in the editor
         try:
-            # Use ActionChains to input the code
-            editor = self.web.find_element(By.CSS_SELECTOR, '.monaco-editor textarea')
-            actions = ActionChains(self.web.driver)
-            actions.move_to_element(editor).click().send_keys(code).perform()
+            # Use JavaScript to set the value of the editor
+            js_set_editor_value = f"""
+            var editor = monaco.editor.getEditors()[0];
+            editor.setValue(`{code}`);
+            """
+            self.web.driver.execute_script(js_set_editor_value)  # Execute JavaScript to set the new code in the editor
             print("Code input complete.")
         except Exception as e:
             print(f"Error inputting code: {str(e)}")
-            # Fallback method: use JavaScript to set the editor value
-            try:
-                # Escape backticks and newlines for JavaScript
-                escaped_code = code.replace('`', '\\`').replace('\n', '\\n')
-                js_set_editor_value = f"""
-                const editor = monaco.editor.getModels()[0];
-                editor.setValue(`{escaped_code}`);
-                """
-                self.web.driver.execute_script(js_set_editor_value)
-                print("Code input complete using JavaScript fallback.")
-            except Exception as js_e:
-                print(f"Error inputting code using JavaScript fallback: {str(js_e)}")
 
     def run_code(self):
         print("Running code...")
@@ -395,60 +387,53 @@ class LeetCodeInteraction:
             print("Sleeping for 5 seconds after submit.")
         except Exception as e:
             print(f"Error submitting solution: {str(e)}")
-            
-class GPT4APIIntegration:
+class ClaudeAPIIntegration:
     def __init__(self, api_key):
-        print("Initializing GPT-4o API...")
-        openai.api_key = api_key  # Set the OpenAI API key
-        print("GPT-4o API initialized.")
+        print("Initializing Claude API...")
+        self.client = anthropic.Anthropic(api_key=api_key)  # Initialize the Anthropic client with the provided API key
+        print("Claude API initialized.")
 
     def send_prompt(self, prompt):
-        print("Sending prompt to GPT-4o API...", prompt)
-        try:
-            response = openai.ChatCompletion.create(
-                model="gpt-4o",  # Use the GPT-4o model
-                messages=[
-                    {"role": "system", "content": "You are a helpful assistant that generates code solutions for LeetCode problems."},
-                    {"role": "user", "content": prompt}
-                ],
-                max_tokens=MAX_TOKENS,  # Set max tokens for the response
-                temperature=TEMPERATURE # Keep the temperature at 0 for deterministic results
-            )
-            return response['choices'][0]['message']['content']  # Extract the response content
-        except Exception as e:
-            print(f"Error calling GPT-4o API: {str(e)}")
-            return ""
+        print("Sending prompt to Claude API...", prompt)
+        message = self.client.messages.create(
+            model=CLAUDE_MODEL,  # Use the specified Claude model
+            max_tokens=MAX_TOKENS,  # Set the maximum number of tokens for the response
+            temperature=TEMPERATURE,  # Set the temperature for response generation
+            messages=[
+                {"role": "user", "content": prompt}  # Create a message with the user's prompt
+            ]
+        )
+        response = self.extract_text_from_response(message.content)  # Extract the text from Claude's response
+        print(f"Received response from Claude API: {response}...")
+        return response
 
     @staticmethod
     def extract_text_from_response(response):
-        print("Extracting text from GPT-4o API response...")
-        # The response is already a string in this case, so we just clean it up
-        text = response
-        text = re.sub(r'```\w*\n?|```', '', text)  # Remove code block markers
-        text = re.sub(r'`([^`\n]+)`', r'\1', text)  # Remove inline code markers
-        return text.strip()  # Clean any leading/trailing whitespace
-    @staticmethod
-    def extract_text_from_response(response):
-        print("Extracting text from GPT API response...")
-        # The response is already a string in the new API, so we don't need to extract it
-        text = response
-        text = re.sub(r'```\w*\n?|```', '', text)  # Remove code block markers
-        text = re.sub(r'`([^`\n]+)`', r'\1', text)  # Remove inline code markers
-        return text.strip()  # Remove any leading/trailing whitespace
+        print("Extracting text from Claude API response...")
+        match = re.search(r"TextBlock\(text=(.*?), type='text'\)", str(response), re.DOTALL)  # Search for the text content in the response
+        if match:
+            text = match.group(1).strip('"').replace('\\"', '"')  # Extract and clean the text
+            text = re.sub(r'```\w*\n?|```', '', text)  # Remove code block markers
+            text = re.sub(r'`([^`\n]+)`', r'\1', text)  # Remove inline code markers
+            text = text.replace('\\n', '\n')  # Replace escaped newlines with actual newlines
+            return text.strip("'").strip()  # Remove any leading/trailing quotes and whitespace
+        print("No text block found in response.")
+        return ""
 
 class CodeGenerationAndErrorHandling:
-    def __init__(self, GPT_api):
-        self.GPT_api = GPT_api  # Store the GPTAPIIntegration instance
+    def __init__(self, claude_api):
+        self.claude_api = claude_api  # Store the ClaudeAPIIntegration instance
 
     def generate_code(self, problem_description, starting_code):
         print("Generating code for problem...")
-        prompt = f"{STARTING_A_NEW_PROBLEM_PROMPT}\n\n{problem_description}\n\n{CODE_EXAMPLE_PREFIX}\n{starting_code}"  # Create a prompt for GPT to generate code
-        return self.GPT_api.send_prompt(prompt)  # Send the prompt to GPT and return the response
+        prompt = f"{STARTING_A_NEW_PROBLEM_PROMPT}\n\n{problem_description}\n\n{CODE_EXAMPLE_PREFIX}\n{starting_code}"  # Create a prompt for Claude to generate code
+        return self.claude_api.send_prompt(prompt)  # Send the prompt to Claude and return the response
 
     def handle_error(self, problem_description, current_code, starting_code, error_message, error_info):
         print("Handling error and generating corrected code...")
-        prompt = f"{SUBMITTING_A_CODE_ERROR_PROMPT}\n\n{problem_description}\n\n{ADVOCATE_FOR_BETTER_SOLUTION_ON_RETRY}\n{current_code}\n\nError Message:\n{error_message}\n\nDetailed Error Information:\n{error_info}\n\n{CODE_EXAMPLE_PREFIX}\n{starting_code}\n\n{END_OF_PROMPT_INSTRUCTIONS_FOR_CLEAR_RESPONSE}"  # Create a prompt for GPT-4 to fix the code
-        return self.GPT_api.send_prompt(prompt)  # Send the prompt to GPT-4 and return the response
+        prompt = f"{SUBMITTING_A_CODE_ERROR_PROMPT}\n\n{problem_description}\n\n{ADVOCATE_FOR_BETTER_SOLUTION_ON_RETRY}\n{current_code}\n\nError Message:\n{error_message}\n\nDetailed Error Information:\n{error_info}\n\n{CODE_EXAMPLE_PREFIX}\n{starting_code}\n\n{END_OF_PROMPT_INSTRUCTIONS_FOR_CLEAR_RESPONSE}"  # Create a prompt for Claude to fix the code
+        print("Prompt we're sending is: ", prompt)
+        return self.claude_api.send_prompt(prompt)  # Send the prompt to Claude and return the response
 
 def complete_individual_problem(leetcode, code_gen, problem_title):
     print(f"Starting to solve problem: {problem_title}")
@@ -553,8 +538,8 @@ def main():
     print("Starting LeetCode Solver...")
     web_automation = WebAutomation()  # Initialize the WebAutomation instance
     leetcode = LeetCodeInteraction(web_automation)  # Initialize the LeetCodeInteraction instance
-    gpt4_api = GPT4APIIntegration(API_KEY)  # Initialize the GPT-4 API instance with the API key
-    code_gen = CodeGenerationAndErrorHandling(gpt4_api)  # Initialize the code generation and error handling with GPT-4 API
+    claude_api = ClaudeAPIIntegration(API_KEY)  # Initialize the ClaudeAPIIntegration instance with the API key
+    code_gen = CodeGenerationAndErrorHandling(claude_api)  # Initialize the CodeGenerationAndErrorHandling instance
 
     # Use the new automated login method
     web_automation.login(LEETCODE_USERNAME, LEETCODE_PASSWORD)  # Log in to LeetCode using the provided credentials
