@@ -1,0 +1,4 @@
+openai
+selenium
+undetected_chromedriver
+bs4
