@@ -11,10 +11,7 @@ import os
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 
-load_dotenv()
-LEETCODE_LOGIN_URL = "https://leetcode.com/accounts/login/"
-LEETCODE_USERNAME = os.getenv('LEETCODE_USERNAME')
-LEETCODE_PASSWORD = os.getenv('LEETCODE_PASSWORD')
+
 
 #load the solution.txt file
 with open('solution.txt', 'r') as file:
@@ -25,9 +22,15 @@ def login_to_leetcode():
     driver = webdriver.Chrome()
     wait = WebDriverWait(driver, 30)
 
+    #load the .env file
+    load_dotenv()
+    #get the github username and password from the .env file
+    LEETCODE_USERNAME = os.getenv('LEETCODE_USERNAME')
+    LEETCODE_PASSWORD = os.getenv('LEETCODE_PASSWORD')
+
     try:
         print("Navigating to LeetCode login page...")
-        driver.get(LEETCODE_LOGIN_URL)
+        driver.get("https://leetcode.com/accounts/login/")
 
         # Wait for the loading overlay to disappear
         try:
@@ -63,10 +66,6 @@ def login_to_leetcode():
         # Wait for GitHub login page to load
         print("Waiting for GitHub login page to load...")
         wait.until(EC.presence_of_element_located((By.ID, "login_field")))
-
-        # Add this check before using LEETCODE_USERNAME
-        if LEETCODE_USERNAME is None:
-            raise ValueError("LEETCODE_USERNAME environment variable is not set")
 
         driver.find_element(By.ID, "login_field").send_keys(LEETCODE_USERNAME)
         driver.find_element(By.ID, "password").send_keys(LEETCODE_PASSWORD)
@@ -168,7 +167,7 @@ def get_question_details(problem_slug):
         codeSnippets = questions['codeSnippets']
         #reformat the codeSnippets to be a dicts with lang as key and code as value
         codeSnippets = {snippet['lang']: snippet['code'] for snippet in codeSnippets}
-        return question_id, problem_title, content, hints, exampleTestcases, codeSnippets
+        return question_id, problem_slug, problem_title, content, hints, exampleTestcases, codeSnippets
     else:
         raise Exception(f"Failed to get question details: {response.status_code}")
 
@@ -252,44 +251,69 @@ def test_solution(question_id, problem_slug, lang, code, test_case, cookies):
         "X-CSRFToken": cookies.get('csrftoken', ''),
     }
     
+    # Convert cookies dict to string format for header
+    cookie_string = '; '.join([f"{name}={value}" for name, value in cookies.items()])
+    headers['Cookie'] = cookie_string
+
     data = {
-        "question_id": question_id,
+        "question_id": str(question_id),
         "lang": lang,
         "typed_code": code,
-        "data_input": test_case
+        "data_input": test_case,
     }
     
-    response = requests.post(url, headers=headers, data=json.dumps(data), cookies=cookies)
+    response = requests.post(url, headers=headers, json=data)
     response.raise_for_status()
     
-    return response.json()
+    submission = response.json()
+    interpret_id = submission['interpret_id']
 
+    # Now, let's check the result
+    check_url = f"https://leetcode.com/submissions/detail/{interpret_id}/check/"
+    
+    max_attempts = 10
+    for attempt in range(max_attempts):
+        check_response = requests.get(check_url, headers=headers)
+        check_response.raise_for_status()
+        
+        result = check_response.json()
+        
+        if result['state'] == 'SUCCESS':
+            return result
+        elif result['state'] in ['PENDING', 'STARTED']:
+            time.sleep(2)  # Wait for 2 seconds before trying again
+        else:
+            raise Exception(f"Unexpected submission state: {result['state']}")
+    
+    raise Exception("Timed out waiting for submission result")
 
 
 if __name__ == "__main__":
-    cookies = {'_ga': 'GA1.2.56629168.1726609680',
- 'LEETCODE_SESSION': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMTI2NzA5MjgiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhbGxhdXRoLmFjY291bnQuYXV0aF9iYWNrZW5kcy5BdXRoZW50aWNhdGlvbkJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI5NTBhZjMyNmYyMjc0NDE4OGIwZTJlYmQyMTk3ZWQzYzAyMmU4NWIxMTZjNDc2MzJlYjM0Yzk4M2VmZWZiNTFlIiwiaWQiOjEyNjcwOTI4LCJlbWFpbCI6ImxhbmdzLjk3MTEwNEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImdoMHN0aW50aGVzaGUxMSIsInVzZXJfc2x1ZyI6ImdoMHN0aW50aGVzaGUxMSIsImF2YXRhciI6Imh0dHBzOi8vYXNzZXRzLmxlZXRjb2RlLmNvbS91c2Vycy9naDBzdGludGhlc2hlMTEvYXZhdGFyXzE3MTAyMDQyNjQucG5nIiwicmVmcmVzaGVkX2F0IjoxNzI2NjA5NjkyLCJpcCI6IjE0Mi4xOTguMjE0LjE0MiIsImlkZW50aXR5IjoiZThkYjFhOTEwZWUwODhiNDY5ZWNmZDJiNmE5YjlkYTUiLCJzZXNzaW9uX2lkIjo3MjY2ODc5Mn0.bxFFduqm2Nd0_I94WWuIbj_0eWo015oF2X5XBDUQ3kM',
- 'gr_user_id': '8064b639-1552-4ae5-bac5-18e205b69a46',
- 'csrftoken': '8UpC2D7q1jaQduhYoCWRt5LQUyjn8YTwzjTZHRKFKPQALBuBNC60z8q2XLaLQS7r',
- '_ga_CDRWKZTDEX': 'GS1.1.1726609680.1.1.1726609693.47.0.0',
- '_dd_s': 'rum=0&expire=1726610584389',
- '87b5a3c3f1a55520_gr_session_id_sent_vst': 'e770d55e-34f4-4c6a-9d6d-119090784bbb',
- 'messages': 'W1siX19qc29uX21lc3NhZ2UiLDAsMjUsIlN1Y2Nlc3NmdWxseSBzaWduZWQgaW4gYXMgZ2gwc3RpbnRoZXNoZTExLiJdXQ:1sqg3Q:AKLlRIiJTG9qaGU7wZIRWP0tfNyfugvOZKMibtowTH0',
- '87b5a3c3f1a55520_gr_session_id': 'e770d55e-34f4-4c6a-9d6d-119090784bbb',
+    cookies = {'_ga': 'GA1.2.1234933147.1726614485',
+ 'LEETCODE_SESSION': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMTI2NzA5MjgiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhbGxhdXRoLmFjY291bnQuYXV0aF9iYWNrZW5kcy5BdXRoZW50aWNhdGlvbkJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI5NTBhZjMyNmYyMjc0NDE4OGIwZTJlYmQyMTk3ZWQzYzAyMmU4NWIxMTZjNDc2MzJlYjM0Yzk4M2VmZWZiNTFlIiwiaWQiOjEyNjcwOTI4LCJlbWFpbCI6ImxhbmdzLjk3MTEwNEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImdoMHN0aW50aGVzaGUxMSIsInVzZXJfc2x1ZyI6ImdoMHN0aW50aGVzaGUxMSIsImF2YXRhciI6Imh0dHBzOi8vYXNzZXRzLmxlZXRjb2RlLmNvbS91c2Vycy9naDBzdGludGhlc2hlMTEvYXZhdGFyXzE3MTAyMDQyNjQucG5nIiwicmVmcmVzaGVkX2F0IjoxNzI2NjE0NTAwLCJpcCI6IjE0Mi4xOTguMjE0LjE0MiIsImlkZW50aXR5IjoiZThkYjFhOTEwZWUwODhiNDY5ZWNmZDJiNmE5YjlkYTUiLCJzZXNzaW9uX2lkIjo3MjY3MTU5OX0.ZK2L_giSEq0nv57_4mw3PyourPcqWX8XGP14RwrNW90',
+ 'gr_user_id': '9c1fc94b-d0b4-46bb-8999-adf905ae9f99',
+ 'csrftoken': 'cBpdJFCqSRcQU2v325D8Qu2MI18FwriOW4EAP9huBh53nbmwE7uvK0zUSUPVq1hm',
+ '_ga_CDRWKZTDEX': 'GS1.1.1726614485.1.1.1726614501.44.0.0',
+ '_dd_s': 'rum=0&expire=1726615389448',
+ '87b5a3c3f1a55520_gr_session_id_sent_vst': '113115ce-3339-4d80-8efc-b089789eecfc',
+ 'messages': 'W1siX19qc29uX21lc3NhZ2UiLDAsMjUsIlN1Y2Nlc3NmdWxseSBzaWduZWQgaW4gYXMgZ2gwc3RpbnRoZXNoZTExLiJdXQ:1sqhIz:9qTCH3iEsPswpe745mdoWmyt8o_b6XgqzedpANicCOI',
+ '87b5a3c3f1a55520_gr_session_id': '113115ce-3339-4d80-8efc-b089789eecfc',
  'ip_check': '(false, "142.198.214.142")',
  '_gat': '1',
- '_gid': 'GA1.2.1583653120.1726609680',
- '__cf_bm': 'bImS6L.YQZ3zwWInfjQ27QcVO3hpGQDqxQsoLwUATRk-1726609679-1.0.1.1-.Iol71JMNRdZe1SRo88XK2QqbK.ZrcreiBaYo2PBU1TvnzoU7nxtTOCYUHjL2Vnh2mEPkfd5ZkumRkF6KxQ1EQ'}
+ '_gid': 'GA1.2.117357032.1726614485',
+ '__cf_bm': '9Jj4Z3_D7JVAgMuo_xQ1z9w0gw2FdEUwViDiEK2UZKU-1726614484-1.0.1.1-lDS8zw2PgpBnZ_FF7e6Vsxy8.aKAhIuLzyjlsyz9fKcFy44DVTZ4AxMtU6wH0ZdHTYW838bwxYhYC_D0OFvTAg'}
     try:
         # get the question details
-        question_id, problem_title, content, hints, exampleTestcases, codeSnippets = get_question_details('two-sum')
-        print(question_id, problem_title, content, hints, exampleTestcases, codeSnippets)
+        question_id, problem_slug, problem_title, content, hints, exampleTestcases, codeSnippets = get_question_details('two-sum')
 
         #submission_id = submit_solution('two-sum', 'c', SOLUTION, cookies)['submission_id']
         #print(submission_id)
 
         #final_result = check_result(submission_id, cookies)
         #print("Final result:", final_result)
+
+        test_result = test_solution(question_id, problem_slug, 'c', SOLUTION, exampleTestcases, cookies)
+        print(test_result)
 
     except requests.exceptions.HTTPError as e:
         print(f"HTTP Error occurred: {e}")
