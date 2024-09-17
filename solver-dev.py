@@ -11,8 +11,6 @@ import json
 LEETCODE_LOGIN_URL = "https://leetcode.com/accounts/login/"
 LEETCODE_USERNAME = 'langs.971104@gmail.com'  # Replace with your LeetCode username
 LEETCODE_PASSWORD = 'zd971121'  # Replace with your LeetCode password
-CSRF_TOKEN = 'csrf_token'
-LEETCODE_SESSION = 'leetcode_session'
 
 def login_to_leetcode():
     print("Initializing WebDriver...")
@@ -117,24 +115,33 @@ def submit_solution(problem_slug, language, code):
     
     submit_url = f'https://leetcode.com/problems/{problem_slug}/submit/'
     
+    # Data payload for submission
     data = {
         'lang': language,
         'question_slug': problem_slug,
         'typed_code': code
     }
     
+    # Headers for the request
     headers = {
         'Content-Type': 'application/json',
-        'X-CSRFToken': CSRF_TOKEN,
+        'X-CSRFToken': CSRF_TOKEN,  # Ensure CSRF Token is correct
         'Referer': f'https://leetcode.com/problems/{problem_slug}/',
         'Origin': 'https://leetcode.com',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     }
     
     try:
+        # Print CSRF token and cookies to debug
+        print(f"Submitting solution for {problem_slug}...")
+        print(f"CSRF Token: {CSRF_TOKEN}")
+        print(f"Session Cookie: {LEETCODE_SESSION}")
+
+        # Submitting the solution
         response = session.post(submit_url, data=json.dumps(data), headers=headers)
-        response.raise_for_status()  # Raise an exception for bad status codes
+        response.raise_for_status()  # Raise exception for HTTP errors
         
+        # Parse the response to extract submission ID
         submission_data = response.json()
         submission_id = submission_data.get('submission_id')
         
@@ -154,6 +161,5 @@ def submit_solution(problem_slug, language, code):
         return None
 
 if __name__ == "__main__":
-    login_to_leetcode()
-    
-    submit_solution('two-sum', 'python3', 'print(123)')
+    CSRF_TOKEN, LEETCODE_SESSION = login_to_leetcode()
+    submit_solution('reverse-string', 'python3', 'print("hello")')
