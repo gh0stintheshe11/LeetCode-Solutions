@@ -424,32 +424,19 @@ if __name__ == "__main__":
 
     try:
         # get the question details
-        question = get_question_details(
-            "subsequence-of-size-k-with-the-largest-even-sum"
-        )
+        question = get_question_details("subsequence-of-size-k-with-the-largest-even-sum")
 
         # list all questions
         # questions = list_questions(limit=10, start=2000)
         # print(questions)
+        
+        # check if the language selected is in the codeSnippets
+        if language not in question["codeSnippets"]:
+            raise Exception(f"Language {language} not available for this question, available languages: {question['codeSnippets'].keys()}")
 
-        solution = """
-class Solution:
-    def largestEvenSum(self, nums, k):
-        if k == 1: return max([i for i in nums if i%2==0], default=-1)
-        odd, even = sorted([i for i in nums if i%2!=0], reverse=True), sorted([i for i in nums if i%2==0], reverse=True)
-        max_sum, p1, p2, count = 0, 0, 0, k
-        while count > 0:
-            if p1 == len(even): return max_sum + sum(odd[:count]) if count % 2 == 0 else max_sum + sum(odd[:count-1]) if count > 1 else -1
-            if p2 + 1 >= len(odd) or count == 1: return max_sum + sum(even[:count])
-            if even[p1] > sum(odd[p2:p2+2]): return max_sum + sum(even[:count])
-            else: max_sum += sum(odd[p2:p2+2]); count -= 2; p2 += 2
-            if count > 0: max_sum += even[p1]; count -= 1; p1 += 1
-        return max_sum if max_sum%2==0 else -1
-
-        """
-        submit_result = submit(
-            question["question_id"], question["problem_slug"], "python3", solution
-        )
+        solution = generate(language, question)
+        
+        submit_result = submit(question["question_id"], question["problem_slug"], "python3", solution)
         print(submit_result)
 
         # test_result = test(question_id, problem_slug, 'python3', solution, exampleTestcases)
