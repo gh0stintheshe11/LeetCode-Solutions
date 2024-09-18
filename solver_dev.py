@@ -365,8 +365,8 @@ if __name__ == "__main__":
         # submit_result = submit(question_id, problem_slug, 'c', SOLUTION)
         # print(submit_result)
 
-        test_result = test(question_id, problem_slug, 'c', SOLUTION, exampleTestcases)
-        print(test_result)
+        #test_result = test(question_id, problem_slug, 'c', SOLUTION, exampleTestcases)
+        #print(test_result)
 
     except requests.exceptions.HTTPError as e:
         print(f"HTTP Error occurred: {e}")
