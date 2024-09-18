@@ -14,11 +14,18 @@ import json
 import os
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
+from openai import OpenAI
 
 BASE_URL = "https://leetcode.com"
+# load the .env file
+load_dotenv()
 
+# load the solution.txt file
+with open("solution.txt", "r") as file:
+    SOLUTION = file.read()
 
-def get_common_headers(suffix):
+# format the header
+def get_common_header(suffix):
     return {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
         "Referer": f"{BASE_URL}/{suffix}",
@@ -27,22 +34,11 @@ def get_common_headers(suffix):
         "X-Requested-With": "XMLHttpRequest",
     }
 
-
-# load the solution.txt file
-with open("solution.txt", "r") as file:
-    SOLUTION = file.read()
-
-
+# login to the leetcode -> since leetcode use CAPTCHA, we need to use 3rd party login to wrok around that
 def login_to_leetcode():
     print("Initializing WebDriver...")
     driver = webdriver.Chrome()
     wait = WebDriverWait(driver, 30)
-
-    # load the .env file
-    load_dotenv()
-    # get the github username and password from the .env file
-    LEETCODE_USERNAME = os.getenv("LEETCODE_USERNAME")
-    LEETCODE_PASSWORD = os.getenv("LEETCODE_PASSWORD")
 
     try:
         print("Navigating to LeetCode login page...")
@@ -95,8 +91,8 @@ def login_to_leetcode():
         print("Waiting for GitHub login page to load...")
         wait.until(EC.presence_of_element_located((By.ID, "login_field")))
 
-        driver.find_element(By.ID, "login_field").send_keys(LEETCODE_USERNAME)
-        driver.find_element(By.ID, "password").send_keys(LEETCODE_PASSWORD)
+        driver.find_element(By.ID, "login_field").send_keys(os.getenv("LEETCODE_USERNAME"))
+        driver.find_element(By.ID, "password").send_keys(os.getenv("LEETCODE_PASSWORD"))
 
         # Click Sign in button
         sign_in_button = wait.until(
@@ -119,7 +115,7 @@ def login_to_leetcode():
     finally:
         driver.quit()
 
-
+# list certain amount of questions
 def list_questions(limit=0, start=0):
     url = f"{BASE_URL}/graphql"
     query = """
@@ -154,7 +150,7 @@ def list_questions(limit=0, start=0):
     response = requests.post(
         url,
         json={"query": query, "variables": variables},
-        headers=get_common_headers(""),
+        headers=get_common_header(""),
         cookies=COOKIES,
     )
     response.raise_for_status()  # Raise an exception for bad status codes
@@ -164,7 +160,7 @@ def list_questions(limit=0, start=0):
 
     return questions
 
-
+# get the detailed info of the selected question
 def get_question_details(problem_slug):
     url = f"{BASE_URL}/graphql"
     query = f"""
@@ -189,7 +185,7 @@ def get_question_details(problem_slug):
     response = requests.post(
         url,
         json={"query": query, "variables": variables},
-        headers=get_common_headers(""),
+        headers=get_common_header(""),
         cookies=COOKIES,
     )
     response.raise_for_status()  # Raise an exception for bad status codes
@@ -224,7 +220,7 @@ def get_question_details(problem_slug):
     else:
         raise Exception(f"Failed to get question details: {response.status_code}")
 
-
+# submit the solution, check the submit status
 def submit(question_id, problem_slug, lang, code):
 
     submit_url = f"{BASE_URL}/problems/{problem_slug}/submit/"
@@ -239,7 +235,7 @@ def submit(question_id, problem_slug, lang, code):
     try:
         response = requests.post(
             submit_url,
-            headers=get_common_headers(f"problems/{problem_slug}/"),
+            headers=get_common_header(f"problems/{problem_slug}/"),
             json=submit_data,
             cookies=COOKIES,
         )
@@ -258,7 +254,7 @@ def submit(question_id, problem_slug, lang, code):
         try:
             response = requests.get(
                 submit_status_url,
-                headers=get_common_headers(f"problems/{problem_slug}/"),
+                headers=get_common_header(f"problems/{problem_slug}/"),
                 cookies=COOKIES,
             )
             response.raise_for_status()
@@ -276,8 +272,7 @@ def submit(question_id, problem_slug, lang, code):
 
     raise Exception("Timed out waiting for submission result")
 
-
-# test solution
+# send the test soution, check the test status
 def test(question_id, problem_slug, lang, code, test_case):
 
     test_url = f"{BASE_URL}/problems/{problem_slug}/interpret_solution/"
@@ -291,7 +286,7 @@ def test(question_id, problem_slug, lang, code, test_case):
 
     response = requests.post(
         test_url,
-        headers=get_common_headers(f"problems/{problem_slug}/"),
+        headers=get_common_header(f"problems/{problem_slug}/"),
         json=data,
         cookies=COOKIES,
     )
@@ -306,7 +301,7 @@ def test(question_id, problem_slug, lang, code, test_case):
         try:
             response = requests.get(
                 test_status_url,
-                headers=get_common_headers(f"problems/{problem_slug}/"),
+                headers=get_common_header(f"problems/{problem_slug}/"),
                 cookies=COOKIES,
             )
             response.raise_for_status()
@@ -324,6 +319,23 @@ def test(question_id, problem_slug, lang, code, test_case):
 
     raise Exception("Timed out waiting for submission result")
 
+# generate the solution using GPT model
+def generate():
+    
+    client = OpenAI(api_key=os.getenv['OPENAI_API_KEY'])
+    
+    completion = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {
+                "role": "user",
+                "content": "Write a haiku about recursion in programming."
+            }
+        ]
+    )
+
+    print(completion.choices[0].message)
 
 if __name__ == "__main__":
 
