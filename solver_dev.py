@@ -1,4 +1,12 @@
+import re
+import os
 import time
+import json
+import requests
+from requests.exceptions import JSONDecodeError
+from dotenv import load_dotenv
+from bs4 import BeautifulSoup
+from openai import OpenAI
 import undetected_chromedriver as uc
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -8,21 +16,11 @@ from selenium.common.exceptions import (
     TimeoutException,
     ElementClickInterceptedException,
 )
-from requests.exceptions import JSONDecodeError
-import requests
-import json
-import os
-from dotenv import load_dotenv
-from bs4 import BeautifulSoup
-from openai import OpenAI
 
 BASE_URL = "https://leetcode.com"
 # load the .env file
 load_dotenv()
 
-# load the solution.txt file
-with open("solution.txt", "r") as file:
-    SOLUTION = file.read()
 
 # format the header
 def get_common_header(suffix):
@@ -33,6 +31,7 @@ def get_common_header(suffix):
         "X-CSRFToken": COOKIES.get("csrftoken", ""),
         "X-Requested-With": "XMLHttpRequest",
     }
+
 
 # login to the leetcode -> since leetcode use CAPTCHA, we need to use 3rd party login to wrok around that
 def login_to_leetcode():
@@ -91,7 +90,9 @@ def login_to_leetcode():
         print("Waiting for GitHub login page to load...")
         wait.until(EC.presence_of_element_located((By.ID, "login_field")))
 
-        driver.find_element(By.ID, "login_field").send_keys(os.getenv("LEETCODE_USERNAME"))
+        driver.find_element(By.ID, "login_field").send_keys(
+            os.getenv("LEETCODE_USERNAME")
+        )
         driver.find_element(By.ID, "password").send_keys(os.getenv("LEETCODE_PASSWORD"))
 
         # Click Sign in button
@@ -114,6 +115,7 @@ def login_to_leetcode():
 
     finally:
         driver.quit()
+
 
 # list certain amount of questions
 def list_questions(limit=0, start=0):
@@ -159,6 +161,7 @@ def list_questions(limit=0, start=0):
     questions = data["data"]["problemsetQuestionList"]["questions"]
 
     return questions
+
 
 # get the detailed info of the selected question
 def get_question_details(problem_slug):
@@ -208,17 +211,21 @@ def get_question_details(problem_slug):
         codeSnippets = questions["codeSnippets"]
         # reformat the codeSnippets to be a dicts with lang as key and code as value
         codeSnippets = {snippet["lang"]: snippet["code"] for snippet in codeSnippets}
-        return (
-            question_id,
-            problem_slug,
-            problem_title,
-            content,
-            hints,
-            exampleTestcases,
-            codeSnippets,
-        )
+
+        # format question to a json
+        question = {
+            "question_id": question_id,
+            "problem_slug": problem_slug,
+            "problem_title": problem_title,
+            "content": content,
+            "hints": hints,
+            "exampleTestcases": exampleTestcases,
+            "codeSnippets": codeSnippets,
+        }
+        return question
     else:
         raise Exception(f"Failed to get question details: {response.status_code}")
+
 
 # submit the solution, check the submit status
 def submit(question_id, problem_slug, lang, code):
@@ -272,6 +279,7 @@ def submit(question_id, problem_slug, lang, code):
 
     raise Exception("Timed out waiting for submission result")
 
+
 # send the test soution, check the test status
 def test(question_id, problem_slug, lang, code, test_case):
 
@@ -319,23 +327,80 @@ def test(question_id, problem_slug, lang, code, test_case):
 
     raise Exception("Timed out waiting for submission result")
 
+
 # generate the solution using GPT model
-def generate():
-    
-    client = OpenAI(api_key=os.getenv['OPENAI_API_KEY'])
-    
-    completion = client.chat.completions.create(
-        model="gpt-4o-mini",
+def generate(language, question):
+
+    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+    # get the codeSnippets from the question and get the rest
+    codeSnippets = question.pop("codeSnippets")[language]
+
+    response = client.chat.completions.create(
+        model="gpt-4",
         messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
+            {
+                "role": "system",
+                "content": "You are a master of solving LeetCode problems and generating solutions.",
+            },
             {
                 "role": "user",
-                "content": "Write a haiku about recursion in programming."
-            }
-        ]
+                "content": f"""
+### Instruction:
+**Solve this LeetCode problem in Python** using the most efficient approach with optimal time complexity unless specified otherwise. 
+
+- **Solution must be written in {language}**
+- **Class and function definitions** must match the ones provided.
+- Return **only the solution code**—no explanations, comments, or additional text.
+
+### Problem:
+
+```json
+{question}
+```
+
+### Provided Code:
+
+```
+{codeSnippets}
+```
+""",
+            },
+        ],
     )
 
-    print(completion.choices[0].message)
+    codeblock = response.choices[0].message.content
+    return codeblock
+
+
+# extract the code from the markdown code block
+def extract_code(markdown_code):
+    # Pattern to match code blocks
+    pattern = r"```(\w+)?\n(.*?)```"
+    matches = re.findall(pattern, markdown_code, re.DOTALL)
+
+    # extract the first code block
+    language, code = matches[0]
+    # Remove leading/trailing whitespace and any extra newlines
+    code = code.strip()
+    # Remove common leading whitespace to preserve indentation
+    lines = code.split("\n")
+    if lines:
+        common_indent = len(re.match(r"\s*", lines[0]).group())
+        code = "\n".join(line[common_indent:] for line in lines)
+
+    return code
+
+
+# debug the code if there is an error
+def debug(question, code):
+    pass # for now
+
+
+# three cases:
+# 1. first-time generate -> solve problme prompt: prompt + question
+# 2. few-time generate with bug -> debug prompt: prompt + question + current code + submit result
+# 3. no bug  -> next one
 
 if __name__ == "__main__":
 
@@ -355,30 +420,40 @@ if __name__ == "__main__":
         "__cf_bm": "00.U5i7D7reawJrMqmFhbpLxDbdqqp8Wez.rQNUkshg-1726628628-1.0.1.1-5i6wSM1nE8ozWoHF.YMTX1yDQdrzuuGXWdP8Zo1JrhBNWr4gfdqHzIEYPn6YTiw4oGSP_i3u0OMPwJL3SzlpEw",
     }
 
+    language = "Python3"
+
     try:
         # get the question details
-        (
-            question_id,
-            problem_slug,
-            problem_title,
-            content,
-            hints,
-            exampleTestcases,
-            codeSnippets,
-        ) = get_question_details("subsequence-of-size-k-with-the-largest-even-sum")
-        print(
-            question_id, problem_slug, problem_title, content, hints, exampleTestcases
+        question = get_question_details(
+            "subsequence-of-size-k-with-the-largest-even-sum"
         )
 
         # list all questions
         # questions = list_questions(limit=10, start=2000)
         # print(questions)
 
-        # submit_result = submit(question_id, problem_slug, 'c', SOLUTION)
-        # print(submit_result)
+        solution = """
+class Solution:
+    def largestEvenSum(self, nums, k):
+        if k == 1: return max([i for i in nums if i%2==0], default=-1)
+        odd, even = sorted([i for i in nums if i%2!=0], reverse=True), sorted([i for i in nums if i%2==0], reverse=True)
+        max_sum, p1, p2, count = 0, 0, 0, k
+        while count > 0:
+            if p1 == len(even): return max_sum + sum(odd[:count]) if count % 2 == 0 else max_sum + sum(odd[:count-1]) if count > 1 else -1
+            if p2 + 1 >= len(odd) or count == 1: return max_sum + sum(even[:count])
+            if even[p1] > sum(odd[p2:p2+2]): return max_sum + sum(even[:count])
+            else: max_sum += sum(odd[p2:p2+2]); count -= 2; p2 += 2
+            if count > 0: max_sum += even[p1]; count -= 1; p1 += 1
+        return max_sum if max_sum%2==0 else -1
 
-        #test_result = test(question_id, problem_slug, 'c', SOLUTION, exampleTestcases)
-        #print(test_result)
+        """
+        submit_result = submit(
+            question["question_id"], question["problem_slug"], "python3", solution
+        )
+        print(submit_result)
+
+        # test_result = test(question_id, problem_slug, 'python3', solution, exampleTestcases)
+        # print(test_result)
 
     except requests.exceptions.HTTPError as e:
         print(f"HTTP Error occurred: {e}")
