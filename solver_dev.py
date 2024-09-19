@@ -20,6 +20,8 @@ from selenium.common.exceptions import (
 BASE_URL = "https://leetcode.com"
 # load the .env file
 load_dotenv()
+# set up openai client
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 # format the header
@@ -118,7 +120,7 @@ def login_to_leetcode():
 
 
 # list certain amount of questions
-def list_questions(limit=0, start=0):
+def list_questions(limit, start):
     url = f"{BASE_URL}/graphql"
     query = """
     query problemsetQuestionList($categorySlug: String, $limit: Int, $skip: Int, $filters: QuestionListFilterInput) {
@@ -135,6 +137,7 @@ def list_questions(limit=0, start=0):
                 difficulty
                 isPaidOnly
                 acRate
+                status
             }
         }
     }
@@ -271,7 +274,7 @@ def submit(question_id, problem_slug, lang, code):
             elif result["state"] in ["PENDING", "STARTED"]:
                 time.sleep(2)  # Wait for 2 seconds before trying again
             else:
-                raise Exception(f"Unexpected submission state: {result['state']}")
+                raise Exception(f"Unexpected submission state: {result}")
         except JSONDecodeError:
             print(f"Failed to decode JSON on attempt {attempt + 1}. Retrying...")
         except KeyError:
@@ -319,7 +322,7 @@ def test(question_id, problem_slug, lang, code, test_case):
             elif result["state"] in ["PENDING", "STARTED"]:
                 time.sleep(2)  # Wait for 2 seconds before trying again
             else:
-                raise Exception(f"Unexpected submission state: {result['state']}")
+                raise Exception(f"Unexpected submission state: {result}")
         except JSONDecodeError:
             print(f"Failed to decode JSON on attempt {attempt + 1}. Retrying...")
         except KeyError:
@@ -370,7 +373,7 @@ def generate(language, question):
     )
 
     codeblock = response.choices[0].message.content
-    return codeblock
+    return extract_code(codeblock)
 
 
 # extract the code from the markdown code block
@@ -393,55 +396,142 @@ def extract_code(markdown_code):
 
 
 # debug the code if there is an error
-def debug(question, code):
-    pass # for now
+def debug(question, current_code, submit_result):
+    pass  # for now
 
 
-# three cases:
-# 1. first-time generate -> solve problme prompt: prompt + question
-# 2. few-time generate with bug -> debug prompt: prompt + question + current code + submit result
-# 3. no bug  -> next one
+# get the next unsolved question
+def get_next_unsolved(question_id):
+    current_question_id = int(question_id)
+    max_iterations = 1000  # Safeguard against infinite loop
+
+    for _ in range(max_iterations):
+        questions = list_questions(limit=50, start=current_question_id + 1)
+
+        if not questions:
+            return None  # No more questions available
+
+        for question in questions:
+            current_question_id = int(question["questionId"])
+            if question["status"] != "ac":
+                return question
+
+        # If we've checked all questions in this batch and none are unsolved,
+        # we'll move to the next batch in the next iteration
+
+    return None  # Couldn't find an unsolved question within the limit
+
+
+# main logic of the solver
+def main():
+    print("--- Solver Start ---")
+
+    current_question_id = 0  # start from the first question
+    language = "Python3"  # default language
+
+    while True:  # Outer loop to continuously solve problems
+        # get the next unsolved question -> get question details
+        question = get_next_unsolved(current_question_id)
+        if not question:
+            print("No more unsolved questions found. Exiting.")
+            break
+
+        current_question_id = int(question["questionId"])
+        print(f"Next unsolved question: {question}")
+
+        # get the question details
+        question_detailed = get_question_details(question["titleSlug"])
+        print(f"Get question details: {question_detailed}")
+
+        # check if the language selected is in the codeSnippets
+        if language not in question_detailed["codeSnippets"]:
+            # change language to the first available language
+            language = list(question_detailed["codeSnippets"].keys())[0]
+
+        # generate initial solution
+        solution = generate(language, question_detailed)
+        print(f"Generated initial solution: {solution}")
+
+        max_submit_attempts = 3
+        for submit_attempt in range(max_submit_attempts):
+            # Test the solution
+            test_result = test(
+                question_detailed["question_id"],
+                question_detailed["problem_slug"],
+                language,
+                solution,
+                question_detailed["exampleTestcases"],
+            )
+
+            max_debug_attempts = 3
+            while test_result["status_msg"] != "Accepted" and max_debug_attempts > 0:
+                # Debug the solution
+                solution = debug(question_detailed, solution, test_result)
+
+                # Run the test again
+                test_result = test(
+                    question_detailed["question_id"],
+                    question_detailed["problem_slug"],
+                    language,
+                    solution,
+                    question_detailed["exampleTestcases"],
+                )
+
+                max_debug_attempts -= 1
+
+            if test_result["status_msg"] == "Accepted":
+                # If all test cases pass, submit the solution
+                submit_result = submit(
+                    question_detailed["question_id"],
+                    question_detailed["problem_slug"],
+                    language,
+                    solution,
+                )
+                print(f"Submitted solution: {submit_result}")
+
+                if submit_result["status_msg"] == "Accepted":
+                    print("Solution accepted!")
+                    break  # Break out of the submit_attempt loop
+                else:
+                    # Add the failed test case to our test cases
+                    question_detailed["exampleTestcases"].append(
+                        submit_result["last_testcase"]
+                    )
+            else:
+                print(
+                    f"Failed to pass all test cases after {max_debug_attempts} debug attempts"
+                )
+                break  # Break out of the submit_attempt loop
+
+        if submit_attempt == max_submit_attempts - 1:
+            print(
+                f"Failed to solve the question after {max_submit_attempts} submit attempts"
+            )
+
+        # Move to the next question
+        current_question_id += 1
+        print("Moving to next question...")
+
 
 if __name__ == "__main__":
 
-    COOKIES = {
-        "_ga": "GA1.1.426359378.1726628628",
-        "LEETCODE_SESSION": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMTI2NzA5MjgiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhbGxhdXRoLmFjY291bnQuYXV0aF9iYWNrZW5kcy5BdXRoZW50aWNhdGlvbkJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI5NTBhZjMyNmYyMjc0NDE4OGIwZTJlYmQyMTk3ZWQzYzAyMmU4NWIxMTZjNDc2MzJlYjM0Yzk4M2VmZWZiNTFlIiwiaWQiOjEyNjcwOTI4LCJlbWFpbCI6ImxhbmdzLjk3MTEwNEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImdoMHN0aW50aGVzaGUxMSIsInVzZXJfc2x1ZyI6ImdoMHN0aW50aGVzaGUxMSIsImF2YXRhciI6Imh0dHBzOi8vYXNzZXRzLmxlZXRjb2RlLmNvbS91c2Vycy9naDBzdGludGhlc2hlMTEvYXZhdGFyXzE3MTAyMDQyNjQucG5nIiwicmVmcmVzaGVkX2F0IjoxNzI2NjI4NjQxLCJpcCI6IjE0Mi4xOTguMjE0LjE0MiIsImlkZW50aXR5IjoiMDk5OTNhYjg2OGY0NzBjZjI0ZTI2ZmE0Zjk0MzlkOWUiLCJzZXNzaW9uX2lkIjo3MjY4MTg0OH0.kIYCkJZPHc_FmxtYYELbJnRfMChc9EgvSpyj1PbyI18",
-        "gr_user_id": "c5962b4f-92d1-43f5-b30f-d7dcfd682ea5",
-        "csrftoken": "0C1GZxivujOgm3atDkim5HlTFin1SwcNVmTxqjCmHoE9562IAcdWZZDbYK3W2eFD",
-        "_ga_CDRWKZTDEX": "GS1.1.1726628628.1.1.1726628641.47.0.0",
-        "_dd_s": "rum=0&expire=1726629533220",
-        "87b5a3c3f1a55520_gr_session_id_sent_vst": "be00a9cd-708f-4620-a677-2d197e054029",
-        "messages": "W1siX19qc29uX21lc3NhZ2UiLDAsMjUsIlN1Y2Nlc3NmdWxseSBzaWduZWQgaW4gYXMgZ2gwc3RpbnRoZXNoZTExLiJdXQ:1sqkz3:jvYNsBAkj6uJr_UtdnHvA8Lg6DrdqleuobW0mUhJYqg",
-        "87b5a3c3f1a55520_gr_session_id": "be00a9cd-708f-4620-a677-2d197e054029",
-        "ip_check": '(false, "142.198.214.142")',
-        "_gat": "1",
-        "_gid": "GA1.2.1788959296.1726628628",
-        "__cf_bm": "00.U5i7D7reawJrMqmFhbpLxDbdqqp8Wez.rQNUkshg-1726628628-1.0.1.1-5i6wSM1nE8ozWoHF.YMTX1yDQdrzuuGXWdP8Zo1JrhBNWr4gfdqHzIEYPn6YTiw4oGSP_i3u0OMPwJL3SzlpEw",
-    }
+    COOKIES = login_to_leetcode()
 
-    language = "Python3"
+    question = get_question_details("subsequence-of-size-k-with-the-largest-even-sum")
+    solution = """
+class Solution:
+    def interchangeableRectangles(self, rectangles):
+        from collections import defaultdict
+        from operator import truediv
+        ratios = defaultdict(int)
 
-    try:
-        # get the question details
-        question = get_question_details("subsequence-of-size-k-with-the-largest-even-sum")
+        for width, height in rectangles:
+            ratio = truediv(width, height)
+            ratios[ratio] += 1
 
-        # list all questions
-        # questions = list_questions(limit=10, start=2000)
-        # print(questions)
-        
-        # check if the language selected is in the codeSnippets
-        if language not in question["codeSnippets"]:
-            raise Exception(f"Language {language} not available for this question, available languages: {question['codeSnippets'].keys()}")
-
-        solution = generate(language, question)
-        
-        submit_result = submit(question["question_id"], question["problem_slug"], "python3", solution)
-        print(submit_result)
-
-        # test_result = test(question_id, problem_slug, 'python3', solution, exampleTestcases)
-        # print(test_result)
-
-    except requests.exceptions.HTTPError as e:
-        print(f"HTTP Error occurred: {e}")
-        print(f"Response content: {e.response.content}")
+        return sum(v * (v - 1) // 2 for v in ratios.values())
+    """
+    # 3s delay
+    time.sleep(3)
+    result = submit(question["question_id"], question["problem_slug"], "Python3", solution)
+    print(result)
