@@ -26,8 +26,9 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # format the header
 def get_common_header(suffix):
+
     return {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
         "Referer": f"{BASE_URL}/{suffix}",
         "Content-Type": "application/json",
         "X-CSRFToken": COOKIES.get("csrftoken", ""),
@@ -251,6 +252,7 @@ def submit(question_id, problem_slug, lang, code):
         )
         response.raise_for_status()
         submission_id = response.json()["submission_id"]
+        print(response.json())
     except JSONDecodeError:
         raise Exception("Failed to decode JSON response from submission")
     except KeyError:
@@ -269,11 +271,16 @@ def submit(question_id, problem_slug, lang, code):
             )
             response.raise_for_status()
             result = response.json()
+            print(result)
             if result["state"] == "SUCCESS":
                 return result
             elif result["state"] in ["PENDING", "STARTED"]:
-                time.sleep(2)  # Wait for 2 seconds before trying again
+                sleep_time = 2**attempt  # Exponential backoff
+                time.sleep(sleep_time)
             else:
+                print(
+                    f"Unexpected state: {result['state']}, Message: {result['status_msg']}"
+                )
                 raise Exception(f"Unexpected submission state: {result}")
         except JSONDecodeError:
             print(f"Failed to decode JSON on attempt {attempt + 1}. Retrying...")
@@ -303,9 +310,12 @@ def test(question_id, problem_slug, lang, code, test_case):
     )
     response.raise_for_status()
     interpret_id = response.json()["interpret_id"]
+    print(response.json())
 
     # Now, let's check the result
     test_status_url = f"https://leetcode.com/submissions/detail/{interpret_id}/check/"
+
+    time.sleep(3)
 
     max_attempts = 10
     for attempt in range(max_attempts):
@@ -320,8 +330,12 @@ def test(question_id, problem_slug, lang, code, test_case):
             if result["state"] == "SUCCESS":
                 return result
             elif result["state"] in ["PENDING", "STARTED"]:
-                time.sleep(2)  # Wait for 2 seconds before trying again
+                sleep_time = 2**attempt  # Exponential backoff
+                time.sleep(sleep_time)
             else:
+                print(
+                    f"Unexpected state: {result['state']}, Message: {result['status_msg']}"
+                )
                 raise Exception(f"Unexpected submission state: {result}")
         except JSONDecodeError:
             print(f"Failed to decode JSON on attempt {attempt + 1}. Retrying...")
@@ -333,8 +347,6 @@ def test(question_id, problem_slug, lang, code, test_case):
 
 # generate the solution using GPT model
 def generate(language, question):
-
-    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
     # get the codeSnippets from the question and get the rest
     codeSnippets = question.pop("codeSnippets")[language]
@@ -396,8 +408,63 @@ def extract_code(markdown_code):
 
 
 # debug the code if there is an error
-def debug(question, current_code, submit_result):
-    pass  # for now
+def debug(language, question, current_code, submit_result):
+
+    # get the codeSnippets from the question and get the rest
+    codeSnippet = question.pop("codeSnippets")[language]
+
+    # Create the prompt for debugging
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are a master of solving LeetCode problems and generating solutions.",
+            },
+            {
+                "role": "user",
+                "content": f"""
+### Instruction:
+We encountered an error while solving a LeetCode problem in Python.
+
+- **Solution must be written in {language}**
+- **Class and function definitions** must match the ones provided.
+- Return **only the solution code**—no explanations, comments, or additional text.
+
+### Problem:
+
+```json
+{question}
+```
+
+### Current Code:
+
+```python
+{current_code}
+```
+
+### Error Encountered:
+
+```json
+{submit_result}
+```
+
+### Task:
+Please review the problem, the current code, and the error. Then generate a new solution that avoids the issue causing the error.
+
+### Provided Code:
+
+```python
+{codeSnippet}
+```
+""",
+            },
+        ],
+    )
+
+    # Extract the generated code from the response
+    codeblock = response.choices[0].message.content
+    return extract_code(codeblock)
 
 
 # get the next unsolved question
@@ -515,23 +582,161 @@ def main():
 
 if __name__ == "__main__":
 
-    COOKIES = login_to_leetcode()
+    COOKIES = {
+        "_ga": "GA1.2.1885015955.1726719933",
+        "LEETCODE_SESSION": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMTI2NzA5MjgiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhbGxhdXRoLmFjY291bnQuYXV0aF9iYWNrZW5kcy5BdXRoZW50aWNhdGlvbkJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI5NTBhZjMyNmYyMjc0NDE4OGIwZTJlYmQyMTk3ZWQzYzAyMmU4NWIxMTZjNDc2MzJlYjM0Yzk4M2VmZWZiNTFlIiwiaWQiOjEyNjcwOTI4LCJlbWFpbCI6ImxhbmdzLjk3MTEwNEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImdoMHN0aW50aGVzaGUxMSIsInVzZXJfc2x1ZyI6ImdoMHN0aW50aGVzaGUxMSIsImF2YXRhciI6Imh0dHBzOi8vYXNzZXRzLmxlZXRjb2RlLmNvbS91c2Vycy9naDBzdGludGhlc2hlMTEvYXZhdGFyXzE3MTAyMDQyNjQucG5nIiwicmVmcmVzaGVkX2F0IjoxNzI2NzE5OTQ0LCJpcCI6IjE0Mi4xOTguMjE0LjE0MiIsImlkZW50aXR5IjoiZThkYjFhOTEwZWUwODhiNDY5ZWNmZDJiNmE5YjlkYTUiLCJzZXNzaW9uX2lkIjo3MjgwMDcwMX0.hnTJon8B3Ym-XQI71tS8YLElhnyLBfabgk9BtZDqlNE",
+        "gr_user_id": "4b51603b-b188-4178-a993-549da3a1c331",
+        "csrftoken": "H2NfsiualfFcGfxDcdB0lhL49lcxoNtD9BeIDMVIOVCbiFQq1cduwqmdiZvBRLZI",
+        "_ga_CDRWKZTDEX": "GS1.1.1726719933.1.1.1726719945.48.0.0",
+        "_dd_s": "rum=0&expire=1726720837653",
+        "87b5a3c3f1a55520_gr_session_id_sent_vst": "20940360-38ff-4f63-b592-1365a3e66647",
+        "messages": "W1siX19qc29uX21lc3NhZ2UiLDAsMjUsIlN1Y2Nlc3NmdWxseSBzaWduZWQgaW4gYXMgZ2gwc3RpbnRoZXNoZTExLiJdXQ:1sr8jg:UniJm246SpBI10Lg4P76OyNEGxtag9IFYvf7btZYTJA",
+        "87b5a3c3f1a55520_gr_session_id": "20940360-38ff-4f63-b592-1365a3e66647",
+        "ip_check": '(false, "142.198.214.142")',
+        "_gat": "1",
+        "_gid": "GA1.2.859996824.1726719933",
+        "__cf_bm": "rVkp5MKLjlWLtRvGQC0WYJdlvNhtEAkYTc9E8fGQcvs-1726719932-1.0.1.1-q.Rdix1lc8bLSNa4qaSraqzvtJJ_oLx1ia2S9Ba69Jv_HFg8SXX8eEMrNVsO_bYygPfyg8fcbODgxI80YkfCQg",
+    }
 
-    question = get_question_details("subsequence-of-size-k-with-the-largest-even-sum")
+    language = "C"
+    question = get_question_details("two-sum")
     solution = """
-class Solution:
-    def interchangeableRectangles(self, rectangles):
-        from collections import defaultdict
-        from operator import truediv
-        ratios = defaultdict(int)
+#include <stdlib.h>
 
-        for width, height in rectangles:
-            ratio = truediv(width, height)
-            ratios[ratio] += 1
+/**
+ * Hash table entry structure
+ */
+typedef struct HashEntry {
+    int key;            // The number from the array
+    int value;          // The index of the number
+    struct HashEntry* next;  // Pointer to the next entry (for chaining in case of collisions)
+} HashEntry;
 
-        return sum(v * (v - 1) // 2 for v in ratios.values())
+/**
+ * Hash table structure
+ */
+typedef struct HashTable {
+    int size;           // Size of the hash table array
+    HashEntry** table;  // Array of pointers to HashEntry
+} HashTable;
+
+/**
+ * Creates a new hash table
+ */
+HashTable* createHashTable(int size) {
+    HashTable* ht = (HashTable*)malloc(sizeof(HashTable));
+    ht->size = size;
+    ht->table = (HashEntry**)malloc(sizeof(HashEntry*) * size);
+    for (int i = 0; i < size; i++)
+        ht->table[i] = NULL;
+    return ht;
+}
+
+/**
+ * Simple hash function
+ */
+int hashFunction(HashTable* ht, int key) {
+    // Use modulo operator to stay within the table size
+    // To handle negative keys, make sure the result is non-negative
+    return abs(key) % ht->size;
+}
+
+/**
+ * Inserts a key-value pair into the hash table
+ */
+void insertHashTable(HashTable* ht, int key, int value) {
+    int hashIndex = hashFunction(ht, key);
+    HashEntry* newEntry = (HashEntry*)malloc(sizeof(HashEntry));
+    newEntry->key = key;
+    newEntry->value = value;
+    newEntry->next = ht->table[hashIndex];
+    ht->table[hashIndex] = newEntry;
+}
+
+/**
+ * Searches for a key in the hash table and returns its associated value
+ * Returns -1 if the key is not found
+ */
+int searchHashTable(HashTable* ht, int key) {
+    int hashIndex = hashFunction(ht, key);
+    HashEntry* entry = ht->table[hashIndex];
+    while (entry != NULL) {
+        if (entry->key == key)
+            return entry->value;
+        entry = entry->next;
+    }
+    return -1;  // Key not found
+}
+
+/**
+ * Frees the memory allocated for the hash table
+ */
+void freeHashTable(HashTable* ht) {
+    for (int i = 0; i < ht->size; i++) {
+        HashEntry* entry = ht->table[i];
+        while (entry != NULL) {
+            HashEntry* temp = entry;
+            entry = entry->next;
+            free(temp);
+        }
+    }
+    free(ht->table);
+    free(ht);
+}
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
+    // Initialize the hash table
+    // Choosing a prime number greater than numsSize for better distribution
+    HashTable* ht = createHashTable(2 * numsSize + 1);
+
+    // Allocate memory for the result array
+    int* result = (int*)malloc(2 * sizeof(int));
+    *returnSize = 0;
+
+    // Traverse the array
+    for (int i = 0; i < numsSize; i++) {
+        int complement = target - nums[i];
+
+        // Check if the complement exists in the hash table
+        int index = searchHashTable(ht, complement);
+        if (index != -1) {
+            // Complement found, return the indices
+            result[0] = index;
+            result[1] = i;
+            *returnSize = 2;
+            freeHashTable(ht);  // Free the hash table before returning
+            return result;
+        }
+
+        // Insert the current number and its index into the hash table
+        insertHashTable(ht, nums[i], i);
+    }
+
+    // If no solution is found (should not happen per problem constraints)
+    free(result);
+    *returnSize = 0;
+    freeHashTable(ht);
+    return NULL;
+}
     """
-    # 3s delay
-    time.sleep(3)
-    result = submit(question["question_id"], question["problem_slug"], "Python3", solution)
+
+    result = test(
+        question["question_id"],
+        question["problem_slug"],
+        language,
+        solution,
+        question["exampleTestcases"],
+    )
     print(result)
+
+    test_status_url = f"https://leetcode.com/submissions/detail/runcode_1726719341.5751286_qdI5FlfjE2/check/"
+
+    response = requests.get(
+        test_status_url,
+        headers=get_common_header(f"problems/two-sum/"),
+        cookies=COOKIES,
+    )
+    print(response.json())
