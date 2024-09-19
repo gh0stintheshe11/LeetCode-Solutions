@@ -252,7 +252,6 @@ def submit(question_id, problem_slug, lang, code):
         )
         response.raise_for_status()
         submission_id = response.json()["submission_id"]
-        print(response.json())
     except JSONDecodeError:
         raise Exception("Failed to decode JSON response from submission")
     except KeyError:
@@ -271,7 +270,6 @@ def submit(question_id, problem_slug, lang, code):
             )
             response.raise_for_status()
             result = response.json()
-            print(result)
             if result["state"] == "SUCCESS":
                 return result
             elif result["state"] in ["PENDING", "STARTED"]:
@@ -310,12 +308,9 @@ def test(question_id, problem_slug, lang, code, test_case):
     )
     response.raise_for_status()
     interpret_id = response.json()["interpret_id"]
-    print(response.json())
 
     # Now, let's check the result
     test_status_url = f"https://leetcode.com/submissions/detail/{interpret_id}/check/"
-
-    time.sleep(3)
 
     max_attempts = 10
     for attempt in range(max_attempts):
@@ -490,7 +485,7 @@ def get_next_unsolved(question_id):
 
 
 # main logic of the solver
-def main():
+def solver():
     print("--- Solver Start ---")
 
     current_question_id = 0  # start from the first question
@@ -731,12 +726,3 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
         question["exampleTestcases"],
     )
     print(result)
-
-    test_status_url = f"https://leetcode.com/submissions/detail/runcode_1726719341.5751286_qdI5FlfjE2/check/"
-
-    response = requests.get(
-        test_status_url,
-        headers=get_common_header(f"problems/two-sum/"),
-        cookies=COOKIES,
-    )
-    print(response.json())
