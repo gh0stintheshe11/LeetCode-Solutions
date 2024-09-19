@@ -7,5 +7,5 @@
 - [x] generate solution
 - [x] debug if submit result shows wrong answer
 - [ ] loop the whole process
-- [ ] get the next unsolved problem
+- [x] get the next unsolved problem
 
