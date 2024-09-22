@@ -577,146 +577,20 @@ def solver():
 
 if __name__ == "__main__":
 
-    COOKIES = {
-        "_ga": "GA1.2.1885015955.1726719933",
-        "LEETCODE_SESSION": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMTI2NzA5MjgiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhbGxhdXRoLmFjY291bnQuYXV0aF9iYWNrZW5kcy5BdXRoZW50aWNhdGlvbkJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI5NTBhZjMyNmYyMjc0NDE4OGIwZTJlYmQyMTk3ZWQzYzAyMmU4NWIxMTZjNDc2MzJlYjM0Yzk4M2VmZWZiNTFlIiwiaWQiOjEyNjcwOTI4LCJlbWFpbCI6ImxhbmdzLjk3MTEwNEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImdoMHN0aW50aGVzaGUxMSIsInVzZXJfc2x1ZyI6ImdoMHN0aW50aGVzaGUxMSIsImF2YXRhciI6Imh0dHBzOi8vYXNzZXRzLmxlZXRjb2RlLmNvbS91c2Vycy9naDBzdGludGhlc2hlMTEvYXZhdGFyXzE3MTAyMDQyNjQucG5nIiwicmVmcmVzaGVkX2F0IjoxNzI2NzE5OTQ0LCJpcCI6IjE0Mi4xOTguMjE0LjE0MiIsImlkZW50aXR5IjoiZThkYjFhOTEwZWUwODhiNDY5ZWNmZDJiNmE5YjlkYTUiLCJzZXNzaW9uX2lkIjo3MjgwMDcwMX0.hnTJon8B3Ym-XQI71tS8YLElhnyLBfabgk9BtZDqlNE",
-        "gr_user_id": "4b51603b-b188-4178-a993-549da3a1c331",
-        "csrftoken": "H2NfsiualfFcGfxDcdB0lhL49lcxoNtD9BeIDMVIOVCbiFQq1cduwqmdiZvBRLZI",
-        "_ga_CDRWKZTDEX": "GS1.1.1726719933.1.1.1726719945.48.0.0",
-        "_dd_s": "rum=0&expire=1726720837653",
-        "87b5a3c3f1a55520_gr_session_id_sent_vst": "20940360-38ff-4f63-b592-1365a3e66647",
-        "messages": "W1siX19qc29uX21lc3NhZ2UiLDAsMjUsIlN1Y2Nlc3NmdWxseSBzaWduZWQgaW4gYXMgZ2gwc3RpbnRoZXNoZTExLiJdXQ:1sr8jg:UniJm246SpBI10Lg4P76OyNEGxtag9IFYvf7btZYTJA",
-        "87b5a3c3f1a55520_gr_session_id": "20940360-38ff-4f63-b592-1365a3e66647",
-        "ip_check": '(false, "142.198.214.142")',
-        "_gat": "1",
-        "_gid": "GA1.2.859996824.1726719933",
-        "__cf_bm": "rVkp5MKLjlWLtRvGQC0WYJdlvNhtEAkYTc9E8fGQcvs-1726719932-1.0.1.1-q.Rdix1lc8bLSNa4qaSraqzvtJJ_oLx1ia2S9Ba69Jv_HFg8SXX8eEMrNVsO_bYygPfyg8fcbODgxI80YkfCQg",
-    }
+    COOKIES = login_to_leetcode()
 
-    language = "C"
-    question = get_question_details("two-sum")
+    language = "Python3"
+    question = get_question_details("maximum-subarray")
     solution = """
-#include <stdlib.h>
-
-/**
- * Hash table entry structure
- */
-typedef struct HashEntry {
-    int key;            // The number from the array
-    int value;          // The index of the number
-    struct HashEntry* next;  // Pointer to the next entry (for chaining in case of collisions)
-} HashEntry;
-
-/**
- * Hash table structure
- */
-typedef struct HashTable {
-    int size;           // Size of the hash table array
-    HashEntry** table;  // Array of pointers to HashEntry
-} HashTable;
-
-/**
- * Creates a new hash table
- */
-HashTable* createHashTable(int size) {
-    HashTable* ht = (HashTable*)malloc(sizeof(HashTable));
-    ht->size = size;
-    ht->table = (HashEntry**)malloc(sizeof(HashEntry*) * size);
-    for (int i = 0; i < size; i++)
-        ht->table[i] = NULL;
-    return ht;
-}
-
-/**
- * Simple hash function
- */
-int hashFunction(HashTable* ht, int key) {
-    // Use modulo operator to stay within the table size
-    // To handle negative keys, make sure the result is non-negative
-    return abs(key) % ht->size;
-}
-
-/**
- * Inserts a key-value pair into the hash table
- */
-void insertHashTable(HashTable* ht, int key, int value) {
-    int hashIndex = hashFunction(ht, key);
-    HashEntry* newEntry = (HashEntry*)malloc(sizeof(HashEntry));
-    newEntry->key = key;
-    newEntry->value = value;
-    newEntry->next = ht->table[hashIndex];
-    ht->table[hashIndex] = newEntry;
-}
-
-/**
- * Searches for a key in the hash table and returns its associated value
- * Returns -1 if the key is not found
- */
-int searchHashTable(HashTable* ht, int key) {
-    int hashIndex = hashFunction(ht, key);
-    HashEntry* entry = ht->table[hashIndex];
-    while (entry != NULL) {
-        if (entry->key == key)
-            return entry->value;
-        entry = entry->next;
-    }
-    return -1;  // Key not found
-}
-
-/**
- * Frees the memory allocated for the hash table
- */
-void freeHashTable(HashTable* ht) {
-    for (int i = 0; i < ht->size; i++) {
-        HashEntry* entry = ht->table[i];
-        while (entry != NULL) {
-            HashEntry* temp = entry;
-            entry = entry->next;
-            free(temp);
-        }
-    }
-    free(ht->table);
-    free(ht);
-}
-
-/**
- * Note: The returned array must be malloced, assume caller calls free().
- */
-int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
-    // Initialize the hash table
-    // Choosing a prime number greater than numsSize for better distribution
-    HashTable* ht = createHashTable(2 * numsSize + 1);
-
-    // Allocate memory for the result array
-    int* result = (int*)malloc(2 * sizeof(int));
-    *returnSize = 0;
-
-    // Traverse the array
-    for (int i = 0; i < numsSize; i++) {
-        int complement = target - nums[i];
-
-        // Check if the complement exists in the hash table
-        int index = searchHashTable(ht, complement);
-        if (index != -1) {
-            // Complement found, return the indices
-            result[0] = index;
-            result[1] = i;
-            *returnSize = 2;
-            freeHashTable(ht);  // Free the hash table before returning
-            return result;
-        }
-
-        // Insert the current number and its index into the hash table
-        insertHashTable(ht, nums[i], i);
-    }
-
-    // If no solution is found (should not happen per problem constraints)
-    free(result);
-    *returnSize = 0;
-    freeHashTable(ht);
-    return NULL;
-}
-    """
+class Solution:
+    def maxSubArray(self, nums):
+        if not nums:
+            return 0
+        cur_sum = max_sum = nums[0]
+        for num in nums[1:]:
+            cur_sum = max(num, cur_sum + num)
+            max_sum = max(max_sum, cur_sum)
+        return max_sum"""
 
     result = test(
         question["question_id"],

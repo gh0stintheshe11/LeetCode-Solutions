@@ -2,3 +2,4 @@
 .conda
 __pycache__
 .env
+dev.ipynb
