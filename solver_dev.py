@@ -265,6 +265,7 @@ def submit(question_id, problem_slug, lang, code):
         raise Exception("Submission response does not contain 'submission_id'")
 
     # Check the result
+    time.sleep(2)
     submit_status_url = f"{BASE_URL}/submissions/detail/{submission_id}/check/"
 
     max_attempts = 10
@@ -317,6 +318,7 @@ def test(question_id, problem_slug, lang, code, test_case):
     interpret_id = response.json()["interpret_id"]
 
     # Now, let's check the result
+    time.sleep(2)
     test_status_url = f"https://leetcode.com/submissions/detail/{interpret_id}/check/"
 
     max_attempts = 10
@@ -347,46 +349,6 @@ def test(question_id, problem_slug, lang, code, test_case):
     raise Exception("Timed out waiting for submission result")
 
 
-# generate the solution using GPT model
-def generate(language, question, codeSnippets):
-
-    response = client.chat.completions.create(
-        model="gpt-4o",
-        messages=[
-            {
-                "role": "system",
-                "content": "You are a master of solving LeetCode problems and generating solutions.",
-            },
-            {
-                "role": "user",
-                "content": f"""
-### Instruction:
-**Solve this LeetCode problem in Python** using the most efficient approach with optimal time complexity unless specified otherwise. 
-
-- **Solution must be written in {language}**
-- **Class and function definitions** must match the ones provided.
-- Return **only the solution code**—no explanations, comments, or additional text.
-
-### Problem:
-
-```json
-{question}
-```
-
-### Provided Code:
-
-```
-{codeSnippets}
-```
-""",
-            },
-        ],
-    )
-
-    codeblock = response.choices[0].message.content
-    return extract_code(codeblock)
-
-
 # extract the code from the markdown code block
 def extract_code(markdown_code):
     # Pattern to match code blocks
@@ -406,6 +368,45 @@ def extract_code(markdown_code):
     return code
 
 
+# generate the solution using GPT model
+def generate(language, question, codeSnippets):
+
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are a master of solving LeetCode problems and generating solutions.",
+            },
+            {
+                "role": "user",
+                "content": f"""
+### Instruction:
+**Solve this LeetCode problem in {language}** using the most efficient approach with optimal time complexity unless specified otherwise. 
+
+### Format:
+- **Solution must be written in {language}**
+- **Class and function definitions** must match the ones provided.
+- Return **only the solution code**—no explanations, comments, or additional text.
+
+### Problem:
+```json
+{question}
+```
+
+### Provided Code:
+```
+{codeSnippets}
+```
+""",
+            },
+        ],
+    )
+
+    codeblock = response.choices[0].message.content
+    return extract_code(codeblock)
+
+
 # debug the code if there is an error
 def debug(language, question, codeSnippet, current_code, submit_result):
 
@@ -421,36 +422,36 @@ def debug(language, question, codeSnippet, current_code, submit_result):
                 "role": "user",
                 "content": f"""
 ### Instruction:
-We encountered an error while solving a LeetCode problem in Python.
+We encountered an error while solving a LeetCode problem in {language}.
 
+### Task:
+Please review the problem, the current code, and the result of the last submission.
+Identify the issue causing the error.
+Using a different approach to solve the problem to avoid the issue causing the error.
+
+### Format:
 - **Solution must be written in {language}**
 - **Class and function definitions** must match the ones provided.
 - Return **only the solution code**—no explanations, comments, or additional text.
 
-### Problem:
 
+### Problem:
 ```json
 {question}
 ```
 
 ### Current Code:
-
-```python
+```
 {current_code}
 ```
 
 ### Error Encountered:
-
 ```json
 {submit_result}
 ```
 
-### Task:
-Please review the problem, the current code, and the error. Then generate a new solution that avoids the issue causing the error.
-
 ### Provided Code:
-
-```python
+```
 {codeSnippet}
 ```
 """,
@@ -485,15 +486,30 @@ def get_next_unsolved(question_id):
     return None  # Couldn't find an unsolved question within the limit
 
 
+# while (still have unsolved questions)
+#   generate
+#   submit
+#   while submit_result["status_msg"] != "Accepted":
+#     add test case to test case
+#     debug
+#     test
+#     while test_result["status_msg"] != "Accepted":
+#       debug
+#       test
+#     submit
+#   move to next question
+
+
 # main logic of the solver
 def solver():
     print("--- Solver Start ---")
 
     current_question_id = SETTING["start_question_id"]  # default language
-    language = SETTING["default_language"]  # default language
     langSlug = ""
 
     while True:  # Outer loop to continuously solve problems
+        # reset language
+        language = SETTING["default_language"]  # default language
         # get the next unsolved question -> get question details
         question = get_next_unsolved(current_question_id)
         if not question:
@@ -506,7 +522,6 @@ def solver():
         # get the question details
         question_detailed = get_question_details(question["titleSlug"])
         print(f"Get question {question_detailed['problem_slug']} details")
-        print(question_detailed)
 
         # check if the language selected is in the codeSnippets
         if language not in question_detailed["codeSnippets"]:
@@ -520,12 +535,34 @@ def solver():
 
         # generate initial solution
         solution = generate(language, question_detailed, codeSnippets)
-        print(f"Generated initial solution: {solution}")
+        print(f"Generated initial solution...")
 
-        # submit the solution and use test to debug
-        max_submit_attempts = 3
-        for submit_attempt in range(max_submit_attempts):
-            # Test the solution
+        submit_result = submit(
+            question_detailed["question_id"],
+            question_detailed["problem_slug"],
+            langSlug,
+            solution,
+        )
+        print(f"Initial submit result: {submit_result}")
+
+        while submit_result["status_msg"] != "Accepted":
+
+            # add the last test case to the example test cases
+            question_detailed["exampleTestcases"] += (
+                "\n"
+                + submit_result["last_testcase"]
+            )
+            print(
+                f"Add test case to test case: {question_detailed['exampleTestcases']}"
+            )
+
+            # debug the solution
+            solution = debug(
+                language, question_detailed, codeSnippets, solution, submit_result
+            )
+            print(f"Debug result: {solution}")
+
+            # test the solution
             test_result = test(
                 question_detailed["question_id"],
                 question_detailed["problem_slug"],
@@ -533,13 +570,16 @@ def solver():
                 solution,
                 question_detailed["exampleTestcases"],
             )
+            print(f"Test result: {test_result}")
 
-            max_debug_attempts = 3
-            while test_result["status_msg"] != "Accepted" and max_debug_attempts > 0:
+            max_debug_attempts = 0
+            while test_result["status_msg"] != "Accepted" and max_debug_attempts < 3:
+
                 # Debug the solution
                 solution = debug(
                     language, question_detailed, codeSnippets, solution, test_result
                 )
+                print(f"Debug attempt {max_debug_attempts} result: {solution}")
 
                 # Run the test again
                 test_result = test(
@@ -549,9 +589,11 @@ def solver():
                     solution,
                     question_detailed["exampleTestcases"],
                 )
+                print(f"Test attempt {max_debug_attempts} result: {test_result}")
 
-                max_debug_attempts -= 1
+                max_debug_attempts += 1
 
+            # submit
             if test_result["status_msg"] == "Accepted":
                 # If all test cases pass, submit the solution
                 submit_result = submit(
@@ -560,29 +602,13 @@ def solver():
                     langSlug,
                     solution,
                 )
-                print(f"Submitted solution: {submit_result}")
-
-                if submit_result["status_msg"] == "Accepted":
-                    print("Solution accepted!")
-                    break  # Break out of the submit_attempt loop
-                else:
-                    print(f"Solution failed: {submit_result}")
-                    # Add the failed test case to our test cases string
-                    question_detailed["exampleTestcases"] += (
-                        submit_result["last_testcase"]
-                        + "\n"
-                        + submit_result["expected_output"]
-                    )
+                print(f"Debug success, submitted solution: {submit_result}")
+                # break the loop and move to the next question
+                break
             else:
-                print(
-                    f"Failed to pass all test cases after {max_debug_attempts} debug attempts"
-                )
-                break  # Break out of the submit_attempt loop
-
-        if submit_attempt == max_submit_attempts - 1:
-            print(
-                f"Failed to solve the question after {max_submit_attempts} submit attempts"
-            )
+                print(f"Debug failed after {max_debug_attempts} debug attempts")
+                # break the loop and move to the next question
+                break
 
         # Move to the next question
         current_question_id += 1
