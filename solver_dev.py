@@ -27,6 +27,7 @@ load_dotenv()
 # set up openai client
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+
 # format the header
 def get_common_header(suffix):
     return {
@@ -347,13 +348,10 @@ def test(question_id, problem_slug, lang, code, test_case):
 
 
 # generate the solution using GPT model
-def generate(language, question):
-
-    # get the codeSnippets from the question and get the rest
-    codeSnippets = question.pop("codeSnippets")[language]
+def generate(language, question, codeSnippets):
 
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-4o",
         messages=[
             {
                 "role": "system",
@@ -409,14 +407,11 @@ def extract_code(markdown_code):
 
 
 # debug the code if there is an error
-def debug(language, question, current_code, submit_result):
-
-    # get the codeSnippets from the question and get the rest
-    codeSnippet = question.pop("codeSnippets")[language]
+def debug(language, question, codeSnippet, current_code, submit_result):
 
     # Create the prompt for debugging
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-4o",
         messages=[
             {
                 "role": "system",
@@ -486,15 +481,17 @@ def get_next_unsolved(question_id):
 
         # If we've checked all questions in this batch and none are unsolved,
         # we'll move to the next batch in the next iteration
-        
+
     return None  # Couldn't find an unsolved question within the limit
+
 
 # main logic of the solver
 def solver():
     print("--- Solver Start ---")
 
-    current_question_id = SETTING["start_question"]  # default language
+    current_question_id = SETTING["start_question_id"]  # default language
     language = SETTING["default_language"]  # default language
+    langSlug = ""
 
     while True:  # Outer loop to continuously solve problems
         # get the next unsolved question -> get question details
@@ -508,20 +505,24 @@ def solver():
 
         # get the question details
         question_detailed = get_question_details(question["titleSlug"])
-        print(f"Get question details: {question_detailed}")
+        print(f"Get question {question_detailed['problem_slug']} details")
+        print(question_detailed)
 
         # check if the language selected is in the codeSnippets
         if language not in question_detailed["codeSnippets"]:
             # change language to the first available language
             language = list(question_detailed["codeSnippets"].keys())[0]
-
-        # generate initial solution
-        solution = generate(language, question_detailed)
-        print(f"Generated initial solution: {solution}")
-        
+            print(f"Change language to {language}")
         # leetcode api takes the langSlug instead of the language name
         langSlug = question_detailed["codeSnippets"][language]["langSlug"]
+        # extract the codeSnippets from the question_detailed
+        codeSnippets = question_detailed.pop("codeSnippets")[language]["code"]
 
+        # generate initial solution
+        solution = generate(language, question_detailed, codeSnippets)
+        print(f"Generated initial solution: {solution}")
+
+        # submit the solution and use test to debug
         max_submit_attempts = 3
         for submit_attempt in range(max_submit_attempts):
             # Test the solution
@@ -536,7 +537,9 @@ def solver():
             max_debug_attempts = 3
             while test_result["status_msg"] != "Accepted" and max_debug_attempts > 0:
                 # Debug the solution
-                solution = debug(question_detailed, solution, test_result)
+                solution = debug(
+                    language, question_detailed, codeSnippets, solution, test_result
+                )
 
                 # Run the test again
                 test_result = test(
@@ -564,9 +567,11 @@ def solver():
                     break  # Break out of the submit_attempt loop
                 else:
                     print(f"Solution failed: {submit_result}")
-                    # Add the failed test case to our test cases
-                    question_detailed["exampleTestcases"].append(
+                    # Add the failed test case to our test cases string
+                    question_detailed["exampleTestcases"] += (
                         submit_result["last_testcase"]
+                        + "\n"
+                        + submit_result["expected_output"]
                     )
             else:
                 print(
@@ -582,8 +587,6 @@ def solver():
         # Move to the next question
         current_question_id += 1
         print("Moving to next question...")
-        
-        
 
 
 if __name__ == "__main__":
@@ -605,16 +608,4 @@ if __name__ == "__main__":
         "__cf_bm": "vLgURSKvtXUsH9F6bbaex7rmFS0khCuJ3bLl9YlEWR4-1727049185-1.0.1.1-hZ5q8HgQ5Mj8cju5mGNnEV.b5vYt93l7Clgv9YKOtIqJwAklznYRKq_FHtzAGG4JOVfelf1NLOvzMApYBL9OIw",
     }
 
-    language = "Python3"
-    question = get_question_details("maximum-subarray")
-    langSlug = question["codeSnippets"][language]["langSlug"]
-    solution = open("solution.txt", "r").read()
-
-    result = test(
-        question["question_id"],
-        question["problem_slug"],
-        langSlug,
-        solution,
-        question["exampleTestcases"],
-    )
-    print(result)
+    solver()
