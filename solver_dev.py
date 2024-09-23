@@ -17,16 +17,18 @@ from selenium.common.exceptions import (
     ElementClickInterceptedException,
 )
 
+# load the setting.json file
+with open("setting.json", "r") as f:
+    SETTING = json.load(f)
+
 BASE_URL = "https://leetcode.com"
 # load the .env file
 load_dotenv()
 # set up openai client
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-
 # format the header
 def get_common_header(suffix):
-
     return {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
         "Referer": f"{BASE_URL}/{suffix}",
@@ -214,7 +216,11 @@ def get_question_details(problem_slug):
         # get the code snippets
         codeSnippets = questions["codeSnippets"]
         # reformat the codeSnippets to be a dicts with lang as key and code as value
-        codeSnippets = {snippet["lang"]: snippet["code"] for snippet in codeSnippets}
+        # To this
+        codeSnippets = {
+            snippet["lang"]: {"langSlug": snippet["langSlug"], "code": snippet["code"]}
+            for snippet in codeSnippets
+        }
 
         # format question to a json
         question = {
@@ -238,7 +244,7 @@ def submit(question_id, problem_slug, lang, code):
 
     submit_data = {
         "lang": lang,
-        "question_id": question_id,
+        "question_id": str(question_id),
         "typed_code": code,
     }
 
@@ -480,16 +486,15 @@ def get_next_unsolved(question_id):
 
         # If we've checked all questions in this batch and none are unsolved,
         # we'll move to the next batch in the next iteration
-
+        
     return None  # Couldn't find an unsolved question within the limit
-
 
 # main logic of the solver
 def solver():
     print("--- Solver Start ---")
 
-    current_question_id = 0  # start from the first question
-    language = "Python3"  # default language
+    current_question_id = SETTING["start_question"]  # default language
+    language = SETTING["default_language"]  # default language
 
     while True:  # Outer loop to continuously solve problems
         # get the next unsolved question -> get question details
@@ -513,6 +518,9 @@ def solver():
         # generate initial solution
         solution = generate(language, question_detailed)
         print(f"Generated initial solution: {solution}")
+        
+        # leetcode api takes the langSlug instead of the language name
+        langSlug = question_detailed["codeSnippets"][language]["langSlug"]
 
         max_submit_attempts = 3
         for submit_attempt in range(max_submit_attempts):
@@ -520,7 +528,7 @@ def solver():
             test_result = test(
                 question_detailed["question_id"],
                 question_detailed["problem_slug"],
-                language,
+                langSlug,
                 solution,
                 question_detailed["exampleTestcases"],
             )
@@ -534,7 +542,7 @@ def solver():
                 test_result = test(
                     question_detailed["question_id"],
                     question_detailed["problem_slug"],
-                    language,
+                    langSlug,
                     solution,
                     question_detailed["exampleTestcases"],
                 )
@@ -546,7 +554,7 @@ def solver():
                 submit_result = submit(
                     question_detailed["question_id"],
                     question_detailed["problem_slug"],
-                    language,
+                    langSlug,
                     solution,
                 )
                 print(f"Submitted solution: {submit_result}")
@@ -555,6 +563,7 @@ def solver():
                     print("Solution accepted!")
                     break  # Break out of the submit_attempt loop
                 else:
+                    print(f"Solution failed: {submit_result}")
                     # Add the failed test case to our test cases
                     question_detailed["exampleTestcases"].append(
                         submit_result["last_testcase"]
@@ -573,29 +582,38 @@ def solver():
         # Move to the next question
         current_question_id += 1
         print("Moving to next question...")
+        
+        
 
 
 if __name__ == "__main__":
 
-    COOKIES = login_to_leetcode()
+    # COOKIES = login_to_leetcode()
+    COOKIES = {
+        "_ga": "GA1.2.379898781.1727049186",
+        "LEETCODE_SESSION": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMTI2NzA5MjgiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhbGxhdXRoLmFjY291bnQuYXV0aF9iYWNrZW5kcy5BdXRoZW50aWNhdGlvbkJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI5NTBhZjMyNmYyMjc0NDE4OGIwZTJlYmQyMTk3ZWQzYzAyMmU4NWIxMTZjNDc2MzJlYjM0Yzk4M2VmZWZiNTFlIiwiaWQiOjEyNjcwOTI4LCJlbWFpbCI6ImxhbmdzLjk3MTEwNEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImdoMHN0aW50aGVzaGUxMSIsInVzZXJfc2x1ZyI6ImdoMHN0aW50aGVzaGUxMSIsImF2YXRhciI6Imh0dHBzOi8vYXNzZXRzLmxlZXRjb2RlLmNvbS91c2Vycy9naDBzdGludGhlc2hlMTEvYXZhdGFyXzE3MTAyMDQyNjQucG5nIiwicmVmcmVzaGVkX2F0IjoxNzI3MDQ5MjAxLCJpcCI6IjE0Mi4xOTguMjE0LjE0MiIsImlkZW50aXR5IjoiMDk5OTNhYjg2OGY0NzBjZjI0ZTI2ZmE0Zjk0MzlkOWUiLCJzZXNzaW9uX2lkIjo3MzE5NTcyMX0.GYp-hdd3CZ-rpl8Fp4MCH9gFS-UEN4dLwIM9RcO3GOg",
+        "gr_user_id": "1a16cc2e-88e9-4ec6-bf75-5ccc71d79065",
+        "csrftoken": "A1HG38DLLl5M8AC0YCX3OETfUdztmhBvxlPNSazwLJ6nGbnNAbCSvbULFadYAE4V",
+        "_ga_CDRWKZTDEX": "GS1.1.1727049185.1.1.1727049202.43.0.0",
+        "_dd_s": "rum=0&expire=1727050089759",
+        "87b5a3c3f1a55520_gr_session_id_sent_vst": "f400fcfc-6217-4b38-b3cb-606601aa9c8a",
+        "ip_check": '(false, "142.198.214.142")',
+        "87b5a3c3f1a55520_gr_session_id": "f400fcfc-6217-4b38-b3cb-606601aa9c8a",
+        "messages": "W1siX19qc29uX21lc3NhZ2UiLDAsMjUsIlN1Y2Nlc3NmdWxseSBzaWduZWQgaW4gYXMgZ2gwc3RpbnRoZXNoZTExLiJdXQ:1ssWOH:qf2Naev9fwvUojTdLdlJ0OQX5H2zRdBLA6ZB9QSoAKU",
+        "_gat": "1",
+        "_gid": "GA1.2.18430705.1727049186",
+        "__cf_bm": "vLgURSKvtXUsH9F6bbaex7rmFS0khCuJ3bLl9YlEWR4-1727049185-1.0.1.1-hZ5q8HgQ5Mj8cju5mGNnEV.b5vYt93l7Clgv9YKOtIqJwAklznYRKq_FHtzAGG4JOVfelf1NLOvzMApYBL9OIw",
+    }
 
     language = "Python3"
     question = get_question_details("maximum-subarray")
-    solution = """
-class Solution:
-    def maxSubArray(self, nums):
-        if not nums:
-            return 0
-        cur_sum = max_sum = nums[0]
-        for num in nums[1:]:
-            cur_sum = max(num, cur_sum + num)
-            max_sum = max(max_sum, cur_sum)
-        return max_sum"""
+    langSlug = question["codeSnippets"][language]["langSlug"]
+    solution = open("solution.txt", "r").read()
 
     result = test(
         question["question_id"],
         question["problem_slug"],
-        language,
+        langSlug,
         solution,
         question["exampleTestcases"],
     )
