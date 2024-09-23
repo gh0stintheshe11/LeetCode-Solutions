@@ -470,7 +470,7 @@ def get_next_unsolved(question_id):
     max_iterations = 1000  # Safeguard against infinite loop
 
     for _ in range(max_iterations):
-        questions = list_questions(limit=50, start=str(current_question_id + 1))
+        questions = list_questions(limit=50, start=str(current_question_id))
 
         if not questions:
             return None  # No more questions available
@@ -561,7 +561,7 @@ def solver():
             solution = debug(
                 language, question_detailed, codeSnippets, solution, submit_result
             )
-            print(f"Debug result: {solution}")
+            print(f"Debug attempt 0")
 
             # test the solution
             test_result = test(
@@ -580,7 +580,7 @@ def solver():
                 solution = debug(
                     language, question_detailed, codeSnippets, solution, test_result
                 )
-                print(f"Debug attempt {max_debug_attempts} result: {solution}")
+                print(f"Debug attempt {max_debug_attempts}")
 
                 # Run the test again
                 test_result = test(
@@ -596,6 +596,8 @@ def solver():
 
             # if debug success -> submit
             if test_result["status_msg"] == "Accepted":
+                # reset max_submit_attempts
+                max_submit_attempts = 0
                 # submit
                 submit_result = submit(
                     question_detailed["question_id"],
@@ -607,6 +609,8 @@ def solver():
 
                 # if submit success -> move to next question
                 if submit_result["status_msg"] == "Accepted":
+                    # reset max_submit_attempts
+                    max_submit_attempts = 0
                     break
                 # if submit failed -> increase max_submit_attempts
                 max_submit_attempts += 1
