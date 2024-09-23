@@ -166,8 +166,11 @@ def list_questions(limit, start):
 
     data = response.json()
     questions = data["data"]["problemsetQuestionList"]["questions"]
+    
+    # sort the questions by questionId, from smallest to largest
+    sorted_questions = sorted(questions, key=lambda x: int(x["questionId"]))
 
-    return questions
+    return sorted_questions
 
 
 # get the detailed info of the selected question
@@ -548,14 +551,18 @@ def solver():
         max_submit_attempts = 0 
         while submit_result["status_msg"] != "Accepted" and max_submit_attempts < 3:
 
-            # add the last test case to the example test cases
-            question_detailed["exampleTestcases"] += (
-                "\n"
-                + submit_result["last_testcase"]
-            )
-            print(
-                f"Add test case to test case: {question_detailed['exampleTestcases']}"
-            )
+            # check if the last test case is already in the example test cases string
+            if submit_result["last_testcase"] in question_detailed["exampleTestcases"]:
+                print(f"Last test case already in the example test cases")
+            else:
+                # add the last test case to the example test cases
+                question_detailed["exampleTestcases"] += (
+                    "\n"
+                    + submit_result["last_testcase"]
+                )
+                print(
+                    f"Add test case to test case: {question_detailed['exampleTestcases']}"
+                )
 
             # debug the solution
             solution = debug(
@@ -615,7 +622,7 @@ def solver():
                 # if submit failed -> increase max_submit_attempts
                 max_submit_attempts += 1
                 
-            # if debug failed -> move to next question
+            # if debug failed 3 times -> move to next question
             else:
                 print(f"Debug failed, move to next question")
                 current_question_id += 1
