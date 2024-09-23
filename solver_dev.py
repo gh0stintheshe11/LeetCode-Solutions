@@ -470,7 +470,7 @@ def get_next_unsolved(question_id):
     max_iterations = 1000  # Safeguard against infinite loop
 
     for _ in range(max_iterations):
-        questions = list_questions(limit=50, start=current_question_id + 1)
+        questions = list_questions(limit=50, start=str(current_question_id + 1))
 
         if not questions:
             return None  # No more questions available
@@ -545,7 +545,8 @@ def solver():
         )
         print(f"Initial submit result: {submit_result}")
 
-        while submit_result["status_msg"] != "Accepted":
+        max_submit_attempts = 0 
+        while submit_result["status_msg"] != "Accepted" and max_submit_attempts < 3:
 
             # add the last test case to the example test cases
             question_detailed["exampleTestcases"] += (
@@ -593,27 +594,34 @@ def solver():
 
                 max_debug_attempts += 1
 
-            # submit
+            # if debug success -> submit
             if test_result["status_msg"] == "Accepted":
-                # If all test cases pass, submit the solution
+                # submit
                 submit_result = submit(
                     question_detailed["question_id"],
                     question_detailed["problem_slug"],
                     langSlug,
                     solution,
                 )
-                print(f"Debug success, submitted solution: {submit_result}")
-                # break the loop and move to the next question
-                break
+                print(f"Debug success, submit result: {submit_result}")
+
+                # if submit success -> move to next question
+                if submit_result["status_msg"] == "Accepted":
+                    break
+                # if submit failed -> increase max_submit_attempts
+                max_submit_attempts += 1
+                
+            # if debug failed -> move to next question
             else:
-                print(f"Debug failed after {max_debug_attempts} debug attempts")
-                # break the loop and move to the next question
+                print(f"Debug failed, move to next question")
+                current_question_id += 1
                 break
 
-        # Move to the next question
-        current_question_id += 1
-        print("Moving to next question...")
-
+        # if max_submit_attempts >= 3 -> move to next question
+        if max_submit_attempts >= 3:
+            print(f"Max submit attempts reached, move to next question")
+            current_question_id += 1
+            continue
 
 if __name__ == "__main__":
 
