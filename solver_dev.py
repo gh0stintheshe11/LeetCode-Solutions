@@ -625,21 +625,5 @@ def solver():
 
 if __name__ == "__main__":
 
-    # COOKIES = login_to_leetcode()
-    COOKIES = {
-        "_ga": "GA1.2.379898781.1727049186",
-        "LEETCODE_SESSION": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMTI2NzA5MjgiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhbGxhdXRoLmFjY291bnQuYXV0aF9iYWNrZW5kcy5BdXRoZW50aWNhdGlvbkJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI5NTBhZjMyNmYyMjc0NDE4OGIwZTJlYmQyMTk3ZWQzYzAyMmU4NWIxMTZjNDc2MzJlYjM0Yzk4M2VmZWZiNTFlIiwiaWQiOjEyNjcwOTI4LCJlbWFpbCI6ImxhbmdzLjk3MTEwNEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImdoMHN0aW50aGVzaGUxMSIsInVzZXJfc2x1ZyI6ImdoMHN0aW50aGVzaGUxMSIsImF2YXRhciI6Imh0dHBzOi8vYXNzZXRzLmxlZXRjb2RlLmNvbS91c2Vycy9naDBzdGludGhlc2hlMTEvYXZhdGFyXzE3MTAyMDQyNjQucG5nIiwicmVmcmVzaGVkX2F0IjoxNzI3MDQ5MjAxLCJpcCI6IjE0Mi4xOTguMjE0LjE0MiIsImlkZW50aXR5IjoiMDk5OTNhYjg2OGY0NzBjZjI0ZTI2ZmE0Zjk0MzlkOWUiLCJzZXNzaW9uX2lkIjo3MzE5NTcyMX0.GYp-hdd3CZ-rpl8Fp4MCH9gFS-UEN4dLwIM9RcO3GOg",
-        "gr_user_id": "1a16cc2e-88e9-4ec6-bf75-5ccc71d79065",
-        "csrftoken": "A1HG38DLLl5M8AC0YCX3OETfUdztmhBvxlPNSazwLJ6nGbnNAbCSvbULFadYAE4V",
-        "_ga_CDRWKZTDEX": "GS1.1.1727049185.1.1.1727049202.43.0.0",
-        "_dd_s": "rum=0&expire=1727050089759",
-        "87b5a3c3f1a55520_gr_session_id_sent_vst": "f400fcfc-6217-4b38-b3cb-606601aa9c8a",
-        "ip_check": '(false, "142.198.214.142")',
-        "87b5a3c3f1a55520_gr_session_id": "f400fcfc-6217-4b38-b3cb-606601aa9c8a",
-        "messages": "W1siX19qc29uX21lc3NhZ2UiLDAsMjUsIlN1Y2Nlc3NmdWxseSBzaWduZWQgaW4gYXMgZ2gwc3RpbnRoZXNoZTExLiJdXQ:1ssWOH:qf2Naev9fwvUojTdLdlJ0OQX5H2zRdBLA6ZB9QSoAKU",
-        "_gat": "1",
-        "_gid": "GA1.2.18430705.1727049186",
-        "__cf_bm": "vLgURSKvtXUsH9F6bbaex7rmFS0khCuJ3bLl9YlEWR4-1727049185-1.0.1.1-hZ5q8HgQ5Mj8cju5mGNnEV.b5vYt93l7Clgv9YKOtIqJwAklznYRKq_FHtzAGG4JOVfelf1NLOvzMApYBL9OIw",
-    }
-
+    COOKIES = login_to_leetcode()
     solver()
