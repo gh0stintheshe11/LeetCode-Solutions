@@ -252,20 +252,36 @@ def submit(question_id, problem_slug, lang, code):
         "typed_code": code,
     }
 
-    # Submit the solution
-    try:
-        response = requests.post(
-            submit_url,
-            headers=get_common_header(f"problems/{problem_slug}/"),
-            json=submit_data,
-            cookies=COOKIES,
-        )
-        response.raise_for_status()
-        submission_id = response.json()["submission_id"]
-    except JSONDecodeError:
-        raise Exception("Failed to decode JSON response from submission")
-    except KeyError:
-        raise Exception("Submission response does not contain 'submission_id'")
+    retry_count = 0
+    max_retries = 10
+    retry_delay = 30
+
+    while retry_count < max_retries:
+        try:
+            response = requests.post(
+                submit_url,
+                headers=get_common_header(f"problems/{problem_slug}/"),
+                json=submit_data,
+                cookies=COOKIES,
+            )
+            response.raise_for_status()
+            submission_id = response.json()["submission_id"]
+
+        except JSONDecodeError:
+            
+            raise Exception("Failed to decode JSON response from submission")
+        except KeyError:
+            raise Exception("Submission response does not contain 'submission_id'")
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 429:
+                if retry_count < max_retries - 1:
+                    print(f"Rate limit exceeded. Sleeping for {retry_delay} seconds... (Attempt {retry_count + 1}/{max_retries})")
+                    time.sleep(retry_delay)
+                    retry_count += 1
+                else:
+                    raise Exception("Max retries reached for rate limit error")
+            else:
+                raise e
 
     # Check the result
     time.sleep(2)
