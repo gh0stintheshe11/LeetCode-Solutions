@@ -124,7 +124,8 @@ def login_to_leetcode():
 
 
 # list certain amount of questions
-def list_questions(limit, start):
+def list_questions():
+    print("Fetching all questions...")  # Debug print
     url = f"{BASE_URL}/graphql"
     query = """
     query problemsetQuestionList($categorySlug: String, $limit: Int, $skip: Int, $filters: QuestionListFilterInput) {
@@ -149,10 +150,8 @@ def list_questions(limit, start):
 
     variables = {
         "categorySlug": "",
-        "skip": start,
-        "limit": (
-            limit if limit > 0 else 100000
-        ),  # Use a large number to get all questions if limit is 0
+        "skip": 0,
+        "limit": 10000,  # A large number to fetch all questions
         "filters": {},
     }
 
@@ -162,19 +161,20 @@ def list_questions(limit, start):
         headers=get_common_header(""),
         cookies=COOKIES,
     )
-    response.raise_for_status()  # Raise an exception for bad status codes
+    response.raise_for_status()
 
     data = response.json()
     questions = data["data"]["problemsetQuestionList"]["questions"]
-    
-    # sort the questions by questionId, from smallest to largest
-    sorted_questions = sorted(questions, key=lambda x: int(x["questionId"]))
 
-    return sorted_questions
+    # Sort questions by ID
+    questions.sort(key=lambda q: int(q["questionId"]))
+
+    return questions
 
 
 # get the detailed info of the selected question
 def get_question_details(problem_slug):
+    print(f"Fetching question {problem_slug} details...")
     url = f"{BASE_URL}/graphql"
     query = f"""
     query getQuestionDetail($titleSlug: String!) {{
@@ -243,7 +243,8 @@ def get_question_details(problem_slug):
 
 # submit the solution, check the submit status
 def submit(question_id, problem_slug, lang, code):
-
+    print(f"Submitting the solution...")
+    
     submit_url = f"{BASE_URL}/problems/{problem_slug}/submit/"
 
     submit_data = {
@@ -268,14 +269,16 @@ def submit(question_id, problem_slug, lang, code):
             submission_id = response.json()["submission_id"]
 
         except JSONDecodeError:
-            
+
             raise Exception("Failed to decode JSON response from submission")
         except KeyError:
             raise Exception("Submission response does not contain 'submission_id'")
         except requests.exceptions.HTTPError as e:
             if e.response.status_code == 429:
                 if retry_count < max_retries - 1:
-                    print(f"Rate limit exceeded. Sleeping for {retry_delay} seconds... (Attempt {retry_count + 1}/{max_retries})")
+                    print(
+                        f"Rate limit exceeded. Sleeping for {retry_delay} seconds... (Attempt {retry_count + 1}/{max_retries})"
+                    )
                     time.sleep(retry_delay)
                     retry_count += 1
                 else:
@@ -317,7 +320,7 @@ def submit(question_id, problem_slug, lang, code):
 
 # send the test soution, check the test status
 def test(question_id, problem_slug, lang, code, test_case):
-
+    print(f"Testing the solution...")
     test_url = f"{BASE_URL}/problems/{problem_slug}/interpret_solution/"
 
     data = {
@@ -389,6 +392,7 @@ def extract_code(markdown_code):
 
 # generate the solution using GPT model
 def generate(language, question, codeSnippets):
+    print(f"Generating the solution...")
 
     response = client.chat.completions.create(
         model="gpt-4o",
@@ -428,6 +432,7 @@ def generate(language, question, codeSnippets):
 
 # debug the code if there is an error
 def debug(language, question, codeSnippet, current_code, submit_result):
+    print(f"Debugging the solution...")
 
     # Create the prompt for debugging
     response = client.chat.completions.create(
@@ -484,23 +489,16 @@ Using a different approach to solve the problem to avoid the issue causing the e
 
 
 # get the next unsolved question
-def get_next_unsolved(question_id):
-    current_question_id = int(question_id)
-    max_iterations = 1000  # Safeguard against infinite loop
+def get_next_unsolved():
+    
+    questions = list_questions()
 
-    for _ in range(max_iterations):
-        questions = list_questions(limit=50, start=str(current_question_id))
-
-        if not questions:
-            return None  # No more questions available
-
-        for question in questions:
-            current_question_id = int(question["questionId"])
-            if question["status"] != "ac":
-                return question
-
-        # If we've checked all questions in this batch and none are unsolved,
-        # we'll move to the next batch in the next iteration
+    if not questions:
+        return None  # No more questions available
+    
+    for question in questions:    
+        if question["status"] != "ac":
+            return question
 
     return None  # Couldn't find an unsolved question within the limit
 
@@ -523,24 +521,23 @@ def get_next_unsolved(question_id):
 def solver():
     print("--- Solver Start ---")
 
-    current_question_id = SETTING["start_question_id"]  # default language
     langSlug = ""
 
     while True:  # Outer loop to continuously solve problems
         # reset language
         language = SETTING["default_language"]  # default language
         # get the next unsolved question -> get question details
-        question = get_next_unsolved(current_question_id)
+        question = get_next_unsolved()
         if not question:
             print("No more unsolved questions found. Exiting.")
             break
 
         current_question_id = int(question["questionId"])
-        print(f"Next unsolved question: {question}")
+        print(f"Next unsolved question: {question}.")
 
         # get the question details
         question_detailed = get_question_details(question["titleSlug"])
-        print(f"Get question {question_detailed['problem_slug']} details")
+        print(f"{question_detailed['problem_slug']} details fetched.")
 
         # check if the language selected is in the codeSnippets
         if language not in question_detailed["codeSnippets"]:
@@ -554,7 +551,7 @@ def solver():
 
         # generate initial solution
         solution = generate(language, question_detailed, codeSnippets)
-        print(f"Generated initial solution...")
+        print(f"Initial solution generated.")
 
         submit_result = submit(
             question_detailed["question_id"],
@@ -564,7 +561,7 @@ def solver():
         )
         print(f"Initial submit result: {submit_result}")
 
-        max_submit_attempts = 0 
+        max_submit_attempts = 0
         while submit_result["status_msg"] != "Accepted" and max_submit_attempts < 3:
 
             # check if the last test case is already in the example test cases string
@@ -573,8 +570,7 @@ def solver():
             else:
                 # add the last test case to the example test cases
                 question_detailed["exampleTestcases"] += (
-                    "\n"
-                    + submit_result["last_testcase"]
+                    "\n" + submit_result["last_testcase"]
                 )
                 print(
                     f"Add test case to test case: {question_detailed['exampleTestcases']}"
@@ -637,7 +633,7 @@ def solver():
                     break
                 # if submit failed -> increase max_submit_attempts
                 max_submit_attempts += 1
-                
+
             # if debug failed 3 times -> move to next question
             else:
                 print(f"Debug failed, move to next question")
@@ -650,7 +646,24 @@ def solver():
             current_question_id += 1
             continue
 
+
 if __name__ == "__main__":
 
-    COOKIES = login_to_leetcode()
+    # COOKIES = login_to_leetcode()
+    COOKIES = {
+        "_ga": "GA1.2.969728702.1727316423",
+        "LEETCODE_SESSION": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMTI2NzA5MjgiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhbGxhdXRoLmFjY291bnQuYXV0aF9iYWNrZW5kcy5BdXRoZW50aWNhdGlvbkJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI5NTBhZjMyNmYyMjc0NDE4OGIwZTJlYmQyMTk3ZWQzYzAyMmU4NWIxMTZjNDc2MzJlYjM0Yzk4M2VmZWZiNTFlIiwiaWQiOjEyNjcwOTI4LCJlbWFpbCI6ImxhbmdzLjk3MTEwNEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImdoMHN0aW50aGVzaGUxMSIsInVzZXJfc2x1ZyI6ImdoMHN0aW50aGVzaGUxMSIsImF2YXRhciI6Imh0dHBzOi8vYXNzZXRzLmxlZXRjb2RlLmNvbS91c2Vycy9naDBzdGludGhlc2hlMTEvYXZhdGFyXzE3MTAyMDQyNjQucG5nIiwicmVmcmVzaGVkX2F0IjoxNzI3MzE2NDM2LCJpcCI6IjE0Mi4xOTguMjE0LjE0MiIsImlkZW50aXR5IjoiMDk5OTNhYjg2OGY0NzBjZjI0ZTI2ZmE0Zjk0MzlkOWUiLCJzZXNzaW9uX2lkIjo3MzYwNzgzM30.aFPZhfqC-qW9rRGDIhhz38PJQyY-ZDE32tGm6ShuYng",
+        "gr_user_id": "a60e99ec-8253-4b57-a9b5-13a6c042d94a",
+        "csrftoken": "tnEeoh7p7WwAVkiApIVDWrWZPK5c1PZkDDkTxHpLHJqOph0Lj8qpNTuesNLlr9O4",
+        "_ga_CDRWKZTDEX": "GS1.1.1727316423.1.1.1727316436.47.0.0",
+        "_dd_s": "rum=0&expire=1727317327441",
+        "87b5a3c3f1a55520_gr_session_id_sent_vst": "c02e8238-a47f-407c-948f-b7471a98d87a",
+        "messages": "W1siX19qc29uX21lc3NhZ2UiLDAsMjUsIlN1Y2Nlc3NmdWxseSBzaWduZWQgaW4gYXMgZ2gwc3RpbnRoZXNoZTExLiJdXQ:1stduW:q0TMLld73Jct7xLQ5eu9GHnE65iZJ9WoPZU0tlY3DXU",
+        "87b5a3c3f1a55520_gr_session_id": "c02e8238-a47f-407c-948f-b7471a98d87a",
+        "ip_check": '(false, "142.198.214.142")',
+        "_gat": "1",
+        "_gid": "GA1.2.1561639782.1727316423",
+        "__cf_bm": "r2fMSLvlsRK0mz296BAXNgZvfopnYTz02oHz1wCvLhw-1727316423-1.0.1.1-SbE3i1Oksp77EQD2OPhD5M0y7HXm2JH3TvL0LDOQ_QI3id.LGJaMoYEPpeipdtJ4lyA8.qKvxRnkB0JiOgSNZw",
+    }
+    
     solver()
