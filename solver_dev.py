@@ -608,9 +608,9 @@ def solver():
             if submit_result["last_testcase"] in question_detailed["exampleTestcases"]:
                 print(f"Last test case already in the example test cases")
             else:
-                # if last test is longer than 20 char and repeatitve, omit the middle part with "...", for example: replace [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1] with [1,1,1,...,1,1,1]
-                if len(submit_result["last_testcase"]) > 20 and submit_result["last_testcase"] == submit_result["last_testcase"]:
-                    submit_result["last_testcase"] = submit_result["last_testcase"][:10] + "..." + submit_result["last_testcase"][-10:]
+                # if last test is longer than 20 char, omit the middle part with "..." and keep the first and last chars, to avoid long test case exceed model token limit
+                if len(submit_result["last_testcase"]) > 20:
+                    submit_result["last_testcase"] = submit_result["last_testcase"][:10] + "..." + submit_result["last_testcase"][-10:] # keep the first and last 10 chars
 
                 # add the last test case to the example test cases
                 question_detailed["exampleTestcases"] += (
@@ -693,21 +693,6 @@ def solver():
 
 if __name__ == "__main__":
 
-    # COOKIES = login_to_leetcode()
-    COOKIES = {
-        "_ga": "GA1.2.969728702.1727316423",
-        "LEETCODE_SESSION": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMTI2NzA5MjgiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhbGxhdXRoLmFjY291bnQuYXV0aF9iYWNrZW5kcy5BdXRoZW50aWNhdGlvbkJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI5NTBhZjMyNmYyMjc0NDE4OGIwZTJlYmQyMTk3ZWQzYzAyMmU4NWIxMTZjNDc2MzJlYjM0Yzk4M2VmZWZiNTFlIiwiaWQiOjEyNjcwOTI4LCJlbWFpbCI6ImxhbmdzLjk3MTEwNEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImdoMHN0aW50aGVzaGUxMSIsInVzZXJfc2x1ZyI6ImdoMHN0aW50aGVzaGUxMSIsImF2YXRhciI6Imh0dHBzOi8vYXNzZXRzLmxlZXRjb2RlLmNvbS91c2Vycy9naDBzdGludGhlc2hlMTEvYXZhdGFyXzE3MTAyMDQyNjQucG5nIiwicmVmcmVzaGVkX2F0IjoxNzI3MzE2NDM2LCJpcCI6IjE0Mi4xOTguMjE0LjE0MiIsImlkZW50aXR5IjoiMDk5OTNhYjg2OGY0NzBjZjI0ZTI2ZmE0Zjk0MzlkOWUiLCJzZXNzaW9uX2lkIjo3MzYwNzgzM30.aFPZhfqC-qW9rRGDIhhz38PJQyY-ZDE32tGm6ShuYng",
-        "gr_user_id": "a60e99ec-8253-4b57-a9b5-13a6c042d94a",
-        "csrftoken": "tnEeoh7p7WwAVkiApIVDWrWZPK5c1PZkDDkTxHpLHJqOph0Lj8qpNTuesNLlr9O4",
-        "_ga_CDRWKZTDEX": "GS1.1.1727316423.1.1.1727316436.47.0.0",
-        "_dd_s": "rum=0&expire=1727317327441",
-        "87b5a3c3f1a55520_gr_session_id_sent_vst": "c02e8238-a47f-407c-948f-b7471a98d87a",
-        "messages": "W1siX19qc29uX21lc3NhZ2UiLDAsMjUsIlN1Y2Nlc3NmdWxseSBzaWduZWQgaW4gYXMgZ2gwc3RpbnRoZXNoZTExLiJdXQ:1stduW:q0TMLld73Jct7xLQ5eu9GHnE65iZJ9WoPZU0tlY3DXU",
-        "87b5a3c3f1a55520_gr_session_id": "c02e8238-a47f-407c-948f-b7471a98d87a",
-        "ip_check": '(false, "142.198.214.142")',
-        "_gat": "1",
-        "_gid": "GA1.2.1561639782.1727316423",
-        "__cf_bm": "r2fMSLvlsRK0mz296BAXNgZvfopnYTz02oHz1wCvLhw-1727316423-1.0.1.1-SbE3i1Oksp77EQD2OPhD5M0y7HXm2JH3TvL0LDOQ_QI3id.LGJaMoYEPpeipdtJ4lyA8.qKvxRnkB0JiOgSNZw",
-    }
+    COOKIES = login_to_leetcode()
 
     solver()
