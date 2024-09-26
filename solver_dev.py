@@ -608,12 +608,16 @@ def solver():
             if submit_result["last_testcase"] in question_detailed["exampleTestcases"]:
                 print(f"Last test case already in the example test cases")
             else:
+                # if last test is longer than 20 char and repeatitve, omit the middle part with "...", for example: replace [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1] with [1,1,1,...,1,1,1]
+                if len(submit_result["last_testcase"]) > 20 and submit_result["last_testcase"] == submit_result["last_testcase"]:
+                    submit_result["last_testcase"] = submit_result["last_testcase"][:10] + "..." + submit_result["last_testcase"][-10:]
+
                 # add the last test case to the example test cases
                 question_detailed["exampleTestcases"] += (
                     "\n" + submit_result["last_testcase"]
                 )
                 print(
-                    f"Add test case to test case: {question_detailed['exampleTestcases']}"
+                    f"Add test case {submit_result['last_testcase']} to test case: {question_detailed['exampleTestcases']}"
                 )
 
             # debug the solution
