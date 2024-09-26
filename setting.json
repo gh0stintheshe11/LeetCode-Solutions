@@ -1,3 +1,4 @@
 {
-    "default_language": "Python3"
+    "default_language": "Python3",
+    "allow_skip": true
 }

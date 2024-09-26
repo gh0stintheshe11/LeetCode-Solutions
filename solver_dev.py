@@ -533,8 +533,12 @@ def get_next_unsolved():
         return None  # No more questions available
 
     for question in questions:
-        if question["status"] != "ac":
-            return question
+        if SETTING["allow_skip"]:
+            if question["status"] != "ac" and question["status"] != "notac":
+                return question
+        else:
+            if question["status"] != "ac":
+                return question
 
     return None  # Couldn't find an unsolved question within the limit
 
