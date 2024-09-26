@@ -2,7 +2,9 @@ import re
 import os
 import time
 import json
+import random
 import requests
+import functools
 from requests.exceptions import JSONDecodeError
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
@@ -27,6 +29,44 @@ load_dotenv()
 # set up openai client
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+# rate limiting decorator
+def rate_limited(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        max_attempts = 10
+        base_wait_time = 30
+        
+        for attempt in range(1, max_attempts + 1):
+            try:
+                response = func(*args, **kwargs)
+                
+                # Check if the response indicates rate limiting
+                if isinstance(response, requests.Response):
+                    if response.status_code == 429:
+                        raise requests.exceptions.RequestException("Rate limit exceeded")
+                    
+                    # Check for rate limiting information in response body
+                    try:
+                        body = response.json()
+                        if "rate_limit_exceeded" in body or "error" in body and "rate" in body["error"].lower():
+                            raise requests.exceptions.RequestException("Rate limit exceeded")
+                    except ValueError:
+                        pass  # Response body is not JSON
+                
+                return response
+            
+            except requests.exceptions.RequestException as e:
+                if attempt == max_attempts:
+                    raise
+                if "rate limit" in str(e).lower():
+                    wait_time = base_wait_time * (2 ** (attempt - 1))
+                    jitter = random.uniform(0, 0.1 * wait_time)
+                    total_wait = wait_time + jitter
+                    print(f"Rate limit exceeded. Sleeping for {total_wait:.2f} seconds... (Attempt {attempt}/{max_attempts})")
+                    time.sleep(total_wait)
+                else:
+                    raise
+    return wrapper
 
 # format the header
 def get_common_header(suffix):
@@ -121,7 +161,6 @@ def login_to_leetcode():
 
     finally:
         driver.quit()
-
 
 # list certain amount of questions
 def list_questions():
@@ -242,51 +281,30 @@ def get_question_details(problem_slug):
 
 
 # submit the solution, check the submit status
-def submit(question_id, problem_slug, lang, code):
-    print(f"Submitting the solution...")
-    
-    submit_url = f"{BASE_URL}/problems/{problem_slug}/submit/"
-
-    submit_data = {
+@rate_limited
+def submit(question_id, slug, lang, code):
+    url = f"{BASE_URL}/problems/{slug}/submit/"
+    data = {
         "lang": lang,
-        "question_id": str(question_id),
+        "question_id": question_id,
         "typed_code": code,
     }
 
-    retry_count = 0
-    max_retries = 10
-    retry_delay = 30
+    response = requests.post(
+        url,
+        json=data,
+        headers=get_common_header(slug),
+        cookies=COOKIES,
+    )
+    response.raise_for_status()  # This will raise an exception for 4xx and 5xx status codes
 
-    while retry_count < max_retries:
-        try:
-            response = requests.post(
-                submit_url,
-                headers=get_common_header(f"problems/{problem_slug}/"),
-                json=submit_data,
-                cookies=COOKIES,
-            )
-            response.raise_for_status()
-            submission_id = response.json()["submission_id"]
+    submit_result = response.json()
+    submission_id = submit_result["submission_id"]
+    return check_submission(submission_id, slug)
 
-        except JSONDecodeError:
-
-            raise Exception("Failed to decode JSON response from submission")
-        except KeyError:
-            raise Exception("Submission response does not contain 'submission_id'")
-        except requests.exceptions.HTTPError as e:
-            if e.response.status_code == 429:
-                if retry_count < max_retries - 1:
-                    print(
-                        f"Rate limit exceeded. Sleeping for {retry_delay} seconds... (Attempt {retry_count + 1}/{max_retries})"
-                    )
-                    time.sleep(retry_delay)
-                    retry_count += 1
-                else:
-                    raise Exception("Max retries reached for rate limit error")
-            else:
-                raise e
-
-    # Check the result
+# Check the result
+@rate_limited
+def check_submission(submission_id, slug):
     time.sleep(2)
     submit_status_url = f"{BASE_URL}/submissions/detail/{submission_id}/check/"
 
@@ -295,7 +313,7 @@ def submit(question_id, problem_slug, lang, code):
         try:
             response = requests.get(
                 submit_status_url,
-                headers=get_common_header(f"problems/{problem_slug}/"),
+                headers=get_common_header(f"problems/{slug}/"),
                 cookies=COOKIES,
             )
             response.raise_for_status()
@@ -306,9 +324,7 @@ def submit(question_id, problem_slug, lang, code):
                 sleep_time = 2**attempt  # Exponential backoff
                 time.sleep(sleep_time)
             else:
-                print(
-                    f"Unexpected state: {result['state']}, Message: {result['status_msg']}"
-                )
+                print(f"Unexpected state: {result['state']}, Message: {result['status_msg']}")
                 raise Exception(f"Unexpected submission state: {result}")
         except JSONDecodeError:
             print(f"Failed to decode JSON on attempt {attempt + 1}. Retrying...")
@@ -319,6 +335,7 @@ def submit(question_id, problem_slug, lang, code):
 
 
 # send the test soution, check the test status
+@rate_limited
 def test(question_id, problem_slug, lang, code, test_case):
     print(f"Testing the solution...")
     test_url = f"{BASE_URL}/problems/{problem_slug}/interpret_solution/"
