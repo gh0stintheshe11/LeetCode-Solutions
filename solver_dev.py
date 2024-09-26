@@ -29,32 +29,41 @@ load_dotenv()
 # set up openai client
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+
 # rate limiting decorator
 def rate_limited(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         max_attempts = 10
         base_wait_time = 30
-        
+
         for attempt in range(1, max_attempts + 1):
             try:
                 response = func(*args, **kwargs)
-                
+
                 # Check if the response indicates rate limiting
                 if isinstance(response, requests.Response):
                     if response.status_code == 429:
-                        raise requests.exceptions.RequestException("Rate limit exceeded")
-                    
+                        raise requests.exceptions.RequestException(
+                            "Rate limit exceeded"
+                        )
+
                     # Check for rate limiting information in response body
                     try:
                         body = response.json()
-                        if "rate_limit_exceeded" in body or "error" in body and "rate" in body["error"].lower():
-                            raise requests.exceptions.RequestException("Rate limit exceeded")
+                        if (
+                            "rate_limit_exceeded" in body
+                            or "error" in body
+                            and "rate" in body["error"].lower()
+                        ):
+                            raise requests.exceptions.RequestException(
+                                "Rate limit exceeded"
+                            )
                     except ValueError:
                         pass  # Response body is not JSON
-                
+
                 return response
-            
+
             except requests.exceptions.RequestException as e:
                 if attempt == max_attempts:
                     raise
@@ -62,11 +71,15 @@ def rate_limited(func):
                     wait_time = base_wait_time * (2 ** (attempt - 1))
                     jitter = random.uniform(0, 0.1 * wait_time)
                     total_wait = wait_time + jitter
-                    print(f"Rate limit exceeded. Sleeping for {total_wait:.2f} seconds... (Attempt {attempt}/{max_attempts})")
+                    print(
+                        f"Rate limit exceeded. Sleeping for {total_wait:.2f} seconds... (Attempt {attempt}/{max_attempts})"
+                    )
                     time.sleep(total_wait)
                 else:
                     raise
+
     return wrapper
+
 
 # format the header
 def get_common_header(suffix):
@@ -162,9 +175,10 @@ def login_to_leetcode():
     finally:
         driver.quit()
 
+
 # list certain amount of questions
 def list_questions():
-    print("Fetching all questions...")  # Debug print
+    print("Fetching all questions...")
     url = f"{BASE_URL}/graphql"
     query = """
     query problemsetQuestionList($categorySlug: String, $limit: Int, $skip: Int, $filters: QuestionListFilterInput) {
@@ -204,6 +218,8 @@ def list_questions():
 
     data = response.json()
     questions = data["data"]["problemsetQuestionList"]["questions"]
+    total = data["data"]["problemsetQuestionList"]["total"]
+    print(f"{total} questions fetched.")
 
     # Sort questions by ID
     questions.sort(key=lambda q: int(q["questionId"]))
@@ -302,6 +318,7 @@ def submit(question_id, slug, lang, code):
     submission_id = submit_result["submission_id"]
     return check_submission(submission_id, slug)
 
+
 # Check the result
 @rate_limited
 def check_submission(submission_id, slug):
@@ -324,7 +341,9 @@ def check_submission(submission_id, slug):
                 sleep_time = 2**attempt  # Exponential backoff
                 time.sleep(sleep_time)
             else:
-                print(f"Unexpected state: {result['state']}, Message: {result['status_msg']}")
+                print(
+                    f"Unexpected state: {result['state']}, Message: {result['status_msg']}"
+                )
                 raise Exception(f"Unexpected submission state: {result}")
         except JSONDecodeError:
             print(f"Failed to decode JSON on attempt {attempt + 1}. Retrying...")
@@ -507,13 +526,13 @@ Using a different approach to solve the problem to avoid the issue causing the e
 
 # get the next unsolved question
 def get_next_unsolved():
-    
+
     questions = list_questions()
 
     if not questions:
         return None  # No more questions available
-    
-    for question in questions:    
+
+    for question in questions:
         if question["status"] != "ac":
             return question
 
@@ -682,5 +701,5 @@ if __name__ == "__main__":
         "_gid": "GA1.2.1561639782.1727316423",
         "__cf_bm": "r2fMSLvlsRK0mz296BAXNgZvfopnYTz02oHz1wCvLhw-1727316423-1.0.1.1-SbE3i1Oksp77EQD2OPhD5M0y7HXm2JH3TvL0LDOQ_QI3id.LGJaMoYEPpeipdtJ4lyA8.qKvxRnkB0JiOgSNZw",
     }
-    
+
     solver()
