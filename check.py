@@ -1,4 +1,5 @@
 import os
+import shutil
 
 def remove_empty_file(file_path):
     # Check if the file exists
@@ -11,8 +12,12 @@ def remove_empty_file(file_path):
 # remove all folder if there is only one question.json
 for folder in os.listdir("solutions"):
     if len(os.listdir(f"solutions/{folder}")) == 1 and "question.json" in os.listdir(f"solutions/{folder}"):
-        os.rmdir(f"solutions/{folder}")
-        print(f"Removed folder: {folder}")
+        folder_path = f"solutions/{folder}"
+        if os.path.exists(folder_path):
+            shutil.rmtree(folder_path)
+            print(f"Removed directory: {folder_path}")
+        else:
+            print(f"Directory does not exist: {folder_path}")
 
 for folder in os.listdir("solutions"):
     for file in os.listdir(f"solutions/{folder}"):
