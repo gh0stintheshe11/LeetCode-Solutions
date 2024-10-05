@@ -1,4 +1,3 @@
-import re
 import os
 import time
 import json
@@ -53,7 +52,6 @@ FILE_TYPE = {
     "React": ".jsx",  # or .js for standard JS files
     "Vanilla JS": ".js"
 }
-
 
 # format the header
 def get_common_header(suffix):
@@ -443,6 +441,27 @@ def get_already_retrieved():
     question_ids = [folder.split(".")[0] for folder in folders]
     return question_ids
 
+def remove_empty_file():
+    for folder in os.listdir("solutions"):
+        for file in os.listdir(f"solutions/{folder}"):
+            file_path = f"solutions/{folder}/{file}"  # Define file_path here
+            # Check if the file exists
+            if os.path.exists(file_path):
+                # Check if the file is empty
+                if os.path.getsize(file_path) == 0:
+                    os.remove(file_path)  # Remove the empty file
+                    print(f"Removed empty file: {file_path}")
+
+def remove_empty_folder():     
+    # remove all folder if there is only one question.json
+    for folder in os.listdir("solutions"):
+        if len(os.listdir(f"solutions/{folder}")) == 1 and "question.json" in os.listdir(f"solutions/{folder}"):
+            folder_path = f"solutions/{folder}"
+            if os.path.exists(folder_path):
+                shutil.rmtree(folder_path)
+                print(f"Removed directory: {folder_path}")
+            else:
+                print(f"Directory does not exist: {folder_path}")
 
 def retriver():
     # if the question is already retrieved, skip it
@@ -513,6 +532,8 @@ def retriver():
                             f.write(submission_details)
                             
         # if there is no question left in the current question_solved, reset the question_solved and run again
+        remove_empty_file()
+        remove_empty_folder()
         question_already_retrieved = get_already_retrieved()
         question_solved = list_all_solved()
         question_solved = [
@@ -530,20 +551,6 @@ def retriver():
 
 if __name__ == "__main__":
 
-    COOKIES = {
-        "_ga": "GA1.2.791469091.1728104384",
-        "LEETCODE_SESSION": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMTI2NzA5MjgiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhbGxhdXRoLmFjY291bnQuYXV0aF9iYWNrZW5kcy5BdXRoZW50aWNhdGlvbkJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI5NTBhZjMyNmYyMjc0NDE4OGIwZTJlYmQyMTk3ZWQzYzAyMmU4NWIxMTZjNDc2MzJlYjM0Yzk4M2VmZWZiNTFlIiwiaWQiOjEyNjcwOTI4LCJlbWFpbCI6ImxhbmdzLjk3MTEwNEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImdoMHN0aW50aGVzaGUxMSIsInVzZXJfc2x1ZyI6ImdoMHN0aW50aGVzaGUxMSIsImF2YXRhciI6Imh0dHBzOi8vYXNzZXRzLmxlZXRjb2RlLmNvbS91c2Vycy9naDBzdGludGhlc2hlMTEvYXZhdGFyXzE3MTAyMDQyNjQucG5nIiwicmVmcmVzaGVkX2F0IjoxNzI4MTA0Mzk2LCJpcCI6IjE0Mi4xOTguMjE0LjE0MiIsImlkZW50aXR5IjoiMDk5OTNhYjg2OGY0NzBjZjI0ZTI2ZmE0Zjk0MzlkOWUiLCJzZXNzaW9uX2lkIjo3NDU5MDkwN30.k9P1jtpWeUCZnmOBD-bm7Lzygu6vOKiPao3Jcjvv218",
-        "gr_user_id": "363a4356-e134-405d-bbf8-ffd5c19a2028",
-        "csrftoken": "jWHrYsRBv4Qhf1O8ViucEnkcqUpWzF0Ryx7BzbzXHmd5nqRThIePFlSfdQfLLV8D",
-        "_ga_CDRWKZTDEX": "GS1.1.1728104384.1.1.1728104397.47.0.0",
-        "_dd_s": "rum=0&expire=1728105288024",
-        "87b5a3c3f1a55520_gr_session_id_sent_vst": "1b156a3d-5e60-48e7-b9e3-b16e2c1e4f51",
-        "ip_check": '(false, "142.198.214.142")',
-        "87b5a3c3f1a55520_gr_session_id": "1b156a3d-5e60-48e7-b9e3-b16e2c1e4f51",
-        "messages": "W1siX19qc29uX21lc3NhZ2UiLDAsMjUsIlN1Y2Nlc3NmdWxseSBzaWduZWQgaW4gYXMgZ2gwc3RpbnRoZXNoZTExLiJdXQ:1swwtY:_uyiwNTflM_dou9VZKAfDWgYE-W4MjxOVTx1JWUyWnk",
-        "_gat": "1",
-        "_gid": "GA1.2.41745013.1728104384",
-        "__cf_bm": "5V24iRo6KmIMuJacKUAiS8uWGMAjYEbxA5.6y5H7YMA-1728104383-1.0.1.1-dBkCs8VYNyaYKi2VqX63Z1Srwlot.WZXV.Zp0b9zmn0_w1qOD1ufoN5tAJ.1qr8j4pv3388uyus9V9AHRwQnoA",
-    }
+    COOKIES = login_to_leetcode()
 
     retriver()
