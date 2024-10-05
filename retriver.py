@@ -14,6 +14,7 @@ from selenium.common.exceptions import (
     TimeoutException,
     ElementClickInterceptedException,
 )
+import shutil
 
 load_dotenv()
 
@@ -21,6 +22,37 @@ BASE_URL = "https://leetcode.com"
 
 # Define COOKIES at the top to avoid NameError
 COOKIES = {}
+
+# file type based on the langSlug
+FILE_TYPE = {
+    "C++": ".cpp",
+    "Java": ".java",
+    "Python": ".py",
+    "Python3": ".py",
+    "MySQL": ".sql",
+    "MS SQL Server": ".sql",
+    "Oracle": ".sql",
+    "C": ".c",
+    "C#": ".cs",
+    "JavaScript": ".js",
+    "Ruby": ".rb",
+    "Bash": ".sh",
+    "Swift": ".swift",
+    "Go": ".go",
+    "Scala": ".scala",
+    "Kotlin": ".kt",
+    "Rust": ".rs",
+    "PHP": ".php",
+    "TypeScript": ".ts",
+    "Racket": ".rkt",
+    "Erlang": ".erl",
+    "Elixir": ".ex",
+    "Dart": ".dart",
+    "PostgreSQL": ".sql",
+    "Pandas": ".py",  # Typically uses Python files
+    "React": ".jsx",  # or .js for standard JS files
+    "Vanilla JS": ".js"
+}
 
 
 # format the header
@@ -147,9 +179,7 @@ def list_all_solved():
         "categorySlug": "",
         "skip": 0,
         "limit": 10000,  # A large number to fetch all questions
-        "filters": {
-            "status": "AC"
-        },
+        "filters": {"status": "AC"},
     }
 
     response = requests.post(
@@ -243,9 +273,9 @@ def get_question_details(problem_slug):
     return question
 
 
-def get_last_accepted_submission(problem_slug):
+def get_fastest_accepted_submission(problem_slug):
     url = f"{BASE_URL}/graphql"
-    
+
     query = """
     query submissionList($offset: Int!, $limit: Int!, $lastKey: String, $questionSlug: String!, $lang: Int, $status: Int) {
       questionSubmissionList(
@@ -284,44 +314,60 @@ def get_last_accepted_submission(problem_slug):
         "lastKey": None,
         "questionSlug": problem_slug,
         "lang": None,  # You can specify a language or leave it as None
-        "status": None  # Leave it as None to fetch all statuses
+        "status": None,  # Leave it as None to fetch all statuses
     }
-    
+
     headers = get_common_header(f"problems/{problem_slug}/submissions/")
-    
-    response = requests.post(url, headers=headers, cookies=COOKIES, json={
-        "query": query,
-        "variables": variables
-    })
-    
+
+    response = requests.post(
+        url,
+        headers=headers,
+        cookies=COOKIES,
+        json={"query": query, "variables": variables},
+    )
+
     if response.status_code != 200:
         print(f"Error fetching submissions: {response.status_code}, {response.text}")
         response.raise_for_status()
-    
-    data = response.json().get("data", {}).get("questionSubmissionList", {}).get("submissions", [])
-    
+
+    data = (
+        response.json()
+        .get("data", {})
+        .get("questionSubmissionList", {})
+        .get("submissions", [])
+    )
+
     # Filter for accepted submissions and get the one with lowest runtime
     accepted_submissions = [
         submission for submission in data if submission["statusDisplay"] == "Accepted"
     ]
-    
+
     if not accepted_submissions:
         print(f"No accepted submissions found for {problem_slug}")
         return ""
-    
-    # Sort submissions by runtime in ascending order (most recent first)
-    accepted_submissions.sort(key=lambda x: int(x["runtime"].replace(" ms", "")))
-    print(accepted_submissions)
-    
-    # Get the URL of the most recent accepted submission
-    last_submission_url = accepted_submissions[0]["id"]
 
-    print(f"Most recent accepted submission URL: {last_submission_url}")
-    return last_submission_url
+    submission_dict = {}
+    # Keep only the accepted submission with the lowest runtime for each language
+    for submission in accepted_submissions:
+        lang = submission["lang"]
+        # Convert runtime to an integer for comparison
+        runtime_ms = int(submission["runtime"].replace(" ms", ""))
+
+        if lang not in submission_dict:
+            submission_dict[lang] = submission  # First submission for this language
+        else:
+            # Compare the current runtime with the stored one
+            stored_runtime_ms = int(submission_dict[lang]["runtime"].replace(" ms", ""))
+            if runtime_ms < stored_runtime_ms:
+                submission_dict[lang] = submission  # Update if lower runtime found
+
+    print(submission_dict)
+    return submission_dict
+
 
 def get_submission_details(submission_id):
     url = f"{BASE_URL}/graphql"
-    
+
     query = """
     query submissionDetails($submissionId: Int!) {
       submissionDetails(submissionId: $submissionId) {
@@ -363,23 +409,24 @@ def get_submission_details(submission_id):
     }
     """
 
-    variables = {
-        "submissionId": submission_id
-    }
-    
+    variables = {"submissionId": submission_id}
+
     headers = get_common_header(f"submissions/{submission_id}/details")
-    
-    response = requests.post(url, headers=headers, cookies=COOKIES, json={
-        "query": query,
-        "variables": variables
-    })
-    
+
+    response = requests.post(
+        url,
+        headers=headers,
+        cookies=COOKIES,
+        json={"query": query, "variables": variables},
+    )
+
     if response.status_code != 200:
-        print(f"Error fetching submission details: {response.status_code}, {response.text}")
+        print(
+            f"Error fetching submission details: {response.status_code}, {response.text}"
+        )
         response.raise_for_status()
 
     submission_details = response.json().get("data", {}).get("submissionDetails", {})
-    
     if not submission_details:
         print(f"Submission details not found for submission ID: {submission_id}")
         return None
@@ -388,6 +435,7 @@ def get_submission_details(submission_id):
     code = submission_details.get("code", "")
     return code
 
+
 def get_already_retrieved():
     # get all the folder under the solution folder
     folders = os.listdir("solutions")
@@ -395,48 +443,91 @@ def get_already_retrieved():
     question_ids = [folder.split(".")[0] for folder in folders]
     return question_ids
 
+
 def retriver():
     # if the question is already retrieved, skip it
     question_already_retrieved = get_already_retrieved()
     question_solved = list_all_solved()
     # first pop all the question that is already retrieved
-    question_solved = [question for question in question_solved if question["questionId"] not in question_already_retrieved]
+    question_solved = [
+        question
+        for question in question_solved
+        if question["questionId"] not in question_already_retrieved
+    ]
     
-    # keep looping until all questions are done
-    while True:
-        # get the next solved question
-        question = question_solved.pop(0)
-        if question:
-            # get the question details
-            question_details = get_question_details(question["titleSlug"])
-            # create a new folder wiht the question id.slug under the solution folder
-            os.makedirs(
-                f"solutions/{question['questionId']}.{question['titleSlug']}",
-                exist_ok=True,
-            )
-            # save the question details to the folder as a json file
-            with open(
-                f"solutions/{question['questionId']}.{question['titleSlug']}/question.json",
-                "w",
-                encoding="utf-8",
-            ) as f:
-                json.dump(question_details, f, ensure_ascii=False)
-            # get the last accepted code
-            last_accepted_submission = get_last_accepted_submission(question["titleSlug"])
-            print(last_accepted_submission)
-            # get the submission details
-            
-            submission_details = get_submission_details(last_accepted_submission["id"])
-            # save the code to the folder as solution. according to the langSlug
-            with open(
-                f"solution/{question['questionId']}.{question['titleSlug']}/solution.txt",
-                "w",
-                encoding="utf-8",
-            ) as f:
-                f.write(submission_details["code"])
-        else:
-            print("No more solved questions available.")
-            break
+    while question_solved != []:
+
+        # keep looping until all questions are done
+        while True:
+            # get the next solved question
+            if question_solved:
+                question = question_solved.pop(0)
+            else:
+                print("No more solved questions available.")
+                break
+            if question:
+                # get the question details
+                question_details = get_question_details(question["titleSlug"])
+                # create a new folder wiht the question id.slug under the solution folder
+                os.makedirs(
+                    f"solutions/{question['questionId']}.{question['titleSlug']}",
+                    exist_ok=True,
+                )
+                # save the question details to the folder as a json file
+                with open(
+                    f"solutions/{question['questionId']}.{question['titleSlug']}/question.json",
+                    "w",
+                    encoding="utf-8",
+                ) as f:
+                    json.dump(question_details, f, ensure_ascii=False)
+                # get the fastest accepted submission
+                fastest_accepted_submission = get_fastest_accepted_submission(
+                    question["titleSlug"]
+                )
+                # for all the lang in the fastest_accepted_submission, get the submission details
+                for lang in fastest_accepted_submission:
+                    submission_id = fastest_accepted_submission[lang]["id"]
+                    langName = fastest_accepted_submission[lang]["langName"]
+                    
+                    # get the submission details
+                    submission_details = get_submission_details(submission_id)
+                    
+                    # Check if submission_details is empty and if this is the only submission
+                    if not submission_details and len(fastest_accepted_submission) == 1:
+                        # Remove the question folder and skip to the next question
+                        question_folder = f"solutions/{question['questionId']}.{question['titleSlug']}"
+                        if os.path.exists(question_folder):
+                            shutil.rmtree(question_folder)  # Remove the folder
+                        print(f"Removed folder: {question_folder} as there were no valid submissions.")
+                        continue  # Skip to the next question
+                    elif not submission_details:
+                        # this is not the only submission, skip to next lang
+                        continue
+                    else:
+                        # Save the code to the folder as solution according to the langSlug
+                        with open(
+                            f"solutions/{question['questionId']}.{question['titleSlug']}/{langName}{FILE_TYPE[langName]}",
+                            "w",
+                            encoding="utf-8",
+                        ) as f:
+                            f.write(submission_details)
+                            
+        # if there is no question left in the current question_solved, reset the question_solved and run again
+        question_already_retrieved = get_already_retrieved()
+        question_solved = list_all_solved()
+        question_solved = [
+            question
+            for question in question_solved
+            if question["questionId"] not in question_already_retrieved
+        ]
+        
+    # check if the folder number is the same as the question_solved number
+    question_solved = list_all_solved()
+    if len(os.listdir("solutions")) == len(question_solved):
+        print("All questions are retrieved.")
+    else:
+        print("Some questions are not retrieved.")
+        
 
 
 if __name__ == "__main__":
@@ -457,4 +548,4 @@ if __name__ == "__main__":
         "__cf_bm": "5V24iRo6KmIMuJacKUAiS8uWGMAjYEbxA5.6y5H7YMA-1728104383-1.0.1.1-dBkCs8VYNyaYKi2VqX63Z1Srwlot.WZXV.Zp0b9zmn0_w1qOD1ufoN5tAJ.1qr8j4pv3388uyus9V9AHRwQnoA",
     }
 
-    
+    retriver()
