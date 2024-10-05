@@ -43,6 +43,12 @@ The [retriver.py](./retriver.py) is a python script that automates the process o
 
 1. **Run the Script**
 
+   Install the required dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
    To start the retrieval process, run the `retriver.py` script:
 
    ```bash
@@ -60,7 +66,6 @@ The [retriver.py](./retriver.py) is a python script that automates the process o
 LeetCode-Solutions/
 │
 ├── retriver.py          # Main script to retrieve solutions
-├── check.py             # Script to clean up empty files and directories
 ├── .env                 # Environment variables for credentials
 └── solutions/           # Directory where solutions are stored
     ├── 745.find-smallest-letter-greater-than-target/
