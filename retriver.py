@@ -527,8 +527,6 @@ def retriver():
         print("All questions are retrieved.")
     else:
         print("Some questions are not retrieved.")
-        
-
 
 if __name__ == "__main__":
 
