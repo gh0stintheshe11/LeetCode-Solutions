@@ -17,10 +17,10 @@ import shutil
 
 load_dotenv()
 
-BASE_URL = "https://leetcode.com"
-
 # Define COOKIES at the top to avoid NameError
 COOKIES = {}
+
+BASE_URL = "https://leetcode.com"
 
 # file type based on the langSlug
 FILE_TYPE = {
@@ -451,6 +451,7 @@ def remove_empty_file():
                 if os.path.getsize(file_path) == 0:
                     os.remove(file_path)  # Remove the empty file
                     print(f"Removed empty file: {file_path}")
+    print("Removed empty files.")
 
 def remove_empty_folder():     
     # remove all folder if there is only one question.json
@@ -462,8 +463,11 @@ def remove_empty_folder():
                 print(f"Removed directory: {folder_path}")
             else:
                 print(f"Directory does not exist: {folder_path}")
+    print("Removed empty folders.")
 
 def retriver():
+    remove_empty_file()
+    remove_empty_folder()
     # if the question is already retrieved, skip it
     question_already_retrieved = get_already_retrieved()
     question_solved = list_all_solved()
