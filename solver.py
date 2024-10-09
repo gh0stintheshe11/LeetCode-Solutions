@@ -281,6 +281,10 @@ def get_question_details(problem_slug):
             for snippet in codeSnippets
         }
 
+        # if snippet is Python, change language name (key) to Python2.7
+        if "Python" in codeSnippets:
+            codeSnippets["Python2.7"] = codeSnippets.pop("Python")
+        
         # format question to a json
         question = {
             "question_id": question_id,
@@ -603,26 +607,29 @@ def solver():
 
         max_submit_attempts = 0
         while submit_result["status_msg"] != "Accepted" and max_submit_attempts < 3:
+            
+            question_detailed_debuging = question_detailed
+            submit_result_debuging = submit_result
 
             # check if the last test case is already in the example test cases string
             if submit_result["last_testcase"] in question_detailed["exampleTestcases"]:
                 print(f"Last test case already in the example test cases")
             else:
-                # if last test is longer than 20 char, omit the middle part with "..." and keep the first and last chars, to avoid long test case exceed model token limit
-                if len(submit_result["last_testcase"]) > 20:
-                    submit_result["last_testcase"] = submit_result["last_testcase"][:10] + "..." + submit_result["last_testcase"][-10:] # keep the first and last 10 chars
+                # if last test is longer than 60 char, omit the middle part with "..." and keep the first and last chars, to avoid long test case exceed model token limit
+                if len(submit_result["last_testcase"]) > 60:
+                    submit_result_debuging["last_testcase"] = submit_result["last_testcase"][:30] + "..." + submit_result["last_testcase"][-30:] # keep the first and last 30 chars
 
                 # add the last test case to the example test cases
                 question_detailed["exampleTestcases"] += (
                     "\n" + submit_result["last_testcase"]
                 )
-                print(
-                    f"Add test case {submit_result['last_testcase']} to test case: {question_detailed['exampleTestcases']}"
+                question_detailed_debuging["exampleTestcases"] += (
+                    "\n" + submit_result_debuging["last_testcase"]
                 )
 
             # debug the solution
             solution = debug(
-                language, question_detailed, codeSnippets, solution, submit_result
+                language, question_detailed_debuging, codeSnippets, solution, submit_result_debuging
             )
             print(f"Debug attempt 0")
 

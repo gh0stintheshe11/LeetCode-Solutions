@@ -46,7 +46,7 @@ LeetCode Solver Bot is an automated tool designed to solve LeetCode problems usi
 To start the LeetCode Solver Bot, run:
 
 ```
-python solver_dev.py
+python solver.py
 ```
 
 The bot will automatically:
