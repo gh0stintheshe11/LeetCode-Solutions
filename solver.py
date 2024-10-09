@@ -644,7 +644,7 @@ def solver():
             print(f"Test result: {test_result['status_msg']}")
             
             # if last test is longer than 60 char, omit the middle part with "..." and keep the first and last chars, to avoid long test case exceed model token limit
-            if len(test_result["last_testcase"]) > 60:
+            if 'last_testcase' in test_result and len(test_result["last_testcase"]) > 60:
                 test_result["last_testcase"] = test_result["last_testcase"][:30] + "..." + test_result["last_testcase"][-30:] # keep the first and last 30 chars
 
             max_debug_attempts = 0
@@ -665,6 +665,10 @@ def solver():
                     question_detailed["exampleTestcases"],
                 )
                 print(f"Test attempt {max_debug_attempts} result: {test_result['status_msg']}")
+                
+                # if last test is longer than 60 char, omit the middle part with "..." and keep the first and last chars, to avoid long test case exceed model token limit
+                if 'last_testcase' in test_result and len(test_result["last_testcase"]) > 60:
+                    test_result["last_testcase"] = test_result["last_testcase"][:30] + "..." + test_result["last_testcase"][-30:] # keep the first and last 30 chars
 
                 max_debug_attempts += 1
 
