@@ -104,7 +104,8 @@ def login_to_leetcode():
 
         # Wait for the loading overlay to disappear
         try:
-            wait.until(EC.invisibility_of_element_located((By.ID, "initial-loading")))
+            wait.until(EC.invisibility_of_element_located(
+                (By.ID, "initial-loading")))
         except TimeoutException:
             print("Loading overlay did not disappear. Attempting to continue...")
 
@@ -121,7 +122,8 @@ def login_to_leetcode():
                 break
             except (TimeoutException, ElementClickInterceptedException) as e:
                 if attempt < max_attempts - 1:
-                    print(f"Attempt {attempt + 1} failed. Retrying in 5 seconds...")
+                    print(
+                        f"Attempt {attempt + 1} failed. Retrying in 5 seconds...")
                     time.sleep(5)
                 else:
                     print(
@@ -134,7 +136,8 @@ def login_to_leetcode():
         try:
             continue_button = wait.until(
                 EC.element_to_be_clickable(
-                    (By.XPATH, '//div[@id="base_content"]//button[text()="Continue"]')
+                    (By.XPATH,
+                     '//div[@id="base_content"]//button[text()="Continue"]')
                 )
             )
             continue_button.click()
@@ -152,7 +155,8 @@ def login_to_leetcode():
         driver.find_element(By.ID, "login_field").send_keys(
             os.getenv("LEETCODE_USERNAME")
         )
-        driver.find_element(By.ID, "password").send_keys(os.getenv("LEETCODE_PASSWORD"))
+        driver.find_element(By.ID, "password").send_keys(
+            os.getenv("LEETCODE_PASSWORD"))
 
         # Click Sign in button
         sign_in_button = wait.until(
@@ -277,14 +281,15 @@ def get_question_details(problem_slug):
         # reformat the codeSnippets to be a dicts with lang as key and code as value
         # To this
         codeSnippets = {
-            snippet["lang"]: {"langSlug": snippet["langSlug"], "code": snippet["code"]}
+            snippet["lang"]: {
+                "langSlug": snippet["langSlug"], "code": snippet["code"]}
             for snippet in codeSnippets
         }
 
         # if snippet is Python, change language name (key) to Python2.7
         if "Python" in codeSnippets:
             codeSnippets["Python2.7"] = codeSnippets.pop("Python")
-        
+
         # format question to a json
         question = {
             "question_id": question_id,
@@ -297,7 +302,8 @@ def get_question_details(problem_slug):
         }
         return question
     else:
-        raise Exception(f"Failed to get question details: {response.status_code}")
+        raise Exception(
+            f"Failed to get question details: {response.status_code}")
 
 
 # submit the solution, check the submit status
@@ -316,7 +322,8 @@ def submit(question_id, slug, lang, code):
         headers=get_common_header(slug),
         cookies=COOKIES,
     )
-    response.raise_for_status()  # This will raise an exception for 4xx and 5xx status codes
+    # This will raise an exception for 4xx and 5xx status codes
+    response.raise_for_status()
 
     submit_result = response.json()
     submission_id = submit_result["submission_id"]
@@ -350,9 +357,11 @@ def check_submission(submission_id, slug):
                 )
                 raise Exception(f"Unexpected submission state: {result}")
         except JSONDecodeError:
-            print(f"Failed to decode JSON on attempt {attempt + 1}. Retrying...")
+            print(
+                f"Failed to decode JSON on attempt {attempt + 1}. Retrying...")
         except KeyError:
-            print(f"Unexpected response format on attempt {attempt + 1}. Retrying...")
+            print(
+                f"Unexpected response format on attempt {attempt + 1}. Retrying...")
 
     raise Exception("Timed out waiting for submission result")
 
@@ -404,9 +413,11 @@ def test(question_id, problem_slug, lang, code, test_case):
                 )
                 raise Exception(f"Unexpected submission state: {result}")
         except JSONDecodeError:
-            print(f"Failed to decode JSON on attempt {attempt + 1}. Retrying...")
+            print(
+                f"Failed to decode JSON on attempt {attempt + 1}. Retrying...")
         except KeyError:
-            print(f"Unexpected response format on attempt {attempt + 1}. Retrying...")
+            print(
+                f"Unexpected response format on attempt {attempt + 1}. Retrying...")
 
     raise Exception("Timed out waiting for submission result")
 
@@ -546,22 +557,9 @@ def get_next_unsolved():
 
     return None  # Couldn't find an unsolved question within the limit
 
-
-# while (still have unsolved questions)
-#   generate
-#   submit
-#   while submit_result["status_msg"] != "Accepted":
-#     add test case to test case
-#     debug
-#     test
-#     while test_result["status_msg"] != "Accepted":
-#       debug
-#       test
-#     submit
-#   move to next question
-
-
 # main logic of the solver
+
+
 def solver():
     print("--- Solver Start ---")
 
@@ -593,117 +591,88 @@ def solver():
         # extract the codeSnippets from the question_detailed
         codeSnippets = question_detailed.pop("codeSnippets")[language]["code"]
 
-        # generate initial solution
-        solution = generate(language, question_detailed, codeSnippets)
-        print(f"Initial solution generated.")
+        submit_result = {"status_msg": "None"}
+        submit_count = 0
 
-        submit_result = submit(
-            question_detailed["question_id"],
-            question_detailed["problem_slug"],
-            langSlug,
-            solution,
-        )
-        print(f"Initial submit result: {submit_result}")
+        # if solution is not accpeted -> generate the solution
+        while submit_result["status_msg"] != "Accepted" and submit_count < 3:
 
-        max_submit_attempts = 0
-        while submit_result["status_msg"] != "Accepted" and max_submit_attempts < 3:
-            
-            question_detailed_debuging = question_detailed
-            submit_result_debuging = submit_result
+            # seperate the example test cases in the question details
+            exampleTestcases = question_detailed["exampleTestcases"].split(
+                "\n")
+            # if there is any tests is longer than 60 char, omit the middle part with "..." and keep the first and last chars, to avoid long test case exceed model token limit
+            if any(len(test) > 60 for test in exampleTestcases):
+                exampleTestcases = [
+                    test[:30] + "..." + test[-30:] if len(test) > 60 else test
+                    for test in exampleTestcases
+                ]
+            # join the example test cases back to string
+            question_detailed["exampleTestcases"] = "\n".join(exampleTestcases)
+
+            if submit_count == 0:
+                try:
+                    # generate the solution
+                    solution = generate(
+                        language, question_detailed, codeSnippets)
+                except OpenAI.error.InvalidRequestError as e:
+                    if "context_length_exceeded" in str(e):
+                        print(f"Context length exceeded: {str(e)}")
+                        break
+                    else:
+                        raise e
+
+            else:
+                # shrten the last test case to avoid model token limit
+                if len(submit_result["last_testcase"]) > 60:
+                    submit_result["last_testcase"] = (
+                        submit_result["last_testcase"][:30]
+                        + "..."
+                        + submit_result["last_testcase"][-30:]
+                    )
+
+                try:
+                    solution = debug(
+                        language,
+                        question_detailed,
+                        codeSnippets,
+                        solution,
+                        submit_result,
+                    )
+                except OpenAI.error.InvalidRequestError as e:
+                    if "context_length_exceeded" in str(e):
+                        print(f"Context length exceeded: {str(e)}")
+                        break
+                    else:
+                        raise e
+
+            # submit the solution
+            submit_result = submit(
+                current_question_id, question["titleSlug"], langSlug, solution
+            )
+
+            if submit_result["status_msg"] == "Accepted":
+                print(f"Solution accepted.")
+                break
+            else:
+                print(f"Submission failed: {submit_result['status_msg']}")
 
             # check if the last test case is already in the example test cases string
             if submit_result["last_testcase"] in question_detailed["exampleTestcases"]:
                 print(f"Last test case already in the example test cases")
             else:
-                # if last test is longer than 60 char, omit the middle part with "..." and keep the first and last chars, to avoid long test case exceed model token limit
-                if len(submit_result["last_testcase"]) > 60:
-                    submit_result_debuging["last_testcase"] = submit_result["last_testcase"][:30] + "..." + submit_result["last_testcase"][-30:] # keep the first and last 30 chars
-
                 # add the last test case to the example test cases
                 question_detailed["exampleTestcases"] += (
                     "\n" + submit_result["last_testcase"]
                 )
-                question_detailed_debuging["exampleTestcases"] += (
-                    "\n" + submit_result_debuging["last_testcase"]
-                )
 
-            # debug the solution
-            solution = debug(
-                language, question_detailed_debuging, codeSnippets, solution, submit_result_debuging
-            )
-            print(f"Debug attempt 0")
+            submit_count += 1
 
-            # test the solution
-            test_result = test(
-                question_detailed["question_id"],
-                question_detailed["problem_slug"],
-                langSlug,
-                solution,
-                question_detailed["exampleTestcases"],
-            )
-            print(f"Test result: {test_result['status_msg']}")
-            
-            # if last test is longer than 60 char, omit the middle part with "..." and keep the first and last chars, to avoid long test case exceed model token limit
-            if 'last_testcase' in test_result and len(test_result["last_testcase"]) > 60:
-                test_result["last_testcase"] = test_result["last_testcase"][:30] + "..." + test_result["last_testcase"][-30:] # keep the first and last 30 chars
-
-            max_debug_attempts = 0
-            while test_result["status_msg"] != "Accepted" and max_debug_attempts < 3:
-
-                # Debug the solution
-                solution = debug(
-                    language, question_detailed_debuging, codeSnippets, solution, test_result
-                )
-                print(f"Debug attempt {max_debug_attempts}")
-
-                # Run the test again
-                test_result = test(
-                    question_detailed["question_id"],
-                    question_detailed["problem_slug"],
-                    langSlug,
-                    solution,
-                    question_detailed["exampleTestcases"],
-                )
-                print(f"Test attempt {max_debug_attempts} result: {test_result['status_msg']}")
-                
-                # if last test is longer than 60 char, omit the middle part with "..." and keep the first and last chars, to avoid long test case exceed model token limit
-                if 'last_testcase' in test_result and len(test_result["last_testcase"]) > 60:
-                    test_result["last_testcase"] = test_result["last_testcase"][:30] + "..." + test_result["last_testcase"][-30:] # keep the first and last 30 chars
-
-                max_debug_attempts += 1
-
-            # if debug success -> submit
-            if test_result["status_msg"] == "Accepted":
-                # reset max_submit_attempts
-                max_submit_attempts = 0
-                # submit
-                submit_result = submit(
-                    question_detailed["question_id"],
-                    question_detailed["problem_slug"],
-                    langSlug,
-                    solution,
-                )
-                print(f"Debug success, submit result: {submit_result}")
-
-                # if submit success -> move to next question
-                if submit_result["status_msg"] == "Accepted":
-                    # reset max_submit_attempts
-                    max_submit_attempts = 0
-                    break
-                # if submit failed -> increase max_submit_attempts
-                max_submit_attempts += 1
-
-            # if debug failed 3 times -> move to next question
-            else:
-                print(f"Debug failed, move to next question")
-                current_question_id += 1
-                break
-
-        # if max_submit_attempts >= 3 -> move to next question
-        if max_submit_attempts >= 3:
-            print(f"Max submit attempts reached, move to next question")
-            current_question_id += 1
-            continue
+        if submit_result["status_msg"] != "Accepted":
+            print(
+                f"question solving failed after {submit_count} attempts, move to next question")
+        else:
+            submit_result.pop("last_testcase")
+            print("question solved successfully: ", submit_result)
 
 
 if __name__ == "__main__":
