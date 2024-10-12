@@ -9,6 +9,7 @@ from requests.exceptions import JSONDecodeError
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 from openai import OpenAI
+import openai
 import undetected_chromedriver as uc
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -614,12 +615,9 @@ def solver():
                     # generate the solution
                     solution = generate(
                         language, question_detailed, codeSnippets)
-                except OpenAI.error.InvalidRequestError as e:
-                    if "context_length_exceeded" in str(e):
-                        print(f"Context length exceeded: {str(e)}")
-                        break
-                    else:
-                        raise e
+                except openai.BadRequestError as e:
+                    print(f"Failed to generate solution: {e}")
+                    break
 
             else:
                 # shrten the last test case to avoid model token limit
@@ -638,12 +636,9 @@ def solver():
                         solution,
                         submit_result,
                     )
-                except OpenAI.error.InvalidRequestError as e:
-                    if "context_length_exceeded" in str(e):
-                        print(f"Context length exceeded: {str(e)}")
-                        break
-                    else:
-                        raise e
+                except openai.BadRequestError as e:
+                    print(f"Failed to debug solution: {e}")
+                    break
 
             # submit the solution
             submit_result = submit(
