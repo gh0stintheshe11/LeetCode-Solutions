@@ -13,10 +13,10 @@ This repo archives all solutions for all LeetCode problems in all available lang
 
 ## Questions list
 
-> [!TIP]\
-> You can use the question list below to find the problem and solutions you want to see. All questions and solutions are indexed. ```Ctrl + F```/```Cmd + F``` is your friend :)
-
 [Questions list](index.md)
+
+> [!TIP]
+> You can use the question list above to find the problem and solutions you want to see. All questions and solutions are indexed. ```Ctrl + F```/```Cmd + F``` is your friend :)
 
 ## Automation Tools
 
