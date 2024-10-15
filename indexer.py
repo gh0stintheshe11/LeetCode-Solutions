@@ -33,18 +33,39 @@ def list_questions():
 
 
 def format_index_page(questions):
-    with open('index.md', 'w') as f:
-        f.write('# LeetCode Solutions\n\n')
-        f.write('|Number|Title|Solutions|')
-        f.write('\n')
-        f.write('|---|---|---|')
-        f.write('\n')
-        for question in questions:
-            # Create a string for the solutions with links to the files
-            solutions = ', '.join([f'[{lang[0]}]({lang[1]})' for lang in question[2]])
-            f.write(f'|{question[0]}|[{question[1]}](https://leetcode.com/problems/{question[1]})|{solutions}|')
-            f.write('\n')
+    section_header = '## Questions list'
+    new_content = []
 
-#if __name__ == '__main__':
-#    questions = list_questions()
-#    format_index_page(questions)
+    # Create the new content for the questions list
+    new_content.append('| Number | Title | Solutions |\n')
+    new_content.append('|---|---|---|\n')
+    for question in questions:
+        # Create a string for the solutions with links to the files
+        solutions = ', '.join([f'[{lang[0]}]({lang[1]})' for lang in question[2]])
+        new_content.append(f'| {question[0]} | [{question[1]}](https://leetcode.com/problems/{question[1]}) | {solutions} |\n')
+    new_content.append('\n')
+
+    # Read the existing content of the README.md file
+    with open('README.md', 'r') as f:
+        lines = f.readlines()
+
+    # Find the index of the section header and replace its content
+    for i, line in enumerate(lines):
+        if line.startswith(section_header):
+            # Find the next section header or end of file
+            j = i + 1
+            while j < len(lines) and not lines[j].startswith('## '):
+                j += 1
+            
+            # Replace the content under the section header
+            lines = lines[:i + 2] + new_content + lines[j:]  # +2 to skip the header and the next line
+            break
+
+    # Write the modified content back to the README.md file
+    with open('README.md', 'w') as f:
+        f.writelines(lines)
+
+
+if __name__ == '__main__':
+    questions = list_questions()
+    format_index_page(questions)
