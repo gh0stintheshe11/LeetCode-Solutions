@@ -1,15 +1,12 @@
 # LeetCode Solutions
 
+This is all solutions for LeetCode problems in all available languages. (continous updating...)
+
 ## Table of Contents
-- [Description](#description)
 - [Questions list](#questions-list)
 - [Automation Tools](#automation-tools)
 - [Contributing](#contributing)
 - [Disclaimer](#disclaimer)
-
-## Description
-
-This is all solutions for LeetCode problems in all available languages. (continous updating...)
 
 ## Questions list
 > [!TIP]\
