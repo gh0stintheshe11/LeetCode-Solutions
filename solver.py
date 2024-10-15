@@ -479,7 +479,7 @@ def generate(language, question, codeSnippets):
     print(f"Generating the solution...")
 
     response = client.chat.completions.create(
-        model="gpt-4o",
+        model=SETTING["openai_model"],
         messages=[
             {
                 "role": "system",
@@ -520,7 +520,7 @@ def debug(language, question, codeSnippet, current_code, submit_result):
 
     # Create the prompt for debugging
     response = client.chat.completions.create(
-        model="gpt-4o",
+        model=SETTING["openai_model"],
         messages=[
             {
                 "role": "system",

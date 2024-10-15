@@ -2815,10 +2815,10 @@ This repo archives all solutions for all LeetCode problems in all available lang
    ```
 
 > [!IMPORTANT]\
-> Solver uses OpenAI's GPT-4 model to generate solutions so you need to set up your OpenAI API key in the .env file. Alternatively, you can modify the code to use any model you want.
+> Solver uses OpenAI's GPT-4o model to generate solutions so you need to set up your OpenAI API key in the ```.env``` file. Alternatively, you can modify the code to use any model you want.
 
 > [!IMPORTANT]\
-> Both Solver and Retriver use the github login method to login to LeetCode so you need to set up your github login credentials in the .env file.
+> Both Solver and Retriver use the github login method to login to LeetCode so you need to set up your github login credentials in the ```.env``` file.
 
 ### [Solver](#solver)
 
