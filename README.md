@@ -11,9 +11,7 @@ This repo archives all solutions for all LeetCode problems in all available lang
 > [!NOTE]
 > I have to put the question list in an separate index.md file. It is impossible to list all questions in the readme.md since github only display first 500KB of the file :(
 
-## Questions list
-
-[Questions list](index.md)
+## [Questions list](index.md)
 
 > [!TIP]
 > You can use the question list above to find the problem and solutions you want to see. All questions and solutions are indexed. ```Ctrl + F```/```Cmd + F``` is your friend :)
