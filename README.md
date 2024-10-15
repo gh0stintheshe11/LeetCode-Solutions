@@ -14,7 +14,7 @@ This repo archives all solutions for all LeetCode problems in all available lang
 ## [Questions list](index.md)
 
 > [!TIP]
-> Click the question list title above to jump to the question index.md. All questions and solutions are indexed. Use ```Ctrl + F```/```Cmd + F``` to find the problem and solutions you want to see. :)
+> Click the question list title above to jump to the question index.md. All questions and solutions are indexed. Use ```Ctrl + F```/```Cmd + F``` to find the problem and solutions you are interested :)
 
 ## Automation Tools
 
