@@ -20,6 +20,8 @@ from selenium.common.exceptions import (
     ElementClickInterceptedException,
 )
 
+PREMIUM_ACCOUNT = False
+
 # load the setting.json file
 with open("setting.json", "r") as f:
     SETTING = json.load(f)
@@ -181,6 +183,32 @@ def login_to_leetcode():
         driver.quit()
 
 
+def get_account_info():
+    print("Getting account info...")
+    # get the account info from the leetcode
+    url = f"{BASE_URL}/graphql"
+    query = """
+    query getUserInfo {
+        user {
+            isCurrentUserPremium
+        }
+    }
+    """
+
+    response = requests.post(
+        url,
+        json={"query": query},
+        headers=get_common_header(""),
+        cookies=COOKIES,
+    )
+    response.raise_for_status()
+
+    data = response.json()
+    if data["data"]["user"]["isCurrentUserPremium"]:
+        return True
+    else:
+        return False
+
 # list certain amount of questions
 def list_questions():
     print("Fetching all questions...")
@@ -225,6 +253,10 @@ def list_questions():
     questions = data["data"]["problemsetQuestionList"]["questions"]
     total = data["data"]["problemsetQuestionList"]["total"]
     print(f"{total} questions fetched.")
+
+    # if not premium account, filter out the paid only questions
+    if not PREMIUM_ACCOUNT:
+        questions = [question for question in questions if not question["isPaidOnly"]]
 
     # Sort questions by ID
     questions.sort(key=lambda q: int(q["questionId"]))
@@ -596,7 +628,7 @@ def solver():
         submit_count = 0
 
         # if solution is not accpeted -> generate the solution
-        while submit_result["status_msg"] != "Accepted" and submit_count < 3:
+        while submit_result["status_msg"] != "Accepted" and submit_count < SETTING["max_retries"]:
 
             # seperate the example test cases in the question details
             exampleTestcases = question_detailed["exampleTestcases"].split(
@@ -673,5 +705,5 @@ def solver():
 if __name__ == "__main__":
 
     COOKIES = login_to_leetcode()
-
+    PREMIUM_ACCOUNT = get_account_info()
     solver()

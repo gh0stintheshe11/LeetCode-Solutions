@@ -1,4 +1,5 @@
 {
     "default_language": "Python3",
-    "allow_skip": true
+    "allow_skip": true,
+    "max_retries": 3
 }
