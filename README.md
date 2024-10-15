@@ -1,31 +1,34 @@
-# LeetCode Solver Bot
+# LeetCode Solutions
+
+## Table of Contents
+- [Description](#description)
+- [Questions list](#questions-list)
+- [Automation Tools](#automation-tools)
+- [Contributing](#contributing)
+- [Disclaimer](#disclaimer)
 
 ## Description
 
-LeetCode Solver Bot is an automated tool designed to solve LeetCode problems using AI-powered code generation. It interacts with the LeetCode platform to fetch problems, generate solutions, submit them, and handle debugging if necessary. Effortlessly solve LeetCode problems with the power of automation! LeetCode Solver Bot automates fetching problems, generating solutions, debugging, and submission. No more manual coding or debugging—just sit back and let the bot handle the heavy lifting.
+This is all solutions for LeetCode problems in all available languages. (continous updating...)
 
-## Features
+> [!TIP]\
+> Github will omit directory with over 1000 files, so you can't see all the solutions in one page. However, omited file is still reachable if you use the search bar. For example, you can search for the problem number to find the solution.
 
-- Automated login to LeetCode using GitHub authentication
-- Fetching unsolved LeetCode problems
-- AI-powered solution generation using GPT-4
-- Automated solution submission and testing
-- Debugging capabilities for failed submissions
-- Support for multiple programming languages (currently focused on Python)
+## Questions list
 
-## Code Structure
+To be updated...
 
-- `solver_dev.py`: Main script containing all the core functionality
-- `.env`: Environment variables (not tracked in git)
-- `requirements.txt`: List of dependencies
-- `install_dependencies.sh`: Script to install dependencies
+## Automation Tools
 
-## Installation
+- [Solver](#solver)
+- [Retriver](#retriver)
+
+### Installation
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/LeetCode-Solver-Bot.git
-   cd LeetCode-Solver-Bot
+   git clone https://github.com/yourusername/LeetCode-Solutions.git
+   cd LeetCode-Solutions
    ```
 
 2. Install dependencies:
@@ -40,14 +43,11 @@ LeetCode Solver Bot is an automated tool designed to solve LeetCode problems usi
    LEETCODE_PASSWORD=your_github_password
    OPENAI_API_KEY=your_openai_api_key
    ```
+### Solver
 
-## Usage
+LeetCode Solver Bot is an automated tool designed to solve LeetCode problems using AI-powered code generation. It interacts with the LeetCode platform to fetch problems, generate solutions, submit them, and handle debugging if necessary.
 
-To start the LeetCode Solver Bot, run:
-
-```
-python solver.py
-```
+- Use ```python solver.py``` to run the solver.
 
 The bot will automatically:
 1. Log in to LeetCode
@@ -57,9 +57,27 @@ The bot will automatically:
 5. Submit the solution if tests pass
 6. Debug and retry if the solution fails
 
+### Retriver
+
+The Retriver Script is designed to fetch solved LeetCode problems and solutions from the LeetCode platform, then archives the problem details and solutions.
+
+- Use ```python retriver.py``` to run the retriver.
+
+The Retriver Script will:
+1. Log in to LeetCode
+2. Fetch all solved problems
+3. Archive the problem details and solutions
+
+### Important Notes
+
+> [!IMPORTANT]\
+> - Solver uses OpenAI's GPT-4 model to generate solutions so you need to set up your OpenAI API key in the .env file.
+> - Solver and Retriver uses the github login method to login to LeetCode so you need to set up your github login credentials in the .env file.
+
+
 ## Contributing
 
-Contributions to the LeetCode Solver Bot are welcome!
+Contributions are welcome!
 
 ## Disclaimer
 
