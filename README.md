@@ -8,8 +8,11 @@ This repo archives all solutions for all LeetCode problems in all available lang
 - [Contributing](#contributing)
 - [Disclaimer](#disclaimer)
 
-## Questions list
 > [!TIP]\
+> You can use the question list below to find the problem and solutions you want to see. All questions and solutions are indexed. ```Ctrl + F```/```Cmd + F``` is your friend :)
+
+## Questions list
+
 | Number | Title | Solutions |
 |---|---|---|
 | 1 | [two-sum](https://leetcode.com/problems/two-sum) | [Python3](solutions/1.two-sum/Python3.py), [C](solutions/1.two-sum/C.c) |
