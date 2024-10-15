@@ -11,10 +11,9 @@
 
 This is all solutions for LeetCode problems in all available languages. (continous updating...)
 
-> [!TIP]\
-> You can use the question list below to find the problem and solutions you want to see.
-
 ## Questions list
+> [!TIP]\
+> You can use the question list below to find the problem and solutions you want to see. All questions and solutions are indexed.
 
 | Number | Title | Solutions |
 |---|---|---|
