@@ -71,8 +71,8 @@ The Retriver Script will:
 ### Important Notes
 
 > [!IMPORTANT]\
-> - Solver uses OpenAI's GPT-4 model to generate solutions so you need to set up your OpenAI API key in the .env file.
-> - Solver and Retriver uses the github login method to login to LeetCode so you need to set up your github login credentials in the .env file.
+> Solver uses OpenAI's GPT-4 model to generate solutions so you need to set up your OpenAI API key in the .env file.
+> Solver and Retriver uses the github login method to login to LeetCode so you need to set up your github login credentials in the .env file.
 
 
 ## Contributing
