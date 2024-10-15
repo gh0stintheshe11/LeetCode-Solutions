@@ -9,12 +9,12 @@ This repo archives all solutions for all LeetCode problems in all available lang
 - [Disclaimer](#disclaimer)
 
 > [!NOTE]
-> I have to put the question list in an separate index.md file. It is impossible to list all questions in the readme.md since github only display first 500KB of the file :(
+> The question list has to be put in an separate index.md file. It is impossible to list all questions in the readme.md since github only display first 500KB of the file :(
 
 ## [Questions list](index.md)
 
 > [!TIP]
-> You can use the question list above to find the problem and solutions you want to see. All questions and solutions are indexed. ```Ctrl + F```/```Cmd + F``` is your friend :)
+> Click the question list title above to jump to the question index.md. All questions and solutions are indexed. Use ```Ctrl + F```/```Cmd + F``` to find the problem and solutions you want to see. :)
 
 ## Automation Tools
 
