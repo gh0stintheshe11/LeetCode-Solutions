@@ -2813,13 +2813,20 @@ This repo archives all solutions for all LeetCode problems in all available lang
    LEETCODE_PASSWORD=your_github_password
    OPENAI_API_KEY=your_openai_api_key
    ```
-### Solver
 
-LeetCode Solver Bot is an automated tool designed to solve LeetCode problems using AI-powered code generation. It interacts with the LeetCode platform to fetch problems, generate solutions, submit them, and handle debugging if necessary.
+> [!IMPORTANT]\
+> Solver uses OpenAI's GPT-4 model to generate solutions so you need to set up your OpenAI API key in the .env file. Alternatively, you can modify the code to use any model you want.
+
+> [!IMPORTANT]\
+> Both Solver and Retriver use the github login method to login to LeetCode so you need to set up your github login credentials in the .env file.
+
+### [Solver](#solver)
+
+Solver is an automated script designed to solve LeetCode problems using AI-powered code generation. It interacts with the LeetCode platform to fetch problems, generate solutions, submit them, and handle debugging if necessary.
 
 - Use ```python solver.py``` to run the solver.
 
-The bot will automatically:
+The solver will automatically:
 1. Log in to LeetCode
 2. Find the next unsolved problem
 3. Generate a solution using GPT-4
@@ -2827,25 +2834,16 @@ The bot will automatically:
 5. Submit the solution if tests pass
 6. Debug and retry if the solution fails
 
-### Retriver
+### [Retriver](#retriver)
 
-The Retriver Script is designed to fetch solved LeetCode problems and solutions from the LeetCode platform, then archives the problem details and solutions.
+Retriver is an automated script designed to fetch solved LeetCode problems and solutions from the LeetCode platform, then archives the problem details and solutions.
 
 - Use ```python retriver.py``` to run the retriver.
 
-The Retriver Script will:
+The retriver will:
 1. Log in to LeetCode
 2. Fetch all solved problems
 3. Archive the problem details and solutions
-
-### Important Notes
-
-> [!IMPORTANT]\
-> Solver uses OpenAI's GPT-4 model to generate solutions so you need to set up your OpenAI API key in the .env file.
-
-> [!IMPORTANT]\
-> Solver and Retriver uses the github login method to login to LeetCode so you need to set up your github login credentials in the .env file.
-
 
 ## Contributing
 
