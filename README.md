@@ -10,8 +10,6 @@ This repo archives all solutions for all LeetCode problems in all available lang
 
 ## Questions list
 > [!TIP]\
-> You can use the question list below to find the problem and solutions you want to see. All questions and solutions are indexed. ```Ctrl + F```/```Cmd + F``` is your friend :)
-
 | Number | Title | Solutions |
 |---|---|---|
 | 1 | [two-sum](https://leetcode.com/problems/two-sum) | [Python3](solutions/1.two-sum/Python3.py), [C](solutions/1.two-sum/C.c) |
@@ -2786,6 +2784,14 @@ This repo archives all solutions for all LeetCode problems in all available lang
 | 3300 | [friday-purchases-i](https://leetcode.com/problems/friday-purchases-i) | [MySQL](solutions/3300.friday-purchases-i/MySQL.sql) |
 | 3301 | [friday-purchases-ii](https://leetcode.com/problems/friday-purchases-ii) | [MySQL](solutions/3301.friday-purchases-ii/MySQL.sql) |
 | 3302 | [viewers-turned-streamers](https://leetcode.com/problems/viewers-turned-streamers) | [MySQL](solutions/3302.viewers-turned-streamers/MySQL.sql) |
+| 3304 | [maximum-subtree-of-the-same-color](https://leetcode.com/problems/maximum-subtree-of-the-same-color) | [Python3](solutions/3304.maximum-subtree-of-the-same-color/Python3.py) |
+| 3309 | [count-prefix-and-suffix-pairs-i](https://leetcode.com/problems/count-prefix-and-suffix-pairs-i) | [Python3](solutions/3309.count-prefix-and-suffix-pairs-i/Python3.py) |
+| 3311 | [ant-on-the-boundary](https://leetcode.com/problems/ant-on-the-boundary) | [Python3](solutions/3311.ant-on-the-boundary/Python3.py) |
+| 3312 | [number-of-changing-keys](https://leetcode.com/problems/number-of-changing-keys) | [Python3](solutions/3312.number-of-changing-keys/Python3.py) |
+| 3314 | [most-frequent-prime](https://leetcode.com/problems/most-frequent-prime) | [Python3](solutions/3314.most-frequent-prime/Python3.py) |
+| 3321 | [type-of-triangle](https://leetcode.com/problems/type-of-triangle) | [Python3](solutions/3321.type-of-triangle/Python3.py) |
+| 3324 | [split-the-array](https://leetcode.com/problems/split-the-array) | [Python3](solutions/3324.split-the-array/Python3.py) |
+| 3325 | [find-the-largest-area-of-square-inside-two-rectangles](https://leetcode.com/problems/find-the-largest-area-of-square-inside-two-rectangles) | [Python3](solutions/3325.find-the-largest-area-of-square-inside-two-rectangles/Python3.py) |
 | 3575 | [find-the-maximum-sequence-value-of-array](https://leetcode.com/problems/find-the-maximum-sequence-value-of-array) | [Python3](solutions/3575.find-the-maximum-sequence-value-of-array/Python3.py) |
 
 ## Automation Tools
