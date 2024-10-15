@@ -33,7 +33,6 @@ def list_questions():
 
 
 def format_index_page(questions):
-    section_header = '## Questions list'
     new_content = []
 
     # Create the new content for the questions list
@@ -45,25 +44,9 @@ def format_index_page(questions):
         new_content.append(f'| {question[0]} | [{question[1]}](https://leetcode.com/problems/{question[1]}) | {solutions} |\n')
     new_content.append('\n')
 
-    # Read the existing content of the README.md file
-    with open('README.md', 'r') as f:
-        lines = f.readlines()
-
-    # Find the index of the section header and replace its content
-    for i, line in enumerate(lines):
-        if line.startswith(section_header):
-            # Find the next section header or end of file
-            j = i + 1
-            while j < len(lines) and not lines[j].startswith('## '):
-                j += 1
-            
-            # Replace the content under the section header
-            lines = lines[:i + 2] + new_content + lines[j:]  # +2 to skip the header and the next line
-            break
-
-    # Write the modified content back to the README.md file
-    with open('README.md', 'w') as f:
-        f.writelines(lines)
+    # write the new content to the index.md file
+    with open('index.md', 'w') as f:
+        f.writelines(new_content)
 
 
 if __name__ == '__main__':
