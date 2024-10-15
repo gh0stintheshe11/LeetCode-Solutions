@@ -83,6 +83,23 @@ def rate_limited(func):
 
     return wrapper
 
+# Retry decorator
+def retry(max_attempts=3, wait_time=2):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            for attempt in range(max_attempts):
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    if attempt < max_attempts - 1:  # If not the last attempt
+                        print(f"Attempt {attempt + 1} failed: {e}. Retrying in {wait_time} seconds...")
+                        time.sleep(wait_time)
+                    else:
+                        print(f"All {max_attempts} attempts failed.")
+                        raise  # Re-raise the last exception
+        return wrapper
+    return decorator
+
 
 # format the header
 def get_common_header(suffix):
@@ -107,8 +124,7 @@ def login_to_leetcode():
 
         # Wait for the loading overlay to disappear
         try:
-            wait.until(EC.invisibility_of_element_located(
-                (By.ID, "initial-loading")))
+            wait.until(EC.invisibility_of_element_located((By.ID, "initial-loading")))
         except TimeoutException:
             print("Loading overlay did not disappear. Attempting to continue...")
 
@@ -125,8 +141,7 @@ def login_to_leetcode():
                 break
             except (TimeoutException, ElementClickInterceptedException) as e:
                 if attempt < max_attempts - 1:
-                    print(
-                        f"Attempt {attempt + 1} failed. Retrying in 5 seconds...")
+                    print(f"Attempt {attempt + 1} failed. Retrying in 5 seconds...")
                     time.sleep(5)
                 else:
                     print(
@@ -139,8 +154,7 @@ def login_to_leetcode():
         try:
             continue_button = wait.until(
                 EC.element_to_be_clickable(
-                    (By.XPATH,
-                     '//div[@id="base_content"]//button[text()="Continue"]')
+                    (By.XPATH, '//div[@id="base_content"]//button[text()="Continue"]')
                 )
             )
             continue_button.click()
@@ -158,8 +172,7 @@ def login_to_leetcode():
         driver.find_element(By.ID, "login_field").send_keys(
             os.getenv("LEETCODE_USERNAME")
         )
-        driver.find_element(By.ID, "password").send_keys(
-            os.getenv("LEETCODE_PASSWORD"))
+        driver.find_element(By.ID, "password").send_keys(os.getenv("LEETCODE_PASSWORD"))
 
         # Click Sign in button
         sign_in_button = wait.until(
@@ -208,6 +221,7 @@ def get_account_info():
         return True
     else:
         return False
+
 
 # list certain amount of questions
 def list_questions():
@@ -314,8 +328,7 @@ def get_question_details(problem_slug):
         # reformat the codeSnippets to be a dicts with lang as key and code as value
         # To this
         codeSnippets = {
-            snippet["lang"]: {
-                "langSlug": snippet["langSlug"], "code": snippet["code"]}
+            snippet["lang"]: {"langSlug": snippet["langSlug"], "code": snippet["code"]}
             for snippet in codeSnippets
         }
 
@@ -335,8 +348,7 @@ def get_question_details(problem_slug):
         }
         return question
     else:
-        raise Exception(
-            f"Failed to get question details: {response.status_code}")
+        raise Exception(f"Failed to get question details: {response.status_code}")
 
 
 # submit the solution, check the submit status
@@ -390,11 +402,9 @@ def check_submission(submission_id, slug):
                 )
                 raise Exception(f"Unexpected submission state: {result}")
         except JSONDecodeError:
-            print(
-                f"Failed to decode JSON on attempt {attempt + 1}. Retrying...")
+            print(f"Failed to decode JSON on attempt {attempt + 1}. Retrying...")
         except KeyError:
-            print(
-                f"Unexpected response format on attempt {attempt + 1}. Retrying...")
+            print(f"Unexpected response format on attempt {attempt + 1}. Retrying...")
 
     raise Exception("Timed out waiting for submission result")
 
@@ -446,11 +456,9 @@ def test(question_id, problem_slug, lang, code, test_case):
                 )
                 raise Exception(f"Unexpected submission state: {result}")
         except JSONDecodeError:
-            print(
-                f"Failed to decode JSON on attempt {attempt + 1}. Retrying...")
+            print(f"Failed to decode JSON on attempt {attempt + 1}. Retrying...")
         except KeyError:
-            print(
-                f"Unexpected response format on attempt {attempt + 1}. Retrying...")
+            print(f"Unexpected response format on attempt {attempt + 1}. Retrying...")
 
     raise Exception("Timed out waiting for submission result")
 
@@ -475,6 +483,7 @@ def extract_code(markdown_code):
 
 
 # generate the solution using GPT model
+@retry(max_attempts=3, wait_time=2)
 def generate(language, question, codeSnippets):
     print(f"Generating the solution...")
 
@@ -515,6 +524,7 @@ def generate(language, question, codeSnippets):
 
 
 # debug the code if there is an error
+@retry(max_attempts=3, wait_time=2)
 def debug(language, question, codeSnippet, current_code, submit_result):
     print(f"Debugging the solution...")
 
@@ -590,9 +600,34 @@ def get_next_unsolved():
 
     return None  # Couldn't find an unsolved question within the limit
 
+
+# check and shorten the test cases if there is any test case is too long
+def check_and_shorten_test_cases_in_question_detailed(question_detailed):
+    exampleTestcases = question_detailed["exampleTestcases"].split("\n")
+    # if there is any tests is longer than 1000 char, omit the middle part with "..." and keep the first and last chars, to avoid long test case exceed model token limit
+    if any(len(test) > 1000 for test in exampleTestcases):
+        exampleTestcases = [
+            test[:500] + "..." + test[-500:] if len(test) > 1000 else test
+            for test in exampleTestcases
+        ]
+    # join the example test cases back to string
+    question_detailed["exampleTestcases"] = "\n".join(exampleTestcases)
+    return question_detailed
+
+
+# check and shorten the test cases if there is any test case is too long
+def check_and_shorten_test_cases_in_result(submit_result):
+    if "last_testcase" in submit_result:
+        if len(submit_result["last_testcase"]) > 1000:
+            submit_result["last_testcase"] = (
+                submit_result["last_testcase"][:500]
+                + "..."
+                + submit_result["last_testcase"][-500:]
+            )
+    return submit_result
+
+
 # main logic of the solver
-
-
 def solver():
     print("--- Solver Start ---")
 
@@ -624,64 +659,37 @@ def solver():
         # extract the codeSnippets from the question_detailed
         codeSnippets = question_detailed.pop("codeSnippets")[language]["code"]
 
+        # generate the solution
+        try:
+            # check for long test cases
+            question_detailed_shortened = (
+                check_and_shorten_test_cases_in_question_detailed(question_detailed)
+            )
+            # generate the solution
+            solution = generate(language, question_detailed_shortened, codeSnippets)
+        except openai.BadRequestError as e:
+            print(f"Failed to generate solution: {e}")
+            continue
+
         submit_result = {"status_msg": "None"}
         submit_count = 0
-
         # if solution is not accpeted -> generate the solution
-        while submit_result["status_msg"] != "Accepted" and submit_count < SETTING["max_retries"]:
-
-            # seperate the example test cases in the question details
-            exampleTestcases = question_detailed["exampleTestcases"].split(
-                "\n")
-            # if there is any tests is longer than 60 char, omit the middle part with "..." and keep the first and last chars, to avoid long test case exceed model token limit
-            if any(len(test) > 60 for test in exampleTestcases):
-                exampleTestcases = [
-                    test[:30] + "..." + test[-30:] if len(test) > 60 else test
-                    for test in exampleTestcases
-                ]
-            # join the example test cases back to string
-            question_detailed["exampleTestcases"] = "\n".join(exampleTestcases)
-
-            if submit_count == 0:
-                try:
-                    # generate the solution
-                    solution = generate(
-                        language, question_detailed, codeSnippets)
-                except openai.BadRequestError as e:
-                    print(f"Failed to generate solution: {e}")
-                    break
-
-            else:
-                # shrten the last test case to avoid model token limit
-                if len(submit_result["last_testcase"]) > 60:
-                    submit_result["last_testcase"] = (
-                        submit_result["last_testcase"][:30]
-                        + "..."
-                        + submit_result["last_testcase"][-30:]
-                    )
-
-                try:
-                    solution = debug(
-                        language,
-                        question_detailed,
-                        codeSnippets,
-                        solution,
-                        submit_result,
-                    )
-                except openai.BadRequestError as e:
-                    print(f"Failed to debug solution: {e}")
-                    break
-
+        while (
+            submit_result["status_msg"] != "Accepted"
+            and submit_count < SETTING["max_submit_retries"]
+        ):
+            print(f"Submitting attempt {submit_count}")
             # submit the solution
             submit_result = submit(
                 current_question_id, question["titleSlug"], langSlug, solution
             )
 
             if submit_result["status_msg"] == "Accepted":
-                print(f"Solution accepted.")
                 break
             else:
-                print(f"Submission failed: {submit_result['status_msg']}")
+                print(
+                    f"Submission failed: {submit_result['status_msg']}. Start debugging..."
+                )
 
             # check if the last test case is already in the example test cases string
             if submit_result["last_testcase"] in question_detailed["exampleTestcases"]:
@@ -691,12 +699,65 @@ def solver():
                 question_detailed["exampleTestcases"] += (
                     "\n" + submit_result["last_testcase"]
                 )
+                print(f"Last test case added to the example test cases")
 
+            debug_count = 0
+            test_result = {"status_msg": "None"}
+            while (
+                test_result["status_msg"] != "Accepted"
+                and debug_count < SETTING["max_debug_retries"]
+            ):
+                print(f"Debugging attempt {debug_count}")
+                # debug the solution
+                try:
+                    # check for long test cases
+                    question_detailed_shortened = (
+                        check_and_shorten_test_cases_in_question_detailed(
+                            question_detailed
+                        )
+                    )
+                    last_test_result_shortened = check_and_shorten_test_cases_in_result(
+                        test_result
+                    )
+                    solution = debug(
+                        language,
+                        question_detailed_shortened,
+                        codeSnippets,
+                        solution,
+                        last_test_result_shortened,
+                    )
+                except openai.BadRequestError as e:
+                    print(f"Failed to debug solution: {e}")
+                    break
+
+                # submit the solution
+                test_result = test(
+                    current_question_id,
+                    question["titleSlug"],
+                    langSlug,
+                    solution,
+                    question_detailed["exampleTestcases"],
+                )
+
+                if test_result["status_msg"] == "Accepted":
+                    print(f"Debugging success: {test_result['status_msg']}")
+                    break
+                else:
+                    print(f"Debugging failed: {test_result['status_msg']}")
+                    debug_count += 1
+
+            if test_result["status_msg"] != "Accepted":
+                print(
+                    f"Debugging failed after {debug_count} attempts. Move to next question."
+                )
+                break
+            
             submit_count += 1
 
         if submit_result["status_msg"] != "Accepted":
             print(
-                f"question solving failed after {submit_count} attempts, move to next question")
+                f"question solving failed after {submit_count} attempts, move to next question"
+            )
         else:
             submit_result.pop("last_testcase")
             print("question solved successfully: ", submit_result)
