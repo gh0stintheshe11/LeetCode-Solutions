@@ -2,7 +2,7 @@
 
 ## Description
 
-LeetCode Solver Bot is an automated tool designed to solve LeetCode problems using AI-powered code generation. It interacts with the LeetCode platform to fetch problems, generate solutions, submit them, and handle debugging if necessary.
+LeetCode Solver Bot is an automated tool designed to solve LeetCode problems using AI-powered code generation. It interacts with the LeetCode platform to fetch problems, generate solutions, submit them, and handle debugging if necessary. Effortlessly solve LeetCode problems with the power of automation! LeetCode Solver Bot automates fetching problems, generating solutions, debugging, and submission. No more manual coding or debugging—just sit back and let the bot handle the heavy lifting.
 
 ## Features
 
