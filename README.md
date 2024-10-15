@@ -12,11 +12,11 @@
 This is all solutions for LeetCode problems in all available languages. (continous updating...)
 
 > [!TIP]\
-> Github will omit directory with over 1000 files, so you can't see all the solutions in one page. However, omited file is still reachable if you use the search bar. For example, you can search for the problem number to find the solution.
+> You can use the question list below to find the problem and solutions you want to see.
 
 ## Questions list
 
-To be updated...
+[Questions list](index.md)
 
 ## Automation Tools
 

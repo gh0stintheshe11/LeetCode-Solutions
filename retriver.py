@@ -14,6 +14,7 @@ from selenium.common.exceptions import (
     ElementClickInterceptedException,
 )
 import shutil
+import indexer
 
 load_dotenv()
 
@@ -558,3 +559,5 @@ if __name__ == "__main__":
     COOKIES = login_to_leetcode()
 
     retriver()
+    indexer.format_index_page(indexer.list_questions())
+    
