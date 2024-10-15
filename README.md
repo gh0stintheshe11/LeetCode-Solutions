@@ -1,6 +1,6 @@
 # LeetCode Solutions
 
-This is all solutions for LeetCode problems in all available languages. (continous updating...)
+This repo archives all solutions for all LeetCode problems in all available languages. (continous updating...)
 
 ## Table of Contents
 - [Questions list](#questions-list)
