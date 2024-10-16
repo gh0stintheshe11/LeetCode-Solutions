@@ -1,5 +1,5 @@
 > [!TIP]
-> All questions and solutions are indexed. Use ```Ctrl + F```/```Cmd + F``` is your friend :)
+> All questions and solutions are indexed. ```Ctrl + F```/```Cmd + F``` is your friend :)
 
 ## Questions List
 
