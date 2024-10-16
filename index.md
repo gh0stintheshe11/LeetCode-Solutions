@@ -35,218 +35,218 @@
 | 28 | [find-the-index-of-the-first-occurrence-in-a-string](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string) | [Python3](solutions/28.find-the-index-of-the-first-occurrence-in-a-string/Python3.py), [C++](solutions/28.find-the-index-of-the-first-occurrence-in-a-string/C++.cpp) |
 | 29 | [divide-two-integers](https://leetcode.com/problems/divide-two-integers) | [C](solutions/29.divide-two-integers/C.c) |
 | 30 | [substring-with-concatenation-of-all-words](https://leetcode.com/problems/substring-with-concatenation-of-all-words) | [C](solutions/30.substring-with-concatenation-of-all-words/C.c) |
-| 31 | [next-permutation](https://leetcode.com/problems/next-permutation) | [C](solutions/31.next-permutation/C.c) |
-| 32 | [longest-valid-parentheses](https://leetcode.com/problems/longest-valid-parentheses) | [C](solutions/32.longest-valid-parentheses/C.c), [Rust](solutions/32.longest-valid-parentheses/Rust.rs) |
-| 33 | [search-in-rotated-sorted-array](https://leetcode.com/problems/search-in-rotated-sorted-array) | [Rust](solutions/33.search-in-rotated-sorted-array/Rust.rs) |
-| 34 | [find-first-and-last-position-of-element-in-sorted-array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array) | [Rust](solutions/34.find-first-and-last-position-of-element-in-sorted-array/Rust.rs) |
-| 35 | [search-insert-position](https://leetcode.com/problems/search-insert-position) | [C](solutions/35.search-insert-position/C.c) |
-| 36 | [valid-sudoku](https://leetcode.com/problems/valid-sudoku) | [Python3](solutions/36.valid-sudoku/Python3.py) |
-| 37 | [sudoku-solver](https://leetcode.com/problems/sudoku-solver) | [C](solutions/37.sudoku-solver/C.c) |
-| 38 | [count-and-say](https://leetcode.com/problems/count-and-say) | [Python3](solutions/38.count-and-say/Python3.py) |
-| 39 | [combination-sum](https://leetcode.com/problems/combination-sum) | [Python3](solutions/39.combination-sum/Python3.py) |
-| 40 | [combination-sum-ii](https://leetcode.com/problems/combination-sum-ii) | [Python3](solutions/40.combination-sum-ii/Python3.py) |
-| 41 | [first-missing-positive](https://leetcode.com/problems/first-missing-positive) | [C](solutions/41.first-missing-positive/C.c) |
-| 42 | [trapping-rain-water](https://leetcode.com/problems/trapping-rain-water) | [C](solutions/42.trapping-rain-water/C.c) |
-| 43 | [multiply-strings](https://leetcode.com/problems/multiply-strings) | [Rust](solutions/43.multiply-strings/Rust.rs) |
-| 44 | [wildcard-matching](https://leetcode.com/problems/wildcard-matching) | [Python3](solutions/44.wildcard-matching/Python3.py) |
-| 45 | [jump-game-ii](https://leetcode.com/problems/jump-game-ii) | [Python3](solutions/45.jump-game-ii/Python3.py) |
-| 46 | [permutations](https://leetcode.com/problems/permutations) | [Python3](solutions/46.permutations/Python3.py) |
-| 47 | [permutations-ii](https://leetcode.com/problems/permutations-ii) | [Python3](solutions/47.permutations-ii/Python3.py) |
-| 48 | [rotate-image](https://leetcode.com/problems/rotate-image) | [Python3](solutions/48.rotate-image/Python3.py) |
-| 49 | [group-anagrams](https://leetcode.com/problems/group-anagrams) | [Python3](solutions/49.group-anagrams/Python3.py) |
-| 50 | [powx-n](https://leetcode.com/problems/powx-n) | [Rust](solutions/50.powx-n/Rust.rs) |
-| 51 | [n-queens](https://leetcode.com/problems/n-queens) | [Python3](solutions/51.n-queens/Python3.py) |
-| 52 | [n-queens-ii](https://leetcode.com/problems/n-queens-ii) | [Python3](solutions/52.n-queens-ii/Python3.py) |
-| 53 | [maximum-subarray](https://leetcode.com/problems/maximum-subarray) | [Python3](solutions/53.maximum-subarray/Python3.py) |
-| 54 | [spiral-matrix](https://leetcode.com/problems/spiral-matrix) | [Rust](solutions/54.spiral-matrix/Rust.rs) |
-| 55 | [jump-game](https://leetcode.com/problems/jump-game) | [Python3](solutions/55.jump-game/Python3.py) |
-| 56 | [merge-intervals](https://leetcode.com/problems/merge-intervals) | [Python3](solutions/56.merge-intervals/Python3.py) |
-| 57 | [insert-interval](https://leetcode.com/problems/insert-interval) | [Python3](solutions/57.insert-interval/Python3.py) |
-| 58 | [length-of-last-word](https://leetcode.com/problems/length-of-last-word) | [Python3](solutions/58.length-of-last-word/Python3.py) |
-| 59 | [spiral-matrix-ii](https://leetcode.com/problems/spiral-matrix-ii) | [Python3](solutions/59.spiral-matrix-ii/Python3.py) |
-| 60 | [permutation-sequence](https://leetcode.com/problems/permutation-sequence) | [Python3](solutions/60.permutation-sequence/Python3.py) |
-| 61 | [rotate-list](https://leetcode.com/problems/rotate-list) | [Python3](solutions/61.rotate-list/Python3.py) |
-| 62 | [unique-paths](https://leetcode.com/problems/unique-paths) | [Python3](solutions/62.unique-paths/Python3.py) |
-| 63 | [unique-paths-ii](https://leetcode.com/problems/unique-paths-ii) | [Python3](solutions/63.unique-paths-ii/Python3.py) |
-| 64 | [minimum-path-sum](https://leetcode.com/problems/minimum-path-sum) | [Python3](solutions/64.minimum-path-sum/Python3.py) |
-| 65 | [valid-number](https://leetcode.com/problems/valid-number) | [Python3](solutions/65.valid-number/Python3.py) |
-| 66 | [plus-one](https://leetcode.com/problems/plus-one) | [Python3](solutions/66.plus-one/Python3.py) |
-| 67 | [add-binary](https://leetcode.com/problems/add-binary) | [Rust](solutions/67.add-binary/Rust.rs) |
-| 68 | [text-justification](https://leetcode.com/problems/text-justification) | [Python3](solutions/68.text-justification/Python3.py) |
-| 69 | [sqrtx](https://leetcode.com/problems/sqrtx) | [Rust](solutions/69.sqrtx/Rust.rs) |
-| 70 | [climbing-stairs](https://leetcode.com/problems/climbing-stairs) | [Python3](solutions/70.climbing-stairs/Python3.py) |
-| 71 | [simplify-path](https://leetcode.com/problems/simplify-path) | [Python3](solutions/71.simplify-path/Python3.py) |
-| 72 | [edit-distance](https://leetcode.com/problems/edit-distance) | [Python3](solutions/72.edit-distance/Python3.py) |
-| 73 | [set-matrix-zeroes](https://leetcode.com/problems/set-matrix-zeroes) | [Rust](solutions/73.set-matrix-zeroes/Rust.rs) |
-| 74 | [search-a-2d-matrix](https://leetcode.com/problems/search-a-2d-matrix) | [C](solutions/74.search-a-2d-matrix/C.c) |
-| 75 | [sort-colors](https://leetcode.com/problems/sort-colors) | [Python3](solutions/75.sort-colors/Python3.py) |
-| 76 | [minimum-window-substring](https://leetcode.com/problems/minimum-window-substring) | [Python3](solutions/76.minimum-window-substring/Python3.py) |
-| 77 | [combinations](https://leetcode.com/problems/combinations) | [Python3](solutions/77.combinations/Python3.py) |
-| 78 | [subsets](https://leetcode.com/problems/subsets) | [Python3](solutions/78.subsets/Python3.py) |
-| 79 | [word-search](https://leetcode.com/problems/word-search) | [Python3](solutions/79.word-search/Python3.py) |
-| 80 | [remove-duplicates-from-sorted-array-ii](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii) | [Python3](solutions/80.remove-duplicates-from-sorted-array-ii/Python3.py) |
-| 81 | [search-in-rotated-sorted-array-ii](https://leetcode.com/problems/search-in-rotated-sorted-array-ii) | [Python3](solutions/81.search-in-rotated-sorted-array-ii/Python3.py) |
-| 82 | [remove-duplicates-from-sorted-list-ii](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii) | [Python3](solutions/82.remove-duplicates-from-sorted-list-ii/Python3.py) |
-| 83 | [remove-duplicates-from-sorted-list](https://leetcode.com/problems/remove-duplicates-from-sorted-list) | [Python3](solutions/83.remove-duplicates-from-sorted-list/Python3.py) |
-| 84 | [largest-rectangle-in-histogram](https://leetcode.com/problems/largest-rectangle-in-histogram) | [Python3](solutions/84.largest-rectangle-in-histogram/Python3.py) |
-| 85 | [maximal-rectangle](https://leetcode.com/problems/maximal-rectangle) | [Python3](solutions/85.maximal-rectangle/Python3.py) |
-| 86 | [partition-list](https://leetcode.com/problems/partition-list) | [Python3](solutions/86.partition-list/Python3.py) |
-| 87 | [scramble-string](https://leetcode.com/problems/scramble-string) | [Python3](solutions/87.scramble-string/Python3.py) |
-| 88 | [merge-sorted-array](https://leetcode.com/problems/merge-sorted-array) | [Python3](solutions/88.merge-sorted-array/Python3.py) |
-| 89 | [gray-code](https://leetcode.com/problems/gray-code) | [Python3](solutions/89.gray-code/Python3.py) |
-| 90 | [subsets-ii](https://leetcode.com/problems/subsets-ii) | [Python3](solutions/90.subsets-ii/Python3.py) |
-| 91 | [decode-ways](https://leetcode.com/problems/decode-ways) | [Python3](solutions/91.decode-ways/Python3.py) |
-| 92 | [reverse-linked-list-ii](https://leetcode.com/problems/reverse-linked-list-ii) | [Python3](solutions/92.reverse-linked-list-ii/Python3.py) |
-| 93 | [restore-ip-addresses](https://leetcode.com/problems/restore-ip-addresses) | [Python3](solutions/93.restore-ip-addresses/Python3.py) |
-| 94 | [binary-tree-inorder-traversal](https://leetcode.com/problems/binary-tree-inorder-traversal) | [Rust](solutions/94.binary-tree-inorder-traversal/Rust.rs) |
-| 95 | [unique-binary-search-trees-ii](https://leetcode.com/problems/unique-binary-search-trees-ii) | [Python3](solutions/95.unique-binary-search-trees-ii/Python3.py) |
-| 96 | [unique-binary-search-trees](https://leetcode.com/problems/unique-binary-search-trees) | [Python3](solutions/96.unique-binary-search-trees/Python3.py) |
-| 97 | [interleaving-string](https://leetcode.com/problems/interleaving-string) | [Python3](solutions/97.interleaving-string/Python3.py) |
-| 98 | [validate-binary-search-tree](https://leetcode.com/problems/validate-binary-search-tree) | [Python3](solutions/98.validate-binary-search-tree/Python3.py) |
-| 99 | [recover-binary-search-tree](https://leetcode.com/problems/recover-binary-search-tree) | [Python3](solutions/99.recover-binary-search-tree/Python3.py) |
-| 100 | [same-tree](https://leetcode.com/problems/same-tree) | [Python3](solutions/100.same-tree/Python3.py) |
-| 101 | [symmetric-tree](https://leetcode.com/problems/symmetric-tree) | [Python3](solutions/101.symmetric-tree/Python3.py) |
-| 102 | [binary-tree-level-order-traversal](https://leetcode.com/problems/binary-tree-level-order-traversal) | [Python3](solutions/102.binary-tree-level-order-traversal/Python3.py) |
-| 103 | [binary-tree-zigzag-level-order-traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal) | [Python3](solutions/103.binary-tree-zigzag-level-order-traversal/Python3.py) |
-| 104 | [maximum-depth-of-binary-tree](https://leetcode.com/problems/maximum-depth-of-binary-tree) | [Rust](solutions/104.maximum-depth-of-binary-tree/Rust.rs) |
-| 105 | [construct-binary-tree-from-preorder-and-inorder-traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal) | [Python3](solutions/105.construct-binary-tree-from-preorder-and-inorder-traversal/Python3.py) |
-| 106 | [construct-binary-tree-from-inorder-and-postorder-traversal](https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal) | [Python3](solutions/106.construct-binary-tree-from-inorder-and-postorder-traversal/Python3.py) |
-| 107 | [binary-tree-level-order-traversal-ii](https://leetcode.com/problems/binary-tree-level-order-traversal-ii) | [Python3](solutions/107.binary-tree-level-order-traversal-ii/Python3.py) |
-| 108 | [convert-sorted-array-to-binary-search-tree](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree) | [Python3](solutions/108.convert-sorted-array-to-binary-search-tree/Python3.py) |
-| 109 | [convert-sorted-list-to-binary-search-tree](https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree) | [Python3](solutions/109.convert-sorted-list-to-binary-search-tree/Python3.py) |
-| 110 | [balanced-binary-tree](https://leetcode.com/problems/balanced-binary-tree) | [Python3](solutions/110.balanced-binary-tree/Python3.py) |
-| 111 | [minimum-depth-of-binary-tree](https://leetcode.com/problems/minimum-depth-of-binary-tree) | [Rust](solutions/111.minimum-depth-of-binary-tree/Rust.rs) |
-| 112 | [path-sum](https://leetcode.com/problems/path-sum) | [Python3](solutions/112.path-sum/Python3.py) |
-| 113 | [path-sum-ii](https://leetcode.com/problems/path-sum-ii) | [Python3](solutions/113.path-sum-ii/Python3.py) |
-| 114 | [flatten-binary-tree-to-linked-list](https://leetcode.com/problems/flatten-binary-tree-to-linked-list) | [Python3](solutions/114.flatten-binary-tree-to-linked-list/Python3.py) |
+| 31 | [next-permutation](https://leetcode.com/problems/next-permutation) | [C](solutions/31.next-permutation/C.c), [C++](solutions/31.next-permutation/C++.cpp) |
+| 32 | [longest-valid-parentheses](https://leetcode.com/problems/longest-valid-parentheses) | [C](solutions/32.longest-valid-parentheses/C.c), [C++](solutions/32.longest-valid-parentheses/C++.cpp), [Rust](solutions/32.longest-valid-parentheses/Rust.rs) |
+| 33 | [search-in-rotated-sorted-array](https://leetcode.com/problems/search-in-rotated-sorted-array) | [C++](solutions/33.search-in-rotated-sorted-array/C++.cpp), [Rust](solutions/33.search-in-rotated-sorted-array/Rust.rs) |
+| 34 | [find-first-and-last-position-of-element-in-sorted-array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array) | [C++](solutions/34.find-first-and-last-position-of-element-in-sorted-array/C++.cpp), [Rust](solutions/34.find-first-and-last-position-of-element-in-sorted-array/Rust.rs) |
+| 35 | [search-insert-position](https://leetcode.com/problems/search-insert-position) | [C](solutions/35.search-insert-position/C.c), [C++](solutions/35.search-insert-position/C++.cpp) |
+| 36 | [valid-sudoku](https://leetcode.com/problems/valid-sudoku) | [Python3](solutions/36.valid-sudoku/Python3.py), [C++](solutions/36.valid-sudoku/C++.cpp) |
+| 37 | [sudoku-solver](https://leetcode.com/problems/sudoku-solver) | [C](solutions/37.sudoku-solver/C.c), [C++](solutions/37.sudoku-solver/C++.cpp) |
+| 38 | [count-and-say](https://leetcode.com/problems/count-and-say) | [Python3](solutions/38.count-and-say/Python3.py), [C++](solutions/38.count-and-say/C++.cpp) |
+| 39 | [combination-sum](https://leetcode.com/problems/combination-sum) | [Python3](solutions/39.combination-sum/Python3.py), [C++](solutions/39.combination-sum/C++.cpp) |
+| 40 | [combination-sum-ii](https://leetcode.com/problems/combination-sum-ii) | [Python3](solutions/40.combination-sum-ii/Python3.py), [C++](solutions/40.combination-sum-ii/C++.cpp) |
+| 41 | [first-missing-positive](https://leetcode.com/problems/first-missing-positive) | [C](solutions/41.first-missing-positive/C.c), [C++](solutions/41.first-missing-positive/C++.cpp) |
+| 42 | [trapping-rain-water](https://leetcode.com/problems/trapping-rain-water) | [C](solutions/42.trapping-rain-water/C.c), [C++](solutions/42.trapping-rain-water/C++.cpp) |
+| 43 | [multiply-strings](https://leetcode.com/problems/multiply-strings) | [C++](solutions/43.multiply-strings/C++.cpp), [Rust](solutions/43.multiply-strings/Rust.rs) |
+| 44 | [wildcard-matching](https://leetcode.com/problems/wildcard-matching) | [Python3](solutions/44.wildcard-matching/Python3.py), [C++](solutions/44.wildcard-matching/C++.cpp) |
+| 45 | [jump-game-ii](https://leetcode.com/problems/jump-game-ii) | [Python3](solutions/45.jump-game-ii/Python3.py), [C++](solutions/45.jump-game-ii/C++.cpp) |
+| 46 | [permutations](https://leetcode.com/problems/permutations) | [Python3](solutions/46.permutations/Python3.py), [C++](solutions/46.permutations/C++.cpp) |
+| 47 | [permutations-ii](https://leetcode.com/problems/permutations-ii) | [Python3](solutions/47.permutations-ii/Python3.py), [C++](solutions/47.permutations-ii/C++.cpp) |
+| 48 | [rotate-image](https://leetcode.com/problems/rotate-image) | [Python3](solutions/48.rotate-image/Python3.py), [C++](solutions/48.rotate-image/C++.cpp) |
+| 49 | [group-anagrams](https://leetcode.com/problems/group-anagrams) | [Python3](solutions/49.group-anagrams/Python3.py), [C++](solutions/49.group-anagrams/C++.cpp) |
+| 50 | [powx-n](https://leetcode.com/problems/powx-n) | [C++](solutions/50.powx-n/C++.cpp), [Rust](solutions/50.powx-n/Rust.rs) |
+| 51 | [n-queens](https://leetcode.com/problems/n-queens) | [Python3](solutions/51.n-queens/Python3.py), [C++](solutions/51.n-queens/C++.cpp) |
+| 52 | [n-queens-ii](https://leetcode.com/problems/n-queens-ii) | [Python3](solutions/52.n-queens-ii/Python3.py), [C++](solutions/52.n-queens-ii/C++.cpp) |
+| 53 | [maximum-subarray](https://leetcode.com/problems/maximum-subarray) | [Python3](solutions/53.maximum-subarray/Python3.py), [C++](solutions/53.maximum-subarray/C++.cpp) |
+| 54 | [spiral-matrix](https://leetcode.com/problems/spiral-matrix) | [C++](solutions/54.spiral-matrix/C++.cpp), [Rust](solutions/54.spiral-matrix/Rust.rs) |
+| 55 | [jump-game](https://leetcode.com/problems/jump-game) | [Python3](solutions/55.jump-game/Python3.py), [C++](solutions/55.jump-game/C++.cpp) |
+| 56 | [merge-intervals](https://leetcode.com/problems/merge-intervals) | [Python3](solutions/56.merge-intervals/Python3.py), [C++](solutions/56.merge-intervals/C++.cpp) |
+| 57 | [insert-interval](https://leetcode.com/problems/insert-interval) | [Python3](solutions/57.insert-interval/Python3.py), [C++](solutions/57.insert-interval/C++.cpp) |
+| 58 | [length-of-last-word](https://leetcode.com/problems/length-of-last-word) | [Python3](solutions/58.length-of-last-word/Python3.py), [C++](solutions/58.length-of-last-word/C++.cpp) |
+| 59 | [spiral-matrix-ii](https://leetcode.com/problems/spiral-matrix-ii) | [Python3](solutions/59.spiral-matrix-ii/Python3.py), [C++](solutions/59.spiral-matrix-ii/C++.cpp) |
+| 60 | [permutation-sequence](https://leetcode.com/problems/permutation-sequence) | [Python3](solutions/60.permutation-sequence/Python3.py), [C++](solutions/60.permutation-sequence/C++.cpp) |
+| 61 | [rotate-list](https://leetcode.com/problems/rotate-list) | [Python3](solutions/61.rotate-list/Python3.py), [C++](solutions/61.rotate-list/C++.cpp) |
+| 62 | [unique-paths](https://leetcode.com/problems/unique-paths) | [Python3](solutions/62.unique-paths/Python3.py), [C++](solutions/62.unique-paths/C++.cpp) |
+| 63 | [unique-paths-ii](https://leetcode.com/problems/unique-paths-ii) | [Python3](solutions/63.unique-paths-ii/Python3.py), [C++](solutions/63.unique-paths-ii/C++.cpp) |
+| 64 | [minimum-path-sum](https://leetcode.com/problems/minimum-path-sum) | [Python3](solutions/64.minimum-path-sum/Python3.py), [C++](solutions/64.minimum-path-sum/C++.cpp) |
+| 65 | [valid-number](https://leetcode.com/problems/valid-number) | [Python3](solutions/65.valid-number/Python3.py), [C++](solutions/65.valid-number/C++.cpp) |
+| 66 | [plus-one](https://leetcode.com/problems/plus-one) | [Python3](solutions/66.plus-one/Python3.py), [C++](solutions/66.plus-one/C++.cpp) |
+| 67 | [add-binary](https://leetcode.com/problems/add-binary) | [C++](solutions/67.add-binary/C++.cpp), [Rust](solutions/67.add-binary/Rust.rs) |
+| 68 | [text-justification](https://leetcode.com/problems/text-justification) | [Python3](solutions/68.text-justification/Python3.py), [C++](solutions/68.text-justification/C++.cpp) |
+| 69 | [sqrtx](https://leetcode.com/problems/sqrtx) | [C++](solutions/69.sqrtx/C++.cpp), [Rust](solutions/69.sqrtx/Rust.rs) |
+| 70 | [climbing-stairs](https://leetcode.com/problems/climbing-stairs) | [Python3](solutions/70.climbing-stairs/Python3.py), [C++](solutions/70.climbing-stairs/C++.cpp) |
+| 71 | [simplify-path](https://leetcode.com/problems/simplify-path) | [Python3](solutions/71.simplify-path/Python3.py), [C++](solutions/71.simplify-path/C++.cpp) |
+| 72 | [edit-distance](https://leetcode.com/problems/edit-distance) | [Python3](solutions/72.edit-distance/Python3.py), [C++](solutions/72.edit-distance/C++.cpp) |
+| 73 | [set-matrix-zeroes](https://leetcode.com/problems/set-matrix-zeroes) | [C++](solutions/73.set-matrix-zeroes/C++.cpp), [Rust](solutions/73.set-matrix-zeroes/Rust.rs) |
+| 74 | [search-a-2d-matrix](https://leetcode.com/problems/search-a-2d-matrix) | [C](solutions/74.search-a-2d-matrix/C.c), [C++](solutions/74.search-a-2d-matrix/C++.cpp) |
+| 75 | [sort-colors](https://leetcode.com/problems/sort-colors) | [Python3](solutions/75.sort-colors/Python3.py), [C++](solutions/75.sort-colors/C++.cpp) |
+| 76 | [minimum-window-substring](https://leetcode.com/problems/minimum-window-substring) | [Python3](solutions/76.minimum-window-substring/Python3.py), [C++](solutions/76.minimum-window-substring/C++.cpp) |
+| 77 | [combinations](https://leetcode.com/problems/combinations) | [Python3](solutions/77.combinations/Python3.py), [C++](solutions/77.combinations/C++.cpp) |
+| 78 | [subsets](https://leetcode.com/problems/subsets) | [Python3](solutions/78.subsets/Python3.py), [C++](solutions/78.subsets/C++.cpp) |
+| 79 | [word-search](https://leetcode.com/problems/word-search) | [Python3](solutions/79.word-search/Python3.py), [C++](solutions/79.word-search/C++.cpp) |
+| 80 | [remove-duplicates-from-sorted-array-ii](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii) | [Python3](solutions/80.remove-duplicates-from-sorted-array-ii/Python3.py), [C++](solutions/80.remove-duplicates-from-sorted-array-ii/C++.cpp) |
+| 81 | [search-in-rotated-sorted-array-ii](https://leetcode.com/problems/search-in-rotated-sorted-array-ii) | [Python3](solutions/81.search-in-rotated-sorted-array-ii/Python3.py), [C++](solutions/81.search-in-rotated-sorted-array-ii/C++.cpp) |
+| 82 | [remove-duplicates-from-sorted-list-ii](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii) | [Python3](solutions/82.remove-duplicates-from-sorted-list-ii/Python3.py), [C++](solutions/82.remove-duplicates-from-sorted-list-ii/C++.cpp) |
+| 83 | [remove-duplicates-from-sorted-list](https://leetcode.com/problems/remove-duplicates-from-sorted-list) | [Python3](solutions/83.remove-duplicates-from-sorted-list/Python3.py), [C++](solutions/83.remove-duplicates-from-sorted-list/C++.cpp) |
+| 84 | [largest-rectangle-in-histogram](https://leetcode.com/problems/largest-rectangle-in-histogram) | [Python3](solutions/84.largest-rectangle-in-histogram/Python3.py), [C++](solutions/84.largest-rectangle-in-histogram/C++.cpp) |
+| 85 | [maximal-rectangle](https://leetcode.com/problems/maximal-rectangle) | [Python3](solutions/85.maximal-rectangle/Python3.py), [C++](solutions/85.maximal-rectangle/C++.cpp) |
+| 86 | [partition-list](https://leetcode.com/problems/partition-list) | [Python3](solutions/86.partition-list/Python3.py), [C++](solutions/86.partition-list/C++.cpp) |
+| 87 | [scramble-string](https://leetcode.com/problems/scramble-string) | [Python3](solutions/87.scramble-string/Python3.py), [C++](solutions/87.scramble-string/C++.cpp) |
+| 88 | [merge-sorted-array](https://leetcode.com/problems/merge-sorted-array) | [Python3](solutions/88.merge-sorted-array/Python3.py), [C++](solutions/88.merge-sorted-array/C++.cpp) |
+| 89 | [gray-code](https://leetcode.com/problems/gray-code) | [Python3](solutions/89.gray-code/Python3.py), [C++](solutions/89.gray-code/C++.cpp) |
+| 90 | [subsets-ii](https://leetcode.com/problems/subsets-ii) | [Python3](solutions/90.subsets-ii/Python3.py), [C++](solutions/90.subsets-ii/C++.cpp) |
+| 91 | [decode-ways](https://leetcode.com/problems/decode-ways) | [Python3](solutions/91.decode-ways/Python3.py), [C++](solutions/91.decode-ways/C++.cpp) |
+| 92 | [reverse-linked-list-ii](https://leetcode.com/problems/reverse-linked-list-ii) | [Python3](solutions/92.reverse-linked-list-ii/Python3.py), [C++](solutions/92.reverse-linked-list-ii/C++.cpp) |
+| 93 | [restore-ip-addresses](https://leetcode.com/problems/restore-ip-addresses) | [Python3](solutions/93.restore-ip-addresses/Python3.py), [C++](solutions/93.restore-ip-addresses/C++.cpp) |
+| 94 | [binary-tree-inorder-traversal](https://leetcode.com/problems/binary-tree-inorder-traversal) | [C++](solutions/94.binary-tree-inorder-traversal/C++.cpp), [Rust](solutions/94.binary-tree-inorder-traversal/Rust.rs) |
+| 95 | [unique-binary-search-trees-ii](https://leetcode.com/problems/unique-binary-search-trees-ii) | [Python3](solutions/95.unique-binary-search-trees-ii/Python3.py), [C++](solutions/95.unique-binary-search-trees-ii/C++.cpp) |
+| 96 | [unique-binary-search-trees](https://leetcode.com/problems/unique-binary-search-trees) | [Python3](solutions/96.unique-binary-search-trees/Python3.py), [C++](solutions/96.unique-binary-search-trees/C++.cpp) |
+| 97 | [interleaving-string](https://leetcode.com/problems/interleaving-string) | [Python3](solutions/97.interleaving-string/Python3.py), [C++](solutions/97.interleaving-string/C++.cpp) |
+| 98 | [validate-binary-search-tree](https://leetcode.com/problems/validate-binary-search-tree) | [Python3](solutions/98.validate-binary-search-tree/Python3.py), [C++](solutions/98.validate-binary-search-tree/C++.cpp) |
+| 99 | [recover-binary-search-tree](https://leetcode.com/problems/recover-binary-search-tree) | [Python3](solutions/99.recover-binary-search-tree/Python3.py), [C++](solutions/99.recover-binary-search-tree/C++.cpp) |
+| 100 | [same-tree](https://leetcode.com/problems/same-tree) | [Python3](solutions/100.same-tree/Python3.py), [C++](solutions/100.same-tree/C++.cpp) |
+| 101 | [symmetric-tree](https://leetcode.com/problems/symmetric-tree) | [Python3](solutions/101.symmetric-tree/Python3.py), [C++](solutions/101.symmetric-tree/C++.cpp) |
+| 102 | [binary-tree-level-order-traversal](https://leetcode.com/problems/binary-tree-level-order-traversal) | [Python3](solutions/102.binary-tree-level-order-traversal/Python3.py), [C++](solutions/102.binary-tree-level-order-traversal/C++.cpp) |
+| 103 | [binary-tree-zigzag-level-order-traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal) | [Python3](solutions/103.binary-tree-zigzag-level-order-traversal/Python3.py), [C++](solutions/103.binary-tree-zigzag-level-order-traversal/C++.cpp) |
+| 104 | [maximum-depth-of-binary-tree](https://leetcode.com/problems/maximum-depth-of-binary-tree) | [C++](solutions/104.maximum-depth-of-binary-tree/C++.cpp), [Rust](solutions/104.maximum-depth-of-binary-tree/Rust.rs) |
+| 105 | [construct-binary-tree-from-preorder-and-inorder-traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal) | [Python3](solutions/105.construct-binary-tree-from-preorder-and-inorder-traversal/Python3.py), [C++](solutions/105.construct-binary-tree-from-preorder-and-inorder-traversal/C++.cpp) |
+| 106 | [construct-binary-tree-from-inorder-and-postorder-traversal](https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal) | [Python3](solutions/106.construct-binary-tree-from-inorder-and-postorder-traversal/Python3.py), [C++](solutions/106.construct-binary-tree-from-inorder-and-postorder-traversal/C++.cpp) |
+| 107 | [binary-tree-level-order-traversal-ii](https://leetcode.com/problems/binary-tree-level-order-traversal-ii) | [Python3](solutions/107.binary-tree-level-order-traversal-ii/Python3.py), [C++](solutions/107.binary-tree-level-order-traversal-ii/C++.cpp) |
+| 108 | [convert-sorted-array-to-binary-search-tree](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree) | [Python3](solutions/108.convert-sorted-array-to-binary-search-tree/Python3.py), [C++](solutions/108.convert-sorted-array-to-binary-search-tree/C++.cpp) |
+| 109 | [convert-sorted-list-to-binary-search-tree](https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree) | [Python3](solutions/109.convert-sorted-list-to-binary-search-tree/Python3.py), [C++](solutions/109.convert-sorted-list-to-binary-search-tree/C++.cpp) |
+| 110 | [balanced-binary-tree](https://leetcode.com/problems/balanced-binary-tree) | [Python3](solutions/110.balanced-binary-tree/Python3.py), [C++](solutions/110.balanced-binary-tree/C++.cpp) |
+| 111 | [minimum-depth-of-binary-tree](https://leetcode.com/problems/minimum-depth-of-binary-tree) | [C++](solutions/111.minimum-depth-of-binary-tree/C++.cpp), [Rust](solutions/111.minimum-depth-of-binary-tree/Rust.rs) |
+| 112 | [path-sum](https://leetcode.com/problems/path-sum) | [Python3](solutions/112.path-sum/Python3.py), [C++](solutions/112.path-sum/C++.cpp) |
+| 113 | [path-sum-ii](https://leetcode.com/problems/path-sum-ii) | [Python3](solutions/113.path-sum-ii/Python3.py), [C++](solutions/113.path-sum-ii/C++.cpp) |
+| 114 | [flatten-binary-tree-to-linked-list](https://leetcode.com/problems/flatten-binary-tree-to-linked-list) | [Python3](solutions/114.flatten-binary-tree-to-linked-list/Python3.py), [C++](solutions/114.flatten-binary-tree-to-linked-list/C++.cpp) |
 | 115 | [distinct-subsequences](https://leetcode.com/problems/distinct-subsequences) | [Python3](solutions/115.distinct-subsequences/Python3.py) |
-| 116 | [populating-next-right-pointers-in-each-node](https://leetcode.com/problems/populating-next-right-pointers-in-each-node) | [Python3](solutions/116.populating-next-right-pointers-in-each-node/Python3.py) |
-| 117 | [populating-next-right-pointers-in-each-node-ii](https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii) | [Python3](solutions/117.populating-next-right-pointers-in-each-node-ii/Python3.py) |
-| 118 | [pascals-triangle](https://leetcode.com/problems/pascals-triangle) | [Python3](solutions/118.pascals-triangle/Python3.py) |
-| 119 | [pascals-triangle-ii](https://leetcode.com/problems/pascals-triangle-ii) | [Python3](solutions/119.pascals-triangle-ii/Python3.py) |
-| 120 | [triangle](https://leetcode.com/problems/triangle) | [Python3](solutions/120.triangle/Python3.py) |
-| 121 | [best-time-to-buy-and-sell-stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock) | [Python3](solutions/121.best-time-to-buy-and-sell-stock/Python3.py) |
-| 122 | [best-time-to-buy-and-sell-stock-ii](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii) | [Python3](solutions/122.best-time-to-buy-and-sell-stock-ii/Python3.py) |
-| 123 | [best-time-to-buy-and-sell-stock-iii](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii) | [Python3](solutions/123.best-time-to-buy-and-sell-stock-iii/Python3.py) |
-| 124 | [binary-tree-maximum-path-sum](https://leetcode.com/problems/binary-tree-maximum-path-sum) | [Python3](solutions/124.binary-tree-maximum-path-sum/Python3.py) |
-| 125 | [valid-palindrome](https://leetcode.com/problems/valid-palindrome) | [Python3](solutions/125.valid-palindrome/Python3.py) |
+| 116 | [populating-next-right-pointers-in-each-node](https://leetcode.com/problems/populating-next-right-pointers-in-each-node) | [Python3](solutions/116.populating-next-right-pointers-in-each-node/Python3.py), [C++](solutions/116.populating-next-right-pointers-in-each-node/C++.cpp) |
+| 117 | [populating-next-right-pointers-in-each-node-ii](https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii) | [Python3](solutions/117.populating-next-right-pointers-in-each-node-ii/Python3.py), [C++](solutions/117.populating-next-right-pointers-in-each-node-ii/C++.cpp) |
+| 118 | [pascals-triangle](https://leetcode.com/problems/pascals-triangle) | [Python3](solutions/118.pascals-triangle/Python3.py), [C++](solutions/118.pascals-triangle/C++.cpp) |
+| 119 | [pascals-triangle-ii](https://leetcode.com/problems/pascals-triangle-ii) | [Python3](solutions/119.pascals-triangle-ii/Python3.py), [C++](solutions/119.pascals-triangle-ii/C++.cpp) |
+| 120 | [triangle](https://leetcode.com/problems/triangle) | [Python3](solutions/120.triangle/Python3.py), [C++](solutions/120.triangle/C++.cpp) |
+| 121 | [best-time-to-buy-and-sell-stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock) | [Python3](solutions/121.best-time-to-buy-and-sell-stock/Python3.py), [C++](solutions/121.best-time-to-buy-and-sell-stock/C++.cpp) |
+| 122 | [best-time-to-buy-and-sell-stock-ii](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii) | [Python3](solutions/122.best-time-to-buy-and-sell-stock-ii/Python3.py), [C++](solutions/122.best-time-to-buy-and-sell-stock-ii/C++.cpp) |
+| 123 | [best-time-to-buy-and-sell-stock-iii](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii) | [Python3](solutions/123.best-time-to-buy-and-sell-stock-iii/Python3.py), [C++](solutions/123.best-time-to-buy-and-sell-stock-iii/C++.cpp) |
+| 124 | [binary-tree-maximum-path-sum](https://leetcode.com/problems/binary-tree-maximum-path-sum) | [Python3](solutions/124.binary-tree-maximum-path-sum/Python3.py), [C++](solutions/124.binary-tree-maximum-path-sum/C++.cpp) |
+| 125 | [valid-palindrome](https://leetcode.com/problems/valid-palindrome) | [Python3](solutions/125.valid-palindrome/Python3.py), [C++](solutions/125.valid-palindrome/C++.cpp) |
 | 126 | [word-ladder-ii](https://leetcode.com/problems/word-ladder-ii) | [Python3](solutions/126.word-ladder-ii/Python3.py) |
-| 127 | [word-ladder](https://leetcode.com/problems/word-ladder) | [Rust](solutions/127.word-ladder/Rust.rs) |
-| 128 | [longest-consecutive-sequence](https://leetcode.com/problems/longest-consecutive-sequence) | [Python3](solutions/128.longest-consecutive-sequence/Python3.py) |
-| 129 | [sum-root-to-leaf-numbers](https://leetcode.com/problems/sum-root-to-leaf-numbers) | [Python3](solutions/129.sum-root-to-leaf-numbers/Python3.py) |
-| 130 | [surrounded-regions](https://leetcode.com/problems/surrounded-regions) | [Python3](solutions/130.surrounded-regions/Python3.py) |
-| 131 | [palindrome-partitioning](https://leetcode.com/problems/palindrome-partitioning) | [Python3](solutions/131.palindrome-partitioning/Python3.py) |
-| 132 | [palindrome-partitioning-ii](https://leetcode.com/problems/palindrome-partitioning-ii) | [Python3](solutions/132.palindrome-partitioning-ii/Python3.py) |
-| 133 | [clone-graph](https://leetcode.com/problems/clone-graph) | [Python3](solutions/133.clone-graph/Python3.py) |
-| 134 | [gas-station](https://leetcode.com/problems/gas-station) | [Python3](solutions/134.gas-station/Python3.py) |
-| 135 | [candy](https://leetcode.com/problems/candy) | [Python3](solutions/135.candy/Python3.py) |
-| 136 | [single-number](https://leetcode.com/problems/single-number) | [Python3](solutions/136.single-number/Python3.py) |
-| 137 | [single-number-ii](https://leetcode.com/problems/single-number-ii) | [Python3](solutions/137.single-number-ii/Python3.py) |
-| 138 | [copy-list-with-random-pointer](https://leetcode.com/problems/copy-list-with-random-pointer) | [Python3](solutions/138.copy-list-with-random-pointer/Python3.py) |
-| 139 | [word-break](https://leetcode.com/problems/word-break) | [Python3](solutions/139.word-break/Python3.py) |
-| 140 | [word-break-ii](https://leetcode.com/problems/word-break-ii) | [Python3](solutions/140.word-break-ii/Python3.py) |
-| 141 | [linked-list-cycle](https://leetcode.com/problems/linked-list-cycle) | [Python3](solutions/141.linked-list-cycle/Python3.py) |
-| 142 | [linked-list-cycle-ii](https://leetcode.com/problems/linked-list-cycle-ii) | [Python3](solutions/142.linked-list-cycle-ii/Python3.py) |
-| 143 | [reorder-list](https://leetcode.com/problems/reorder-list) | [Python3](solutions/143.reorder-list/Python3.py) |
-| 144 | [binary-tree-preorder-traversal](https://leetcode.com/problems/binary-tree-preorder-traversal) | [Python3](solutions/144.binary-tree-preorder-traversal/Python3.py) |
-| 145 | [binary-tree-postorder-traversal](https://leetcode.com/problems/binary-tree-postorder-traversal) | [Python3](solutions/145.binary-tree-postorder-traversal/Python3.py) |
-| 146 | [lru-cache](https://leetcode.com/problems/lru-cache) | [Python3](solutions/146.lru-cache/Python3.py) |
-| 147 | [insertion-sort-list](https://leetcode.com/problems/insertion-sort-list) | [Python3](solutions/147.insertion-sort-list/Python3.py) |
-| 148 | [sort-list](https://leetcode.com/problems/sort-list) | [Python3](solutions/148.sort-list/Python3.py) |
-| 149 | [max-points-on-a-line](https://leetcode.com/problems/max-points-on-a-line) | [Python3](solutions/149.max-points-on-a-line/Python3.py) |
-| 150 | [evaluate-reverse-polish-notation](https://leetcode.com/problems/evaluate-reverse-polish-notation) | [Python3](solutions/150.evaluate-reverse-polish-notation/Python3.py) |
-| 151 | [reverse-words-in-a-string](https://leetcode.com/problems/reverse-words-in-a-string) | [Python3](solutions/151.reverse-words-in-a-string/Python3.py) |
-| 152 | [maximum-product-subarray](https://leetcode.com/problems/maximum-product-subarray) | [Python3](solutions/152.maximum-product-subarray/Python3.py) |
-| 153 | [find-minimum-in-rotated-sorted-array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array) | [Rust](solutions/153.find-minimum-in-rotated-sorted-array/Rust.rs) |
-| 154 | [find-minimum-in-rotated-sorted-array-ii](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii) | [Rust](solutions/154.find-minimum-in-rotated-sorted-array-ii/Rust.rs) |
-| 155 | [min-stack](https://leetcode.com/problems/min-stack) | [Python3](solutions/155.min-stack/Python3.py) |
+| 127 | [word-ladder](https://leetcode.com/problems/word-ladder) | [C++](solutions/127.word-ladder/C++.cpp), [Rust](solutions/127.word-ladder/Rust.rs) |
+| 128 | [longest-consecutive-sequence](https://leetcode.com/problems/longest-consecutive-sequence) | [Python3](solutions/128.longest-consecutive-sequence/Python3.py), [C++](solutions/128.longest-consecutive-sequence/C++.cpp) |
+| 129 | [sum-root-to-leaf-numbers](https://leetcode.com/problems/sum-root-to-leaf-numbers) | [Python3](solutions/129.sum-root-to-leaf-numbers/Python3.py), [C++](solutions/129.sum-root-to-leaf-numbers/C++.cpp) |
+| 130 | [surrounded-regions](https://leetcode.com/problems/surrounded-regions) | [Python3](solutions/130.surrounded-regions/Python3.py), [C++](solutions/130.surrounded-regions/C++.cpp) |
+| 131 | [palindrome-partitioning](https://leetcode.com/problems/palindrome-partitioning) | [Python3](solutions/131.palindrome-partitioning/Python3.py), [C++](solutions/131.palindrome-partitioning/C++.cpp) |
+| 132 | [palindrome-partitioning-ii](https://leetcode.com/problems/palindrome-partitioning-ii) | [Python3](solutions/132.palindrome-partitioning-ii/Python3.py), [C++](solutions/132.palindrome-partitioning-ii/C++.cpp) |
+| 133 | [clone-graph](https://leetcode.com/problems/clone-graph) | [Python3](solutions/133.clone-graph/Python3.py), [C++](solutions/133.clone-graph/C++.cpp) |
+| 134 | [gas-station](https://leetcode.com/problems/gas-station) | [Python3](solutions/134.gas-station/Python3.py), [C++](solutions/134.gas-station/C++.cpp) |
+| 135 | [candy](https://leetcode.com/problems/candy) | [Python3](solutions/135.candy/Python3.py), [C++](solutions/135.candy/C++.cpp) |
+| 136 | [single-number](https://leetcode.com/problems/single-number) | [Python3](solutions/136.single-number/Python3.py), [C++](solutions/136.single-number/C++.cpp) |
+| 137 | [single-number-ii](https://leetcode.com/problems/single-number-ii) | [Python3](solutions/137.single-number-ii/Python3.py), [C++](solutions/137.single-number-ii/C++.cpp) |
+| 138 | [copy-list-with-random-pointer](https://leetcode.com/problems/copy-list-with-random-pointer) | [Python3](solutions/138.copy-list-with-random-pointer/Python3.py), [C++](solutions/138.copy-list-with-random-pointer/C++.cpp) |
+| 139 | [word-break](https://leetcode.com/problems/word-break) | [Python3](solutions/139.word-break/Python3.py), [C++](solutions/139.word-break/C++.cpp) |
+| 140 | [word-break-ii](https://leetcode.com/problems/word-break-ii) | [Python3](solutions/140.word-break-ii/Python3.py), [C++](solutions/140.word-break-ii/C++.cpp) |
+| 141 | [linked-list-cycle](https://leetcode.com/problems/linked-list-cycle) | [Python3](solutions/141.linked-list-cycle/Python3.py), [C++](solutions/141.linked-list-cycle/C++.cpp) |
+| 142 | [linked-list-cycle-ii](https://leetcode.com/problems/linked-list-cycle-ii) | [Python3](solutions/142.linked-list-cycle-ii/Python3.py), [C++](solutions/142.linked-list-cycle-ii/C++.cpp) |
+| 143 | [reorder-list](https://leetcode.com/problems/reorder-list) | [Python3](solutions/143.reorder-list/Python3.py), [C++](solutions/143.reorder-list/C++.cpp) |
+| 144 | [binary-tree-preorder-traversal](https://leetcode.com/problems/binary-tree-preorder-traversal) | [Python3](solutions/144.binary-tree-preorder-traversal/Python3.py), [C++](solutions/144.binary-tree-preorder-traversal/C++.cpp) |
+| 145 | [binary-tree-postorder-traversal](https://leetcode.com/problems/binary-tree-postorder-traversal) | [Python3](solutions/145.binary-tree-postorder-traversal/Python3.py), [C++](solutions/145.binary-tree-postorder-traversal/C++.cpp) |
+| 146 | [lru-cache](https://leetcode.com/problems/lru-cache) | [Python3](solutions/146.lru-cache/Python3.py), [C++](solutions/146.lru-cache/C++.cpp) |
+| 147 | [insertion-sort-list](https://leetcode.com/problems/insertion-sort-list) | [Python3](solutions/147.insertion-sort-list/Python3.py), [C++](solutions/147.insertion-sort-list/C++.cpp) |
+| 148 | [sort-list](https://leetcode.com/problems/sort-list) | [Python3](solutions/148.sort-list/Python3.py), [C++](solutions/148.sort-list/C++.cpp) |
+| 149 | [max-points-on-a-line](https://leetcode.com/problems/max-points-on-a-line) | [Python3](solutions/149.max-points-on-a-line/Python3.py), [C++](solutions/149.max-points-on-a-line/C++.cpp) |
+| 150 | [evaluate-reverse-polish-notation](https://leetcode.com/problems/evaluate-reverse-polish-notation) | [Python3](solutions/150.evaluate-reverse-polish-notation/Python3.py), [C++](solutions/150.evaluate-reverse-polish-notation/C++.cpp) |
+| 151 | [reverse-words-in-a-string](https://leetcode.com/problems/reverse-words-in-a-string) | [Python3](solutions/151.reverse-words-in-a-string/Python3.py), [C++](solutions/151.reverse-words-in-a-string/C++.cpp) |
+| 152 | [maximum-product-subarray](https://leetcode.com/problems/maximum-product-subarray) | [Python3](solutions/152.maximum-product-subarray/Python3.py), [C++](solutions/152.maximum-product-subarray/C++.cpp) |
+| 153 | [find-minimum-in-rotated-sorted-array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array) | [C++](solutions/153.find-minimum-in-rotated-sorted-array/C++.cpp), [Rust](solutions/153.find-minimum-in-rotated-sorted-array/Rust.rs) |
+| 154 | [find-minimum-in-rotated-sorted-array-ii](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii) | [C++](solutions/154.find-minimum-in-rotated-sorted-array-ii/C++.cpp), [Rust](solutions/154.find-minimum-in-rotated-sorted-array-ii/Rust.rs) |
+| 155 | [min-stack](https://leetcode.com/problems/min-stack) | [Python3](solutions/155.min-stack/Python3.py), [C++](solutions/155.min-stack/C++.cpp) |
 | 156 | [binary-tree-upside-down](https://leetcode.com/problems/binary-tree-upside-down) | [Python3](solutions/156.binary-tree-upside-down/Python3.py) |
 | 157 | [read-n-characters-given-read4](https://leetcode.com/problems/read-n-characters-given-read4) | [Python3](solutions/157.read-n-characters-given-read4/Python3.py) |
 | 158 | [read-n-characters-given-read4-ii-call-multiple-times](https://leetcode.com/problems/read-n-characters-given-read4-ii-call-multiple-times) | [Python3](solutions/158.read-n-characters-given-read4-ii-call-multiple-times/Python3.py) |
 | 159 | [longest-substring-with-at-most-two-distinct-characters](https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters) | [Python3](solutions/159.longest-substring-with-at-most-two-distinct-characters/Python3.py) |
-| 160 | [intersection-of-two-linked-lists](https://leetcode.com/problems/intersection-of-two-linked-lists) | [Python3](solutions/160.intersection-of-two-linked-lists/Python3.py) |
+| 160 | [intersection-of-two-linked-lists](https://leetcode.com/problems/intersection-of-two-linked-lists) | [Python3](solutions/160.intersection-of-two-linked-lists/Python3.py), [C++](solutions/160.intersection-of-two-linked-lists/C++.cpp) |
 | 161 | [one-edit-distance](https://leetcode.com/problems/one-edit-distance) | [Python3](solutions/161.one-edit-distance/Python3.py) |
-| 162 | [find-peak-element](https://leetcode.com/problems/find-peak-element) | [Python3](solutions/162.find-peak-element/Python3.py) |
+| 162 | [find-peak-element](https://leetcode.com/problems/find-peak-element) | [Python3](solutions/162.find-peak-element/Python3.py), [C++](solutions/162.find-peak-element/C++.cpp) |
 | 163 | [missing-ranges](https://leetcode.com/problems/missing-ranges) | [Python3](solutions/163.missing-ranges/Python3.py) |
-| 164 | [maximum-gap](https://leetcode.com/problems/maximum-gap) | [Python3](solutions/164.maximum-gap/Python3.py) |
-| 165 | [compare-version-numbers](https://leetcode.com/problems/compare-version-numbers) | [Python3](solutions/165.compare-version-numbers/Python3.py) |
-| 166 | [fraction-to-recurring-decimal](https://leetcode.com/problems/fraction-to-recurring-decimal) | [Python3](solutions/166.fraction-to-recurring-decimal/Python3.py) |
-| 167 | [two-sum-ii-input-array-is-sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted) | [Python3](solutions/167.two-sum-ii-input-array-is-sorted/Python3.py) |
-| 168 | [excel-sheet-column-title](https://leetcode.com/problems/excel-sheet-column-title) | [Python3](solutions/168.excel-sheet-column-title/Python3.py) |
-| 169 | [majority-element](https://leetcode.com/problems/majority-element) | [Python3](solutions/169.majority-element/Python3.py) |
+| 164 | [maximum-gap](https://leetcode.com/problems/maximum-gap) | [Python3](solutions/164.maximum-gap/Python3.py), [C++](solutions/164.maximum-gap/C++.cpp) |
+| 165 | [compare-version-numbers](https://leetcode.com/problems/compare-version-numbers) | [Python3](solutions/165.compare-version-numbers/Python3.py), [C++](solutions/165.compare-version-numbers/C++.cpp) |
+| 166 | [fraction-to-recurring-decimal](https://leetcode.com/problems/fraction-to-recurring-decimal) | [Python3](solutions/166.fraction-to-recurring-decimal/Python3.py), [C++](solutions/166.fraction-to-recurring-decimal/C++.cpp) |
+| 167 | [two-sum-ii-input-array-is-sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted) | [Python3](solutions/167.two-sum-ii-input-array-is-sorted/Python3.py), [C++](solutions/167.two-sum-ii-input-array-is-sorted/C++.cpp) |
+| 168 | [excel-sheet-column-title](https://leetcode.com/problems/excel-sheet-column-title) | [Python3](solutions/168.excel-sheet-column-title/Python3.py), [C++](solutions/168.excel-sheet-column-title/C++.cpp) |
+| 169 | [majority-element](https://leetcode.com/problems/majority-element) | [Python3](solutions/169.majority-element/Python3.py), [C++](solutions/169.majority-element/C++.cpp) |
 | 170 | [two-sum-iii-data-structure-design](https://leetcode.com/problems/two-sum-iii-data-structure-design) | [Python3](solutions/170.two-sum-iii-data-structure-design/Python3.py) |
-| 171 | [excel-sheet-column-number](https://leetcode.com/problems/excel-sheet-column-number) | [Python3](solutions/171.excel-sheet-column-number/Python3.py) |
-| 172 | [factorial-trailing-zeroes](https://leetcode.com/problems/factorial-trailing-zeroes) | [Python3](solutions/172.factorial-trailing-zeroes/Python3.py) |
-| 173 | [binary-search-tree-iterator](https://leetcode.com/problems/binary-search-tree-iterator) | [Python3](solutions/173.binary-search-tree-iterator/Python3.py) |
-| 174 | [dungeon-game](https://leetcode.com/problems/dungeon-game) | [Python3](solutions/174.dungeon-game/Python3.py) |
-| 175 | [combine-two-tables](https://leetcode.com/problems/combine-two-tables) | [MySQL](solutions/175.combine-two-tables/MySQL.sql) |
-| 176 | [second-highest-salary](https://leetcode.com/problems/second-highest-salary) | [Pandas](solutions/176.second-highest-salary/Pandas.py) |
-| 177 | [nth-highest-salary](https://leetcode.com/problems/nth-highest-salary) | [Pandas](solutions/177.nth-highest-salary/Pandas.py) |
-| 178 | [rank-scores](https://leetcode.com/problems/rank-scores) | [Pandas](solutions/178.rank-scores/Pandas.py) |
-| 179 | [largest-number](https://leetcode.com/problems/largest-number) | [Python3](solutions/179.largest-number/Python3.py), [C](solutions/179.largest-number/C.c), [Rust](solutions/179.largest-number/Rust.rs) |
-| 180 | [consecutive-numbers](https://leetcode.com/problems/consecutive-numbers) | [Pandas](solutions/180.consecutive-numbers/Pandas.py) |
-| 181 | [employees-earning-more-than-their-managers](https://leetcode.com/problems/employees-earning-more-than-their-managers) | [MySQL](solutions/181.employees-earning-more-than-their-managers/MySQL.sql) |
-| 182 | [duplicate-emails](https://leetcode.com/problems/duplicate-emails) | [MySQL](solutions/182.duplicate-emails/MySQL.sql) |
-| 183 | [customers-who-never-order](https://leetcode.com/problems/customers-who-never-order) | [Pandas](solutions/183.customers-who-never-order/Pandas.py) |
-| 184 | [department-highest-salary](https://leetcode.com/problems/department-highest-salary) | [Pandas](solutions/184.department-highest-salary/Pandas.py) |
-| 185 | [department-top-three-salaries](https://leetcode.com/problems/department-top-three-salaries) | [Pandas](solutions/185.department-top-three-salaries/Pandas.py) |
+| 171 | [excel-sheet-column-number](https://leetcode.com/problems/excel-sheet-column-number) | [Python3](solutions/171.excel-sheet-column-number/Python3.py), [C++](solutions/171.excel-sheet-column-number/C++.cpp) |
+| 172 | [factorial-trailing-zeroes](https://leetcode.com/problems/factorial-trailing-zeroes) | [Python3](solutions/172.factorial-trailing-zeroes/Python3.py), [C++](solutions/172.factorial-trailing-zeroes/C++.cpp) |
+| 173 | [binary-search-tree-iterator](https://leetcode.com/problems/binary-search-tree-iterator) | [Python3](solutions/173.binary-search-tree-iterator/Python3.py), [C++](solutions/173.binary-search-tree-iterator/C++.cpp) |
+| 174 | [dungeon-game](https://leetcode.com/problems/dungeon-game) | [Python3](solutions/174.dungeon-game/Python3.py), [C++](solutions/174.dungeon-game/C++.cpp) |
+| 175 | [combine-two-tables](https://leetcode.com/problems/combine-two-tables) | [MySQL](solutions/175.combine-two-tables/MySQL.sql), [MS SQL Server](solutions/175.combine-two-tables/MS SQL Server.sql) |
+| 176 | [second-highest-salary](https://leetcode.com/problems/second-highest-salary) | [Pandas](solutions/176.second-highest-salary/Pandas.py), [MS SQL Server](solutions/176.second-highest-salary/MS SQL Server.sql) |
+| 177 | [nth-highest-salary](https://leetcode.com/problems/nth-highest-salary) | [Pandas](solutions/177.nth-highest-salary/Pandas.py), [MS SQL Server](solutions/177.nth-highest-salary/MS SQL Server.sql) |
+| 178 | [rank-scores](https://leetcode.com/problems/rank-scores) | [Pandas](solutions/178.rank-scores/Pandas.py), [MS SQL Server](solutions/178.rank-scores/MS SQL Server.sql) |
+| 179 | [largest-number](https://leetcode.com/problems/largest-number) | [Python3](solutions/179.largest-number/Python3.py), [C](solutions/179.largest-number/C.c), [C++](solutions/179.largest-number/C++.cpp), [Rust](solutions/179.largest-number/Rust.rs) |
+| 180 | [consecutive-numbers](https://leetcode.com/problems/consecutive-numbers) | [Pandas](solutions/180.consecutive-numbers/Pandas.py), [MS SQL Server](solutions/180.consecutive-numbers/MS SQL Server.sql) |
+| 181 | [employees-earning-more-than-their-managers](https://leetcode.com/problems/employees-earning-more-than-their-managers) | [MySQL](solutions/181.employees-earning-more-than-their-managers/MySQL.sql), [MS SQL Server](solutions/181.employees-earning-more-than-their-managers/MS SQL Server.sql) |
+| 182 | [duplicate-emails](https://leetcode.com/problems/duplicate-emails) | [MySQL](solutions/182.duplicate-emails/MySQL.sql), [MS SQL Server](solutions/182.duplicate-emails/MS SQL Server.sql) |
+| 183 | [customers-who-never-order](https://leetcode.com/problems/customers-who-never-order) | [Pandas](solutions/183.customers-who-never-order/Pandas.py), [MS SQL Server](solutions/183.customers-who-never-order/MS SQL Server.sql) |
+| 184 | [department-highest-salary](https://leetcode.com/problems/department-highest-salary) | [Pandas](solutions/184.department-highest-salary/Pandas.py), [MS SQL Server](solutions/184.department-highest-salary/MS SQL Server.sql) |
+| 185 | [department-top-three-salaries](https://leetcode.com/problems/department-top-three-salaries) | [Pandas](solutions/185.department-top-three-salaries/Pandas.py), [MS SQL Server](solutions/185.department-top-three-salaries/MS SQL Server.sql) |
 | 186 | [reverse-words-in-a-string-ii](https://leetcode.com/problems/reverse-words-in-a-string-ii) | [C++](solutions/186.reverse-words-in-a-string-ii/C++.cpp) |
-| 187 | [repeated-dna-sequences](https://leetcode.com/problems/repeated-dna-sequences) | [Python3](solutions/187.repeated-dna-sequences/Python3.py) |
+| 187 | [repeated-dna-sequences](https://leetcode.com/problems/repeated-dna-sequences) | [Python3](solutions/187.repeated-dna-sequences/Python3.py), [C++](solutions/187.repeated-dna-sequences/C++.cpp) |
 | 188 | [best-time-to-buy-and-sell-stock-iv](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv) | [C++](solutions/188.best-time-to-buy-and-sell-stock-iv/C++.cpp) |
-| 189 | [rotate-array](https://leetcode.com/problems/rotate-array) | [Python3](solutions/189.rotate-array/Python3.py) |
-| 190 | [reverse-bits](https://leetcode.com/problems/reverse-bits) | [Python3](solutions/190.reverse-bits/Python3.py) |
-| 191 | [number-of-1-bits](https://leetcode.com/problems/number-of-1-bits) | [Python3](solutions/191.number-of-1-bits/Python3.py) |
+| 189 | [rotate-array](https://leetcode.com/problems/rotate-array) | [Python3](solutions/189.rotate-array/Python3.py), [C++](solutions/189.rotate-array/C++.cpp) |
+| 190 | [reverse-bits](https://leetcode.com/problems/reverse-bits) | [Python3](solutions/190.reverse-bits/Python3.py), [C++](solutions/190.reverse-bits/C++.cpp) |
+| 191 | [number-of-1-bits](https://leetcode.com/problems/number-of-1-bits) | [Python3](solutions/191.number-of-1-bits/Python3.py), [C++](solutions/191.number-of-1-bits/C++.cpp) |
 | 192 | [word-frequency](https://leetcode.com/problems/word-frequency) | [Bash](solutions/192.word-frequency/Bash.sh) |
 | 193 | [valid-phone-numbers](https://leetcode.com/problems/valid-phone-numbers) | [Bash](solutions/193.valid-phone-numbers/Bash.sh) |
 | 194 | [transpose-file](https://leetcode.com/problems/transpose-file) | [Bash](solutions/194.transpose-file/Bash.sh) |
 | 195 | [tenth-line](https://leetcode.com/problems/tenth-line) | [Bash](solutions/195.tenth-line/Bash.sh) |
-| 196 | [delete-duplicate-emails](https://leetcode.com/problems/delete-duplicate-emails) | [Pandas](solutions/196.delete-duplicate-emails/Pandas.py) |
-| 197 | [rising-temperature](https://leetcode.com/problems/rising-temperature) | [Pandas](solutions/197.rising-temperature/Pandas.py) |
-| 198 | [house-robber](https://leetcode.com/problems/house-robber) | [Python3](solutions/198.house-robber/Python3.py) |
-| 199 | [binary-tree-right-side-view](https://leetcode.com/problems/binary-tree-right-side-view) | [Python3](solutions/199.binary-tree-right-side-view/Python3.py) |
-| 200 | [number-of-islands](https://leetcode.com/problems/number-of-islands) | [Rust](solutions/200.number-of-islands/Rust.rs) |
-| 201 | [bitwise-and-of-numbers-range](https://leetcode.com/problems/bitwise-and-of-numbers-range) | [Python3](solutions/201.bitwise-and-of-numbers-range/Python3.py) |
-| 202 | [happy-number](https://leetcode.com/problems/happy-number) | [Python3](solutions/202.happy-number/Python3.py) |
-| 203 | [remove-linked-list-elements](https://leetcode.com/problems/remove-linked-list-elements) | [Python3](solutions/203.remove-linked-list-elements/Python3.py) |
-| 204 | [count-primes](https://leetcode.com/problems/count-primes) | [Python3](solutions/204.count-primes/Python3.py) |
-| 205 | [isomorphic-strings](https://leetcode.com/problems/isomorphic-strings) | [Python3](solutions/205.isomorphic-strings/Python3.py) |
-| 206 | [reverse-linked-list](https://leetcode.com/problems/reverse-linked-list) | [Rust](solutions/206.reverse-linked-list/Rust.rs) |
-| 207 | [course-schedule](https://leetcode.com/problems/course-schedule) | [Rust](solutions/207.course-schedule/Rust.rs) |
-| 208 | [implement-trie-prefix-tree](https://leetcode.com/problems/implement-trie-prefix-tree) | [Python3](solutions/208.implement-trie-prefix-tree/Python3.py) |
-| 209 | [minimum-size-subarray-sum](https://leetcode.com/problems/minimum-size-subarray-sum) | [Python3](solutions/209.minimum-size-subarray-sum/Python3.py) |
-| 210 | [course-schedule-ii](https://leetcode.com/problems/course-schedule-ii) | [Rust](solutions/210.course-schedule-ii/Rust.rs) |
-| 211 | [design-add-and-search-words-data-structure](https://leetcode.com/problems/design-add-and-search-words-data-structure) | [Python3](solutions/211.design-add-and-search-words-data-structure/Python3.py) |
-| 212 | [word-search-ii](https://leetcode.com/problems/word-search-ii) | [Python3](solutions/212.word-search-ii/Python3.py) |
-| 213 | [house-robber-ii](https://leetcode.com/problems/house-robber-ii) | [Python3](solutions/213.house-robber-ii/Python3.py) |
-| 214 | [shortest-palindrome](https://leetcode.com/problems/shortest-palindrome) | [Python3](solutions/214.shortest-palindrome/Python3.py) |
-| 215 | [kth-largest-element-in-an-array](https://leetcode.com/problems/kth-largest-element-in-an-array) | [Python3](solutions/215.kth-largest-element-in-an-array/Python3.py) |
-| 216 | [combination-sum-iii](https://leetcode.com/problems/combination-sum-iii) | [Python3](solutions/216.combination-sum-iii/Python3.py) |
-| 217 | [contains-duplicate](https://leetcode.com/problems/contains-duplicate) | [Python3](solutions/217.contains-duplicate/Python3.py) |
-| 218 | [the-skyline-problem](https://leetcode.com/problems/the-skyline-problem) | [Python3](solutions/218.the-skyline-problem/Python3.py) |
-| 219 | [contains-duplicate-ii](https://leetcode.com/problems/contains-duplicate-ii) | [Python3](solutions/219.contains-duplicate-ii/Python3.py) |
-| 220 | [contains-duplicate-iii](https://leetcode.com/problems/contains-duplicate-iii) | [Python3](solutions/220.contains-duplicate-iii/Python3.py) |
-| 221 | [maximal-square](https://leetcode.com/problems/maximal-square) | [Python3](solutions/221.maximal-square/Python3.py) |
-| 222 | [count-complete-tree-nodes](https://leetcode.com/problems/count-complete-tree-nodes) | [Python3](solutions/222.count-complete-tree-nodes/Python3.py) |
-| 223 | [rectangle-area](https://leetcode.com/problems/rectangle-area) | [Python3](solutions/223.rectangle-area/Python3.py) |
-| 224 | [basic-calculator](https://leetcode.com/problems/basic-calculator) | [Python3](solutions/224.basic-calculator/Python3.py) |
-| 225 | [implement-stack-using-queues](https://leetcode.com/problems/implement-stack-using-queues) | [Python3](solutions/225.implement-stack-using-queues/Python3.py) |
-| 226 | [invert-binary-tree](https://leetcode.com/problems/invert-binary-tree) | [Rust](solutions/226.invert-binary-tree/Rust.rs) |
-| 227 | [basic-calculator-ii](https://leetcode.com/problems/basic-calculator-ii) | [Python3](solutions/227.basic-calculator-ii/Python3.py) |
-| 228 | [summary-ranges](https://leetcode.com/problems/summary-ranges) | [Python3](solutions/228.summary-ranges/Python3.py) |
-| 229 | [majority-element-ii](https://leetcode.com/problems/majority-element-ii) | [Python3](solutions/229.majority-element-ii/Python3.py) |
-| 230 | [kth-smallest-element-in-a-bst](https://leetcode.com/problems/kth-smallest-element-in-a-bst) | [Python3](solutions/230.kth-smallest-element-in-a-bst/Python3.py) |
-| 231 | [power-of-two](https://leetcode.com/problems/power-of-two) | [Python3](solutions/231.power-of-two/Python3.py) |
-| 232 | [implement-queue-using-stacks](https://leetcode.com/problems/implement-queue-using-stacks) | [Python3](solutions/232.implement-queue-using-stacks/Python3.py) |
-| 233 | [number-of-digit-one](https://leetcode.com/problems/number-of-digit-one) | [Python3](solutions/233.number-of-digit-one/Python3.py) |
-| 234 | [palindrome-linked-list](https://leetcode.com/problems/palindrome-linked-list) | [Python3](solutions/234.palindrome-linked-list/Python3.py) |
-| 235 | [lowest-common-ancestor-of-a-binary-search-tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree) | [Python3](solutions/235.lowest-common-ancestor-of-a-binary-search-tree/Python3.py) |
-| 236 | [lowest-common-ancestor-of-a-binary-tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree) | [Python3](solutions/236.lowest-common-ancestor-of-a-binary-tree/Python3.py) |
-| 237 | [delete-node-in-a-linked-list](https://leetcode.com/problems/delete-node-in-a-linked-list) | [Python3](solutions/237.delete-node-in-a-linked-list/Python3.py) |
-| 238 | [product-of-array-except-self](https://leetcode.com/problems/product-of-array-except-self) | [Python3](solutions/238.product-of-array-except-self/Python3.py) |
-| 239 | [sliding-window-maximum](https://leetcode.com/problems/sliding-window-maximum) | [Python3](solutions/239.sliding-window-maximum/Python3.py) |
-| 240 | [search-a-2d-matrix-ii](https://leetcode.com/problems/search-a-2d-matrix-ii) | [Python3](solutions/240.search-a-2d-matrix-ii/Python3.py) |
-| 241 | [different-ways-to-add-parentheses](https://leetcode.com/problems/different-ways-to-add-parentheses) | [Python3](solutions/241.different-ways-to-add-parentheses/Python3.py) |
-| 242 | [valid-anagram](https://leetcode.com/problems/valid-anagram) | [Python3](solutions/242.valid-anagram/Python3.py) |
+| 196 | [delete-duplicate-emails](https://leetcode.com/problems/delete-duplicate-emails) | [Pandas](solutions/196.delete-duplicate-emails/Pandas.py), [MS SQL Server](solutions/196.delete-duplicate-emails/MS SQL Server.sql) |
+| 197 | [rising-temperature](https://leetcode.com/problems/rising-temperature) | [Pandas](solutions/197.rising-temperature/Pandas.py), [MS SQL Server](solutions/197.rising-temperature/MS SQL Server.sql) |
+| 198 | [house-robber](https://leetcode.com/problems/house-robber) | [Python3](solutions/198.house-robber/Python3.py), [C++](solutions/198.house-robber/C++.cpp) |
+| 199 | [binary-tree-right-side-view](https://leetcode.com/problems/binary-tree-right-side-view) | [Python3](solutions/199.binary-tree-right-side-view/Python3.py), [C++](solutions/199.binary-tree-right-side-view/C++.cpp) |
+| 200 | [number-of-islands](https://leetcode.com/problems/number-of-islands) | [C++](solutions/200.number-of-islands/C++.cpp), [Rust](solutions/200.number-of-islands/Rust.rs) |
+| 201 | [bitwise-and-of-numbers-range](https://leetcode.com/problems/bitwise-and-of-numbers-range) | [Python3](solutions/201.bitwise-and-of-numbers-range/Python3.py), [C++](solutions/201.bitwise-and-of-numbers-range/C++.cpp) |
+| 202 | [happy-number](https://leetcode.com/problems/happy-number) | [Python3](solutions/202.happy-number/Python3.py), [C++](solutions/202.happy-number/C++.cpp) |
+| 203 | [remove-linked-list-elements](https://leetcode.com/problems/remove-linked-list-elements) | [Python3](solutions/203.remove-linked-list-elements/Python3.py), [C++](solutions/203.remove-linked-list-elements/C++.cpp) |
+| 204 | [count-primes](https://leetcode.com/problems/count-primes) | [Python3](solutions/204.count-primes/Python3.py), [C++](solutions/204.count-primes/C++.cpp) |
+| 205 | [isomorphic-strings](https://leetcode.com/problems/isomorphic-strings) | [Python3](solutions/205.isomorphic-strings/Python3.py), [C++](solutions/205.isomorphic-strings/C++.cpp) |
+| 206 | [reverse-linked-list](https://leetcode.com/problems/reverse-linked-list) | [C++](solutions/206.reverse-linked-list/C++.cpp), [Rust](solutions/206.reverse-linked-list/Rust.rs) |
+| 207 | [course-schedule](https://leetcode.com/problems/course-schedule) | [C++](solutions/207.course-schedule/C++.cpp), [Rust](solutions/207.course-schedule/Rust.rs) |
+| 208 | [implement-trie-prefix-tree](https://leetcode.com/problems/implement-trie-prefix-tree) | [Python3](solutions/208.implement-trie-prefix-tree/Python3.py), [C++](solutions/208.implement-trie-prefix-tree/C++.cpp) |
+| 209 | [minimum-size-subarray-sum](https://leetcode.com/problems/minimum-size-subarray-sum) | [Python3](solutions/209.minimum-size-subarray-sum/Python3.py), [C++](solutions/209.minimum-size-subarray-sum/C++.cpp) |
+| 210 | [course-schedule-ii](https://leetcode.com/problems/course-schedule-ii) | [C++](solutions/210.course-schedule-ii/C++.cpp), [Rust](solutions/210.course-schedule-ii/Rust.rs) |
+| 211 | [design-add-and-search-words-data-structure](https://leetcode.com/problems/design-add-and-search-words-data-structure) | [Python3](solutions/211.design-add-and-search-words-data-structure/Python3.py), [C++](solutions/211.design-add-and-search-words-data-structure/C++.cpp) |
+| 212 | [word-search-ii](https://leetcode.com/problems/word-search-ii) | [Python3](solutions/212.word-search-ii/Python3.py), [C++](solutions/212.word-search-ii/C++.cpp) |
+| 213 | [house-robber-ii](https://leetcode.com/problems/house-robber-ii) | [Python3](solutions/213.house-robber-ii/Python3.py), [C++](solutions/213.house-robber-ii/C++.cpp) |
+| 214 | [shortest-palindrome](https://leetcode.com/problems/shortest-palindrome) | [Python3](solutions/214.shortest-palindrome/Python3.py), [C++](solutions/214.shortest-palindrome/C++.cpp) |
+| 215 | [kth-largest-element-in-an-array](https://leetcode.com/problems/kth-largest-element-in-an-array) | [Python3](solutions/215.kth-largest-element-in-an-array/Python3.py), [C++](solutions/215.kth-largest-element-in-an-array/C++.cpp) |
+| 216 | [combination-sum-iii](https://leetcode.com/problems/combination-sum-iii) | [Python3](solutions/216.combination-sum-iii/Python3.py), [C++](solutions/216.combination-sum-iii/C++.cpp) |
+| 217 | [contains-duplicate](https://leetcode.com/problems/contains-duplicate) | [Python3](solutions/217.contains-duplicate/Python3.py), [C++](solutions/217.contains-duplicate/C++.cpp) |
+| 218 | [the-skyline-problem](https://leetcode.com/problems/the-skyline-problem) | [Python3](solutions/218.the-skyline-problem/Python3.py), [C++](solutions/218.the-skyline-problem/C++.cpp) |
+| 219 | [contains-duplicate-ii](https://leetcode.com/problems/contains-duplicate-ii) | [Python3](solutions/219.contains-duplicate-ii/Python3.py), [C++](solutions/219.contains-duplicate-ii/C++.cpp) |
+| 220 | [contains-duplicate-iii](https://leetcode.com/problems/contains-duplicate-iii) | [Python3](solutions/220.contains-duplicate-iii/Python3.py), [C++](solutions/220.contains-duplicate-iii/C++.cpp) |
+| 221 | [maximal-square](https://leetcode.com/problems/maximal-square) | [Python3](solutions/221.maximal-square/Python3.py), [C++](solutions/221.maximal-square/C++.cpp) |
+| 222 | [count-complete-tree-nodes](https://leetcode.com/problems/count-complete-tree-nodes) | [Python3](solutions/222.count-complete-tree-nodes/Python3.py), [C++](solutions/222.count-complete-tree-nodes/C++.cpp) |
+| 223 | [rectangle-area](https://leetcode.com/problems/rectangle-area) | [Python3](solutions/223.rectangle-area/Python3.py), [C++](solutions/223.rectangle-area/C++.cpp) |
+| 224 | [basic-calculator](https://leetcode.com/problems/basic-calculator) | [Python3](solutions/224.basic-calculator/Python3.py), [C++](solutions/224.basic-calculator/C++.cpp) |
+| 225 | [implement-stack-using-queues](https://leetcode.com/problems/implement-stack-using-queues) | [Python3](solutions/225.implement-stack-using-queues/Python3.py), [C++](solutions/225.implement-stack-using-queues/C++.cpp) |
+| 226 | [invert-binary-tree](https://leetcode.com/problems/invert-binary-tree) | [C++](solutions/226.invert-binary-tree/C++.cpp), [Rust](solutions/226.invert-binary-tree/Rust.rs) |
+| 227 | [basic-calculator-ii](https://leetcode.com/problems/basic-calculator-ii) | [Python3](solutions/227.basic-calculator-ii/Python3.py), [C++](solutions/227.basic-calculator-ii/C++.cpp) |
+| 228 | [summary-ranges](https://leetcode.com/problems/summary-ranges) | [Python3](solutions/228.summary-ranges/Python3.py), [C++](solutions/228.summary-ranges/C++.cpp) |
+| 229 | [majority-element-ii](https://leetcode.com/problems/majority-element-ii) | [Python3](solutions/229.majority-element-ii/Python3.py), [C++](solutions/229.majority-element-ii/C++.cpp) |
+| 230 | [kth-smallest-element-in-a-bst](https://leetcode.com/problems/kth-smallest-element-in-a-bst) | [Python3](solutions/230.kth-smallest-element-in-a-bst/Python3.py), [C++](solutions/230.kth-smallest-element-in-a-bst/C++.cpp) |
+| 231 | [power-of-two](https://leetcode.com/problems/power-of-two) | [Python3](solutions/231.power-of-two/Python3.py), [C++](solutions/231.power-of-two/C++.cpp) |
+| 232 | [implement-queue-using-stacks](https://leetcode.com/problems/implement-queue-using-stacks) | [Python3](solutions/232.implement-queue-using-stacks/Python3.py), [C++](solutions/232.implement-queue-using-stacks/C++.cpp) |
+| 233 | [number-of-digit-one](https://leetcode.com/problems/number-of-digit-one) | [Python3](solutions/233.number-of-digit-one/Python3.py), [C++](solutions/233.number-of-digit-one/C++.cpp) |
+| 234 | [palindrome-linked-list](https://leetcode.com/problems/palindrome-linked-list) | [Python3](solutions/234.palindrome-linked-list/Python3.py), [C++](solutions/234.palindrome-linked-list/C++.cpp) |
+| 235 | [lowest-common-ancestor-of-a-binary-search-tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree) | [Python3](solutions/235.lowest-common-ancestor-of-a-binary-search-tree/Python3.py), [C++](solutions/235.lowest-common-ancestor-of-a-binary-search-tree/C++.cpp) |
+| 236 | [lowest-common-ancestor-of-a-binary-tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree) | [Python3](solutions/236.lowest-common-ancestor-of-a-binary-tree/Python3.py), [C++](solutions/236.lowest-common-ancestor-of-a-binary-tree/C++.cpp) |
+| 237 | [delete-node-in-a-linked-list](https://leetcode.com/problems/delete-node-in-a-linked-list) | [Python3](solutions/237.delete-node-in-a-linked-list/Python3.py), [C++](solutions/237.delete-node-in-a-linked-list/C++.cpp) |
+| 238 | [product-of-array-except-self](https://leetcode.com/problems/product-of-array-except-self) | [Python3](solutions/238.product-of-array-except-self/Python3.py), [C++](solutions/238.product-of-array-except-self/C++.cpp) |
+| 239 | [sliding-window-maximum](https://leetcode.com/problems/sliding-window-maximum) | [Python3](solutions/239.sliding-window-maximum/Python3.py), [C++](solutions/239.sliding-window-maximum/C++.cpp) |
+| 240 | [search-a-2d-matrix-ii](https://leetcode.com/problems/search-a-2d-matrix-ii) | [Python3](solutions/240.search-a-2d-matrix-ii/Python3.py), [C++](solutions/240.search-a-2d-matrix-ii/C++.cpp) |
+| 241 | [different-ways-to-add-parentheses](https://leetcode.com/problems/different-ways-to-add-parentheses) | [Python3](solutions/241.different-ways-to-add-parentheses/Python3.py), [C++](solutions/241.different-ways-to-add-parentheses/C++.cpp) |
+| 242 | [valid-anagram](https://leetcode.com/problems/valid-anagram) | [Python3](solutions/242.valid-anagram/Python3.py), [C++](solutions/242.valid-anagram/C++.cpp) |
 | 243 | [shortest-word-distance](https://leetcode.com/problems/shortest-word-distance) | [Python3](solutions/243.shortest-word-distance/Python3.py) |
 | 244 | [shortest-word-distance-ii](https://leetcode.com/problems/shortest-word-distance-ii) | [Python3](solutions/244.shortest-word-distance-ii/Python3.py) |
 | 245 | [shortest-word-distance-iii](https://leetcode.com/problems/shortest-word-distance-iii) | [Python3](solutions/245.shortest-word-distance-iii/Python3.py) |
@@ -261,270 +261,270 @@
 | 254 | [factor-combinations](https://leetcode.com/problems/factor-combinations) | [Python3](solutions/254.factor-combinations/Python3.py) |
 | 255 | [verify-preorder-sequence-in-binary-search-tree](https://leetcode.com/problems/verify-preorder-sequence-in-binary-search-tree) | [Python3](solutions/255.verify-preorder-sequence-in-binary-search-tree/Python3.py) |
 | 256 | [paint-house](https://leetcode.com/problems/paint-house) | [Python3](solutions/256.paint-house/Python3.py) |
-| 257 | [binary-tree-paths](https://leetcode.com/problems/binary-tree-paths) | [Python3](solutions/257.binary-tree-paths/Python3.py) |
-| 258 | [add-digits](https://leetcode.com/problems/add-digits) | [Python3](solutions/258.add-digits/Python3.py) |
+| 257 | [binary-tree-paths](https://leetcode.com/problems/binary-tree-paths) | [Python3](solutions/257.binary-tree-paths/Python3.py), [C++](solutions/257.binary-tree-paths/C++.cpp) |
+| 258 | [add-digits](https://leetcode.com/problems/add-digits) | [Python3](solutions/258.add-digits/Python3.py), [C++](solutions/258.add-digits/C++.cpp) |
 | 259 | [3sum-smaller](https://leetcode.com/problems/3sum-smaller) | [Python3](solutions/259.3sum-smaller/Python3.py) |
-| 260 | [single-number-iii](https://leetcode.com/problems/single-number-iii) | [Python3](solutions/260.single-number-iii/Python3.py) |
+| 260 | [single-number-iii](https://leetcode.com/problems/single-number-iii) | [Python3](solutions/260.single-number-iii/Python3.py), [C++](solutions/260.single-number-iii/C++.cpp) |
 | 261 | [graph-valid-tree](https://leetcode.com/problems/graph-valid-tree) | [Rust](solutions/261.graph-valid-tree/Rust.rs) |
 | 262 | [trips-and-users](https://leetcode.com/problems/trips-and-users) | [MySQL](solutions/262.trips-and-users/MySQL.sql) |
-| 263 | [ugly-number](https://leetcode.com/problems/ugly-number) | [Python3](solutions/263.ugly-number/Python3.py) |
-| 264 | [ugly-number-ii](https://leetcode.com/problems/ugly-number-ii) | [Python3](solutions/264.ugly-number-ii/Python3.py) |
+| 263 | [ugly-number](https://leetcode.com/problems/ugly-number) | [Python3](solutions/263.ugly-number/Python3.py), [C++](solutions/263.ugly-number/C++.cpp) |
+| 264 | [ugly-number-ii](https://leetcode.com/problems/ugly-number-ii) | [Python3](solutions/264.ugly-number-ii/Python3.py), [C++](solutions/264.ugly-number-ii/C++.cpp) |
 | 265 | [paint-house-ii](https://leetcode.com/problems/paint-house-ii) | [Python3](solutions/265.paint-house-ii/Python3.py) |
 | 266 | [palindrome-permutation](https://leetcode.com/problems/palindrome-permutation) | [Python3](solutions/266.palindrome-permutation/Python3.py) |
 | 267 | [palindrome-permutation-ii](https://leetcode.com/problems/palindrome-permutation-ii) | [Python3](solutions/267.palindrome-permutation-ii/Python3.py) |
-| 268 | [missing-number](https://leetcode.com/problems/missing-number) | [Python3](solutions/268.missing-number/Python3.py) |
+| 268 | [missing-number](https://leetcode.com/problems/missing-number) | [Python3](solutions/268.missing-number/Python3.py), [C++](solutions/268.missing-number/C++.cpp) |
 | 269 | [alien-dictionary](https://leetcode.com/problems/alien-dictionary) | [Rust](solutions/269.alien-dictionary/Rust.rs) |
 | 270 | [closest-binary-search-tree-value](https://leetcode.com/problems/closest-binary-search-tree-value) | [Python3](solutions/270.closest-binary-search-tree-value/Python3.py) |
 | 271 | [encode-and-decode-strings](https://leetcode.com/problems/encode-and-decode-strings) | [Python3](solutions/271.encode-and-decode-strings/Python3.py) |
 | 272 | [closest-binary-search-tree-value-ii](https://leetcode.com/problems/closest-binary-search-tree-value-ii) | [Python3](solutions/272.closest-binary-search-tree-value-ii/Python3.py) |
-| 273 | [integer-to-english-words](https://leetcode.com/problems/integer-to-english-words) | [Python3](solutions/273.integer-to-english-words/Python3.py) |
-| 274 | [h-index](https://leetcode.com/problems/h-index) | [Python3](solutions/274.h-index/Python3.py) |
-| 275 | [h-index-ii](https://leetcode.com/problems/h-index-ii) | [Rust](solutions/275.h-index-ii/Rust.rs) |
+| 273 | [integer-to-english-words](https://leetcode.com/problems/integer-to-english-words) | [Python3](solutions/273.integer-to-english-words/Python3.py), [C++](solutions/273.integer-to-english-words/C++.cpp) |
+| 274 | [h-index](https://leetcode.com/problems/h-index) | [Python3](solutions/274.h-index/Python3.py), [C++](solutions/274.h-index/C++.cpp) |
+| 275 | [h-index-ii](https://leetcode.com/problems/h-index-ii) | [C++](solutions/275.h-index-ii/C++.cpp), [Rust](solutions/275.h-index-ii/Rust.rs) |
 | 276 | [paint-fence](https://leetcode.com/problems/paint-fence) | [Python3](solutions/276.paint-fence/Python3.py) |
 | 277 | [find-the-celebrity](https://leetcode.com/problems/find-the-celebrity) | [Python3](solutions/277.find-the-celebrity/Python3.py) |
-| 278 | [first-bad-version](https://leetcode.com/problems/first-bad-version) | [Rust](solutions/278.first-bad-version/Rust.rs) |
-| 279 | [perfect-squares](https://leetcode.com/problems/perfect-squares) | [Python3](solutions/279.perfect-squares/Python3.py) |
+| 278 | [first-bad-version](https://leetcode.com/problems/first-bad-version) | [C++](solutions/278.first-bad-version/C++.cpp), [Rust](solutions/278.first-bad-version/Rust.rs) |
+| 279 | [perfect-squares](https://leetcode.com/problems/perfect-squares) | [Python3](solutions/279.perfect-squares/Python3.py), [C++](solutions/279.perfect-squares/C++.cpp) |
 | 280 | [wiggle-sort](https://leetcode.com/problems/wiggle-sort) | [Python3](solutions/280.wiggle-sort/Python3.py) |
 | 281 | [zigzag-iterator](https://leetcode.com/problems/zigzag-iterator) | [Python3](solutions/281.zigzag-iterator/Python3.py) |
-| 282 | [expression-add-operators](https://leetcode.com/problems/expression-add-operators) | [Python3](solutions/282.expression-add-operators/Python3.py) |
-| 283 | [move-zeroes](https://leetcode.com/problems/move-zeroes) | [Python3](solutions/283.move-zeroes/Python3.py) |
-| 284 | [peeking-iterator](https://leetcode.com/problems/peeking-iterator) | [Python3](solutions/284.peeking-iterator/Python3.py) |
+| 282 | [expression-add-operators](https://leetcode.com/problems/expression-add-operators) | [Python3](solutions/282.expression-add-operators/Python3.py), [C++](solutions/282.expression-add-operators/C++.cpp) |
+| 283 | [move-zeroes](https://leetcode.com/problems/move-zeroes) | [Python3](solutions/283.move-zeroes/Python3.py), [C++](solutions/283.move-zeroes/C++.cpp) |
+| 284 | [peeking-iterator](https://leetcode.com/problems/peeking-iterator) | [Python3](solutions/284.peeking-iterator/Python3.py), [C++](solutions/284.peeking-iterator/C++.cpp) |
 | 285 | [inorder-successor-in-bst](https://leetcode.com/problems/inorder-successor-in-bst) | [Python3](solutions/285.inorder-successor-in-bst/Python3.py) |
 | 286 | [walls-and-gates](https://leetcode.com/problems/walls-and-gates) | [Python3](solutions/286.walls-and-gates/Python3.py) |
-| 287 | [find-the-duplicate-number](https://leetcode.com/problems/find-the-duplicate-number) | [Python3](solutions/287.find-the-duplicate-number/Python3.py) |
+| 287 | [find-the-duplicate-number](https://leetcode.com/problems/find-the-duplicate-number) | [Python3](solutions/287.find-the-duplicate-number/Python3.py), [C++](solutions/287.find-the-duplicate-number/C++.cpp) |
 | 288 | [unique-word-abbreviation](https://leetcode.com/problems/unique-word-abbreviation) | [Python3](solutions/288.unique-word-abbreviation/Python3.py) |
-| 289 | [game-of-life](https://leetcode.com/problems/game-of-life) | [Python3](solutions/289.game-of-life/Python3.py) |
-| 290 | [word-pattern](https://leetcode.com/problems/word-pattern) | [Python3](solutions/290.word-pattern/Python3.py) |
+| 289 | [game-of-life](https://leetcode.com/problems/game-of-life) | [Python3](solutions/289.game-of-life/Python3.py), [C++](solutions/289.game-of-life/C++.cpp) |
+| 290 | [word-pattern](https://leetcode.com/problems/word-pattern) | [Python3](solutions/290.word-pattern/Python3.py), [C++](solutions/290.word-pattern/C++.cpp) |
 | 291 | [word-pattern-ii](https://leetcode.com/problems/word-pattern-ii) | [Python3](solutions/291.word-pattern-ii/Python3.py) |
-| 292 | [nim-game](https://leetcode.com/problems/nim-game) | [Python3](solutions/292.nim-game/Python3.py) |
+| 292 | [nim-game](https://leetcode.com/problems/nim-game) | [Python3](solutions/292.nim-game/Python3.py), [C++](solutions/292.nim-game/C++.cpp) |
 | 293 | [flip-game](https://leetcode.com/problems/flip-game) | [Python3](solutions/293.flip-game/Python3.py) |
 | 294 | [flip-game-ii](https://leetcode.com/problems/flip-game-ii) | [Python3](solutions/294.flip-game-ii/Python3.py) |
-| 295 | [find-median-from-data-stream](https://leetcode.com/problems/find-median-from-data-stream) | [Python3](solutions/295.find-median-from-data-stream/Python3.py) |
+| 295 | [find-median-from-data-stream](https://leetcode.com/problems/find-median-from-data-stream) | [Python3](solutions/295.find-median-from-data-stream/Python3.py), [C++](solutions/295.find-median-from-data-stream/C++.cpp) |
 | 296 | [best-meeting-point](https://leetcode.com/problems/best-meeting-point) | [Python3](solutions/296.best-meeting-point/Python3.py) |
-| 297 | [serialize-and-deserialize-binary-tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree) | [Python3](solutions/297.serialize-and-deserialize-binary-tree/Python3.py) |
+| 297 | [serialize-and-deserialize-binary-tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree) | [Python3](solutions/297.serialize-and-deserialize-binary-tree/Python3.py), [C++](solutions/297.serialize-and-deserialize-binary-tree/C++.cpp) |
 | 298 | [binary-tree-longest-consecutive-sequence](https://leetcode.com/problems/binary-tree-longest-consecutive-sequence) | [Python3](solutions/298.binary-tree-longest-consecutive-sequence/Python3.py) |
-| 299 | [bulls-and-cows](https://leetcode.com/problems/bulls-and-cows) | [Python3](solutions/299.bulls-and-cows/Python3.py) |
-| 300 | [longest-increasing-subsequence](https://leetcode.com/problems/longest-increasing-subsequence) | [Python3](solutions/300.longest-increasing-subsequence/Python3.py) |
-| 301 | [remove-invalid-parentheses](https://leetcode.com/problems/remove-invalid-parentheses) | [Python3](solutions/301.remove-invalid-parentheses/Python3.py) |
+| 299 | [bulls-and-cows](https://leetcode.com/problems/bulls-and-cows) | [Python3](solutions/299.bulls-and-cows/Python3.py), [C++](solutions/299.bulls-and-cows/C++.cpp) |
+| 300 | [longest-increasing-subsequence](https://leetcode.com/problems/longest-increasing-subsequence) | [Python3](solutions/300.longest-increasing-subsequence/Python3.py), [C++](solutions/300.longest-increasing-subsequence/C++.cpp) |
+| 301 | [remove-invalid-parentheses](https://leetcode.com/problems/remove-invalid-parentheses) | [Python3](solutions/301.remove-invalid-parentheses/Python3.py), [C++](solutions/301.remove-invalid-parentheses/C++.cpp) |
 | 302 | [smallest-rectangle-enclosing-black-pixels](https://leetcode.com/problems/smallest-rectangle-enclosing-black-pixels) | [Python3](solutions/302.smallest-rectangle-enclosing-black-pixels/Python3.py) |
-| 303 | [range-sum-query-immutable](https://leetcode.com/problems/range-sum-query-immutable) | [Python3](solutions/303.range-sum-query-immutable/Python3.py) |
-| 304 | [range-sum-query-2d-immutable](https://leetcode.com/problems/range-sum-query-2d-immutable) | [Python3](solutions/304.range-sum-query-2d-immutable/Python3.py) |
+| 303 | [range-sum-query-immutable](https://leetcode.com/problems/range-sum-query-immutable) | [Python3](solutions/303.range-sum-query-immutable/Python3.py), [C++](solutions/303.range-sum-query-immutable/C++.cpp) |
+| 304 | [range-sum-query-2d-immutable](https://leetcode.com/problems/range-sum-query-2d-immutable) | [Python3](solutions/304.range-sum-query-2d-immutable/Python3.py), [C++](solutions/304.range-sum-query-2d-immutable/C++.cpp) |
 | 305 | [number-of-islands-ii](https://leetcode.com/problems/number-of-islands-ii) | [Python3](solutions/305.number-of-islands-ii/Python3.py) |
-| 306 | [additive-number](https://leetcode.com/problems/additive-number) | [Python3](solutions/306.additive-number/Python3.py) |
-| 307 | [range-sum-query-mutable](https://leetcode.com/problems/range-sum-query-mutable) | [Python3](solutions/307.range-sum-query-mutable/Python3.py) |
+| 306 | [additive-number](https://leetcode.com/problems/additive-number) | [Python3](solutions/306.additive-number/Python3.py), [C++](solutions/306.additive-number/C++.cpp) |
+| 307 | [range-sum-query-mutable](https://leetcode.com/problems/range-sum-query-mutable) | [Python3](solutions/307.range-sum-query-mutable/Python3.py), [C++](solutions/307.range-sum-query-mutable/C++.cpp) |
 | 308 | [range-sum-query-2d-mutable](https://leetcode.com/problems/range-sum-query-2d-mutable) | [Python3](solutions/308.range-sum-query-2d-mutable/Python3.py) |
-| 309 | [best-time-to-buy-and-sell-stock-with-cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown) | [Python3](solutions/309.best-time-to-buy-and-sell-stock-with-cooldown/Python3.py) |
-| 310 | [minimum-height-trees](https://leetcode.com/problems/minimum-height-trees) | [Python3](solutions/310.minimum-height-trees/Python3.py) |
+| 309 | [best-time-to-buy-and-sell-stock-with-cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown) | [Python3](solutions/309.best-time-to-buy-and-sell-stock-with-cooldown/Python3.py), [C++](solutions/309.best-time-to-buy-and-sell-stock-with-cooldown/C++.cpp) |
+| 310 | [minimum-height-trees](https://leetcode.com/problems/minimum-height-trees) | [Python3](solutions/310.minimum-height-trees/Python3.py), [C++](solutions/310.minimum-height-trees/C++.cpp) |
 | 311 | [sparse-matrix-multiplication](https://leetcode.com/problems/sparse-matrix-multiplication) | [Python3](solutions/311.sparse-matrix-multiplication/Python3.py) |
-| 312 | [burst-balloons](https://leetcode.com/problems/burst-balloons) | [Python3](solutions/312.burst-balloons/Python3.py) |
+| 312 | [burst-balloons](https://leetcode.com/problems/burst-balloons) | [Python3](solutions/312.burst-balloons/Python3.py), [C++](solutions/312.burst-balloons/C++.cpp) |
 | 313 | [super-ugly-number](https://leetcode.com/problems/super-ugly-number) | [Python3](solutions/313.super-ugly-number/Python3.py) |
 | 314 | [binary-tree-vertical-order-traversal](https://leetcode.com/problems/binary-tree-vertical-order-traversal) | [Python3](solutions/314.binary-tree-vertical-order-traversal/Python3.py) |
-| 315 | [count-of-smaller-numbers-after-self](https://leetcode.com/problems/count-of-smaller-numbers-after-self) | [Python3](solutions/315.count-of-smaller-numbers-after-self/Python3.py) |
-| 316 | [remove-duplicate-letters](https://leetcode.com/problems/remove-duplicate-letters) | [Python3](solutions/316.remove-duplicate-letters/Python3.py) |
+| 315 | [count-of-smaller-numbers-after-self](https://leetcode.com/problems/count-of-smaller-numbers-after-self) | [Python3](solutions/315.count-of-smaller-numbers-after-self/Python3.py), [C++](solutions/315.count-of-smaller-numbers-after-self/C++.cpp) |
+| 316 | [remove-duplicate-letters](https://leetcode.com/problems/remove-duplicate-letters) | [Python3](solutions/316.remove-duplicate-letters/Python3.py), [C++](solutions/316.remove-duplicate-letters/C++.cpp) |
 | 317 | [shortest-distance-from-all-buildings](https://leetcode.com/problems/shortest-distance-from-all-buildings) | [Python3](solutions/317.shortest-distance-from-all-buildings/Python3.py) |
-| 318 | [maximum-product-of-word-lengths](https://leetcode.com/problems/maximum-product-of-word-lengths) | [Python3](solutions/318.maximum-product-of-word-lengths/Python3.py) |
-| 319 | [bulb-switcher](https://leetcode.com/problems/bulb-switcher) | [Python3](solutions/319.bulb-switcher/Python3.py) |
+| 318 | [maximum-product-of-word-lengths](https://leetcode.com/problems/maximum-product-of-word-lengths) | [Python3](solutions/318.maximum-product-of-word-lengths/Python3.py), [C++](solutions/318.maximum-product-of-word-lengths/C++.cpp) |
+| 319 | [bulb-switcher](https://leetcode.com/problems/bulb-switcher) | [Python3](solutions/319.bulb-switcher/Python3.py), [C++](solutions/319.bulb-switcher/C++.cpp) |
 | 320 | [generalized-abbreviation](https://leetcode.com/problems/generalized-abbreviation) | [Python3](solutions/320.generalized-abbreviation/Python3.py) |
-| 321 | [create-maximum-number](https://leetcode.com/problems/create-maximum-number) | [Python3](solutions/321.create-maximum-number/Python3.py) |
-| 322 | [coin-change](https://leetcode.com/problems/coin-change) | [Python3](solutions/322.coin-change/Python3.py) |
+| 321 | [create-maximum-number](https://leetcode.com/problems/create-maximum-number) | [Python3](solutions/321.create-maximum-number/Python3.py), [C++](solutions/321.create-maximum-number/C++.cpp) |
+| 322 | [coin-change](https://leetcode.com/problems/coin-change) | [Python3](solutions/322.coin-change/Python3.py), [C++](solutions/322.coin-change/C++.cpp) |
 | 323 | [number-of-connected-components-in-an-undirected-graph](https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph) | [Python3](solutions/323.number-of-connected-components-in-an-undirected-graph/Python3.py) |
-| 324 | [wiggle-sort-ii](https://leetcode.com/problems/wiggle-sort-ii) | [Python3](solutions/324.wiggle-sort-ii/Python3.py) |
+| 324 | [wiggle-sort-ii](https://leetcode.com/problems/wiggle-sort-ii) | [Python3](solutions/324.wiggle-sort-ii/Python3.py), [C++](solutions/324.wiggle-sort-ii/C++.cpp) |
 | 325 | [maximum-size-subarray-sum-equals-k](https://leetcode.com/problems/maximum-size-subarray-sum-equals-k) | [Python3](solutions/325.maximum-size-subarray-sum-equals-k/Python3.py) |
-| 326 | [power-of-three](https://leetcode.com/problems/power-of-three) | [Python3](solutions/326.power-of-three/Python3.py) |
-| 327 | [count-of-range-sum](https://leetcode.com/problems/count-of-range-sum) | [Python3](solutions/327.count-of-range-sum/Python3.py) |
-| 328 | [odd-even-linked-list](https://leetcode.com/problems/odd-even-linked-list) | [Python3](solutions/328.odd-even-linked-list/Python3.py) |
-| 329 | [longest-increasing-path-in-a-matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix) | [Python3](solutions/329.longest-increasing-path-in-a-matrix/Python3.py) |
-| 330 | [patching-array](https://leetcode.com/problems/patching-array) | [Python3](solutions/330.patching-array/Python3.py) |
-| 331 | [verify-preorder-serialization-of-a-binary-tree](https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree) | [Python3](solutions/331.verify-preorder-serialization-of-a-binary-tree/Python3.py) |
-| 332 | [reconstruct-itinerary](https://leetcode.com/problems/reconstruct-itinerary) | [Python3](solutions/332.reconstruct-itinerary/Python3.py) |
+| 326 | [power-of-three](https://leetcode.com/problems/power-of-three) | [Python3](solutions/326.power-of-three/Python3.py), [C++](solutions/326.power-of-three/C++.cpp) |
+| 327 | [count-of-range-sum](https://leetcode.com/problems/count-of-range-sum) | [Python3](solutions/327.count-of-range-sum/Python3.py), [C++](solutions/327.count-of-range-sum/C++.cpp) |
+| 328 | [odd-even-linked-list](https://leetcode.com/problems/odd-even-linked-list) | [Python3](solutions/328.odd-even-linked-list/Python3.py), [C++](solutions/328.odd-even-linked-list/C++.cpp) |
+| 329 | [longest-increasing-path-in-a-matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix) | [Python3](solutions/329.longest-increasing-path-in-a-matrix/Python3.py), [C++](solutions/329.longest-increasing-path-in-a-matrix/C++.cpp) |
+| 330 | [patching-array](https://leetcode.com/problems/patching-array) | [Python3](solutions/330.patching-array/Python3.py), [C++](solutions/330.patching-array/C++.cpp) |
+| 331 | [verify-preorder-serialization-of-a-binary-tree](https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree) | [Python3](solutions/331.verify-preorder-serialization-of-a-binary-tree/Python3.py), [C++](solutions/331.verify-preorder-serialization-of-a-binary-tree/C++.cpp) |
+| 332 | [reconstruct-itinerary](https://leetcode.com/problems/reconstruct-itinerary) | [Python3](solutions/332.reconstruct-itinerary/Python3.py), [C++](solutions/332.reconstruct-itinerary/C++.cpp) |
 | 333 | [largest-bst-subtree](https://leetcode.com/problems/largest-bst-subtree) | [Python3](solutions/333.largest-bst-subtree/Python3.py) |
-| 334 | [increasing-triplet-subsequence](https://leetcode.com/problems/increasing-triplet-subsequence) | [Python3](solutions/334.increasing-triplet-subsequence/Python3.py) |
-| 335 | [self-crossing](https://leetcode.com/problems/self-crossing) | [Python3](solutions/335.self-crossing/Python3.py) |
-| 336 | [palindrome-pairs](https://leetcode.com/problems/palindrome-pairs) | [Python3](solutions/336.palindrome-pairs/Python3.py) |
-| 337 | [house-robber-iii](https://leetcode.com/problems/house-robber-iii) | [Python3](solutions/337.house-robber-iii/Python3.py) |
-| 338 | [counting-bits](https://leetcode.com/problems/counting-bits) | [Python3](solutions/338.counting-bits/Python3.py) |
+| 334 | [increasing-triplet-subsequence](https://leetcode.com/problems/increasing-triplet-subsequence) | [Python3](solutions/334.increasing-triplet-subsequence/Python3.py), [C++](solutions/334.increasing-triplet-subsequence/C++.cpp) |
+| 335 | [self-crossing](https://leetcode.com/problems/self-crossing) | [Python3](solutions/335.self-crossing/Python3.py), [C++](solutions/335.self-crossing/C++.cpp) |
+| 336 | [palindrome-pairs](https://leetcode.com/problems/palindrome-pairs) | [Python3](solutions/336.palindrome-pairs/Python3.py), [C++](solutions/336.palindrome-pairs/C++.cpp) |
+| 337 | [house-robber-iii](https://leetcode.com/problems/house-robber-iii) | [Python3](solutions/337.house-robber-iii/Python3.py), [C++](solutions/337.house-robber-iii/C++.cpp) |
+| 338 | [counting-bits](https://leetcode.com/problems/counting-bits) | [Python3](solutions/338.counting-bits/Python3.py), [C++](solutions/338.counting-bits/C++.cpp) |
 | 339 | [nested-list-weight-sum](https://leetcode.com/problems/nested-list-weight-sum) | [Python3](solutions/339.nested-list-weight-sum/Python3.py) |
 | 340 | [longest-substring-with-at-most-k-distinct-characters](https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters) | [Python3](solutions/340.longest-substring-with-at-most-k-distinct-characters/Python3.py) |
-| 341 | [flatten-nested-list-iterator](https://leetcode.com/problems/flatten-nested-list-iterator) | [Python3](solutions/341.flatten-nested-list-iterator/Python3.py) |
-| 342 | [power-of-four](https://leetcode.com/problems/power-of-four) | [Python3](solutions/342.power-of-four/Python3.py) |
-| 343 | [integer-break](https://leetcode.com/problems/integer-break) | [Python3](solutions/343.integer-break/Python3.py) |
-| 344 | [reverse-string](https://leetcode.com/problems/reverse-string) | [Python3](solutions/344.reverse-string/Python3.py) |
-| 345 | [reverse-vowels-of-a-string](https://leetcode.com/problems/reverse-vowels-of-a-string) | [Python3](solutions/345.reverse-vowels-of-a-string/Python3.py) |
+| 341 | [flatten-nested-list-iterator](https://leetcode.com/problems/flatten-nested-list-iterator) | [Python3](solutions/341.flatten-nested-list-iterator/Python3.py), [C++](solutions/341.flatten-nested-list-iterator/C++.cpp) |
+| 342 | [power-of-four](https://leetcode.com/problems/power-of-four) | [Python3](solutions/342.power-of-four/Python3.py), [C++](solutions/342.power-of-four/C++.cpp) |
+| 343 | [integer-break](https://leetcode.com/problems/integer-break) | [Python3](solutions/343.integer-break/Python3.py), [C++](solutions/343.integer-break/C++.cpp) |
+| 344 | [reverse-string](https://leetcode.com/problems/reverse-string) | [Python3](solutions/344.reverse-string/Python3.py), [C++](solutions/344.reverse-string/C++.cpp) |
+| 345 | [reverse-vowels-of-a-string](https://leetcode.com/problems/reverse-vowels-of-a-string) | [Python3](solutions/345.reverse-vowels-of-a-string/Python3.py), [C++](solutions/345.reverse-vowels-of-a-string/C++.cpp) |
 | 346 | [moving-average-from-data-stream](https://leetcode.com/problems/moving-average-from-data-stream) | [Python3](solutions/346.moving-average-from-data-stream/Python3.py) |
-| 347 | [top-k-frequent-elements](https://leetcode.com/problems/top-k-frequent-elements) | [Python3](solutions/347.top-k-frequent-elements/Python3.py) |
+| 347 | [top-k-frequent-elements](https://leetcode.com/problems/top-k-frequent-elements) | [Python3](solutions/347.top-k-frequent-elements/Python3.py), [C++](solutions/347.top-k-frequent-elements/C++.cpp) |
 | 348 | [design-tic-tac-toe](https://leetcode.com/problems/design-tic-tac-toe) | [Python3](solutions/348.design-tic-tac-toe/Python3.py) |
-| 349 | [intersection-of-two-arrays](https://leetcode.com/problems/intersection-of-two-arrays) | [Python3](solutions/349.intersection-of-two-arrays/Python3.py) |
-| 350 | [intersection-of-two-arrays-ii](https://leetcode.com/problems/intersection-of-two-arrays-ii) | [Python3](solutions/350.intersection-of-two-arrays-ii/Python3.py) |
+| 349 | [intersection-of-two-arrays](https://leetcode.com/problems/intersection-of-two-arrays) | [Python3](solutions/349.intersection-of-two-arrays/Python3.py), [C++](solutions/349.intersection-of-two-arrays/C++.cpp) |
+| 350 | [intersection-of-two-arrays-ii](https://leetcode.com/problems/intersection-of-two-arrays-ii) | [Python3](solutions/350.intersection-of-two-arrays-ii/Python3.py), [C++](solutions/350.intersection-of-two-arrays-ii/C++.cpp) |
 | 351 | [android-unlock-patterns](https://leetcode.com/problems/android-unlock-patterns) | [Python3](solutions/351.android-unlock-patterns/Python3.py) |
-| 352 | [data-stream-as-disjoint-intervals](https://leetcode.com/problems/data-stream-as-disjoint-intervals) | [Python3](solutions/352.data-stream-as-disjoint-intervals/Python3.py) |
+| 352 | [data-stream-as-disjoint-intervals](https://leetcode.com/problems/data-stream-as-disjoint-intervals) | [Python3](solutions/352.data-stream-as-disjoint-intervals/Python3.py), [C++](solutions/352.data-stream-as-disjoint-intervals/C++.cpp) |
 | 353 | [design-snake-game](https://leetcode.com/problems/design-snake-game) | [Python3](solutions/353.design-snake-game/Python3.py) |
-| 354 | [russian-doll-envelopes](https://leetcode.com/problems/russian-doll-envelopes) | [Python3](solutions/354.russian-doll-envelopes/Python3.py) |
-| 355 | [design-twitter](https://leetcode.com/problems/design-twitter) | [Python3](solutions/355.design-twitter/Python3.py) |
+| 354 | [russian-doll-envelopes](https://leetcode.com/problems/russian-doll-envelopes) | [Python3](solutions/354.russian-doll-envelopes/Python3.py), [C++](solutions/354.russian-doll-envelopes/C++.cpp) |
+| 355 | [design-twitter](https://leetcode.com/problems/design-twitter) | [Python3](solutions/355.design-twitter/Python3.py), [C++](solutions/355.design-twitter/C++.cpp) |
 | 356 | [line-reflection](https://leetcode.com/problems/line-reflection) | [Python3](solutions/356.line-reflection/Python3.py) |
-| 357 | [count-numbers-with-unique-digits](https://leetcode.com/problems/count-numbers-with-unique-digits) | [Python3](solutions/357.count-numbers-with-unique-digits/Python3.py) |
+| 357 | [count-numbers-with-unique-digits](https://leetcode.com/problems/count-numbers-with-unique-digits) | [Python3](solutions/357.count-numbers-with-unique-digits/Python3.py), [C++](solutions/357.count-numbers-with-unique-digits/C++.cpp) |
 | 358 | [rearrange-string-k-distance-apart](https://leetcode.com/problems/rearrange-string-k-distance-apart) | [Python3](solutions/358.rearrange-string-k-distance-apart/Python3.py) |
 | 359 | [logger-rate-limiter](https://leetcode.com/problems/logger-rate-limiter) | [Python3](solutions/359.logger-rate-limiter/Python3.py) |
 | 360 | [sort-transformed-array](https://leetcode.com/problems/sort-transformed-array) | [Python3](solutions/360.sort-transformed-array/Python3.py) |
 | 361 | [bomb-enemy](https://leetcode.com/problems/bomb-enemy) | [Python3](solutions/361.bomb-enemy/Python3.py) |
 | 362 | [design-hit-counter](https://leetcode.com/problems/design-hit-counter) | [Python3](solutions/362.design-hit-counter/Python3.py) |
-| 363 | [max-sum-of-rectangle-no-larger-than-k](https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k) | [Python3](solutions/363.max-sum-of-rectangle-no-larger-than-k/Python3.py) |
+| 363 | [max-sum-of-rectangle-no-larger-than-k](https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k) | [Python3](solutions/363.max-sum-of-rectangle-no-larger-than-k/Python3.py), [C++](solutions/363.max-sum-of-rectangle-no-larger-than-k/C++.cpp) |
 | 364 | [nested-list-weight-sum-ii](https://leetcode.com/problems/nested-list-weight-sum-ii) | [Python3](solutions/364.nested-list-weight-sum-ii/Python3.py) |
-| 365 | [water-and-jug-problem](https://leetcode.com/problems/water-and-jug-problem) | [Python3](solutions/365.water-and-jug-problem/Python3.py) |
+| 365 | [water-and-jug-problem](https://leetcode.com/problems/water-and-jug-problem) | [Python3](solutions/365.water-and-jug-problem/Python3.py), [C++](solutions/365.water-and-jug-problem/C++.cpp) |
 | 366 | [find-leaves-of-binary-tree](https://leetcode.com/problems/find-leaves-of-binary-tree) | [Python3](solutions/366.find-leaves-of-binary-tree/Python3.py) |
-| 367 | [valid-perfect-square](https://leetcode.com/problems/valid-perfect-square) | [Rust](solutions/367.valid-perfect-square/Rust.rs) |
-| 368 | [largest-divisible-subset](https://leetcode.com/problems/largest-divisible-subset) | [Python3](solutions/368.largest-divisible-subset/Python3.py) |
+| 367 | [valid-perfect-square](https://leetcode.com/problems/valid-perfect-square) | [C++](solutions/367.valid-perfect-square/C++.cpp), [Rust](solutions/367.valid-perfect-square/Rust.rs) |
+| 368 | [largest-divisible-subset](https://leetcode.com/problems/largest-divisible-subset) | [Python3](solutions/368.largest-divisible-subset/Python3.py), [C++](solutions/368.largest-divisible-subset/C++.cpp) |
 | 369 | [plus-one-linked-list](https://leetcode.com/problems/plus-one-linked-list) | [Python3](solutions/369.plus-one-linked-list/Python3.py) |
 | 370 | [range-addition](https://leetcode.com/problems/range-addition) | [Python3](solutions/370.range-addition/Python3.py) |
-| 371 | [sum-of-two-integers](https://leetcode.com/problems/sum-of-two-integers) | [Python3](solutions/371.sum-of-two-integers/Python3.py) |
-| 372 | [super-pow](https://leetcode.com/problems/super-pow) | [Python3](solutions/372.super-pow/Python3.py) |
-| 373 | [find-k-pairs-with-smallest-sums](https://leetcode.com/problems/find-k-pairs-with-smallest-sums) | [Python3](solutions/373.find-k-pairs-with-smallest-sums/Python3.py) |
-| 374 | [guess-number-higher-or-lower](https://leetcode.com/problems/guess-number-higher-or-lower) | [Rust](solutions/374.guess-number-higher-or-lower/Rust.rs) |
-| 375 | [guess-number-higher-or-lower-ii](https://leetcode.com/problems/guess-number-higher-or-lower-ii) | [Python3](solutions/375.guess-number-higher-or-lower-ii/Python3.py) |
-| 376 | [wiggle-subsequence](https://leetcode.com/problems/wiggle-subsequence) | [Rust](solutions/376.wiggle-subsequence/Rust.rs) |
-| 377 | [combination-sum-iv](https://leetcode.com/problems/combination-sum-iv) | [Python3](solutions/377.combination-sum-iv/Python3.py) |
-| 378 | [kth-smallest-element-in-a-sorted-matrix](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix) | [Python3](solutions/378.kth-smallest-element-in-a-sorted-matrix/Python3.py) |
+| 371 | [sum-of-two-integers](https://leetcode.com/problems/sum-of-two-integers) | [Python3](solutions/371.sum-of-two-integers/Python3.py), [C++](solutions/371.sum-of-two-integers/C++.cpp) |
+| 372 | [super-pow](https://leetcode.com/problems/super-pow) | [Python3](solutions/372.super-pow/Python3.py), [C++](solutions/372.super-pow/C++.cpp) |
+| 373 | [find-k-pairs-with-smallest-sums](https://leetcode.com/problems/find-k-pairs-with-smallest-sums) | [Python3](solutions/373.find-k-pairs-with-smallest-sums/Python3.py), [C++](solutions/373.find-k-pairs-with-smallest-sums/C++.cpp) |
+| 374 | [guess-number-higher-or-lower](https://leetcode.com/problems/guess-number-higher-or-lower) | [C++](solutions/374.guess-number-higher-or-lower/C++.cpp), [Rust](solutions/374.guess-number-higher-or-lower/Rust.rs) |
+| 375 | [guess-number-higher-or-lower-ii](https://leetcode.com/problems/guess-number-higher-or-lower-ii) | [Python3](solutions/375.guess-number-higher-or-lower-ii/Python3.py), [C++](solutions/375.guess-number-higher-or-lower-ii/C++.cpp) |
+| 376 | [wiggle-subsequence](https://leetcode.com/problems/wiggle-subsequence) | [C++](solutions/376.wiggle-subsequence/C++.cpp), [Rust](solutions/376.wiggle-subsequence/Rust.rs) |
+| 377 | [combination-sum-iv](https://leetcode.com/problems/combination-sum-iv) | [Python3](solutions/377.combination-sum-iv/Python3.py), [C++](solutions/377.combination-sum-iv/C++.cpp) |
+| 378 | [kth-smallest-element-in-a-sorted-matrix](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix) | [Python3](solutions/378.kth-smallest-element-in-a-sorted-matrix/Python3.py), [C++](solutions/378.kth-smallest-element-in-a-sorted-matrix/C++.cpp) |
 | 379 | [design-phone-directory](https://leetcode.com/problems/design-phone-directory) | [Python3](solutions/379.design-phone-directory/Python3.py) |
-| 380 | [insert-delete-getrandom-o1](https://leetcode.com/problems/insert-delete-getrandom-o1) | [Python3](solutions/380.insert-delete-getrandom-o1/Python3.py) |
-| 381 | [insert-delete-getrandom-o1-duplicates-allowed](https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed) | [Python3](solutions/381.insert-delete-getrandom-o1-duplicates-allowed/Python3.py) |
-| 382 | [linked-list-random-node](https://leetcode.com/problems/linked-list-random-node) | [Python3](solutions/382.linked-list-random-node/Python3.py) |
-| 383 | [ransom-note](https://leetcode.com/problems/ransom-note) | [Python3](solutions/383.ransom-note/Python3.py) |
-| 384 | [shuffle-an-array](https://leetcode.com/problems/shuffle-an-array) | [Python3](solutions/384.shuffle-an-array/Python3.py) |
-| 385 | [mini-parser](https://leetcode.com/problems/mini-parser) | [Python3](solutions/385.mini-parser/Python3.py) |
-| 386 | [lexicographical-numbers](https://leetcode.com/problems/lexicographical-numbers) | [Python3](solutions/386.lexicographical-numbers/Python3.py) |
-| 387 | [first-unique-character-in-a-string](https://leetcode.com/problems/first-unique-character-in-a-string) | [Python3](solutions/387.first-unique-character-in-a-string/Python3.py) |
-| 388 | [longest-absolute-file-path](https://leetcode.com/problems/longest-absolute-file-path) | [Python3](solutions/388.longest-absolute-file-path/Python3.py) |
-| 389 | [find-the-difference](https://leetcode.com/problems/find-the-difference) | [Python3](solutions/389.find-the-difference/Python3.py) |
-| 390 | [elimination-game](https://leetcode.com/problems/elimination-game) | [Python3](solutions/390.elimination-game/Python3.py) |
-| 391 | [perfect-rectangle](https://leetcode.com/problems/perfect-rectangle) | [Python3](solutions/391.perfect-rectangle/Python3.py) |
-| 392 | [is-subsequence](https://leetcode.com/problems/is-subsequence) | [Python3](solutions/392.is-subsequence/Python3.py) |
-| 393 | [utf-8-validation](https://leetcode.com/problems/utf-8-validation) | [Python3](solutions/393.utf-8-validation/Python3.py) |
-| 394 | [decode-string](https://leetcode.com/problems/decode-string) | [Python3](solutions/394.decode-string/Python3.py) |
-| 395 | [longest-substring-with-at-least-k-repeating-characters](https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters) | [Python3](solutions/395.longest-substring-with-at-least-k-repeating-characters/Python3.py) |
-| 396 | [rotate-function](https://leetcode.com/problems/rotate-function) | [Python3](solutions/396.rotate-function/Python3.py) |
-| 397 | [integer-replacement](https://leetcode.com/problems/integer-replacement) | [Python3](solutions/397.integer-replacement/Python3.py) |
-| 398 | [random-pick-index](https://leetcode.com/problems/random-pick-index) | [Python3](solutions/398.random-pick-index/Python3.py) |
-| 399 | [evaluate-division](https://leetcode.com/problems/evaluate-division) | [Python3](solutions/399.evaluate-division/Python3.py) |
-| 400 | [nth-digit](https://leetcode.com/problems/nth-digit) | [Python3](solutions/400.nth-digit/Python3.py) |
-| 401 | [binary-watch](https://leetcode.com/problems/binary-watch) | [Python3](solutions/401.binary-watch/Python3.py) |
-| 402 | [remove-k-digits](https://leetcode.com/problems/remove-k-digits) | [Python3](solutions/402.remove-k-digits/Python3.py) |
-| 403 | [frog-jump](https://leetcode.com/problems/frog-jump) | [Rust](solutions/403.frog-jump/Rust.rs) |
-| 404 | [sum-of-left-leaves](https://leetcode.com/problems/sum-of-left-leaves) | [Python3](solutions/404.sum-of-left-leaves/Python3.py) |
-| 405 | [convert-a-number-to-hexadecimal](https://leetcode.com/problems/convert-a-number-to-hexadecimal) | [Python3](solutions/405.convert-a-number-to-hexadecimal/Python3.py) |
-| 406 | [queue-reconstruction-by-height](https://leetcode.com/problems/queue-reconstruction-by-height) | [Python3](solutions/406.queue-reconstruction-by-height/Python3.py) |
-| 407 | [trapping-rain-water-ii](https://leetcode.com/problems/trapping-rain-water-ii) | [Python3](solutions/407.trapping-rain-water-ii/Python3.py) |
+| 380 | [insert-delete-getrandom-o1](https://leetcode.com/problems/insert-delete-getrandom-o1) | [Python3](solutions/380.insert-delete-getrandom-o1/Python3.py), [C++](solutions/380.insert-delete-getrandom-o1/C++.cpp) |
+| 381 | [insert-delete-getrandom-o1-duplicates-allowed](https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed) | [Python3](solutions/381.insert-delete-getrandom-o1-duplicates-allowed/Python3.py), [C++](solutions/381.insert-delete-getrandom-o1-duplicates-allowed/C++.cpp) |
+| 382 | [linked-list-random-node](https://leetcode.com/problems/linked-list-random-node) | [Python3](solutions/382.linked-list-random-node/Python3.py), [C++](solutions/382.linked-list-random-node/C++.cpp) |
+| 383 | [ransom-note](https://leetcode.com/problems/ransom-note) | [Python3](solutions/383.ransom-note/Python3.py), [C++](solutions/383.ransom-note/C++.cpp) |
+| 384 | [shuffle-an-array](https://leetcode.com/problems/shuffle-an-array) | [Python3](solutions/384.shuffle-an-array/Python3.py), [C++](solutions/384.shuffle-an-array/C++.cpp) |
+| 385 | [mini-parser](https://leetcode.com/problems/mini-parser) | [Python3](solutions/385.mini-parser/Python3.py), [C++](solutions/385.mini-parser/C++.cpp) |
+| 386 | [lexicographical-numbers](https://leetcode.com/problems/lexicographical-numbers) | [Python3](solutions/386.lexicographical-numbers/Python3.py), [C++](solutions/386.lexicographical-numbers/C++.cpp) |
+| 387 | [first-unique-character-in-a-string](https://leetcode.com/problems/first-unique-character-in-a-string) | [Python3](solutions/387.first-unique-character-in-a-string/Python3.py), [C++](solutions/387.first-unique-character-in-a-string/C++.cpp) |
+| 388 | [longest-absolute-file-path](https://leetcode.com/problems/longest-absolute-file-path) | [Python3](solutions/388.longest-absolute-file-path/Python3.py), [C++](solutions/388.longest-absolute-file-path/C++.cpp) |
+| 389 | [find-the-difference](https://leetcode.com/problems/find-the-difference) | [Python3](solutions/389.find-the-difference/Python3.py), [C++](solutions/389.find-the-difference/C++.cpp) |
+| 390 | [elimination-game](https://leetcode.com/problems/elimination-game) | [Python3](solutions/390.elimination-game/Python3.py), [C++](solutions/390.elimination-game/C++.cpp) |
+| 391 | [perfect-rectangle](https://leetcode.com/problems/perfect-rectangle) | [Python3](solutions/391.perfect-rectangle/Python3.py), [C++](solutions/391.perfect-rectangle/C++.cpp) |
+| 392 | [is-subsequence](https://leetcode.com/problems/is-subsequence) | [Python3](solutions/392.is-subsequence/Python3.py), [C++](solutions/392.is-subsequence/C++.cpp) |
+| 393 | [utf-8-validation](https://leetcode.com/problems/utf-8-validation) | [Python3](solutions/393.utf-8-validation/Python3.py), [C++](solutions/393.utf-8-validation/C++.cpp) |
+| 394 | [decode-string](https://leetcode.com/problems/decode-string) | [Python3](solutions/394.decode-string/Python3.py), [C++](solutions/394.decode-string/C++.cpp) |
+| 395 | [longest-substring-with-at-least-k-repeating-characters](https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters) | [Python3](solutions/395.longest-substring-with-at-least-k-repeating-characters/Python3.py), [C++](solutions/395.longest-substring-with-at-least-k-repeating-characters/C++.cpp) |
+| 396 | [rotate-function](https://leetcode.com/problems/rotate-function) | [Python3](solutions/396.rotate-function/Python3.py), [C++](solutions/396.rotate-function/C++.cpp) |
+| 397 | [integer-replacement](https://leetcode.com/problems/integer-replacement) | [Python3](solutions/397.integer-replacement/Python3.py), [C++](solutions/397.integer-replacement/C++.cpp) |
+| 398 | [random-pick-index](https://leetcode.com/problems/random-pick-index) | [Python3](solutions/398.random-pick-index/Python3.py), [C++](solutions/398.random-pick-index/C++.cpp) |
+| 399 | [evaluate-division](https://leetcode.com/problems/evaluate-division) | [Python3](solutions/399.evaluate-division/Python3.py), [C++](solutions/399.evaluate-division/C++.cpp) |
+| 400 | [nth-digit](https://leetcode.com/problems/nth-digit) | [Python3](solutions/400.nth-digit/Python3.py), [C++](solutions/400.nth-digit/C++.cpp) |
+| 401 | [binary-watch](https://leetcode.com/problems/binary-watch) | [Python3](solutions/401.binary-watch/Python3.py), [C++](solutions/401.binary-watch/C++.cpp) |
+| 402 | [remove-k-digits](https://leetcode.com/problems/remove-k-digits) | [Python3](solutions/402.remove-k-digits/Python3.py), [C++](solutions/402.remove-k-digits/C++.cpp) |
+| 403 | [frog-jump](https://leetcode.com/problems/frog-jump) | [C++](solutions/403.frog-jump/C++.cpp), [Rust](solutions/403.frog-jump/Rust.rs) |
+| 404 | [sum-of-left-leaves](https://leetcode.com/problems/sum-of-left-leaves) | [Python3](solutions/404.sum-of-left-leaves/Python3.py), [C++](solutions/404.sum-of-left-leaves/C++.cpp) |
+| 405 | [convert-a-number-to-hexadecimal](https://leetcode.com/problems/convert-a-number-to-hexadecimal) | [Python3](solutions/405.convert-a-number-to-hexadecimal/Python3.py), [C++](solutions/405.convert-a-number-to-hexadecimal/C++.cpp) |
+| 406 | [queue-reconstruction-by-height](https://leetcode.com/problems/queue-reconstruction-by-height) | [Python3](solutions/406.queue-reconstruction-by-height/Python3.py), [C++](solutions/406.queue-reconstruction-by-height/C++.cpp) |
+| 407 | [trapping-rain-water-ii](https://leetcode.com/problems/trapping-rain-water-ii) | [Python3](solutions/407.trapping-rain-water-ii/Python3.py), [C++](solutions/407.trapping-rain-water-ii/C++.cpp) |
 | 408 | [valid-word-abbreviation](https://leetcode.com/problems/valid-word-abbreviation) | [Python3](solutions/408.valid-word-abbreviation/Python3.py) |
-| 409 | [longest-palindrome](https://leetcode.com/problems/longest-palindrome) | [Python3](solutions/409.longest-palindrome/Python3.py) |
-| 410 | [split-array-largest-sum](https://leetcode.com/problems/split-array-largest-sum) | [Python3](solutions/410.split-array-largest-sum/Python3.py) |
+| 409 | [longest-palindrome](https://leetcode.com/problems/longest-palindrome) | [Python3](solutions/409.longest-palindrome/Python3.py), [C++](solutions/409.longest-palindrome/C++.cpp) |
+| 410 | [split-array-largest-sum](https://leetcode.com/problems/split-array-largest-sum) | [Python3](solutions/410.split-array-largest-sum/Python3.py), [C++](solutions/410.split-array-largest-sum/C++.cpp) |
 | 411 | [minimum-unique-word-abbreviation](https://leetcode.com/problems/minimum-unique-word-abbreviation) | [Python3](solutions/411.minimum-unique-word-abbreviation/Python3.py) |
-| 412 | [fizz-buzz](https://leetcode.com/problems/fizz-buzz) | [Python3](solutions/412.fizz-buzz/Python3.py) |
-| 413 | [arithmetic-slices](https://leetcode.com/problems/arithmetic-slices) | [Python3](solutions/413.arithmetic-slices/Python3.py) |
-| 414 | [third-maximum-number](https://leetcode.com/problems/third-maximum-number) | [Python3](solutions/414.third-maximum-number/Python3.py) |
-| 415 | [add-strings](https://leetcode.com/problems/add-strings) | [Python3](solutions/415.add-strings/Python3.py) |
-| 416 | [partition-equal-subset-sum](https://leetcode.com/problems/partition-equal-subset-sum) | [Python3](solutions/416.partition-equal-subset-sum/Python3.py) |
-| 417 | [pacific-atlantic-water-flow](https://leetcode.com/problems/pacific-atlantic-water-flow) | [Rust](solutions/417.pacific-atlantic-water-flow/Rust.rs) |
+| 412 | [fizz-buzz](https://leetcode.com/problems/fizz-buzz) | [Python3](solutions/412.fizz-buzz/Python3.py), [C++](solutions/412.fizz-buzz/C++.cpp) |
+| 413 | [arithmetic-slices](https://leetcode.com/problems/arithmetic-slices) | [Python3](solutions/413.arithmetic-slices/Python3.py), [C++](solutions/413.arithmetic-slices/C++.cpp) |
+| 414 | [third-maximum-number](https://leetcode.com/problems/third-maximum-number) | [Python3](solutions/414.third-maximum-number/Python3.py), [C++](solutions/414.third-maximum-number/C++.cpp) |
+| 415 | [add-strings](https://leetcode.com/problems/add-strings) | [Python3](solutions/415.add-strings/Python3.py), [C++](solutions/415.add-strings/C++.cpp) |
+| 416 | [partition-equal-subset-sum](https://leetcode.com/problems/partition-equal-subset-sum) | [Python3](solutions/416.partition-equal-subset-sum/Python3.py), [C++](solutions/416.partition-equal-subset-sum/C++.cpp) |
+| 417 | [pacific-atlantic-water-flow](https://leetcode.com/problems/pacific-atlantic-water-flow) | [C++](solutions/417.pacific-atlantic-water-flow/C++.cpp), [Rust](solutions/417.pacific-atlantic-water-flow/Rust.rs) |
 | 418 | [sentence-screen-fitting](https://leetcode.com/problems/sentence-screen-fitting) | [Python3](solutions/418.sentence-screen-fitting/Python3.py) |
-| 419 | [battleships-in-a-board](https://leetcode.com/problems/battleships-in-a-board) | [Python3](solutions/419.battleships-in-a-board/Python3.py) |
-| 420 | [strong-password-checker](https://leetcode.com/problems/strong-password-checker) | [Python3](solutions/420.strong-password-checker/Python3.py) |
-| 421 | [maximum-xor-of-two-numbers-in-an-array](https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array) | [Python3](solutions/421.maximum-xor-of-two-numbers-in-an-array/Python3.py) |
+| 419 | [battleships-in-a-board](https://leetcode.com/problems/battleships-in-a-board) | [Python3](solutions/419.battleships-in-a-board/Python3.py), [C++](solutions/419.battleships-in-a-board/C++.cpp) |
+| 420 | [strong-password-checker](https://leetcode.com/problems/strong-password-checker) | [Python3](solutions/420.strong-password-checker/Python3.py), [C++](solutions/420.strong-password-checker/C++.cpp) |
+| 421 | [maximum-xor-of-two-numbers-in-an-array](https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array) | [Python3](solutions/421.maximum-xor-of-two-numbers-in-an-array/Python3.py), [C++](solutions/421.maximum-xor-of-two-numbers-in-an-array/C++.cpp) |
 | 422 | [valid-word-square](https://leetcode.com/problems/valid-word-square) | [Python3](solutions/422.valid-word-square/Python3.py) |
-| 423 | [reconstruct-original-digits-from-english](https://leetcode.com/problems/reconstruct-original-digits-from-english) | [Python3](solutions/423.reconstruct-original-digits-from-english/Python3.py) |
-| 424 | [longest-repeating-character-replacement](https://leetcode.com/problems/longest-repeating-character-replacement) | [Python3](solutions/424.longest-repeating-character-replacement/Python3.py) |
+| 423 | [reconstruct-original-digits-from-english](https://leetcode.com/problems/reconstruct-original-digits-from-english) | [Python3](solutions/423.reconstruct-original-digits-from-english/Python3.py), [C++](solutions/423.reconstruct-original-digits-from-english/C++.cpp) |
+| 424 | [longest-repeating-character-replacement](https://leetcode.com/problems/longest-repeating-character-replacement) | [Python3](solutions/424.longest-repeating-character-replacement/Python3.py), [C++](solutions/424.longest-repeating-character-replacement/C++.cpp) |
 | 425 | [word-squares](https://leetcode.com/problems/word-squares) | [Python3](solutions/425.word-squares/Python3.py) |
 | 432 | [all-oone-data-structure](https://leetcode.com/problems/all-oone-data-structure) | [Python3](solutions/432.all-oone-data-structure/Python3.py) |
-| 433 | [minimum-genetic-mutation](https://leetcode.com/problems/minimum-genetic-mutation) | [Rust](solutions/433.minimum-genetic-mutation/Rust.rs) |
-| 434 | [number-of-segments-in-a-string](https://leetcode.com/problems/number-of-segments-in-a-string) | [Python3](solutions/434.number-of-segments-in-a-string/Python3.py) |
-| 435 | [non-overlapping-intervals](https://leetcode.com/problems/non-overlapping-intervals) | [Python3](solutions/435.non-overlapping-intervals/Python3.py) |
-| 436 | [find-right-interval](https://leetcode.com/problems/find-right-interval) | [Rust](solutions/436.find-right-interval/Rust.rs) |
-| 437 | [path-sum-iii](https://leetcode.com/problems/path-sum-iii) | [Python3](solutions/437.path-sum-iii/Python3.py) |
-| 438 | [find-all-anagrams-in-a-string](https://leetcode.com/problems/find-all-anagrams-in-a-string) | [Python3](solutions/438.find-all-anagrams-in-a-string/Python3.py) |
+| 433 | [minimum-genetic-mutation](https://leetcode.com/problems/minimum-genetic-mutation) | [C++](solutions/433.minimum-genetic-mutation/C++.cpp), [Rust](solutions/433.minimum-genetic-mutation/Rust.rs) |
+| 434 | [number-of-segments-in-a-string](https://leetcode.com/problems/number-of-segments-in-a-string) | [Python3](solutions/434.number-of-segments-in-a-string/Python3.py), [C++](solutions/434.number-of-segments-in-a-string/C++.cpp) |
+| 435 | [non-overlapping-intervals](https://leetcode.com/problems/non-overlapping-intervals) | [Python3](solutions/435.non-overlapping-intervals/Python3.py), [C++](solutions/435.non-overlapping-intervals/C++.cpp) |
+| 436 | [find-right-interval](https://leetcode.com/problems/find-right-interval) | [C++](solutions/436.find-right-interval/C++.cpp), [Rust](solutions/436.find-right-interval/Rust.rs) |
+| 437 | [path-sum-iii](https://leetcode.com/problems/path-sum-iii) | [Python3](solutions/437.path-sum-iii/Python3.py), [C++](solutions/437.path-sum-iii/C++.cpp) |
+| 438 | [find-all-anagrams-in-a-string](https://leetcode.com/problems/find-all-anagrams-in-a-string) | [Python3](solutions/438.find-all-anagrams-in-a-string/Python3.py), [C++](solutions/438.find-all-anagrams-in-a-string/C++.cpp) |
 | 439 | [ternary-expression-parser](https://leetcode.com/problems/ternary-expression-parser) | [Python3](solutions/439.ternary-expression-parser/Python3.py) |
-| 440 | [k-th-smallest-in-lexicographical-order](https://leetcode.com/problems/k-th-smallest-in-lexicographical-order) | [Python3](solutions/440.k-th-smallest-in-lexicographical-order/Python3.py) |
-| 441 | [arranging-coins](https://leetcode.com/problems/arranging-coins) | [Rust](solutions/441.arranging-coins/Rust.rs) |
-| 442 | [find-all-duplicates-in-an-array](https://leetcode.com/problems/find-all-duplicates-in-an-array) | [Python3](solutions/442.find-all-duplicates-in-an-array/Python3.py) |
-| 443 | [string-compression](https://leetcode.com/problems/string-compression) | [Python3](solutions/443.string-compression/Python3.py) |
+| 440 | [k-th-smallest-in-lexicographical-order](https://leetcode.com/problems/k-th-smallest-in-lexicographical-order) | [Python3](solutions/440.k-th-smallest-in-lexicographical-order/Python3.py), [C++](solutions/440.k-th-smallest-in-lexicographical-order/C++.cpp) |
+| 441 | [arranging-coins](https://leetcode.com/problems/arranging-coins) | [C++](solutions/441.arranging-coins/C++.cpp), [Rust](solutions/441.arranging-coins/Rust.rs) |
+| 442 | [find-all-duplicates-in-an-array](https://leetcode.com/problems/find-all-duplicates-in-an-array) | [Python3](solutions/442.find-all-duplicates-in-an-array/Python3.py), [C++](solutions/442.find-all-duplicates-in-an-array/C++.cpp) |
+| 443 | [string-compression](https://leetcode.com/problems/string-compression) | [Python3](solutions/443.string-compression/Python3.py), [C++](solutions/443.string-compression/C++.cpp) |
 | 444 | [sequence-reconstruction](https://leetcode.com/problems/sequence-reconstruction) | [Python3](solutions/444.sequence-reconstruction/Python3.py) |
-| 445 | [add-two-numbers-ii](https://leetcode.com/problems/add-two-numbers-ii) | [Rust](solutions/445.add-two-numbers-ii/Rust.rs) |
-| 446 | [arithmetic-slices-ii-subsequence](https://leetcode.com/problems/arithmetic-slices-ii-subsequence) | [Python3](solutions/446.arithmetic-slices-ii-subsequence/Python3.py) |
-| 447 | [number-of-boomerangs](https://leetcode.com/problems/number-of-boomerangs) | [Python3](solutions/447.number-of-boomerangs/Python3.py) |
-| 448 | [find-all-numbers-disappeared-in-an-array](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array) | [Python3](solutions/448.find-all-numbers-disappeared-in-an-array/Python3.py) |
-| 449 | [serialize-and-deserialize-bst](https://leetcode.com/problems/serialize-and-deserialize-bst) | [Python3](solutions/449.serialize-and-deserialize-bst/Python3.py) |
-| 450 | [delete-node-in-a-bst](https://leetcode.com/problems/delete-node-in-a-bst) | [Python3](solutions/450.delete-node-in-a-bst/Python3.py) |
-| 451 | [sort-characters-by-frequency](https://leetcode.com/problems/sort-characters-by-frequency) | [Python3](solutions/451.sort-characters-by-frequency/Python3.py) |
-| 452 | [minimum-number-of-arrows-to-burst-balloons](https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons) | [Python3](solutions/452.minimum-number-of-arrows-to-burst-balloons/Python3.py) |
-| 453 | [minimum-moves-to-equal-array-elements](https://leetcode.com/problems/minimum-moves-to-equal-array-elements) | [Python3](solutions/453.minimum-moves-to-equal-array-elements/Python3.py) |
-| 454 | [4sum-ii](https://leetcode.com/problems/4sum-ii) | [Python3](solutions/454.4sum-ii/Python3.py) |
-| 455 | [assign-cookies](https://leetcode.com/problems/assign-cookies) | [Python3](solutions/455.assign-cookies/Python3.py) |
-| 456 | [132-pattern](https://leetcode.com/problems/132-pattern) | [Python3](solutions/456.132-pattern/Python3.py) |
-| 457 | [circular-array-loop](https://leetcode.com/problems/circular-array-loop) | [Python3](solutions/457.circular-array-loop/Python3.py) |
-| 458 | [poor-pigs](https://leetcode.com/problems/poor-pigs) | [Python3](solutions/458.poor-pigs/Python3.py) |
-| 459 | [repeated-substring-pattern](https://leetcode.com/problems/repeated-substring-pattern) | [Python3](solutions/459.repeated-substring-pattern/Python3.py) |
-| 460 | [lfu-cache](https://leetcode.com/problems/lfu-cache) | [Python3](solutions/460.lfu-cache/Python3.py) |
-| 461 | [hamming-distance](https://leetcode.com/problems/hamming-distance) | [Python3](solutions/461.hamming-distance/Python3.py) |
-| 462 | [minimum-moves-to-equal-array-elements-ii](https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii) | [Python3](solutions/462.minimum-moves-to-equal-array-elements-ii/Python3.py) |
-| 463 | [island-perimeter](https://leetcode.com/problems/island-perimeter) | [Python3](solutions/463.island-perimeter/Python3.py) |
-| 464 | [can-i-win](https://leetcode.com/problems/can-i-win) | [Python3](solutions/464.can-i-win/Python3.py) |
+| 445 | [add-two-numbers-ii](https://leetcode.com/problems/add-two-numbers-ii) | [C++](solutions/445.add-two-numbers-ii/C++.cpp), [Rust](solutions/445.add-two-numbers-ii/Rust.rs) |
+| 446 | [arithmetic-slices-ii-subsequence](https://leetcode.com/problems/arithmetic-slices-ii-subsequence) | [Python3](solutions/446.arithmetic-slices-ii-subsequence/Python3.py), [C++](solutions/446.arithmetic-slices-ii-subsequence/C++.cpp) |
+| 447 | [number-of-boomerangs](https://leetcode.com/problems/number-of-boomerangs) | [Python3](solutions/447.number-of-boomerangs/Python3.py), [C++](solutions/447.number-of-boomerangs/C++.cpp) |
+| 448 | [find-all-numbers-disappeared-in-an-array](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array) | [Python3](solutions/448.find-all-numbers-disappeared-in-an-array/Python3.py), [C++](solutions/448.find-all-numbers-disappeared-in-an-array/C++.cpp) |
+| 449 | [serialize-and-deserialize-bst](https://leetcode.com/problems/serialize-and-deserialize-bst) | [Python3](solutions/449.serialize-and-deserialize-bst/Python3.py), [C++](solutions/449.serialize-and-deserialize-bst/C++.cpp) |
+| 450 | [delete-node-in-a-bst](https://leetcode.com/problems/delete-node-in-a-bst) | [Python3](solutions/450.delete-node-in-a-bst/Python3.py), [C++](solutions/450.delete-node-in-a-bst/C++.cpp) |
+| 451 | [sort-characters-by-frequency](https://leetcode.com/problems/sort-characters-by-frequency) | [Python3](solutions/451.sort-characters-by-frequency/Python3.py), [C++](solutions/451.sort-characters-by-frequency/C++.cpp) |
+| 452 | [minimum-number-of-arrows-to-burst-balloons](https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons) | [Python3](solutions/452.minimum-number-of-arrows-to-burst-balloons/Python3.py), [C++](solutions/452.minimum-number-of-arrows-to-burst-balloons/C++.cpp) |
+| 453 | [minimum-moves-to-equal-array-elements](https://leetcode.com/problems/minimum-moves-to-equal-array-elements) | [Python3](solutions/453.minimum-moves-to-equal-array-elements/Python3.py), [C++](solutions/453.minimum-moves-to-equal-array-elements/C++.cpp) |
+| 454 | [4sum-ii](https://leetcode.com/problems/4sum-ii) | [Python3](solutions/454.4sum-ii/Python3.py), [C++](solutions/454.4sum-ii/C++.cpp) |
+| 455 | [assign-cookies](https://leetcode.com/problems/assign-cookies) | [Python3](solutions/455.assign-cookies/Python3.py), [C++](solutions/455.assign-cookies/C++.cpp) |
+| 456 | [132-pattern](https://leetcode.com/problems/132-pattern) | [Python3](solutions/456.132-pattern/Python3.py), [C++](solutions/456.132-pattern/C++.cpp) |
+| 457 | [circular-array-loop](https://leetcode.com/problems/circular-array-loop) | [Python3](solutions/457.circular-array-loop/Python3.py), [C++](solutions/457.circular-array-loop/C++.cpp) |
+| 458 | [poor-pigs](https://leetcode.com/problems/poor-pigs) | [Python3](solutions/458.poor-pigs/Python3.py), [C++](solutions/458.poor-pigs/C++.cpp) |
+| 459 | [repeated-substring-pattern](https://leetcode.com/problems/repeated-substring-pattern) | [Python3](solutions/459.repeated-substring-pattern/Python3.py), [C++](solutions/459.repeated-substring-pattern/C++.cpp) |
+| 460 | [lfu-cache](https://leetcode.com/problems/lfu-cache) | [Python3](solutions/460.lfu-cache/Python3.py), [C++](solutions/460.lfu-cache/C++.cpp) |
+| 461 | [hamming-distance](https://leetcode.com/problems/hamming-distance) | [Python3](solutions/461.hamming-distance/Python3.py), [C++](solutions/461.hamming-distance/C++.cpp) |
+| 462 | [minimum-moves-to-equal-array-elements-ii](https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii) | [Python3](solutions/462.minimum-moves-to-equal-array-elements-ii/Python3.py), [C++](solutions/462.minimum-moves-to-equal-array-elements-ii/C++.cpp) |
+| 463 | [island-perimeter](https://leetcode.com/problems/island-perimeter) | [Python3](solutions/463.island-perimeter/Python3.py), [C++](solutions/463.island-perimeter/C++.cpp) |
+| 464 | [can-i-win](https://leetcode.com/problems/can-i-win) | [Python3](solutions/464.can-i-win/Python3.py), [C++](solutions/464.can-i-win/C++.cpp) |
 | 465 | [optimal-account-balancing](https://leetcode.com/problems/optimal-account-balancing) | [Python3](solutions/465.optimal-account-balancing/Python3.py) |
-| 466 | [count-the-repetitions](https://leetcode.com/problems/count-the-repetitions) | [Python3](solutions/466.count-the-repetitions/Python3.py) |
-| 467 | [unique-substrings-in-wraparound-string](https://leetcode.com/problems/unique-substrings-in-wraparound-string) | [Python3](solutions/467.unique-substrings-in-wraparound-string/Python3.py) |
-| 468 | [validate-ip-address](https://leetcode.com/problems/validate-ip-address) | [Python3](solutions/468.validate-ip-address/Python3.py) |
+| 466 | [count-the-repetitions](https://leetcode.com/problems/count-the-repetitions) | [Python3](solutions/466.count-the-repetitions/Python3.py), [C++](solutions/466.count-the-repetitions/C++.cpp) |
+| 467 | [unique-substrings-in-wraparound-string](https://leetcode.com/problems/unique-substrings-in-wraparound-string) | [Python3](solutions/467.unique-substrings-in-wraparound-string/Python3.py), [C++](solutions/467.unique-substrings-in-wraparound-string/C++.cpp) |
+| 468 | [validate-ip-address](https://leetcode.com/problems/validate-ip-address) | [Python3](solutions/468.validate-ip-address/Python3.py), [C++](solutions/468.validate-ip-address/C++.cpp) |
 | 469 | [convex-polygon](https://leetcode.com/problems/convex-polygon) | [Python3](solutions/469.convex-polygon/Python3.py) |
 | 471 | [encode-string-with-shortest-length](https://leetcode.com/problems/encode-string-with-shortest-length) | [Python3](solutions/471.encode-string-with-shortest-length/Python3.py) |
-| 472 | [concatenated-words](https://leetcode.com/problems/concatenated-words) | [Python3](solutions/472.concatenated-words/Python3.py) |
-| 473 | [matchsticks-to-square](https://leetcode.com/problems/matchsticks-to-square) | [Python3](solutions/473.matchsticks-to-square/Python3.py) |
-| 474 | [ones-and-zeroes](https://leetcode.com/problems/ones-and-zeroes) | [Python3](solutions/474.ones-and-zeroes/Python3.py) |
-| 475 | [heaters](https://leetcode.com/problems/heaters) | [Python3](solutions/475.heaters/Python3.py) |
-| 476 | [number-complement](https://leetcode.com/problems/number-complement) | [Python3](solutions/476.number-complement/Python3.py) |
-| 477 | [total-hamming-distance](https://leetcode.com/problems/total-hamming-distance) | [Python3](solutions/477.total-hamming-distance/Python3.py) |
-| 479 | [largest-palindrome-product](https://leetcode.com/problems/largest-palindrome-product) | [Python3](solutions/479.largest-palindrome-product/Python3.py) |
-| 480 | [sliding-window-median](https://leetcode.com/problems/sliding-window-median) | [Python3](solutions/480.sliding-window-median/Python3.py) |
-| 481 | [magical-string](https://leetcode.com/problems/magical-string) | [Python3](solutions/481.magical-string/Python3.py) |
-| 482 | [license-key-formatting](https://leetcode.com/problems/license-key-formatting) | [Python3](solutions/482.license-key-formatting/Python3.py) |
-| 483 | [smallest-good-base](https://leetcode.com/problems/smallest-good-base) | [Python3](solutions/483.smallest-good-base/Python3.py) |
+| 472 | [concatenated-words](https://leetcode.com/problems/concatenated-words) | [Python3](solutions/472.concatenated-words/Python3.py), [C++](solutions/472.concatenated-words/C++.cpp) |
+| 473 | [matchsticks-to-square](https://leetcode.com/problems/matchsticks-to-square) | [Python3](solutions/473.matchsticks-to-square/Python3.py), [C++](solutions/473.matchsticks-to-square/C++.cpp) |
+| 474 | [ones-and-zeroes](https://leetcode.com/problems/ones-and-zeroes) | [Python3](solutions/474.ones-and-zeroes/Python3.py), [C++](solutions/474.ones-and-zeroes/C++.cpp) |
+| 475 | [heaters](https://leetcode.com/problems/heaters) | [Python3](solutions/475.heaters/Python3.py), [C++](solutions/475.heaters/C++.cpp) |
+| 476 | [number-complement](https://leetcode.com/problems/number-complement) | [Python3](solutions/476.number-complement/Python3.py), [C++](solutions/476.number-complement/C++.cpp) |
+| 477 | [total-hamming-distance](https://leetcode.com/problems/total-hamming-distance) | [Python3](solutions/477.total-hamming-distance/Python3.py), [C++](solutions/477.total-hamming-distance/C++.cpp) |
+| 479 | [largest-palindrome-product](https://leetcode.com/problems/largest-palindrome-product) | [Python3](solutions/479.largest-palindrome-product/Python3.py), [C++](solutions/479.largest-palindrome-product/C++.cpp) |
+| 480 | [sliding-window-median](https://leetcode.com/problems/sliding-window-median) | [Python3](solutions/480.sliding-window-median/Python3.py), [C++](solutions/480.sliding-window-median/C++.cpp) |
+| 481 | [magical-string](https://leetcode.com/problems/magical-string) | [Python3](solutions/481.magical-string/Python3.py), [C++](solutions/481.magical-string/C++.cpp) |
+| 482 | [license-key-formatting](https://leetcode.com/problems/license-key-formatting) | [Python3](solutions/482.license-key-formatting/Python3.py), [C++](solutions/482.license-key-formatting/C++.cpp) |
+| 483 | [smallest-good-base](https://leetcode.com/problems/smallest-good-base) | [Python3](solutions/483.smallest-good-base/Python3.py), [C++](solutions/483.smallest-good-base/C++.cpp) |
 | 484 | [find-permutation](https://leetcode.com/problems/find-permutation) | [Python3](solutions/484.find-permutation/Python3.py) |
-| 485 | [max-consecutive-ones](https://leetcode.com/problems/max-consecutive-ones) | [Python](solutions/485.max-consecutive-ones/Python.py) |
-| 486 | [predict-the-winner](https://leetcode.com/problems/predict-the-winner) | [Python3](solutions/486.predict-the-winner/Python3.py) |
+| 485 | [max-consecutive-ones](https://leetcode.com/problems/max-consecutive-ones) | [C++](solutions/485.max-consecutive-ones/C++.cpp), [Python](solutions/485.max-consecutive-ones/Python.py) |
+| 486 | [predict-the-winner](https://leetcode.com/problems/predict-the-winner) | [Python3](solutions/486.predict-the-winner/Python3.py), [C++](solutions/486.predict-the-winner/C++.cpp) |
 | 487 | [max-consecutive-ones-ii](https://leetcode.com/problems/max-consecutive-ones-ii) | [Python3](solutions/487.max-consecutive-ones-ii/Python3.py) |
-| 489 | [kth-smallest-instructions](https://leetcode.com/problems/kth-smallest-instructions) | [Python3](solutions/489.kth-smallest-instructions/Python3.py) |
+| 489 | [kth-smallest-instructions](https://leetcode.com/problems/kth-smallest-instructions) | [Python3](solutions/489.kth-smallest-instructions/Python3.py), [C++](solutions/489.kth-smallest-instructions/C++.cpp) |
 | 490 | [the-maze](https://leetcode.com/problems/the-maze) | [Python3](solutions/490.the-maze/Python3.py) |
-| 491 | [non-decreasing-subsequences](https://leetcode.com/problems/non-decreasing-subsequences) | [Python3](solutions/491.non-decreasing-subsequences/Python3.py) |
-| 492 | [construct-the-rectangle](https://leetcode.com/problems/construct-the-rectangle) | [Python3](solutions/492.construct-the-rectangle/Python3.py) |
-| 493 | [reverse-pairs](https://leetcode.com/problems/reverse-pairs) | [Python3](solutions/493.reverse-pairs/Python3.py) |
-| 494 | [target-sum](https://leetcode.com/problems/target-sum) | [Python3](solutions/494.target-sum/Python3.py) |
-| 495 | [teemo-attacking](https://leetcode.com/problems/teemo-attacking) | [Python3](solutions/495.teemo-attacking/Python3.py) |
-| 496 | [next-greater-element-i](https://leetcode.com/problems/next-greater-element-i) | [Python3](solutions/496.next-greater-element-i/Python3.py) |
-| 498 | [diagonal-traverse](https://leetcode.com/problems/diagonal-traverse) | [Python3](solutions/498.diagonal-traverse/Python3.py) |
+| 491 | [non-decreasing-subsequences](https://leetcode.com/problems/non-decreasing-subsequences) | [Python3](solutions/491.non-decreasing-subsequences/Python3.py), [C++](solutions/491.non-decreasing-subsequences/C++.cpp) |
+| 492 | [construct-the-rectangle](https://leetcode.com/problems/construct-the-rectangle) | [Python3](solutions/492.construct-the-rectangle/Python3.py), [C++](solutions/492.construct-the-rectangle/C++.cpp) |
+| 493 | [reverse-pairs](https://leetcode.com/problems/reverse-pairs) | [Python3](solutions/493.reverse-pairs/Python3.py), [C++](solutions/493.reverse-pairs/C++.cpp) |
+| 494 | [target-sum](https://leetcode.com/problems/target-sum) | [Python3](solutions/494.target-sum/Python3.py), [C++](solutions/494.target-sum/C++.cpp) |
+| 495 | [teemo-attacking](https://leetcode.com/problems/teemo-attacking) | [Python3](solutions/495.teemo-attacking/Python3.py), [C++](solutions/495.teemo-attacking/C++.cpp) |
+| 496 | [next-greater-element-i](https://leetcode.com/problems/next-greater-element-i) | [Python3](solutions/496.next-greater-element-i/Python3.py), [C++](solutions/496.next-greater-element-i/C++.cpp) |
+| 498 | [diagonal-traverse](https://leetcode.com/problems/diagonal-traverse) | [Python3](solutions/498.diagonal-traverse/Python3.py), [C++](solutions/498.diagonal-traverse/C++.cpp) |
 | 499 | [the-maze-iii](https://leetcode.com/problems/the-maze-iii) | [Rust](solutions/499.the-maze-iii/Rust.rs) |
-| 500 | [keyboard-row](https://leetcode.com/problems/keyboard-row) | [Python3](solutions/500.keyboard-row/Python3.py) |
-| 501 | [find-mode-in-binary-search-tree](https://leetcode.com/problems/find-mode-in-binary-search-tree) | [Python3](solutions/501.find-mode-in-binary-search-tree/Python3.py) |
-| 502 | [ipo](https://leetcode.com/problems/ipo) | [Python3](solutions/502.ipo/Python3.py) |
-| 503 | [next-greater-element-ii](https://leetcode.com/problems/next-greater-element-ii) | [Python3](solutions/503.next-greater-element-ii/Python3.py) |
-| 504 | [base-7](https://leetcode.com/problems/base-7) | [Python3](solutions/504.base-7/Python3.py) |
+| 500 | [keyboard-row](https://leetcode.com/problems/keyboard-row) | [Python3](solutions/500.keyboard-row/Python3.py), [C++](solutions/500.keyboard-row/C++.cpp) |
+| 501 | [find-mode-in-binary-search-tree](https://leetcode.com/problems/find-mode-in-binary-search-tree) | [Python3](solutions/501.find-mode-in-binary-search-tree/Python3.py), [C++](solutions/501.find-mode-in-binary-search-tree/C++.cpp) |
+| 502 | [ipo](https://leetcode.com/problems/ipo) | [Python3](solutions/502.ipo/Python3.py), [C++](solutions/502.ipo/C++.cpp) |
+| 503 | [next-greater-element-ii](https://leetcode.com/problems/next-greater-element-ii) | [Python3](solutions/503.next-greater-element-ii/Python3.py), [C++](solutions/503.next-greater-element-ii/C++.cpp) |
+| 504 | [base-7](https://leetcode.com/problems/base-7) | [Python3](solutions/504.base-7/Python3.py), [C++](solutions/504.base-7/C++.cpp) |
 | 505 | [the-maze-ii](https://leetcode.com/problems/the-maze-ii) | [Rust](solutions/505.the-maze-ii/Rust.rs) |
-| 506 | [relative-ranks](https://leetcode.com/problems/relative-ranks) | [Python3](solutions/506.relative-ranks/Python3.py) |
-| 507 | [perfect-number](https://leetcode.com/problems/perfect-number) | [Python3](solutions/507.perfect-number/Python3.py) |
-| 508 | [most-frequent-subtree-sum](https://leetcode.com/problems/most-frequent-subtree-sum) | [Python3](solutions/508.most-frequent-subtree-sum/Python3.py) |
+| 506 | [relative-ranks](https://leetcode.com/problems/relative-ranks) | [Python3](solutions/506.relative-ranks/Python3.py), [C++](solutions/506.relative-ranks/C++.cpp) |
+| 507 | [perfect-number](https://leetcode.com/problems/perfect-number) | [Python3](solutions/507.perfect-number/Python3.py), [C++](solutions/507.perfect-number/C++.cpp) |
+| 508 | [most-frequent-subtree-sum](https://leetcode.com/problems/most-frequent-subtree-sum) | [Python3](solutions/508.most-frequent-subtree-sum/Python3.py), [C++](solutions/508.most-frequent-subtree-sum/C++.cpp) |
 | 509 | [inorder-successor-in-bst-ii](https://leetcode.com/problems/inorder-successor-in-bst-ii) | [Python3](solutions/509.inorder-successor-in-bst-ii/Python3.py) |
 | 511 | [all-paths-from-source-lead-to-destination](https://leetcode.com/problems/all-paths-from-source-lead-to-destination) | [Python3](solutions/511.all-paths-from-source-lead-to-destination/Python3.py) |
-| 513 | [find-bottom-left-tree-value](https://leetcode.com/problems/find-bottom-left-tree-value) | [Python3](solutions/513.find-bottom-left-tree-value/Python3.py) |
-| 514 | [freedom-trail](https://leetcode.com/problems/freedom-trail) | [Python3](solutions/514.freedom-trail/Python3.py) |
-| 515 | [find-largest-value-in-each-tree-row](https://leetcode.com/problems/find-largest-value-in-each-tree-row) | [Python3](solutions/515.find-largest-value-in-each-tree-row/Python3.py) |
-| 516 | [longest-palindromic-subsequence](https://leetcode.com/problems/longest-palindromic-subsequence) | [Python3](solutions/516.longest-palindromic-subsequence/Python3.py) |
-| 517 | [super-washing-machines](https://leetcode.com/problems/super-washing-machines) | [Python3](solutions/517.super-washing-machines/Python3.py) |
+| 513 | [find-bottom-left-tree-value](https://leetcode.com/problems/find-bottom-left-tree-value) | [Python3](solutions/513.find-bottom-left-tree-value/Python3.py), [C++](solutions/513.find-bottom-left-tree-value/C++.cpp) |
+| 514 | [freedom-trail](https://leetcode.com/problems/freedom-trail) | [Python3](solutions/514.freedom-trail/Python3.py), [C++](solutions/514.freedom-trail/C++.cpp) |
+| 515 | [find-largest-value-in-each-tree-row](https://leetcode.com/problems/find-largest-value-in-each-tree-row) | [Python3](solutions/515.find-largest-value-in-each-tree-row/Python3.py), [C++](solutions/515.find-largest-value-in-each-tree-row/C++.cpp) |
+| 516 | [longest-palindromic-subsequence](https://leetcode.com/problems/longest-palindromic-subsequence) | [Python3](solutions/516.longest-palindromic-subsequence/Python3.py), [C++](solutions/516.longest-palindromic-subsequence/C++.cpp) |
+| 517 | [super-washing-machines](https://leetcode.com/problems/super-washing-machines) | [Python3](solutions/517.super-washing-machines/Python3.py), [C++](solutions/517.super-washing-machines/C++.cpp) |
 | 518 | [coin-change-ii](https://leetcode.com/problems/coin-change-ii) | [Python3](solutions/518.coin-change-ii/Python3.py) |
 | 519 | [widest-pair-of-indices-with-equal-range-sum](https://leetcode.com/problems/widest-pair-of-indices-with-equal-range-sum) | [Python3](solutions/519.widest-pair-of-indices-with-equal-range-sum/Python3.py) |
-| 520 | [detect-capital](https://leetcode.com/problems/detect-capital) | [Python3](solutions/520.detect-capital/Python3.py) |
-| 521 | [longest-uncommon-subsequence-i](https://leetcode.com/problems/longest-uncommon-subsequence-i) | [Python3](solutions/521.longest-uncommon-subsequence-i/Python3.py) |
-| 522 | [longest-uncommon-subsequence-ii](https://leetcode.com/problems/longest-uncommon-subsequence-ii) | [Python3](solutions/522.longest-uncommon-subsequence-ii/Python3.py) |
-| 523 | [continuous-subarray-sum](https://leetcode.com/problems/continuous-subarray-sum) | [Python3](solutions/523.continuous-subarray-sum/Python3.py) |
-| 524 | [longest-word-in-dictionary-through-deleting](https://leetcode.com/problems/longest-word-in-dictionary-through-deleting) | [Python3](solutions/524.longest-word-in-dictionary-through-deleting/Python3.py) |
-| 525 | [contiguous-array](https://leetcode.com/problems/contiguous-array) | [Python3](solutions/525.contiguous-array/Python3.py) |
-| 526 | [beautiful-arrangement](https://leetcode.com/problems/beautiful-arrangement) | [Python3](solutions/526.beautiful-arrangement/Python3.py) |
+| 520 | [detect-capital](https://leetcode.com/problems/detect-capital) | [Python3](solutions/520.detect-capital/Python3.py), [C++](solutions/520.detect-capital/C++.cpp) |
+| 521 | [longest-uncommon-subsequence-i](https://leetcode.com/problems/longest-uncommon-subsequence-i) | [Python3](solutions/521.longest-uncommon-subsequence-i/Python3.py), [C++](solutions/521.longest-uncommon-subsequence-i/C++.cpp) |
+| 522 | [longest-uncommon-subsequence-ii](https://leetcode.com/problems/longest-uncommon-subsequence-ii) | [Python3](solutions/522.longest-uncommon-subsequence-ii/Python3.py), [C++](solutions/522.longest-uncommon-subsequence-ii/C++.cpp) |
+| 523 | [continuous-subarray-sum](https://leetcode.com/problems/continuous-subarray-sum) | [Python3](solutions/523.continuous-subarray-sum/Python3.py), [C++](solutions/523.continuous-subarray-sum/C++.cpp) |
+| 524 | [longest-word-in-dictionary-through-deleting](https://leetcode.com/problems/longest-word-in-dictionary-through-deleting) | [Python3](solutions/524.longest-word-in-dictionary-through-deleting/Python3.py), [C++](solutions/524.longest-word-in-dictionary-through-deleting/C++.cpp) |
+| 525 | [contiguous-array](https://leetcode.com/problems/contiguous-array) | [Python3](solutions/525.contiguous-array/Python3.py), [C++](solutions/525.contiguous-array/C++.cpp) |
+| 526 | [beautiful-arrangement](https://leetcode.com/problems/beautiful-arrangement) | [Python3](solutions/526.beautiful-arrangement/Python3.py), [C++](solutions/526.beautiful-arrangement/C++.cpp) |
 | 527 | [word-abbreviation](https://leetcode.com/problems/word-abbreviation) | [Python3](solutions/527.word-abbreviation/Python3.py) |
-| 528 | [swapping-nodes-in-a-linked-list](https://leetcode.com/problems/swapping-nodes-in-a-linked-list) | [Python3](solutions/528.swapping-nodes-in-a-linked-list/Python3.py) |
-| 529 | [minesweeper](https://leetcode.com/problems/minesweeper) | [Python3](solutions/529.minesweeper/Python3.py) |
-| 530 | [minimum-absolute-difference-in-bst](https://leetcode.com/problems/minimum-absolute-difference-in-bst) | [Python3](solutions/530.minimum-absolute-difference-in-bst/Python3.py) |
+| 528 | [swapping-nodes-in-a-linked-list](https://leetcode.com/problems/swapping-nodes-in-a-linked-list) | [Python3](solutions/528.swapping-nodes-in-a-linked-list/Python3.py), [C++](solutions/528.swapping-nodes-in-a-linked-list/C++.cpp) |
+| 529 | [minesweeper](https://leetcode.com/problems/minesweeper) | [Python3](solutions/529.minesweeper/Python3.py), [C++](solutions/529.minesweeper/C++.cpp) |
+| 530 | [minimum-absolute-difference-in-bst](https://leetcode.com/problems/minimum-absolute-difference-in-bst) | [Python3](solutions/530.minimum-absolute-difference-in-bst/Python3.py), [C++](solutions/530.minimum-absolute-difference-in-bst/C++.cpp) |
 | 531 | [lonely-pixel-i](https://leetcode.com/problems/lonely-pixel-i) | [Python3](solutions/531.lonely-pixel-i/Python3.py) |
-| 532 | [k-diff-pairs-in-an-array](https://leetcode.com/problems/k-diff-pairs-in-an-array) | [Python3](solutions/532.k-diff-pairs-in-an-array/Python3.py) |
+| 532 | [k-diff-pairs-in-an-array](https://leetcode.com/problems/k-diff-pairs-in-an-array) | [Python3](solutions/532.k-diff-pairs-in-an-array/Python3.py), [C++](solutions/532.k-diff-pairs-in-an-array/C++.cpp) |
 | 533 | [lonely-pixel-ii](https://leetcode.com/problems/lonely-pixel-ii) | [Python3](solutions/533.lonely-pixel-ii/Python3.py) |
 | 535 | [encode-and-decode-tinyurl](https://leetcode.com/problems/encode-and-decode-tinyurl) | [Python3](solutions/535.encode-and-decode-tinyurl/Python3.py) |
 | 536 | [construct-binary-tree-from-string](https://leetcode.com/problems/construct-binary-tree-from-string) | [Python3](solutions/536.construct-binary-tree-from-string/Python3.py) |

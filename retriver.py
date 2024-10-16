@@ -558,12 +558,76 @@ def retriver_new():
             if question["questionId"] not in question_already_retrieved
         ]
 
+    # remove the empty file and folder
+    remove_empty_file()
+    remove_empty_folder()
+
     # check if the folder number is the same as the question_solved number
     question_solved = list_all_solved()
     if len(os.listdir("solutions")) == len(question_solved):
         print("All questions are retrieved.")
     else:
         print("Some questions are not retrieved.")
+
+
+def retriver_update():
+    # get all the question that is solved
+    question_solved = list_all_solved()
+    question_updated = []
+    while question_solved != question_updated:
+        question_left = [
+            question for question in question_solved if question not in question_updated
+        ]
+        for question in question_left:
+            # get the fastest accepted submission
+            fastest_accepted_submission = get_fastest_accepted_submission(
+                question["titleSlug"]
+            )
+            # get all the langugaes that already in the existing solution
+            existing_solution = os.listdir(
+                f"solutions/{question['questionId']}.{question['titleSlug']}"
+            )
+            # remove the question.json from the existing_solution
+            existing_solution = [
+                file for file in existing_solution if file != "question.json"
+            ]
+            # remove the file extension
+            existing_solution = [file.split(".")[0] for file in existing_solution]
+
+            # Corrected filtering logic
+            fastest_accepted_submission = {
+                lang: submission
+                for lang, submission in fastest_accepted_submission.items()
+                if submission["langName"] not in existing_solution
+            }
+
+            # for all the lang in the fastest_accepted_submission, they are new accepted submissions, get the submission details
+            for lang in fastest_accepted_submission:
+                submission_id = fastest_accepted_submission[lang]["id"]
+                langName = fastest_accepted_submission[lang]["langName"]
+                # get the submission details
+                submission_details = get_submission_details(submission_id)
+
+                # Check if submission_details is None or empty
+                if submission_details is None:
+                    print(
+                        f"No submission details found for submission ID: {submission_id}. Skipping write."
+                    )
+
+                    continue  # Skip to the next iteration if no details are found
+
+                # Save the code to the folder as solution according to the langSlug
+                with open(
+                    f"solutions/{question['questionId']}.{question['titleSlug']}/{langName}{FILE_TYPE[langName]}",
+                    "w",
+                    encoding="utf-8",
+                ) as f:
+                    f.write(submission_details)
+            question_updated.append(question)
+
+        # remove the empty file and folder
+        remove_empty_file()
+        remove_empty_folder()
 
 
 # use multithreading to update the existing solution -> get all the question that is solved -> use each thread to send a request to get the fastest accepted submission -> if the submission is not in the existing solution, add it
@@ -601,7 +665,15 @@ def retriver_update_mt_helper(question):
         langName = fastest_accepted_submission[lang]["langName"]
         # get the submission details
         submission_details = get_submission_details(submission_id)
-        # save the code to the folder as solution according to the langSlug
+
+        # Check if submission_details is None or empty
+        if submission_details is None:
+            print(
+                f"No submission details found for submission ID: {submission_id}. Skipping write."
+            )
+            continue  # Skip to the next iteration if no details are found
+
+        # Save the code to the folder as solution according to the langSlug
         with open(
             f"solutions/{question['questionId']}.{question['titleSlug']}/{langName}{FILE_TYPE[langName]}",
             "w",
@@ -615,5 +687,5 @@ if __name__ == "__main__":
     COOKIES = login_to_leetcode()
 
     retriver_new()
-    retriver_update_mt()
+    retriver_update()
     indexer.format_index_page(indexer.list_questions())
