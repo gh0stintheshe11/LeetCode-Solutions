@@ -179,17 +179,17 @@
 | 172 | [factorial-trailing-zeroes](https://leetcode.com/problems/factorial-trailing-zeroes) | [Python3](solutions/172.factorial-trailing-zeroes/Python3.py), [C++](solutions/172.factorial-trailing-zeroes/C++.cpp) |
 | 173 | [binary-search-tree-iterator](https://leetcode.com/problems/binary-search-tree-iterator) | [Python3](solutions/173.binary-search-tree-iterator/Python3.py), [C++](solutions/173.binary-search-tree-iterator/C++.cpp) |
 | 174 | [dungeon-game](https://leetcode.com/problems/dungeon-game) | [Python3](solutions/174.dungeon-game/Python3.py), [C++](solutions/174.dungeon-game/C++.cpp) |
-| 175 | [combine-two-tables](https://leetcode.com/problems/combine-two-tables) | [MySQL](solutions/175.combine-two-tables/MySQL.sql), [MS_SQL_Server](solutions/175.combine-two-tables/MS_SQL_Server.sql) |
-| 176 | [second-highest-salary](https://leetcode.com/problems/second-highest-salary) | [Pandas](solutions/176.second-highest-salary/Pandas.py), [MS_SQL_Server](solutions/176.second-highest-salary/MS_SQL_Server.sql) |
-| 177 | [nth-highest-salary](https://leetcode.com/problems/nth-highest-salary) | [Pandas](solutions/177.nth-highest-salary/Pandas.py), [MS_SQL_Server](solutions/177.nth-highest-salary/MS_SQL_Server.sql) |
-| 178 | [rank-scores](https://leetcode.com/problems/rank-scores) | [Pandas](solutions/178.rank-scores/Pandas.py), [MS_SQL_Server](solutions/178.rank-scores/MS_SQL_Server.sql) |
+| 175 | [combine-two-tables](https://leetcode.com/problems/combine-two-tables) | [MySQL](solutions/175.combine-two-tables/MySQL.sql), [MSSQLServer](solutions/175.combine-two-tables/MSSQLServer.sql) |
+| 176 | [second-highest-salary](https://leetcode.com/problems/second-highest-salary) | [Pandas](solutions/176.second-highest-salary/Pandas.py), [MSSQLServer](solutions/176.second-highest-salary/MSSQLServer.sql) |
+| 177 | [nth-highest-salary](https://leetcode.com/problems/nth-highest-salary) | [Pandas](solutions/177.nth-highest-salary/Pandas.py), [MSSQLServer](solutions/177.nth-highest-salary/MSSQLServer.sql) |
+| 178 | [rank-scores](https://leetcode.com/problems/rank-scores) | [Pandas](solutions/178.rank-scores/Pandas.py), [MSSQLServer](solutions/178.rank-scores/MSSQLServer.sql) |
 | 179 | [largest-number](https://leetcode.com/problems/largest-number) | [Python3](solutions/179.largest-number/Python3.py), [C](solutions/179.largest-number/C.c), [C++](solutions/179.largest-number/C++.cpp), [Rust](solutions/179.largest-number/Rust.rs) |
-| 180 | [consecutive-numbers](https://leetcode.com/problems/consecutive-numbers) | [Pandas](solutions/180.consecutive-numbers/Pandas.py), [MS_SQL_Server](solutions/180.consecutive-numbers/MS_SQL_Server.sql) |
-| 181 | [employees-earning-more-than-their-managers](https://leetcode.com/problems/employees-earning-more-than-their-managers) | [MySQL](solutions/181.employees-earning-more-than-their-managers/MySQL.sql), [MS_SQL_Server](solutions/181.employees-earning-more-than-their-managers/MS_SQL_Server.sql) |
-| 182 | [duplicate-emails](https://leetcode.com/problems/duplicate-emails) | [MySQL](solutions/182.duplicate-emails/MySQL.sql), [MS_SQL_Server](solutions/182.duplicate-emails/MS_SQL_Server.sql) |
-| 183 | [customers-who-never-order](https://leetcode.com/problems/customers-who-never-order) | [Pandas](solutions/183.customers-who-never-order/Pandas.py), [MS_SQL_Server](solutions/183.customers-who-never-order/MS_SQL_Server.sql) |
-| 184 | [department-highest-salary](https://leetcode.com/problems/department-highest-salary) | [Pandas](solutions/184.department-highest-salary/Pandas.py), [MS_SQL_Server](solutions/184.department-highest-salary/MS_SQL_Server.sql) |
-| 185 | [department-top-three-salaries](https://leetcode.com/problems/department-top-three-salaries) | [Pandas](solutions/185.department-top-three-salaries/Pandas.py), [MS_SQL_Server](solutions/185.department-top-three-salaries/MS_SQL_Server.sql) |
+| 180 | [consecutive-numbers](https://leetcode.com/problems/consecutive-numbers) | [Pandas](solutions/180.consecutive-numbers/Pandas.py), [MSSQLServer](solutions/180.consecutive-numbers/MSSQLServer.sql) |
+| 181 | [employees-earning-more-than-their-managers](https://leetcode.com/problems/employees-earning-more-than-their-managers) | [MySQL](solutions/181.employees-earning-more-than-their-managers/MySQL.sql), [MSSQLServer](solutions/181.employees-earning-more-than-their-managers/MSSQLServer.sql) |
+| 182 | [duplicate-emails](https://leetcode.com/problems/duplicate-emails) | [MySQL](solutions/182.duplicate-emails/MySQL.sql), [MSSQLServer](solutions/182.duplicate-emails/MSSQLServer.sql) |
+| 183 | [customers-who-never-order](https://leetcode.com/problems/customers-who-never-order) | [Pandas](solutions/183.customers-who-never-order/Pandas.py), [MSSQLServer](solutions/183.customers-who-never-order/MSSQLServer.sql) |
+| 184 | [department-highest-salary](https://leetcode.com/problems/department-highest-salary) | [Pandas](solutions/184.department-highest-salary/Pandas.py), [MSSQLServer](solutions/184.department-highest-salary/MSSQLServer.sql) |
+| 185 | [department-top-three-salaries](https://leetcode.com/problems/department-top-three-salaries) | [Pandas](solutions/185.department-top-three-salaries/Pandas.py), [MSSQLServer](solutions/185.department-top-three-salaries/MSSQLServer.sql) |
 | 186 | [reverse-words-in-a-string-ii](https://leetcode.com/problems/reverse-words-in-a-string-ii) | [C++](solutions/186.reverse-words-in-a-string-ii/C++.cpp) |
 | 187 | [repeated-dna-sequences](https://leetcode.com/problems/repeated-dna-sequences) | [Python3](solutions/187.repeated-dna-sequences/Python3.py), [C++](solutions/187.repeated-dna-sequences/C++.cpp) |
 | 188 | [best-time-to-buy-and-sell-stock-iv](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv) | [C++](solutions/188.best-time-to-buy-and-sell-stock-iv/C++.cpp) |
@@ -200,8 +200,8 @@
 | 193 | [valid-phone-numbers](https://leetcode.com/problems/valid-phone-numbers) | [Bash](solutions/193.valid-phone-numbers/Bash.sh) |
 | 194 | [transpose-file](https://leetcode.com/problems/transpose-file) | [Bash](solutions/194.transpose-file/Bash.sh) |
 | 195 | [tenth-line](https://leetcode.com/problems/tenth-line) | [Bash](solutions/195.tenth-line/Bash.sh) |
-| 196 | [delete-duplicate-emails](https://leetcode.com/problems/delete-duplicate-emails) | [Pandas](solutions/196.delete-duplicate-emails/Pandas.py), [MS_SQL_Server](solutions/196.delete-duplicate-emails/MS_SQL_Server.sql) |
-| 197 | [rising-temperature](https://leetcode.com/problems/rising-temperature) | [Pandas](solutions/197.rising-temperature/Pandas.py), [MS_SQL_Server](solutions/197.rising-temperature/MS_SQL_Server.sql) |
+| 196 | [delete-duplicate-emails](https://leetcode.com/problems/delete-duplicate-emails) | [Pandas](solutions/196.delete-duplicate-emails/Pandas.py), [MSSQLServer](solutions/196.delete-duplicate-emails/MSSQLServer.sql) |
+| 197 | [rising-temperature](https://leetcode.com/problems/rising-temperature) | [Pandas](solutions/197.rising-temperature/Pandas.py), [MSSQLServer](solutions/197.rising-temperature/MSSQLServer.sql) |
 | 198 | [house-robber](https://leetcode.com/problems/house-robber) | [Python3](solutions/198.house-robber/Python3.py), [C++](solutions/198.house-robber/C++.cpp) |
 | 199 | [binary-tree-right-side-view](https://leetcode.com/problems/binary-tree-right-side-view) | [Python3](solutions/199.binary-tree-right-side-view/Python3.py), [C++](solutions/199.binary-tree-right-side-view/C++.cpp) |
 | 200 | [number-of-islands](https://leetcode.com/problems/number-of-islands) | [C++](solutions/200.number-of-islands/C++.cpp), [Rust](solutions/200.number-of-islands/Rust.rs) |

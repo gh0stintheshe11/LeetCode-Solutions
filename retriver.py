@@ -541,7 +541,7 @@ def retriver_new():
                     else:
                         # Save the code to the folder as solution according to the langSlug
                         with open(
-                            f"solutions/{question['questionId']}.{question['titleSlug']}/{langName.replace(' ', '_')}{FILE_TYPE[langName]}",
+                            f"solutions/{question['questionId']}.{question['titleSlug']}/{langName.replace(' ', '')}{FILE_TYPE[langName]}",
                             "w",
                             encoding="utf-8",
                         ) as f:
@@ -618,7 +618,7 @@ def retriver_update():
 
                 # Save the code to the folder as solution according to the langSlug
                 with open(
-                    f"solutions/{question['questionId']}.{question['titleSlug']}/{langName.replace(' ', '_')}{FILE_TYPE[langName]}",
+                    f"solutions/{question['questionId']}.{question['titleSlug']}/{langName.replace(' ', '')}{FILE_TYPE[langName]}",
                     "w",
                     encoding="utf-8",
                 ) as f:
@@ -675,7 +675,7 @@ def retriver_update_mt_helper(question):
 
         # Save the code to the folder as solution according to the langSlug
         with open(
-            f"solutions/{question['questionId']}.{question['titleSlug']}/{langName.replace(' ', '_')}{FILE_TYPE[langName]}",
+            f"solutions/{question['questionId']}.{question['titleSlug']}/{langName.replace(' ', '')}{FILE_TYPE[langName]}",
             "w",
             encoding="utf-8",
         ) as f:
