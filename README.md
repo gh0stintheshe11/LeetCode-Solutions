@@ -9,7 +9,7 @@ This repo archives all solutions for all LeetCode problems in all available lang
 - [Disclaimer](#disclaimer)
 
 > [!NOTE]
-> The question list has to be put in an separate index.md file. It is impossible to list all questions in the readme.md since github only display first 500KB of the file :(
+> The question list has to be put in an separate index.md file. It is impossible to list all questions in the readme.md since github only display first 500KB of the readme file :(
 
 ## [Questions list](index.md)
 
