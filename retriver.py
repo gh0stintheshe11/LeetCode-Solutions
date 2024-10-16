@@ -541,7 +541,7 @@ def retriver_new():
                     else:
                         # Save the code to the folder as solution according to the langSlug
                         with open(
-                            f"solutions/{question['questionId']}.{question['titleSlug']}/{langName}{FILE_TYPE[langName]}",
+                            f"solutions/{question['questionId']}.{question['titleSlug']}/{langName.replace(' ', '_')}{FILE_TYPE[langName]}",
                             "w",
                             encoding="utf-8",
                         ) as f:
@@ -618,7 +618,7 @@ def retriver_update():
 
                 # Save the code to the folder as solution according to the langSlug
                 with open(
-                    f"solutions/{question['questionId']}.{question['titleSlug']}/{langName}{FILE_TYPE[langName]}",
+                    f"solutions/{question['questionId']}.{question['titleSlug']}/{langName.replace(' ', '_')}{FILE_TYPE[langName]}",
                     "w",
                     encoding="utf-8",
                 ) as f:
@@ -675,12 +675,20 @@ def retriver_update_mt_helper(question):
 
         # Save the code to the folder as solution according to the langSlug
         with open(
-            f"solutions/{question['questionId']}.{question['titleSlug']}/{langName}{FILE_TYPE[langName]}",
+            f"solutions/{question['questionId']}.{question['titleSlug']}/{langName.replace(' ', '_')}{FILE_TYPE[langName]}",
             "w",
             encoding="utf-8",
         ) as f:
             f.write(submission_details)
 
+# remove all file whose file name contains space
+def clean_up():
+    for folder in os.listdir("solutions"):
+        for file in os.listdir(f"solutions/{folder}"):
+            if " " in file:
+                os.remove(f"solutions/{folder}/{file}")
+                print(f"Removed file: {file}")
+    print("Removed all files with spaces.")
 
 if __name__ == "__main__":
 
@@ -688,4 +696,7 @@ if __name__ == "__main__":
 
     retriver_new()
     retriver_update()
+    clean_up()
     indexer.format_index_page(indexer.list_questions())
+
+
