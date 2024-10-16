@@ -2928,4 +2928,6 @@
 | 3606 | [minimum-element-after-replacement-with-digit-sum](https://leetcode.com/problems/minimum-element-after-replacement-with-digit-sum) | [Python3](solutions/3606.minimum-element-after-replacement-with-digit-sum/Python3.py) |
 | 3610 | [find-x-sum-of-all-k-long-subarrays-i](https://leetcode.com/problems/find-x-sum-of-all-k-long-subarrays-i) | [Python3](solutions/3610.find-x-sum-of-all-k-long-subarrays-i/Python3.py) |
 | 3615 | [convert-doubly-linked-list-to-array-ii](https://leetcode.com/problems/convert-doubly-linked-list-to-array-ii) | [Python3](solutions/3615.convert-doubly-linked-list-to-array-ii/Python3.py) |
+| 3624 | [find-top-performing-driver](https://leetcode.com/problems/find-top-performing-driver) | [MSSQLServer](solutions/3624.find-top-performing-driver/MSSQLServer.sql) |
+| 3642 | [premier-league-table-ranking-iii](https://leetcode.com/problems/premier-league-table-ranking-iii) | [MSSQLServer](solutions/3642.premier-league-table-ranking-iii/MSSQLServer.sql) |
 

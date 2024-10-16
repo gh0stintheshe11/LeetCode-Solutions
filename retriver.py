@@ -19,6 +19,9 @@ from concurrent.futures import ThreadPoolExecutor
 
 load_dotenv()
 
+USERNAME = os.getenv("LEETCODE_USERNAME_1")
+PASSWORD = os.getenv("LEETCODE_PASSWORD_1")
+
 # Define COOKIES at the top to avoid NameError
 COOKIES = {}
 
@@ -124,10 +127,8 @@ def login_to_leetcode():
         print("Waiting for GitHub login page to load...")
         wait.until(EC.presence_of_element_located((By.ID, "login_field")))
 
-        driver.find_element(By.ID, "login_field").send_keys(
-            os.getenv("LEETCODE_USERNAME")
-        )
-        driver.find_element(By.ID, "password").send_keys(os.getenv("LEETCODE_PASSWORD"))
+        driver.find_element(By.ID, "login_field").send_keys(USERNAME)
+        driver.find_element(By.ID, "password").send_keys(PASSWORD)
 
         # Click Sign in button
         sign_in_button = wait.until(

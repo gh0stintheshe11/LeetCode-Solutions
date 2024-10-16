@@ -31,7 +31,8 @@ BASE_URL = "https://leetcode.com"
 load_dotenv()
 # set up openai client
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
+USERNAME = os.getenv("LEETCODE_USERNAME_1")
+PASSWORD = os.getenv("LEETCODE_PASSWORD_1")
 
 # rate limiting decorator
 def rate_limited(func):
@@ -178,10 +179,8 @@ def login_to_leetcode():
         print("Waiting for GitHub login page to load...")
         wait.until(EC.presence_of_element_located((By.ID, "login_field")))
 
-        driver.find_element(By.ID, "login_field").send_keys(
-            os.getenv("LEETCODE_USERNAME")
-        )
-        driver.find_element(By.ID, "password").send_keys(os.getenv("LEETCODE_PASSWORD"))
+        driver.find_element(By.ID, "login_field").send_keys(USERNAME)
+        driver.find_element(By.ID, "password").send_keys(PASSWORD)
 
         # Click Sign in button
         sign_in_button = wait.until(
@@ -678,11 +677,8 @@ def solver():
 
         # check if the language selected is in the codeSnippets
         if language not in question_detailed["codeSnippets"]:
-            # change language to the first/second available language
-            if len(list(question_detailed["codeSnippets"].keys())) > 1:
-                language = list(question_detailed["codeSnippets"].keys())[1]
-            else:
-                language = list(question_detailed["codeSnippets"].keys())[0]
+            # change language to the first available language
+            language = list(question_detailed["codeSnippets"].keys())[0]
             print(f"Change language to {language}")
         # leetcode api takes the langSlug instead of the language name
         langSlug = question_detailed["codeSnippets"][language]["langSlug"]
@@ -719,9 +715,12 @@ def solver():
             if submit_result["status_msg"] == "Accepted":
                 break
             else:
-                print(
-                    f"Submission failed: {submit_result['status_msg']}. Start debugging..."
-                )
+                if 'compare_result' in submit_result:
+                    print(f"Submission failed: {submit_result['compare_result']}. Start debugging...")
+                else:
+                    print(
+                        f"Submission failed: {submit_result['status_msg']}. Start debugging..."
+                    )
 
             # check if the last test case is already in the example test cases string
             if 'last_testcase' in submit_result and submit_result["last_testcase"] in question_detailed["exampleTestcases"]:
