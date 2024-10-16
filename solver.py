@@ -551,7 +551,7 @@ def generate(language, question, codeSnippets):
 
 # debug the code if there is an error
 @retry(max_attempts=3, wait_time=2)
-def debug(language, question, codeSnippet, current_code, submit_result):
+def debug(language, question, codeSnippet, current_code, submit_result, submit_history):
     print(f"Debugging the solution...")
 
     # Create the prompt for debugging
@@ -569,8 +569,8 @@ def debug(language, question, codeSnippet, current_code, submit_result):
 We encountered an error while solving a LeetCode problem in {language}.
 
 ### Task:
-Please review the problem, the current code, and the result of the last submission.
-Identify the issue causing the error.
+Please review the problem, the current code, the result of the last submission, and the history of submissions.
+Identify the issue causing the error. 
 Using a different approach to solve the problem to avoid the issue causing the error.
 
 ### Format:
@@ -589,7 +589,7 @@ Using a different approach to solve the problem to avoid the issue causing the e
 {current_code}
 ```
 
-### Error Encountered:
+### Last Submission Result:
 ```json
 {submit_result}
 ```
@@ -597,6 +597,11 @@ Using a different approach to solve the problem to avoid the issue causing the e
 ### Provided Code:
 ```
 {codeSnippet}
+```
+
+### Submission History:
+```json
+{submit_history}
 ```
 """,
             },
@@ -699,7 +704,8 @@ def solver():
 
         submit_count = 0
         submit_result = {"status_msg": "None"}
-        # if solution is not accpeted -> generate the solution
+        submit_history = []
+        # if solution is not accpeted -> debug the solution
         while (
             submit_result["status_msg"] != "Accepted"
             and submit_count < SETTING["max_submit_retries"]
@@ -721,6 +727,8 @@ def solver():
                     print(
                         f"Submission failed: {submit_result['status_msg']}. Start debugging..."
                     )
+                    
+            submit_history.append({"solution": solution, "result": check_and_shorten_test_cases_in_result(submit_result)})
 
             # check if the last test case is already in the example test cases string
             if 'last_testcase' in submit_result and submit_result["last_testcase"] in question_detailed["exampleTestcases"]:
@@ -742,20 +750,20 @@ def solver():
                 # debug the solution
                 try:
                     # check for long test cases
-                    question_detailed_shortened = (
-                        check_and_shorten_test_cases_in_question_detailed(
-                            question_detailed
-                        )
+                    question_detailed_shortened = check_and_shorten_test_cases_in_question_detailed(
+                        question_detailed
                     )
                     last_test_result_shortened = check_and_shorten_test_cases_in_result(
                         test_result
                     )
+                    submit_history_str = json.dumps(submit_history)
                     solution = debug(
                         language,
                         question_detailed_shortened,
                         codeSnippets,
                         solution,
                         last_test_result_shortened,
+                        submit_history_str,
                     )
                 except openai.BadRequestError as e:
                     print(f"Failed to debug solution: {e}")
