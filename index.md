@@ -1,3 +1,8 @@
+> [!TIP]
+> All questions and solutions are indexed. Use ```Ctrl + F```/```Cmd + F``` is your friend :)
+
+## Questions List
+
 | Number | Title | Solutions |
 |---|---|---|
 | 1 | [two-sum](https://leetcode.com/problems/two-sum) | [Python3](solutions/1.two-sum/Python3.py), [C](solutions/1.two-sum/C.c), [C++](solutions/1.two-sum/C++.cpp) |
