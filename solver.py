@@ -31,8 +31,8 @@ BASE_URL = "https://leetcode.com"
 load_dotenv()
 # set up openai client
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-USERNAME = os.getenv("LEETCODE_USERNAME_1")
-PASSWORD = os.getenv("LEETCODE_PASSWORD_1")
+USERNAME = os.getenv("LEETCODE_USERNAME")
+PASSWORD = os.getenv("LEETCODE_PASSWORD")
 
 # rate limiting decorator
 def rate_limited(func):

@@ -19,8 +19,8 @@ from concurrent.futures import ThreadPoolExecutor
 
 load_dotenv()
 
-USERNAME = os.getenv("LEETCODE_USERNAME_1")
-PASSWORD = os.getenv("LEETCODE_PASSWORD_1")
+USERNAME = os.getenv("LEETCODE_USERNAME")
+PASSWORD = os.getenv("LEETCODE_PASSWORD")
 
 # Define COOKIES at the top to avoid NameError
 COOKIES = {}
