@@ -652,7 +652,7 @@ def solver():
         # check if the language selected is in the codeSnippets
         if language not in question_detailed["codeSnippets"]:
             # change language to the first available language
-            language = list(question_detailed["codeSnippets"].keys())[0]
+            language = list(question_detailed["codeSnippets"].keys())[1]
             print(f"Change language to {language}")
         # leetcode api takes the langSlug instead of the language name
         langSlug = question_detailed["codeSnippets"][language]["langSlug"]
@@ -671,8 +671,8 @@ def solver():
             print(f"Failed to generate solution: {e}")
             continue
 
-        submit_result = {"status_msg": "None"}
         submit_count = 0
+        submit_result = {"status_msg": "None"}
         # if solution is not accpeted -> generate the solution
         while (
             submit_result["status_msg"] != "Accepted"
@@ -692,9 +692,9 @@ def solver():
                 )
 
             # check if the last test case is already in the example test cases string
-            if submit_result["last_testcase"] in question_detailed["exampleTestcases"]:
+            if 'last_testcase' in submit_result and submit_result["last_testcase"] in question_detailed["exampleTestcases"]:
                 print(f"Last test case already in the example test cases")
-            else:
+            elif 'last_testcase' in submit_result:
                 # add the last test case to the example test cases
                 question_detailed["exampleTestcases"] += (
                     "\n" + submit_result["last_testcase"]

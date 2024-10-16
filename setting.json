@@ -1,5 +1,5 @@
 {
-    "default_language": "Python3",
+    "default_language": "C++",
     "allow_skip": true,
     "max_submit_retries": 3,
     "max_debug_retries": 5,

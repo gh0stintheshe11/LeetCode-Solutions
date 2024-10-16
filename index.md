@@ -1,33 +1,33 @@
 | Number | Title | Solutions |
 |---|---|---|
-| 1 | [two-sum](https://leetcode.com/problems/two-sum) | [Python3](solutions/1.two-sum/Python3.py), [C](solutions/1.two-sum/C.c) |
-| 2 | [add-two-numbers](https://leetcode.com/problems/add-two-numbers) | [Rust](solutions/2.add-two-numbers/Rust.rs) |
-| 3 | [longest-substring-without-repeating-characters](https://leetcode.com/problems/longest-substring-without-repeating-characters) | [Rust](solutions/3.longest-substring-without-repeating-characters/Rust.rs) |
-| 4 | [median-of-two-sorted-arrays](https://leetcode.com/problems/median-of-two-sorted-arrays) | [C](solutions/4.median-of-two-sorted-arrays/C.c) |
-| 5 | [longest-palindromic-substring](https://leetcode.com/problems/longest-palindromic-substring) | [Rust](solutions/5.longest-palindromic-substring/Rust.rs) |
-| 6 | [zigzag-conversion](https://leetcode.com/problems/zigzag-conversion) | [Rust](solutions/6.zigzag-conversion/Rust.rs) |
-| 7 | [reverse-integer](https://leetcode.com/problems/reverse-integer) | [Rust](solutions/7.reverse-integer/Rust.rs) |
-| 8 | [string-to-integer-atoi](https://leetcode.com/problems/string-to-integer-atoi) | [Python3](solutions/8.string-to-integer-atoi/Python3.py), [Rust](solutions/8.string-to-integer-atoi/Rust.rs) |
-| 9 | [palindrome-number](https://leetcode.com/problems/palindrome-number) | [Python](solutions/9.palindrome-number/Python.py) |
-| 10 | [regular-expression-matching](https://leetcode.com/problems/regular-expression-matching) | [C](solutions/10.regular-expression-matching/C.c) |
-| 11 | [container-with-most-water](https://leetcode.com/problems/container-with-most-water) | [Rust](solutions/11.container-with-most-water/Rust.rs) |
-| 12 | [integer-to-roman](https://leetcode.com/problems/integer-to-roman) | [Rust](solutions/12.integer-to-roman/Rust.rs) |
-| 13 | [roman-to-integer](https://leetcode.com/problems/roman-to-integer) | [Python](solutions/13.roman-to-integer/Python.py) |
-| 14 | [longest-common-prefix](https://leetcode.com/problems/longest-common-prefix) | [Rust](solutions/14.longest-common-prefix/Rust.rs) |
-| 15 | [3sum](https://leetcode.com/problems/3sum) | [C](solutions/15.3sum/C.c) |
-| 16 | [3sum-closest](https://leetcode.com/problems/3sum-closest) | [C](solutions/16.3sum-closest/C.c) |
-| 17 | [letter-combinations-of-a-phone-number](https://leetcode.com/problems/letter-combinations-of-a-phone-number) | [C](solutions/17.letter-combinations-of-a-phone-number/C.c) |
-| 18 | [4sum](https://leetcode.com/problems/4sum) | [C](solutions/18.4sum/C.c) |
-| 19 | [remove-nth-node-from-end-of-list](https://leetcode.com/problems/remove-nth-node-from-end-of-list) | [C](solutions/19.remove-nth-node-from-end-of-list/C.c) |
-| 20 | [valid-parentheses](https://leetcode.com/problems/valid-parentheses) | [C](solutions/20.valid-parentheses/C.c) |
-| 21 | [merge-two-sorted-lists](https://leetcode.com/problems/merge-two-sorted-lists) | [C](solutions/21.merge-two-sorted-lists/C.c), [Rust](solutions/21.merge-two-sorted-lists/Rust.rs) |
-| 22 | [generate-parentheses](https://leetcode.com/problems/generate-parentheses) | [Rust](solutions/22.generate-parentheses/Rust.rs) |
+| 1 | [two-sum](https://leetcode.com/problems/two-sum) | [Python3](solutions/1.two-sum/Python3.py), [C](solutions/1.two-sum/C.c), [C++](solutions/1.two-sum/C++.cpp) |
+| 2 | [add-two-numbers](https://leetcode.com/problems/add-two-numbers) | [C++](solutions/2.add-two-numbers/C++.cpp), [Rust](solutions/2.add-two-numbers/Rust.rs) |
+| 3 | [longest-substring-without-repeating-characters](https://leetcode.com/problems/longest-substring-without-repeating-characters) | [C++](solutions/3.longest-substring-without-repeating-characters/C++.cpp), [Rust](solutions/3.longest-substring-without-repeating-characters/Rust.rs) |
+| 4 | [median-of-two-sorted-arrays](https://leetcode.com/problems/median-of-two-sorted-arrays) | [C](solutions/4.median-of-two-sorted-arrays/C.c), [C++](solutions/4.median-of-two-sorted-arrays/C++.cpp) |
+| 5 | [longest-palindromic-substring](https://leetcode.com/problems/longest-palindromic-substring) | [C++](solutions/5.longest-palindromic-substring/C++.cpp), [Rust](solutions/5.longest-palindromic-substring/Rust.rs) |
+| 6 | [zigzag-conversion](https://leetcode.com/problems/zigzag-conversion) | [C++](solutions/6.zigzag-conversion/C++.cpp), [Rust](solutions/6.zigzag-conversion/Rust.rs) |
+| 7 | [reverse-integer](https://leetcode.com/problems/reverse-integer) | [C++](solutions/7.reverse-integer/C++.cpp), [Rust](solutions/7.reverse-integer/Rust.rs) |
+| 8 | [string-to-integer-atoi](https://leetcode.com/problems/string-to-integer-atoi) | [Python3](solutions/8.string-to-integer-atoi/Python3.py), [C++](solutions/8.string-to-integer-atoi/C++.cpp), [Rust](solutions/8.string-to-integer-atoi/Rust.rs) |
+| 9 | [palindrome-number](https://leetcode.com/problems/palindrome-number) | [C++](solutions/9.palindrome-number/C++.cpp), [Python](solutions/9.palindrome-number/Python.py) |
+| 10 | [regular-expression-matching](https://leetcode.com/problems/regular-expression-matching) | [C](solutions/10.regular-expression-matching/C.c), [C++](solutions/10.regular-expression-matching/C++.cpp) |
+| 11 | [container-with-most-water](https://leetcode.com/problems/container-with-most-water) | [C++](solutions/11.container-with-most-water/C++.cpp), [Rust](solutions/11.container-with-most-water/Rust.rs) |
+| 12 | [integer-to-roman](https://leetcode.com/problems/integer-to-roman) | [C++](solutions/12.integer-to-roman/C++.cpp), [Rust](solutions/12.integer-to-roman/Rust.rs) |
+| 13 | [roman-to-integer](https://leetcode.com/problems/roman-to-integer) | [C++](solutions/13.roman-to-integer/C++.cpp), [Python](solutions/13.roman-to-integer/Python.py) |
+| 14 | [longest-common-prefix](https://leetcode.com/problems/longest-common-prefix) | [C++](solutions/14.longest-common-prefix/C++.cpp), [Rust](solutions/14.longest-common-prefix/Rust.rs) |
+| 15 | [3sum](https://leetcode.com/problems/3sum) | [C](solutions/15.3sum/C.c), [C++](solutions/15.3sum/C++.cpp) |
+| 16 | [3sum-closest](https://leetcode.com/problems/3sum-closest) | [C](solutions/16.3sum-closest/C.c), [C++](solutions/16.3sum-closest/C++.cpp) |
+| 17 | [letter-combinations-of-a-phone-number](https://leetcode.com/problems/letter-combinations-of-a-phone-number) | [C](solutions/17.letter-combinations-of-a-phone-number/C.c), [C++](solutions/17.letter-combinations-of-a-phone-number/C++.cpp) |
+| 18 | [4sum](https://leetcode.com/problems/4sum) | [C](solutions/18.4sum/C.c), [C++](solutions/18.4sum/C++.cpp) |
+| 19 | [remove-nth-node-from-end-of-list](https://leetcode.com/problems/remove-nth-node-from-end-of-list) | [C](solutions/19.remove-nth-node-from-end-of-list/C.c), [C++](solutions/19.remove-nth-node-from-end-of-list/C++.cpp) |
+| 20 | [valid-parentheses](https://leetcode.com/problems/valid-parentheses) | [C](solutions/20.valid-parentheses/C.c), [C++](solutions/20.valid-parentheses/C++.cpp) |
+| 21 | [merge-two-sorted-lists](https://leetcode.com/problems/merge-two-sorted-lists) | [C](solutions/21.merge-two-sorted-lists/C.c), [C++](solutions/21.merge-two-sorted-lists/C++.cpp), [Rust](solutions/21.merge-two-sorted-lists/Rust.rs) |
+| 22 | [generate-parentheses](https://leetcode.com/problems/generate-parentheses) | [C++](solutions/22.generate-parentheses/C++.cpp), [Rust](solutions/22.generate-parentheses/Rust.rs) |
 | 23 | [merge-k-sorted-lists](https://leetcode.com/problems/merge-k-sorted-lists) | [C](solutions/23.merge-k-sorted-lists/C.c) |
-| 24 | [swap-nodes-in-pairs](https://leetcode.com/problems/swap-nodes-in-pairs) | [C](solutions/24.swap-nodes-in-pairs/C.c) |
-| 25 | [reverse-nodes-in-k-group](https://leetcode.com/problems/reverse-nodes-in-k-group) | [C](solutions/25.reverse-nodes-in-k-group/C.c) |
-| 26 | [remove-duplicates-from-sorted-array](https://leetcode.com/problems/remove-duplicates-from-sorted-array) | [C](solutions/26.remove-duplicates-from-sorted-array/C.c) |
-| 27 | [remove-element](https://leetcode.com/problems/remove-element) | [C](solutions/27.remove-element/C.c) |
-| 28 | [find-the-index-of-the-first-occurrence-in-a-string](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string) | [Python3](solutions/28.find-the-index-of-the-first-occurrence-in-a-string/Python3.py) |
+| 24 | [swap-nodes-in-pairs](https://leetcode.com/problems/swap-nodes-in-pairs) | [C](solutions/24.swap-nodes-in-pairs/C.c), [C++](solutions/24.swap-nodes-in-pairs/C++.cpp) |
+| 25 | [reverse-nodes-in-k-group](https://leetcode.com/problems/reverse-nodes-in-k-group) | [C](solutions/25.reverse-nodes-in-k-group/C.c), [C++](solutions/25.reverse-nodes-in-k-group/C++.cpp) |
+| 26 | [remove-duplicates-from-sorted-array](https://leetcode.com/problems/remove-duplicates-from-sorted-array) | [C](solutions/26.remove-duplicates-from-sorted-array/C.c), [C++](solutions/26.remove-duplicates-from-sorted-array/C++.cpp) |
+| 27 | [remove-element](https://leetcode.com/problems/remove-element) | [C](solutions/27.remove-element/C.c), [C++](solutions/27.remove-element/C++.cpp) |
+| 28 | [find-the-index-of-the-first-occurrence-in-a-string](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string) | [Python3](solutions/28.find-the-index-of-the-first-occurrence-in-a-string/Python3.py), [C++](solutions/28.find-the-index-of-the-first-occurrence-in-a-string/C++.cpp) |
 | 29 | [divide-two-integers](https://leetcode.com/problems/divide-two-integers) | [C](solutions/29.divide-two-integers/C.c) |
 | 30 | [substring-with-concatenation-of-all-words](https://leetcode.com/problems/substring-with-concatenation-of-all-words) | [C](solutions/30.substring-with-concatenation-of-all-words/C.c) |
 | 31 | [next-permutation](https://leetcode.com/problems/next-permutation) | [C](solutions/31.next-permutation/C.c) |

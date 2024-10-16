@@ -15,6 +15,7 @@ from selenium.common.exceptions import (
 )
 import shutil
 import indexer
+from concurrent.futures import ThreadPoolExecutor
 
 load_dotenv()
 
@@ -51,8 +52,9 @@ FILE_TYPE = {
     "PostgreSQL": ".sql",
     "Pandas": ".py",  # Typically uses Python files
     "React": ".jsx",  # or .js for standard JS files
-    "Vanilla JS": ".js"
+    "Vanilla JS": ".js",
 }
+
 
 # format the header
 def get_common_header(suffix):
@@ -442,6 +444,7 @@ def get_already_retrieved():
     question_ids = [folder.split(".")[0] for folder in folders]
     return question_ids
 
+
 def remove_empty_file():
     for folder in os.listdir("solutions"):
         for file in os.listdir(f"solutions/{folder}"):
@@ -454,10 +457,13 @@ def remove_empty_file():
                     print(f"Removed empty file: {file_path}")
     print("Removed empty files.")
 
-def remove_empty_folder():     
+
+def remove_empty_folder():
     # remove all folder if there is only one question.json
     for folder in os.listdir("solutions"):
-        if len(os.listdir(f"solutions/{folder}")) == 1 and "question.json" in os.listdir(f"solutions/{folder}"):
+        if len(
+            os.listdir(f"solutions/{folder}")
+        ) == 1 and "question.json" in os.listdir(f"solutions/{folder}"):
             folder_path = f"solutions/{folder}"
             if os.path.exists(folder_path):
                 shutil.rmtree(folder_path)
@@ -466,7 +472,9 @@ def remove_empty_folder():
                 print(f"Directory does not exist: {folder_path}")
     print("Removed empty folders.")
 
-def retriver():
+
+def retriver_new():
+    # remove the empty file and folder
     remove_empty_file()
     remove_empty_folder()
     # if the question is already retrieved, skip it
@@ -478,7 +486,7 @@ def retriver():
         for question in question_solved
         if question["questionId"] not in question_already_retrieved
     ]
-    
+
     while question_solved != []:
 
         # keep looping until all questions are done
@@ -504,6 +512,7 @@ def retriver():
                     encoding="utf-8",
                 ) as f:
                     json.dump(question_details, f, ensure_ascii=False)
+
                 # get the fastest accepted submission
                 fastest_accepted_submission = get_fastest_accepted_submission(
                     question["titleSlug"]
@@ -512,17 +521,19 @@ def retriver():
                 for lang in fastest_accepted_submission:
                     submission_id = fastest_accepted_submission[lang]["id"]
                     langName = fastest_accepted_submission[lang]["langName"]
-                    
+
                     # get the submission details
                     submission_details = get_submission_details(submission_id)
-                    
+
                     # Check if submission_details is empty and if this is the only submission
                     if not submission_details and len(fastest_accepted_submission) == 1:
                         # Remove the question folder and skip to the next question
                         question_folder = f"solutions/{question['questionId']}.{question['titleSlug']}"
                         if os.path.exists(question_folder):
                             shutil.rmtree(question_folder)  # Remove the folder
-                        print(f"Removed folder: {question_folder} as there were no valid submissions.")
+                        print(
+                            f"Removed folder: {question_folder} as there were no valid submissions."
+                        )
                         continue  # Skip to the next question
                     elif not submission_details:
                         # this is not the only submission, skip to next lang
@@ -535,7 +546,7 @@ def retriver():
                             encoding="utf-8",
                         ) as f:
                             f.write(submission_details)
-                            
+
         # if there is no question left in the current question_solved, reset the question_solved and run again
         remove_empty_file()
         remove_empty_folder()
@@ -546,7 +557,7 @@ def retriver():
             for question in question_solved
             if question["questionId"] not in question_already_retrieved
         ]
-        
+
     # check if the folder number is the same as the question_solved number
     question_solved = list_all_solved()
     if len(os.listdir("solutions")) == len(question_solved):
@@ -554,10 +565,55 @@ def retriver():
     else:
         print("Some questions are not retrieved.")
 
+
+# use multithreading to update the existing solution -> get all the question that is solved -> use each thread to send a request to get the fastest accepted submission -> if the submission is not in the existing solution, add it
+def retriver_update_mt():
+    # get all the question that is solved
+    question_solved = list_all_solved()
+    # for each question in question_solved, use a thread to update it
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        executor.map(retriver_update_mt_helper, question_solved)
+
+
+# helper function for retriver_update_mt
+def retriver_update_mt_helper(question):
+    # get the fastest accepted submission
+    fastest_accepted_submission = get_fastest_accepted_submission(question["titleSlug"])
+    # get all the langugaes that already in the existing solution
+    existing_solution = os.listdir(
+        f"solutions/{question['questionId']}.{question['titleSlug']}"
+    )
+    # remove the question.json from the existing_solution
+    existing_solution = [file for file in existing_solution if file != "question.json"]
+    # remove the file extension
+    existing_solution = [file.split(".")[0] for file in existing_solution]
+
+    # Corrected filtering logic
+    fastest_accepted_submission = {
+        lang: submission
+        for lang, submission in fastest_accepted_submission.items()
+        if submission["langName"] not in existing_solution
+    }
+
+    # for all the lang in the fastest_accepted_submission, they are new accepted submissions, get the submission details
+    for lang in fastest_accepted_submission:
+        submission_id = fastest_accepted_submission[lang]["id"]
+        langName = fastest_accepted_submission[lang]["langName"]
+        # get the submission details
+        submission_details = get_submission_details(submission_id)
+        # save the code to the folder as solution according to the langSlug
+        with open(
+            f"solutions/{question['questionId']}.{question['titleSlug']}/{langName}{FILE_TYPE[langName]}",
+            "w",
+            encoding="utf-8",
+        ) as f:
+            f.write(submission_details)
+
+
 if __name__ == "__main__":
 
     COOKIES = login_to_leetcode()
 
-    retriver()
+    retriver_new()
+    retriver_update_mt()
     indexer.format_index_page(indexer.list_questions())
-    
