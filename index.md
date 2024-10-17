@@ -505,7 +505,9 @@
 | 507 | [perfect-number](https://leetcode.com/problems/perfect-number) | [Python3](solutions/507.perfect-number/Python3.py), [C++](solutions/507.perfect-number/C++.cpp) |
 | 508 | [most-frequent-subtree-sum](https://leetcode.com/problems/most-frequent-subtree-sum) | [Python3](solutions/508.most-frequent-subtree-sum/Python3.py), [C++](solutions/508.most-frequent-subtree-sum/C++.cpp) |
 | 509 | [inorder-successor-in-bst-ii](https://leetcode.com/problems/inorder-successor-in-bst-ii) | [Python3](solutions/509.inorder-successor-in-bst-ii/Python3.py) |
+| 510 | [count-subarrays-with-more-ones-than-zeros](https://leetcode.com/problems/count-subarrays-with-more-ones-than-zeros) | [Python3](solutions/510.count-subarrays-with-more-ones-than-zeros/Python3.py) |
 | 511 | [all-paths-from-source-lead-to-destination](https://leetcode.com/problems/all-paths-from-source-lead-to-destination) | [Python3](solutions/511.all-paths-from-source-lead-to-destination/Python3.py) |
+| 512 | [maximum-alternating-subarray-sum](https://leetcode.com/problems/maximum-alternating-subarray-sum) | [Python3](solutions/512.maximum-alternating-subarray-sum/Python3.py) |
 | 513 | [find-bottom-left-tree-value](https://leetcode.com/problems/find-bottom-left-tree-value) | [Python3](solutions/513.find-bottom-left-tree-value/Python3.py), [C++](solutions/513.find-bottom-left-tree-value/C++.cpp) |
 | 514 | [freedom-trail](https://leetcode.com/problems/freedom-trail) | [Python3](solutions/514.freedom-trail/Python3.py), [C++](solutions/514.freedom-trail/C++.cpp) |
 | 515 | [find-largest-value-in-each-tree-row](https://leetcode.com/problems/find-largest-value-in-each-tree-row) | [Python3](solutions/515.find-largest-value-in-each-tree-row/Python3.py), [C++](solutions/515.find-largest-value-in-each-tree-row/C++.cpp) |
@@ -561,6 +563,7 @@
 | 568 | [maximum-vacation-days](https://leetcode.com/problems/maximum-vacation-days) | [Python3](solutions/568.maximum-vacation-days/Python3.py) |
 | 569 | [median-employee-salary](https://leetcode.com/problems/median-employee-salary) | [MySQL](solutions/569.median-employee-salary/MySQL.sql) |
 | 570 | [managers-with-at-least-5-direct-reports](https://leetcode.com/problems/managers-with-at-least-5-direct-reports) | [Pandas](solutions/570.managers-with-at-least-5-direct-reports/Pandas.py) |
+| 571 | [find-median-given-frequency-of-numbers](https://leetcode.com/problems/find-median-given-frequency-of-numbers) | [MySQL](solutions/571.find-median-given-frequency-of-numbers/MySQL.sql) |
 | 572 | [subtree-of-another-tree](https://leetcode.com/problems/subtree-of-another-tree) | [Python3](solutions/572.subtree-of-another-tree/Python3.py) |
 | 573 | [squirrel-simulation](https://leetcode.com/problems/squirrel-simulation) | [Python3](solutions/573.squirrel-simulation/Python3.py) |
 | 574 | [winning-candidate](https://leetcode.com/problems/winning-candidate) | [MySQL](solutions/574.winning-candidate/MySQL.sql) |
@@ -601,6 +604,7 @@
 | 611 | [valid-triangle-number](https://leetcode.com/problems/valid-triangle-number) | [Rust](solutions/611.valid-triangle-number/Rust.rs) |
 | 612 | [shortest-distance-in-a-plane](https://leetcode.com/problems/shortest-distance-in-a-plane) | [MySQL](solutions/612.shortest-distance-in-a-plane/MySQL.sql) |
 | 613 | [shortest-distance-in-a-line](https://leetcode.com/problems/shortest-distance-in-a-line) | [MySQL](solutions/613.shortest-distance-in-a-line/MySQL.sql) |
+| 614 | [second-degree-follower](https://leetcode.com/problems/second-degree-follower) | [MySQL](solutions/614.second-degree-follower/MySQL.sql) |
 | 615 | [average-salary-departments-vs-company](https://leetcode.com/problems/average-salary-departments-vs-company) | [MySQL](solutions/615.average-salary-departments-vs-company/MySQL.sql) |
 | 616 | [add-bold-tag-in-string](https://leetcode.com/problems/add-bold-tag-in-string) | [Python3](solutions/616.add-bold-tag-in-string/Python3.py) |
 | 617 | [merge-two-binary-trees](https://leetcode.com/problems/merge-two-binary-trees) | [Python3](solutions/617.merge-two-binary-trees/Python3.py) |
@@ -616,6 +620,7 @@
 | 628 | [maximum-product-of-three-numbers](https://leetcode.com/problems/maximum-product-of-three-numbers) | [Python3](solutions/628.maximum-product-of-three-numbers/Python3.py) |
 | 629 | [k-inverse-pairs-array](https://leetcode.com/problems/k-inverse-pairs-array) | [Python3](solutions/629.k-inverse-pairs-array/Python3.py) |
 | 630 | [course-schedule-iii](https://leetcode.com/problems/course-schedule-iii) | [Python3](solutions/630.course-schedule-iii/Python3.py) |
+| 631 | [design-excel-sum-formula](https://leetcode.com/problems/design-excel-sum-formula) | [Python3](solutions/631.design-excel-sum-formula/Python3.py) |
 | 632 | [smallest-range-covering-elements-from-k-lists](https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists) | [Python3](solutions/632.smallest-range-covering-elements-from-k-lists/Python3.py) |
 | 633 | [sum-of-square-numbers](https://leetcode.com/problems/sum-of-square-numbers) | [Python3](solutions/633.sum-of-square-numbers/Python3.py) |
 | 634 | [find-the-derangement-of-an-array](https://leetcode.com/problems/find-the-derangement-of-an-array) | [Python3](solutions/634.find-the-derangement-of-an-array/Python3.py) |
