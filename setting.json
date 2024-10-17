@@ -1,7 +1,7 @@
 {
     "default_language": "Python3",
-    "allow_skip": false,
+    "allow_skip": true,
     "max_submit_retries": 10,
-    "max_debug_retries": 5,
+    "max_debug_retries": 10,
     "openai_model": "gpt-4o"
 }

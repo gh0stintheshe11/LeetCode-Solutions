@@ -694,9 +694,8 @@ def clean_up():
 if __name__ == "__main__":
 
     COOKIES = login_to_leetcode()
-
     retriver_new()
-    retriver_update_mt()
+    #retriver_update_mt()
     clean_up()
     indexer.format_index_page(indexer.list_questions())
 

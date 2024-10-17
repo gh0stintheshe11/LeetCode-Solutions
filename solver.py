@@ -19,6 +19,7 @@ from selenium.common.exceptions import (
     TimeoutException,
     ElementClickInterceptedException,
 )
+import re
 
 PREMIUM_ACCOUNT = False
 
@@ -34,8 +35,10 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 USERNAME = os.getenv("LEETCODE_USERNAME")
 PASSWORD = os.getenv("LEETCODE_PASSWORD")
 
+
 # rate limiting decorator
 def rate_limited(func):
+
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         max_attempts = 10
@@ -73,10 +76,12 @@ def rate_limited(func):
                 if e.response is not None and e.response.status_code == 429:
                     wait_time = e.response.headers.get("Retry-After")
                     if wait_time is not None:
-                        wait_time = int(wait_time)  # Convert to integer if it's a string
+                        wait_time = int(
+                            wait_time
+                        )  # Convert to integer if it's a string
                     else:
                         wait_time = base_wait_time * (2 ** (attempt - 1))
-                    
+
                     jitter = random.uniform(0, 0.1 * wait_time)
                     total_wait = wait_time + jitter
                     print(
@@ -93,21 +98,28 @@ def rate_limited(func):
 
     return wrapper
 
+
 # Retry decorator
 def retry(max_attempts=3, wait_time=2):
+
     def decorator(func):
+
         def wrapper(*args, **kwargs):
             for attempt in range(max_attempts):
                 try:
                     return func(*args, **kwargs)
                 except Exception as e:
                     if attempt < max_attempts - 1:  # If not the last attempt
-                        print(f"Attempt {attempt + 1} failed: {e}. Retrying in {wait_time} seconds...")
+                        print(
+                            f"Attempt {attempt + 1} failed: {e}. Retrying in {wait_time} seconds..."
+                        )
                         time.sleep(wait_time)
                     else:
                         print(f"All {max_attempts} attempts failed.")
                         raise  # Re-raise the last exception
+
         return wrapper
+
     return decorator
 
 
@@ -259,7 +271,7 @@ def list_questions():
     variables = {
         "categorySlug": "",
         "skip": 0,
-        "limit": 10000,  # A large number to fetch all questions
+        "limit": 5000,  # A large number to fetch all questions
         "filters": {},
     }
 
@@ -279,9 +291,6 @@ def list_questions():
     # if not premium account, filter out the paid only questions
     if not PREMIUM_ACCOUNT:
         questions = [question for question in questions if not question["isPaidOnly"]]
-
-    # Sort questions by ID
-    questions.sort(key=lambda q: int(q["questionId"]))
 
     return questions
 
@@ -376,13 +385,14 @@ def submit(question_id, slug, lang, code):
             headers=get_common_header(slug),
             cookies=COOKIES,
         )
-        response.raise_for_status()  # This will raise an exception for 4xx and 5xx status codes
+        # This will raise an exception for 4xx and 5xx status codes
+        response.raise_for_status()
 
         submit_result = response.json()
         submission_id = submit_result.get("submission_id")
         if not submission_id:
             raise Exception("Submission ID not found in the response.")
-        
+
         return check_submission(submission_id, slug)
 
     except requests.exceptions.RequestException as e:
@@ -409,11 +419,13 @@ def check_submission(submission_id, slug):
             if result.get("state") == "SUCCESS":
                 return result
             elif result.get("state") in ["PENDING", "STARTED"]:
-                sleep_time = 2 ** attempt  # Exponential backoff
+                sleep_time = 2**attempt  # Exponential backoff
                 jitter = random.uniform(0, 0.1 * sleep_time)  # Add jitter
                 time.sleep(sleep_time + jitter)
             else:
-                print(f"Unexpected state: {result.get('state')}, Message: {result.get('status_msg')}")
+                print(
+                    f"Unexpected state: {result.get('state')}, Message: {result.get('status_msg')}"
+                )
                 raise Exception(f"Unexpected submission state: {result}")
         except JSONDecodeError:
             print(f"Failed to decode JSON on attempt {attempt + 1}. Retrying...")
@@ -472,11 +484,13 @@ def test(question_id, problem_slug, lang, code, test_case):
             if result.get("state") == "SUCCESS":
                 return result
             elif result.get("state") in ["PENDING", "STARTED"]:
-                sleep_time = 2 ** attempt  # Exponential backoff
+                sleep_time = 2**attempt  # Exponential backoff
                 jitter = random.uniform(0, 0.1 * sleep_time)  # Add jitter
                 time.sleep(sleep_time + jitter)
             else:
-                print(f"Unexpected state: {result.get('state')}, Message: {result.get('status_msg')}")
+                print(
+                    f"Unexpected state: {result.get('state')}, Message: {result.get('status_msg')}"
+                )
                 raise Exception(f"Unexpected submission state: {result}")
         except JSONDecodeError:
             print(f"Failed to decode JSON on attempt {attempt + 1}. Retrying...")
@@ -551,7 +565,14 @@ def generate(language, question, codeSnippets):
 
 # debug the code if there is an error
 @retry(max_attempts=3, wait_time=2)
-def debug(language, question, codeSnippet, current_code, submit_result, submit_history):
+def debug(
+    language,
+    question,
+    codeSnippet,
+    current_code,
+    submit_result,
+    submit_history,
+):
     print(f"Debugging the solution...")
 
     # Create the prompt for debugging
@@ -560,7 +581,7 @@ def debug(language, question, codeSnippet, current_code, submit_result, submit_h
         messages=[
             {
                 "role": "system",
-                "content": "You are a master of solving LeetCode problems and generating solutions.",
+                "content": "You are a master of solving LeetCode problems and debugging solutions.",
             },
             {
                 "role": "user",
@@ -569,9 +590,9 @@ def debug(language, question, codeSnippet, current_code, submit_result, submit_h
 We encountered an error while solving a LeetCode problem in {language}.
 
 ### Task:
-Please review the problem, the current code, the result of the last submission, and the history of submissions.
-Identify the issue causing the error. 
-Using a different approach to solve the problem to avoid the issue causing the error.
+1. Please review the problem, the current code, the result of the last submission, the history of submissions.
+2. Pay attention to the **last test case** that failed and the **runtime error** message. **Identify the issue causing the error and fix the code.**
+4. ***Use different approach to solve the problem if necessary, do not stick to the current code.***
 
 ### Format:
 - **Solution must be written in {language}**
@@ -579,30 +600,35 @@ Using a different approach to solve the problem to avoid the issue causing the e
 - Return **only the solution code**—no explanations, comments, or additional text.
 
 
-### Problem:
+[Problem]
 ```json
 {question}
 ```
+[End of Problem]
 
-### Current Code:
+[Current Code]
 ```
 {current_code}
 ```
+[End of Current Code]
 
-### Last Submission Result:
+[Last Submission Result]
 ```json
 {submit_result}
 ```
+[End of Last Submission Result]
 
-### Provided Code:
+[Provided Code]
 ```
 {codeSnippet}
 ```
+[End of Provided Code]
 
-### Submission History:
+[Submission History]
 ```json
 {submit_history}
 ```
+[End of Submission History]
 """,
             },
         ],
@@ -624,11 +650,16 @@ def get_next_unsolved():
     for question in questions:
         if SETTING["allow_skip"]:
             if question["status"] != "ac" and question["status"] != "notac":
+                # sorted the question by the id
+                questions.sort(key=lambda x: x["questionId"])
                 return question
         else:
             if question["status"] != "ac":
+                # sorted the question by the id
+                questions.sort(key=lambda x: x["questionId"])
                 return question
 
+    print("No more unsolved questions found.")
     return None  # Couldn't find an unsolved question within the limit
 
 
@@ -711,7 +742,7 @@ def solver():
             and submit_count < SETTING["max_submit_retries"]
         ):
             print(f"Submitting attempt {submit_count}")
-            
+
             time.sleep(1)
             # submit the solution
             submit_result = submit(
@@ -721,19 +752,30 @@ def solver():
             if submit_result["status_msg"] == "Accepted":
                 break
             else:
-                if 'compare_result' in submit_result:
-                    print(f"Submission failed: {submit_result['compare_result']}. Start debugging...")
+                if "compare_result" in submit_result:
+                    print(
+                        f"Submission failed: {submit_result['compare_result']}. Start debugging..."
+                    )
                 else:
                     print(
                         f"Submission failed: {submit_result['status_msg']}. Start debugging..."
                     )
-                    
-            submit_history.append({"solution": solution, "result": check_and_shorten_test_cases_in_result(submit_result)})
+
+            submit_history.append(
+                {
+                    "solution": solution,
+                    "result": check_and_shorten_test_cases_in_result(submit_result),
+                }
+            )
 
             # check if the last test case is already in the example test cases string
-            if 'last_testcase' in submit_result and submit_result["last_testcase"] in question_detailed["exampleTestcases"]:
+            if (
+                "last_testcase" in submit_result
+                and submit_result["last_testcase"]
+                in question_detailed["exampleTestcases"]
+            ):
                 print(f"Last test case already in the example test cases")
-            elif 'last_testcase' in submit_result:
+            elif "last_testcase" in submit_result:
                 # add the last test case to the example test cases
                 question_detailed["exampleTestcases"] += (
                     "\n" + submit_result["last_testcase"]
@@ -741,33 +783,31 @@ def solver():
                 print(f"Last test case added to the example test cases")
 
             debug_count = 0
-            test_result = {"status_msg": "None"}
-            while (
-                test_result["status_msg"] != "Accepted"
-                and debug_count < SETTING["max_debug_retries"]
-            ):
+            test_result = submit_result
+            while debug_count < SETTING["max_debug_retries"]:
                 print(f"Debugging attempt {debug_count}")
                 # debug the solution
                 try:
                     # check for long test cases
-                    question_detailed_shortened = check_and_shorten_test_cases_in_question_detailed(
-                        question_detailed
+                    question_detailed_shortened = (
+                        check_and_shorten_test_cases_in_question_detailed(
+                            question_detailed
+                        )
                     )
                     last_test_result_shortened = check_and_shorten_test_cases_in_result(
                         test_result
                     )
-                    submit_history_str = json.dumps(submit_history)
                     solution = debug(
-                        language,
-                        question_detailed_shortened,
-                        codeSnippets,
-                        solution,
-                        last_test_result_shortened,
-                        submit_history_str,
+                        language=language,
+                        question=question_detailed_shortened,
+                        codeSnippet=codeSnippets,
+                        current_code=solution,
+                        submit_result=last_test_result_shortened,
+                        submit_history=submit_history
                     )
                 except openai.BadRequestError as e:
                     print(f"Failed to debug solution: {e}")
-                    break
+                    continue
 
                 time.sleep(1)
                 # submit the solution
@@ -779,19 +819,27 @@ def solver():
                     question_detailed["exampleTestcases"],
                 )
 
-                if test_result["status_msg"] == "Accepted":
-                    print(f"Debugging success: {test_result['status_msg']}")
-                    break
+                # Check if the test result indicates success
+                if (
+                    "compare_result" in test_result
+                    and "0" not in test_result["compare_result"]
+                ):
+                    print(f"Debugging success: {test_result['compare_result']}")
+                    break  # Exit the debugging loop on success
+                elif "compare_result" in test_result:
+                    print(f"Debugging failed: {test_result['compare_result']}")
+                    debug_count += 1  # Increment debug count to track attempts
                 else:
                     print(f"Debugging failed: {test_result['status_msg']}")
-                    debug_count += 1
+                    debug_count += 1  # Increment debug count to track attempts
 
-            if test_result["status_msg"] != "Accepted":
+            # Check if maximum retries were reached
+            if debug_count >= SETTING["max_debug_retries"]:
                 print(
                     f"Debugging failed after {debug_count} attempts. Move to next question."
                 )
                 break
-            
+
             submit_count += 1
 
         if submit_result["status_msg"] != "Accepted":
@@ -808,5 +856,3 @@ if __name__ == "__main__":
     COOKIES = login_to_leetcode()
     PREMIUM_ACCOUNT = get_account_info()
     solver()
-
-
