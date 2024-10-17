@@ -10,7 +10,6 @@ from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 from openai import OpenAI
 import openai
-import undetected_chromedriver as uc
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -258,11 +257,22 @@ def list_questions():
             total: totalNum
             questions: data {
                 questionId
-                titleSlug
-                difficulty
-                isPaidOnly
                 acRate
+                difficulty
+                freqBar
+                frontendQuestionId: questionFrontendId
+                isFavor
+                paidOnly: isPaidOnly
                 status
+                title
+                titleSlug
+                topicTags {
+                    name
+                    id
+                    slug
+                }
+                hasSolution
+                hasVideoSolution
             }
         }
     }
@@ -646,21 +656,19 @@ def get_next_unsolved():
 
     if not questions:
         return None  # No more questions available
-
-    for question in questions:
-        if SETTING["allow_skip"]:
-            if question["status"] != "ac" and question["status"] != "notac":
-                # sorted the question by the id
-                questions.sort(key=lambda x: x["questionId"])
-                return question
-        else:
-            if question["status"] != "ac":
-                # sorted the question by the id
-                questions.sort(key=lambda x: x["questionId"])
-                return question
-
-    print("No more unsolved questions found.")
-    return None  # Couldn't find an unsolved question within the limit
+    
+    if SETTING["allow_skip"]:
+        questions_unsolved = [question for question in questions if question["status"] != "ac" and question["status"] != "notac"]
+    else:
+        questions_unsolved = [question for question in questions if question["status"] != "ac"]
+    
+    if len(questions_unsolved) == 0:
+        print("No more unsolved questions found.")
+        return None  # Couldn't find an unsolved question within the limit
+    
+    # sorted the question by the id
+    questions_unsolved.sort(key=lambda x: x["frontendQuestionId"])
+    return questions_unsolved[0]
 
 
 # check and shorten the test cases if there is any test case is too long

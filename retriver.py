@@ -4,7 +4,6 @@ import json
 import requests
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
-import undetected_chromedriver as uc
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -167,11 +166,22 @@ def list_all_solved():
             total: totalNum
             questions: data {
                 questionId
-                titleSlug
-                difficulty
-                isPaidOnly
                 acRate
+                difficulty
+                freqBar
+                frontendQuestionId: questionFrontendId
+                isFavor
+                paidOnly: isPaidOnly
                 status
+                title
+                titleSlug
+                topicTags {
+                    name
+                    id
+                    slug
+                }
+                hasSolution
+                hasVideoSolution
             }
         }
     }
@@ -197,9 +207,6 @@ def list_all_solved():
     total = data["data"]["problemsetQuestionList"]["total"]
     print(f"{total} solved questions fetched.")
 
-    # Sort questions by ID
-    questions.sort(key=lambda q: int(q["questionId"]))
-
     return questions
 
 
@@ -220,6 +227,7 @@ def get_question_details(problem_slug):
                 langSlug
                 code
             }}
+            
         }}
     }}
     """

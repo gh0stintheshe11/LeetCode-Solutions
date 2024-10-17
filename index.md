@@ -1337,6 +1337,7 @@
 | 1380 | [number-of-closed-islands](https://leetcode.com/problems/number-of-closed-islands) | [Rust](solutions/1380.number-of-closed-islands/Rust.rs) |
 | 1381 | [maximum-score-words-formed-by-letters](https://leetcode.com/problems/maximum-score-words-formed-by-letters) | [Python3](solutions/1381.maximum-score-words-formed-by-letters/Python3.py) |
 | 1382 | [calculate-amount-paid-in-taxes](https://leetcode.com/problems/calculate-amount-paid-in-taxes) | [Python3](solutions/1382.calculate-amount-paid-in-taxes/Python3.py) |
+| 1383 | [number-of-single-divisor-triplets](https://leetcode.com/problems/number-of-single-divisor-triplets) | [Python3](solutions/1383.number-of-single-divisor-triplets/Python3.py) |
 | 1384 | [maximum-font-to-fit-a-sentence-in-a-screen](https://leetcode.com/problems/maximum-font-to-fit-a-sentence-in-a-screen) | [Python3](solutions/1384.maximum-font-to-fit-a-sentence-in-a-screen/Python3.py) |
 | 1385 | [number-of-ways-to-build-house-of-cards](https://leetcode.com/problems/number-of-ways-to-build-house-of-cards) | [Python3](solutions/1385.number-of-ways-to-build-house-of-cards/Python3.py) |
 | 1386 | [shift-2d-grid](https://leetcode.com/problems/shift-2d-grid) | [Python3](solutions/1386.shift-2d-grid/Python3.py) |
@@ -1927,6 +1928,7 @@
 | 2011 | [maximum-value-after-insertion](https://leetcode.com/problems/maximum-value-after-insertion) | [Python3](solutions/2011.maximum-value-after-insertion/Python3.py) |
 | 2012 | [process-tasks-using-servers](https://leetcode.com/problems/process-tasks-using-servers) | [Python3](solutions/2012.process-tasks-using-servers/Python3.py) |
 | 2013 | [minimum-skips-to-arrive-at-meeting-on-time](https://leetcode.com/problems/minimum-skips-to-arrive-at-meeting-on-time) | [Python3](solutions/2013.minimum-skips-to-arrive-at-meeting-on-time/Python3.py) |
+| 2014 | [orders-with-maximum-quantity-above-average](https://leetcode.com/problems/orders-with-maximum-quantity-above-average) | [MySQL](solutions/2014.orders-with-maximum-quantity-above-average/MySQL.sql) |
 | 2015 | [determine-whether-matrix-can-be-obtained-by-rotation](https://leetcode.com/problems/determine-whether-matrix-can-be-obtained-by-rotation) | [Python3](solutions/2015.determine-whether-matrix-can-be-obtained-by-rotation/Python3.py) |
 | 2016 | [reduction-operations-to-make-the-array-elements-equal](https://leetcode.com/problems/reduction-operations-to-make-the-array-elements-equal) | [Python3](solutions/2016.reduction-operations-to-make-the-array-elements-equal/Python3.py) |
 | 2017 | [minimum-number-of-flips-to-make-the-binary-string-alternating](https://leetcode.com/problems/minimum-number-of-flips-to-make-the-binary-string-alternating) | [Python3](solutions/2017.minimum-number-of-flips-to-make-the-binary-string-alternating/Python3.py) |
@@ -1948,6 +1950,7 @@
 | 2033 | [the-number-of-full-rounds-you-have-played](https://leetcode.com/problems/the-number-of-full-rounds-you-have-played) | [Python3](solutions/2033.the-number-of-full-rounds-you-have-played/Python3.py) |
 | 2034 | [minimum-absolute-difference-queries](https://leetcode.com/problems/minimum-absolute-difference-queries) | [Python3](solutions/2034.minimum-absolute-difference-queries/Python3.py) |
 | 2035 | [count-sub-islands](https://leetcode.com/problems/count-sub-islands) | [Python3](solutions/2035.count-sub-islands/Python3.py), [C](solutions/2035.count-sub-islands/C.c), [Rust](solutions/2035.count-sub-islands/Rust.rs) |
+| 2036 | [count-pairs-in-two-arrays](https://leetcode.com/problems/count-pairs-in-two-arrays) | [Python3](solutions/2036.count-pairs-in-two-arrays/Python3.py) |
 | 2037 | [count-square-sum-triples](https://leetcode.com/problems/count-square-sum-triples) | [Python3](solutions/2037.count-square-sum-triples/Python3.py) |
 | 2038 | [nearest-exit-from-entrance-in-maze](https://leetcode.com/problems/nearest-exit-from-entrance-in-maze) | [Rust](solutions/2038.nearest-exit-from-entrance-in-maze/Rust.rs) |
 | 2039 | [sum-game](https://leetcode.com/problems/sum-game) | [Python3](solutions/2039.sum-game/Python3.py) |
@@ -1957,11 +1960,13 @@
 | 2043 | [cyclically-rotating-a-grid](https://leetcode.com/problems/cyclically-rotating-a-grid) | [Python3](solutions/2043.cyclically-rotating-a-grid/Python3.py) |
 | 2044 | [number-of-wonderful-substrings](https://leetcode.com/problems/number-of-wonderful-substrings) | [Python3](solutions/2044.number-of-wonderful-substrings/Python3.py) |
 | 2045 | [cutting-ribbons](https://leetcode.com/problems/cutting-ribbons) | [Python3](solutions/2045.cutting-ribbons/Python3.py) |
+| 2046 | [page-recommendations-ii](https://leetcode.com/problems/page-recommendations-ii) | [MySQL](solutions/2046.page-recommendations-ii/MySQL.sql) |
 | 2047 | [find-a-peak-element-ii](https://leetcode.com/problems/find-a-peak-element-ii) | [Python3](solutions/2047.find-a-peak-element-ii/Python3.py) |
 | 2048 | [build-array-from-permutation](https://leetcode.com/problems/build-array-from-permutation) | [Python3](solutions/2048.build-array-from-permutation/Python3.py) |
 | 2049 | [eliminate-maximum-number-of-monsters](https://leetcode.com/problems/eliminate-maximum-number-of-monsters) | [Python3](solutions/2049.eliminate-maximum-number-of-monsters/Python3.py) |
 | 2050 | [count-good-numbers](https://leetcode.com/problems/count-good-numbers) | [Python3](solutions/2050.count-good-numbers/Python3.py) |
 | 2051 | [longest-common-subpath](https://leetcode.com/problems/longest-common-subpath) | [Python3](solutions/2051.longest-common-subpath/Python3.py) |
+| 2052 | [depth-of-bst-given-insertion-order](https://leetcode.com/problems/depth-of-bst-given-insertion-order) | [Python3](solutions/2052.depth-of-bst-given-insertion-order/Python3.py) |
 | 2053 | [check-if-all-characters-have-equal-number-of-occurrences](https://leetcode.com/problems/check-if-all-characters-have-equal-number-of-occurrences) | [Python3](solutions/2053.check-if-all-characters-have-equal-number-of-occurrences/Python3.py) |
 | 2054 | [the-number-of-the-smallest-unoccupied-chair](https://leetcode.com/problems/the-number-of-the-smallest-unoccupied-chair) | [Python3](solutions/2054.the-number-of-the-smallest-unoccupied-chair/Python3.py) |
 | 2055 | [describe-the-painting](https://leetcode.com/problems/describe-the-painting) | [Python3](solutions/2055.describe-the-painting/Python3.py) |
@@ -1973,6 +1978,8 @@
 | 2061 | [painting-a-grid-with-three-different-colors](https://leetcode.com/problems/painting-a-grid-with-three-different-colors) | [Python3](solutions/2061.painting-a-grid-with-three-different-colors/Python3.py) |
 | 2062 | [game-of-nim](https://leetcode.com/problems/game-of-nim) | [Python3](solutions/2062.game-of-nim/Python3.py) |
 | 2063 | [leetcodify-friends-recommendations](https://leetcode.com/problems/leetcodify-friends-recommendations) | [MySQL](solutions/2063.leetcodify-friends-recommendations/MySQL.sql) |
+| 2064 | [leetcodify-similar-friends](https://leetcode.com/problems/leetcodify-similar-friends) | [MySQL](solutions/2064.leetcodify-similar-friends/MySQL.sql) |
+| 2065 | [check-for-contradictions-in-equations](https://leetcode.com/problems/check-for-contradictions-in-equations) | [Python3](solutions/2065.check-for-contradictions-in-equations/Python3.py) |
 | 2066 | [add-minimum-number-of-rungs](https://leetcode.com/problems/add-minimum-number-of-rungs) | [Python3](solutions/2066.add-minimum-number-of-rungs/Python3.py) |
 | 2067 | [maximum-number-of-points-with-cost](https://leetcode.com/problems/maximum-number-of-points-with-cost) | [Python3](solutions/2067.maximum-number-of-points-with-cost/Python3.py) |
 | 2068 | [maximum-genetic-difference-query](https://leetcode.com/problems/maximum-genetic-difference-query) | [Python3](solutions/2068.maximum-genetic-difference-query/Python3.py) |
@@ -1989,6 +1996,7 @@
 | 2079 | [delete-duplicate-folders-in-system](https://leetcode.com/problems/delete-duplicate-folders-in-system) | [Python3](solutions/2079.delete-duplicate-folders-in-system/Python3.py) |
 | 2080 | [check-if-move-is-legal](https://leetcode.com/problems/check-if-move-is-legal) | [Python3](solutions/2080.check-if-move-is-legal/Python3.py) |
 | 2081 | [minimum-total-space-wasted-with-k-resizing-operations](https://leetcode.com/problems/minimum-total-space-wasted-with-k-resizing-operations) | [Python3](solutions/2081.minimum-total-space-wasted-with-k-resizing-operations/Python3.py) |
+| 2082 | [minimum-cost-to-separate-sentence-into-rows](https://leetcode.com/problems/minimum-cost-to-separate-sentence-into-rows) | [Python3](solutions/2082.minimum-cost-to-separate-sentence-into-rows/Python3.py) |
 | 2083 | [three-divisors](https://leetcode.com/problems/three-divisors) | [Python3](solutions/2083.three-divisors/Python3.py) |
 | 2084 | [maximum-number-of-weeks-for-which-you-can-work](https://leetcode.com/problems/maximum-number-of-weeks-for-which-you-can-work) | [Python3](solutions/2084.maximum-number-of-weeks-for-which-you-can-work/Python3.py) |
 | 2085 | [array-with-elements-not-equal-to-average-of-neighbors](https://leetcode.com/problems/array-with-elements-not-equal-to-average-of-neighbors) | [Python3](solutions/2085.array-with-elements-not-equal-to-average-of-neighbors/Python3.py) |
@@ -2003,6 +2011,7 @@
 | 2094 | [remove-stones-to-minimize-the-total](https://leetcode.com/problems/remove-stones-to-minimize-the-total) | [Python3](solutions/2094.remove-stones-to-minimize-the-total/Python3.py) |
 | 2095 | [minimum-number-of-swaps-to-make-the-string-balanced](https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-string-balanced) | [Python3](solutions/2095.minimum-number-of-swaps-to-make-the-string-balanced/Python3.py) |
 | 2096 | [find-the-longest-valid-obstacle-course-at-each-position](https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position) | [Python3](solutions/2096.find-the-longest-valid-obstacle-course-at-each-position/Python3.py) |
+| 2097 | [strong-friendship](https://leetcode.com/problems/strong-friendship) | [MySQL](solutions/2097.strong-friendship/MySQL.sql) |
 | 2098 | [all-the-pairs-with-the-maximum-number-of-common-followers](https://leetcode.com/problems/all-the-pairs-with-the-maximum-number-of-common-followers) | [MySQL](solutions/2098.all-the-pairs-with-the-maximum-number-of-common-followers/MySQL.sql) |
 | 2099 | [number-of-strings-that-appear-as-substrings-in-word](https://leetcode.com/problems/number-of-strings-that-appear-as-substrings-in-word) | [Python3](solutions/2099.number-of-strings-that-appear-as-substrings-in-word/Python3.py) |
 | 2100 | [minimum-non-zero-product-of-the-array-elements](https://leetcode.com/problems/minimum-non-zero-product-of-the-array-elements) | [Python3](solutions/2100.minimum-non-zero-product-of-the-array-elements/Python3.py) |
@@ -2046,6 +2055,7 @@
 | 2138 | [sum-of-beauty-in-the-array](https://leetcode.com/problems/sum-of-beauty-in-the-array) | [Python3](solutions/2138.sum-of-beauty-in-the-array/Python3.py) |
 | 2139 | [detect-squares](https://leetcode.com/problems/detect-squares) | [Python3](solutions/2139.detect-squares/Python3.py) |
 | 2140 | [longest-subsequence-repeated-k-times](https://leetcode.com/problems/longest-subsequence-repeated-k-times) | [Python3](solutions/2140.longest-subsequence-repeated-k-times/Python3.py) |
+| 2141 | [smallest-greater-multiple-made-of-two-digits](https://leetcode.com/problems/smallest-greater-multiple-made-of-two-digits) | [Python3](solutions/2141.smallest-greater-multiple-made-of-two-digits/Python3.py) |
 | 2142 | [average-height-of-buildings-in-each-segment](https://leetcode.com/problems/average-height-of-buildings-in-each-segment) | [Python3](solutions/2142.average-height-of-buildings-in-each-segment/Python3.py) |
 | 2143 | [count-the-number-of-experiments](https://leetcode.com/problems/count-the-number-of-experiments) | [MySQL](solutions/2143.count-the-number-of-experiments/MySQL.sql) |
 | 2144 | [maximum-difference-between-increasing-elements](https://leetcode.com/problems/maximum-difference-between-increasing-elements) | [Python3](solutions/2144.maximum-difference-between-increasing-elements/Python3.py) |
@@ -2057,6 +2067,7 @@
 | 2150 | [kth-smallest-product-of-two-sorted-arrays](https://leetcode.com/problems/kth-smallest-product-of-two-sorted-arrays) | [Python3](solutions/2150.kth-smallest-product-of-two-sorted-arrays/Python3.py) |
 | 2151 | [the-time-when-the-network-becomes-idle](https://leetcode.com/problems/the-time-when-the-network-becomes-idle) | [Python3](solutions/2151.the-time-when-the-network-becomes-idle/Python3.py) |
 | 2152 | [the-number-of-seniors-and-juniors-to-join-the-company](https://leetcode.com/problems/the-number-of-seniors-and-juniors-to-join-the-company) | [MySQL](solutions/2152.the-number-of-seniors-and-juniors-to-join-the-company/MySQL.sql) |
+| 2153 | [subtree-removal-game-with-fibonacci-tree](https://leetcode.com/problems/subtree-removal-game-with-fibonacci-tree) | [Python3](solutions/2153.subtree-removal-game-with-fibonacci-tree/Python3.py) |
 | 2154 | [minimum-moves-to-convert-string](https://leetcode.com/problems/minimum-moves-to-convert-string) | [Python3](solutions/2154.minimum-moves-to-convert-string/Python3.py) |
 | 2155 | [find-missing-observations](https://leetcode.com/problems/find-missing-observations) | [Python3](solutions/2155.find-missing-observations/Python3.py) |
 | 2156 | [stone-game-ix](https://leetcode.com/problems/stone-game-ix) | [Python3](solutions/2156.stone-game-ix/Python3.py) |
@@ -2070,6 +2081,7 @@
 | 2164 | [two-best-non-overlapping-events](https://leetcode.com/problems/two-best-non-overlapping-events) | [Python3](solutions/2164.two-best-non-overlapping-events/Python3.py) |
 | 2165 | [plates-between-candles](https://leetcode.com/problems/plates-between-candles) | [Python3](solutions/2165.plates-between-candles/Python3.py) |
 | 2166 | [number-of-valid-move-combinations-on-chessboard](https://leetcode.com/problems/number-of-valid-move-combinations-on-chessboard) | [Python3](solutions/2166.number-of-valid-move-combinations-on-chessboard/Python3.py) |
+| 2167 | [number-of-accounts-that-did-not-stream](https://leetcode.com/problems/number-of-accounts-that-did-not-stream) | [MySQL](solutions/2167.number-of-accounts-that-did-not-stream/MySQL.sql) |
 | 2168 | [check-if-numbers-are-ascending-in-a-sentence](https://leetcode.com/problems/check-if-numbers-are-ascending-in-a-sentence) | [Python3](solutions/2168.check-if-numbers-are-ascending-in-a-sentence/Python3.py) |
 | 2169 | [simple-bank-system](https://leetcode.com/problems/simple-bank-system) | [Python3](solutions/2169.simple-bank-system/Python3.py) |
 | 2170 | [count-number-of-maximum-bitwise-or-subsets](https://leetcode.com/problems/count-number-of-maximum-bitwise-or-subsets) | [Python3](solutions/2170.count-number-of-maximum-bitwise-or-subsets/Python3.py) |
@@ -2120,6 +2132,7 @@
 | 2215 | [finding-3-digit-even-numbers](https://leetcode.com/problems/finding-3-digit-even-numbers) | [Python3](solutions/2215.finding-3-digit-even-numbers/Python3.py) |
 | 2216 | [delete-the-middle-node-of-a-linked-list](https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list) | [Python3](solutions/2216.delete-the-middle-node-of-a-linked-list/Python3.py) |
 | 2217 | [step-by-step-directions-from-a-binary-tree-node-to-another](https://leetcode.com/problems/step-by-step-directions-from-a-binary-tree-node-to-another) | [Python3](solutions/2217.step-by-step-directions-from-a-binary-tree-node-to-another/Python3.py) |
+| 2218 | [paths-in-maze-that-lead-to-same-room](https://leetcode.com/problems/paths-in-maze-that-lead-to-same-room) | [Python3](solutions/2218.paths-in-maze-that-lead-to-same-room/Python3.py) |
 | 2219 | [maximum-number-of-words-found-in-sentences](https://leetcode.com/problems/maximum-number-of-words-found-in-sentences) | [Python3](solutions/2219.maximum-number-of-words-found-in-sentences/Python3.py) |
 | 2220 | [find-all-possible-recipes-from-given-supplies](https://leetcode.com/problems/find-all-possible-recipes-from-given-supplies) | [Python3](solutions/2220.find-all-possible-recipes-from-given-supplies/Python3.py) |
 | 2221 | [check-if-a-parentheses-string-can-be-valid](https://leetcode.com/problems/check-if-a-parentheses-string-can-be-valid) | [Python3](solutions/2221.check-if-a-parentheses-string-can-be-valid/Python3.py) |
@@ -2148,6 +2161,7 @@
 | 2244 | [number-of-laser-beams-in-a-bank](https://leetcode.com/problems/number-of-laser-beams-in-a-bank) | [Python3](solutions/2244.number-of-laser-beams-in-a-bank/Python3.py) |
 | 2245 | [destroying-asteroids](https://leetcode.com/problems/destroying-asteroids) | [Python3](solutions/2245.destroying-asteroids/Python3.py) |
 | 2246 | [maximum-employees-to-be-invited-to-a-meeting](https://leetcode.com/problems/maximum-employees-to-be-invited-to-a-meeting) | [Python3](solutions/2246.maximum-employees-to-be-invited-to-a-meeting/Python3.py) |
+| 2247 | [number-of-unique-flavors-after-sharing-k-candies](https://leetcode.com/problems/number-of-unique-flavors-after-sharing-k-candies) | [Python3](solutions/2247.number-of-unique-flavors-after-sharing-k-candies/Python3.py) |
 | 2248 | [minimum-cost-of-buying-candies-with-discount](https://leetcode.com/problems/minimum-cost-of-buying-candies-with-discount) | [Python3](solutions/2248.minimum-cost-of-buying-candies-with-discount/Python3.py) |
 | 2249 | [count-the-hidden-sequences](https://leetcode.com/problems/count-the-hidden-sequences) | [Python3](solutions/2249.count-the-hidden-sequences/Python3.py) |
 | 2250 | [k-highest-ranked-items-within-a-price-range](https://leetcode.com/problems/k-highest-ranked-items-within-a-price-range) | [Python3](solutions/2250.k-highest-ranked-items-within-a-price-range/Python3.py) |
@@ -2159,6 +2173,7 @@
 | 2256 | [count-words-obtained-after-adding-a-letter](https://leetcode.com/problems/count-words-obtained-after-adding-a-letter) | [Python3](solutions/2256.count-words-obtained-after-adding-a-letter/Python3.py) |
 | 2257 | [earliest-possible-day-of-full-bloom](https://leetcode.com/problems/earliest-possible-day-of-full-bloom) | [Python3](solutions/2257.earliest-possible-day-of-full-bloom/Python3.py) |
 | 2258 | [elements-in-array-after-removing-and-replacing-elements](https://leetcode.com/problems/elements-in-array-after-removing-and-replacing-elements) | [Python3](solutions/2258.elements-in-array-after-removing-and-replacing-elements/Python3.py) |
+| 2259 | [minimum-operations-to-remove-adjacent-ones-in-matrix](https://leetcode.com/problems/minimum-operations-to-remove-adjacent-ones-in-matrix) | [Python3](solutions/2259.minimum-operations-to-remove-adjacent-ones-in-matrix/Python3.py), [C++](solutions/2259.minimum-operations-to-remove-adjacent-ones-in-matrix/C++.cpp) |
 | 2260 | [divide-a-string-into-groups-of-size-k](https://leetcode.com/problems/divide-a-string-into-groups-of-size-k) | [Python3](solutions/2260.divide-a-string-into-groups-of-size-k/Python3.py) |
 | 2261 | [all-divisions-with-the-highest-score-of-a-binary-array](https://leetcode.com/problems/all-divisions-with-the-highest-score-of-a-binary-array) | [Python3](solutions/2261.all-divisions-with-the-highest-score-of-a-binary-array/Python3.py) |
 | 2262 | [solving-questions-with-brainpower](https://leetcode.com/problems/solving-questions-with-brainpower) | [Python3](solutions/2262.solving-questions-with-brainpower/Python3.py) |
@@ -2181,10 +2196,12 @@
 | 2279 | [maximum-split-of-positive-even-integers](https://leetcode.com/problems/maximum-split-of-positive-even-integers) | [Python3](solutions/2279.maximum-split-of-positive-even-integers/Python3.py) |
 | 2280 | [count-good-triplets-in-an-array](https://leetcode.com/problems/count-good-triplets-in-an-array) | [Python3](solutions/2280.count-good-triplets-in-an-array/Python3.py) |
 | 2281 | [the-number-of-passengers-in-each-bus-i](https://leetcode.com/problems/the-number-of-passengers-in-each-bus-i) | [MySQL](solutions/2281.the-number-of-passengers-in-each-bus-i/MySQL.sql) |
+| 2282 | [choose-numbers-from-two-arrays-in-range](https://leetcode.com/problems/choose-numbers-from-two-arrays-in-range) | [Python3](solutions/2282.choose-numbers-from-two-arrays-in-range/Python3.py) |
 | 2283 | [sort-even-and-odd-indices-independently](https://leetcode.com/problems/sort-even-and-odd-indices-independently) | [Python3](solutions/2283.sort-even-and-odd-indices-independently/Python3.py) |
 | 2284 | [smallest-value-of-the-rearranged-number](https://leetcode.com/problems/smallest-value-of-the-rearranged-number) | [Python3](solutions/2284.smallest-value-of-the-rearranged-number/Python3.py) |
 | 2285 | [design-bitset](https://leetcode.com/problems/design-bitset) | [Python3](solutions/2285.design-bitset/Python3.py) |
 | 2286 | [minimum-time-to-remove-all-cars-containing-illegal-goods](https://leetcode.com/problems/minimum-time-to-remove-all-cars-containing-illegal-goods) | [Python3](solutions/2286.minimum-time-to-remove-all-cars-containing-illegal-goods/Python3.py) |
+| 2287 | [minimum-number-of-lines-to-cover-points](https://leetcode.com/problems/minimum-number-of-lines-to-cover-points) | [Python3](solutions/2287.minimum-number-of-lines-to-cover-points/Python3.py) |
 | 2288 | [count-operations-to-obtain-zero](https://leetcode.com/problems/count-operations-to-obtain-zero) | [Python3](solutions/2288.count-operations-to-obtain-zero/Python3.py) |
 | 2289 | [minimum-operations-to-make-the-array-alternating](https://leetcode.com/problems/minimum-operations-to-make-the-array-alternating) | [Python3](solutions/2289.minimum-operations-to-make-the-array-alternating/Python3.py) |
 | 2290 | [removing-minimum-number-of-magic-beans](https://leetcode.com/problems/removing-minimum-number-of-magic-beans) | [Python3](solutions/2290.removing-minimum-number-of-magic-beans/Python3.py) |
@@ -2193,10 +2210,13 @@
 | 2293 | [minimum-number-of-steps-to-make-two-strings-anagram-ii](https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram-ii) | [Python3](solutions/2293.minimum-number-of-steps-to-make-two-strings-anagram-ii/Python3.py) |
 | 2294 | [minimum-time-to-complete-trips](https://leetcode.com/problems/minimum-time-to-complete-trips) | [Python3](solutions/2294.minimum-time-to-complete-trips/Python3.py) |
 | 2295 | [minimum-time-to-finish-the-race](https://leetcode.com/problems/minimum-time-to-finish-the-race) | [Python3](solutions/2295.minimum-time-to-finish-the-race/Python3.py) |
+| 2296 | [the-number-of-passengers-in-each-bus-ii](https://leetcode.com/problems/the-number-of-passengers-in-each-bus-ii) | [MySQL](solutions/2296.the-number-of-passengers-in-each-bus-ii/MySQL.sql) |
+| 2297 | [amount-of-new-area-painted-each-day](https://leetcode.com/problems/amount-of-new-area-painted-each-day) | [Python3](solutions/2297.amount-of-new-area-painted-each-day/Python3.py) |
 | 2298 | [count-integers-with-even-digit-sum](https://leetcode.com/problems/count-integers-with-even-digit-sum) | [Python3](solutions/2298.count-integers-with-even-digit-sum/Python3.py) |
 | 2299 | [merge-nodes-in-between-zeros](https://leetcode.com/problems/merge-nodes-in-between-zeros) | [Python3](solutions/2299.merge-nodes-in-between-zeros/Python3.py) |
 | 2300 | [construct-string-with-repeat-limit](https://leetcode.com/problems/construct-string-with-repeat-limit) | [Python3](solutions/2300.construct-string-with-repeat-limit/Python3.py) |
 | 2301 | [count-array-pairs-divisible-by-k](https://leetcode.com/problems/count-array-pairs-divisible-by-k) | [Python3](solutions/2301.count-array-pairs-divisible-by-k/Python3.py) |
+| 2302 | [order-two-columns-independently](https://leetcode.com/problems/order-two-columns-independently) | [MySQL](solutions/2302.order-two-columns-independently/MySQL.sql) |
 | 2303 | [unique-substrings-with-equal-digit-frequency](https://leetcode.com/problems/unique-substrings-with-equal-digit-frequency) | [Python3](solutions/2303.unique-substrings-with-equal-digit-frequency/Python3.py) |
 | 2304 | [cells-in-a-range-on-an-excel-sheet](https://leetcode.com/problems/cells-in-a-range-on-an-excel-sheet) | [Python3](solutions/2304.cells-in-a-range-on-an-excel-sheet/Python3.py) |
 | 2305 | [append-k-integers-with-minimal-sum](https://leetcode.com/problems/append-k-integers-with-minimal-sum) | [Python3](solutions/2305.append-k-integers-with-minimal-sum/Python3.py) |
@@ -2209,6 +2229,7 @@
 | 2312 | [most-frequent-number-following-key-in-an-array](https://leetcode.com/problems/most-frequent-number-following-key-in-an-array) | [Python3](solutions/2312.most-frequent-number-following-key-in-an-array/Python3.py) |
 | 2313 | [longest-winning-streak](https://leetcode.com/problems/longest-winning-streak) | [MySQL](solutions/2313.longest-winning-streak/MySQL.sql) |
 | 2314 | [remove-all-ones-with-row-and-column-flips-ii](https://leetcode.com/problems/remove-all-ones-with-row-and-column-flips-ii) | [Python3](solutions/2314.remove-all-ones-with-row-and-column-flips-ii/Python3.py) |
+| 2315 | [the-change-in-global-rankings](https://leetcode.com/problems/the-change-in-global-rankings) | [MySQL](solutions/2315.the-change-in-global-rankings/MySQL.sql) |
 | 2316 | [count-hills-and-valleys-in-an-array](https://leetcode.com/problems/count-hills-and-valleys-in-an-array) | [Python3](solutions/2316.count-hills-and-valleys-in-an-array/Python3.py) |
 | 2317 | [count-collisions-on-a-road](https://leetcode.com/problems/count-collisions-on-a-road) | [Python3](solutions/2317.count-collisions-on-a-road/Python3.py) |
 | 2318 | [maximum-points-in-an-archery-competition](https://leetcode.com/problems/maximum-points-in-an-archery-competition) | [Python3](solutions/2318.maximum-points-in-an-archery-competition/Python3.py) |
@@ -2228,6 +2249,7 @@
 | 2332 | [count-lattice-points-inside-a-circle](https://leetcode.com/problems/count-lattice-points-inside-a-circle) | [Python3](solutions/2332.count-lattice-points-inside-a-circle/Python3.py) |
 | 2333 | [count-number-of-rectangles-containing-each-point](https://leetcode.com/problems/count-number-of-rectangles-containing-each-point) | [Python3](solutions/2333.count-number-of-rectangles-containing-each-point/Python3.py) |
 | 2334 | [number-of-flowers-in-full-bloom](https://leetcode.com/problems/number-of-flowers-in-full-bloom) | [Python3](solutions/2334.number-of-flowers-in-full-bloom/Python3.py) |
+| 2335 | [finding-the-topic-of-each-post](https://leetcode.com/problems/finding-the-topic-of-each-post) | [MySQL](solutions/2335.finding-the-topic-of-each-post/MySQL.sql) |
 | 2336 | [the-number-of-users-that-are-eligible-for-discount](https://leetcode.com/problems/the-number-of-users-that-are-eligible-for-discount) | [MySQL](solutions/2336.the-number-of-users-that-are-eligible-for-discount/MySQL.sql) |
 | 2337 | [remove-digit-from-number-to-maximize-result](https://leetcode.com/problems/remove-digit-from-number-to-maximize-result) | [Python3](solutions/2337.remove-digit-from-number-to-maximize-result/Python3.py) |
 | 2338 | [minimum-consecutive-cards-to-pick-up](https://leetcode.com/problems/minimum-consecutive-cards-to-pick-up) | [Python3](solutions/2338.minimum-consecutive-cards-to-pick-up/Python3.py) |
@@ -2263,15 +2285,18 @@
 | 2368 | [sum-of-total-strength-of-wizards](https://leetcode.com/problems/sum-of-total-strength-of-wizards) | [Python3](solutions/2368.sum-of-total-strength-of-wizards/Python3.py) |
 | 2369 | [maximum-sum-score-of-array](https://leetcode.com/problems/maximum-sum-score-of-array) | [Python3](solutions/2369.maximum-sum-score-of-array/Python3.py) |
 | 2370 | [users-with-two-purchases-within-seven-days](https://leetcode.com/problems/users-with-two-purchases-within-seven-days) | [MySQL](solutions/2370.users-with-two-purchases-within-seven-days/MySQL.sql) |
+| 2371 | [the-users-that-are-eligible-for-discount](https://leetcode.com/problems/the-users-that-are-eligible-for-discount) | [MySQL](solutions/2371.the-users-that-are-eligible-for-discount/MySQL.sql) |
 | 2372 | [rearrange-characters-to-make-target-string](https://leetcode.com/problems/rearrange-characters-to-make-target-string) | [Python3](solutions/2372.rearrange-characters-to-make-target-string/Python3.py) |
 | 2373 | [apply-discount-to-prices](https://leetcode.com/problems/apply-discount-to-prices) | [Python3](solutions/2373.apply-discount-to-prices/Python3.py) |
 | 2374 | [steps-to-make-array-non-decreasing](https://leetcode.com/problems/steps-to-make-array-non-decreasing) | [Python3](solutions/2374.steps-to-make-array-non-decreasing/Python3.py) |
 | 2375 | [minimum-obstacle-removal-to-reach-corner](https://leetcode.com/problems/minimum-obstacle-removal-to-reach-corner) | [Python3](solutions/2375.minimum-obstacle-removal-to-reach-corner/Python3.py) |
+| 2376 | [number-of-times-a-driver-was-a-passenger](https://leetcode.com/problems/number-of-times-a-driver-was-a-passenger) | [MySQL](solutions/2376.number-of-times-a-driver-was-a-passenger/MySQL.sql) |
 | 2377 | [check-if-number-has-equal-digit-count-and-digit-value](https://leetcode.com/problems/check-if-number-has-equal-digit-count-and-digit-value) | [Python3](solutions/2377.check-if-number-has-equal-digit-count-and-digit-value/Python3.py) |
 | 2378 | [sender-with-largest-word-count](https://leetcode.com/problems/sender-with-largest-word-count) | [Python3](solutions/2378.sender-with-largest-word-count/Python3.py) |
 | 2379 | [maximum-total-importance-of-roads](https://leetcode.com/problems/maximum-total-importance-of-roads) | [Python3](solutions/2379.maximum-total-importance-of-roads/Python3.py) |
 | 2380 | [booking-concert-tickets-in-groups](https://leetcode.com/problems/booking-concert-tickets-in-groups) | [Python3](solutions/2380.booking-concert-tickets-in-groups/Python3.py) |
 | 2381 | [dynamic-pivoting-of-a-table](https://leetcode.com/problems/dynamic-pivoting-of-a-table) | [MySQL](solutions/2381.dynamic-pivoting-of-a-table/MySQL.sql) |
+| 2382 | [dynamic-unpivoting-of-a-table](https://leetcode.com/problems/dynamic-unpivoting-of-a-table) | [MySQL](solutions/2382.dynamic-unpivoting-of-a-table/MySQL.sql) |
 | 2383 | [add-two-integers](https://leetcode.com/problems/add-two-integers) | [Python3](solutions/2383.add-two-integers/Python3.py) |
 | 2384 | [root-equals-sum-of-children](https://leetcode.com/problems/root-equals-sum-of-children) | [Python3](solutions/2384.root-equals-sum-of-children/Python3.py) |
 | 2385 | [count-positions-on-street-with-required-brightness](https://leetcode.com/problems/count-positions-on-street-with-required-brightness) | [Python3](solutions/2385.count-positions-on-street-with-required-brightness/Python3.py) |
@@ -2288,6 +2313,7 @@
 | 2396 | [design-video-sharing-platform](https://leetcode.com/problems/design-video-sharing-platform) | [Python3](solutions/2396.design-video-sharing-platform/Python3.py) |
 | 2397 | [count-number-of-ways-to-place-houses](https://leetcode.com/problems/count-number-of-ways-to-place-houses) | [Python3](solutions/2397.count-number-of-ways-to-place-houses/Python3.py) |
 | 2398 | [check-if-matrix-is-x-matrix](https://leetcode.com/problems/check-if-matrix-is-x-matrix) | [Python3](solutions/2398.check-if-matrix-is-x-matrix/Python3.py) |
+| 2399 | [minimum-flips-in-binary-tree-to-get-result](https://leetcode.com/problems/minimum-flips-in-binary-tree-to-get-result) | [Python3](solutions/2399.minimum-flips-in-binary-tree-to-get-result/Python3.py) |
 | 2400 | [minimum-score-after-removals-on-a-tree](https://leetcode.com/problems/minimum-score-after-removals-on-a-tree) | [Python3](solutions/2400.minimum-score-after-removals-on-a-tree/Python3.py) |
 | 2401 | [count-asterisks](https://leetcode.com/problems/count-asterisks) | [Python3](solutions/2401.count-asterisks/Python3.py) |
 | 2402 | [maximum-xor-after-operations](https://leetcode.com/problems/maximum-xor-after-operations) | [Python3](solutions/2402.maximum-xor-after-operations/Python3.py) |
@@ -2310,6 +2336,7 @@
 | 2421 | [maximum-number-of-pairs-in-array](https://leetcode.com/problems/maximum-number-of-pairs-in-array) | [Python3](solutions/2421.maximum-number-of-pairs-in-array/Python3.py) |
 | 2422 | [query-kth-smallest-trimmed-number](https://leetcode.com/problems/query-kth-smallest-trimmed-number) | [Python3](solutions/2422.query-kth-smallest-trimmed-number/Python3.py) |
 | 2423 | [minimum-deletions-to-make-array-divisible](https://leetcode.com/problems/minimum-deletions-to-make-array-divisible) | [Python3](solutions/2423.minimum-deletions-to-make-array-divisible/Python3.py) |
+| 2425 | [number-of-people-that-can-be-seen-in-a-grid](https://leetcode.com/problems/number-of-people-that-can-be-seen-in-a-grid) | [Python3](solutions/2425.number-of-people-that-can-be-seen-in-a-grid/Python3.py) |
 | 2426 | [maximum-profit-from-trading-stocks](https://leetcode.com/problems/maximum-profit-from-trading-stocks) | [Python3](solutions/2426.maximum-profit-from-trading-stocks/Python3.py) |
 | 2427 | [first-letter-to-appear-twice](https://leetcode.com/problems/first-letter-to-appear-twice) | [Python3](solutions/2427.first-letter-to-appear-twice/Python3.py) |
 | 2428 | [equal-row-and-column-pairs](https://leetcode.com/problems/equal-row-and-column-pairs) | [Python3](solutions/2428.equal-row-and-column-pairs/Python3.py) |
@@ -2335,6 +2362,7 @@
 | 2448 | [count-number-of-bad-pairs](https://leetcode.com/problems/count-number-of-bad-pairs) | [Python3](solutions/2448.count-number-of-bad-pairs/Python3.py) |
 | 2449 | [maximum-number-of-robots-within-budget](https://leetcode.com/problems/maximum-number-of-robots-within-budget) | [Python3](solutions/2449.maximum-number-of-robots-within-budget/Python3.py) |
 | 2450 | [minimum-replacements-to-sort-the-array](https://leetcode.com/problems/minimum-replacements-to-sort-the-array) | [Python3](solutions/2450.minimum-replacements-to-sort-the-array/Python3.py) |
+| 2451 | [product-sales-analysis-iv](https://leetcode.com/problems/product-sales-analysis-iv) | [MySQL](solutions/2451.product-sales-analysis-iv/MySQL.sql) |
 | 2452 | [product-sales-analysis-v](https://leetcode.com/problems/product-sales-analysis-v) | [MySQL](solutions/2452.product-sales-analysis-v/MySQL.sql) |
 | 2453 | [all-the-matches-of-the-league](https://leetcode.com/problems/all-the-matches-of-the-league) | [MySQL](solutions/2453.all-the-matches-of-the-league/MySQL.sql) |
 | 2454 | [largest-local-values-in-a-matrix](https://leetcode.com/problems/largest-local-values-in-a-matrix) | [Python3](solutions/2454.largest-local-values-in-a-matrix/Python3.py) |
@@ -2355,6 +2383,7 @@
 | 2471 | [minimum-amount-of-time-to-collect-garbage](https://leetcode.com/problems/minimum-amount-of-time-to-collect-garbage) | [Python3](solutions/2471.minimum-amount-of-time-to-collect-garbage/Python3.py) |
 | 2472 | [build-a-matrix-with-conditions](https://leetcode.com/problems/build-a-matrix-with-conditions) | [Python3](solutions/2472.build-a-matrix-with-conditions/Python3.py) |
 | 2473 | [max-sum-of-a-pair-with-equal-sum-of-digits](https://leetcode.com/problems/max-sum-of-a-pair-with-equal-sum-of-digits) | [Python3](solutions/2473.max-sum-of-a-pair-with-equal-sum-of-digits/Python3.py) |
+| 2474 | [minimum-adjacent-swaps-to-make-a-valid-array](https://leetcode.com/problems/minimum-adjacent-swaps-to-make-a-valid-array) | [Python3](solutions/2474.minimum-adjacent-swaps-to-make-a-valid-array/Python3.py) |
 | 2475 | [largest-palindromic-number](https://leetcode.com/problems/largest-palindromic-number) | [Python3](solutions/2475.largest-palindromic-number/Python3.py) |
 | 2476 | [check-distances-between-same-letters](https://leetcode.com/problems/check-distances-between-same-letters) | [Python3](solutions/2476.check-distances-between-same-letters/Python3.py) |
 | 2477 | [number-of-ways-to-reach-a-position-after-exactly-k-steps](https://leetcode.com/problems/number-of-ways-to-reach-a-position-after-exactly-k-steps) | [Python3](solutions/2477.number-of-ways-to-reach-a-position-after-exactly-k-steps/Python3.py) |
@@ -2364,9 +2393,13 @@
 | 2481 | [strictly-palindromic-number](https://leetcode.com/problems/strictly-palindromic-number) | [Python3](solutions/2481.strictly-palindromic-number/Python3.py) |
 | 2482 | [maximum-rows-covered-by-columns](https://leetcode.com/problems/maximum-rows-covered-by-columns) | [Python3](solutions/2482.maximum-rows-covered-by-columns/Python3.py) |
 | 2483 | [task-scheduler-ii](https://leetcode.com/problems/task-scheduler-ii) | [Python3](solutions/2483.task-scheduler-ii/Python3.py) |
+| 2484 | [compute-the-rank-as-a-percentage](https://leetcode.com/problems/compute-the-rank-as-a-percentage) | [MySQL](solutions/2484.compute-the-rank-as-a-percentage/MySQL.sql) |
+| 2485 | [finding-the-number-of-visible-mountains](https://leetcode.com/problems/finding-the-number-of-visible-mountains) | [Python3](solutions/2485.finding-the-number-of-visible-mountains/Python3.py) |
 | 2486 | [most-frequent-even-element](https://leetcode.com/problems/most-frequent-even-element) | [Python3](solutions/2486.most-frequent-even-element/Python3.py) |
 | 2487 | [optimal-partition-of-string](https://leetcode.com/problems/optimal-partition-of-string) | [Python3](solutions/2487.optimal-partition-of-string/Python3.py) |
 | 2488 | [divide-intervals-into-minimum-number-of-groups](https://leetcode.com/problems/divide-intervals-into-minimum-number-of-groups) | [Python3](solutions/2488.divide-intervals-into-minimum-number-of-groups/Python3.py) |
+| 2489 | [sort-array-by-moving-items-to-empty-space](https://leetcode.com/problems/sort-array-by-moving-items-to-empty-space) | [Python3](solutions/2489.sort-array-by-moving-items-to-empty-space/Python3.py) |
+| 2490 | [maximum-number-of-books-you-can-take](https://leetcode.com/problems/maximum-number-of-books-you-can-take) | [Python3](solutions/2490.maximum-number-of-books-you-can-take/Python3.py) |
 | 2491 | [smallest-even-multiple](https://leetcode.com/problems/smallest-even-multiple) | [Python3](solutions/2491.smallest-even-multiple/Python3.py) |
 | 2492 | [length-of-the-longest-alphabetical-continuous-substring](https://leetcode.com/problems/length-of-the-longest-alphabetical-continuous-substring) | [Python3](solutions/2492.length-of-the-longest-alphabetical-continuous-substring/Python3.py) |
 | 2493 | [reverse-odd-levels-of-binary-tree](https://leetcode.com/problems/reverse-odd-levels-of-binary-tree) | [Python3](solutions/2493.reverse-odd-levels-of-binary-tree/Python3.py) |
@@ -2392,11 +2425,13 @@
 | 2513 | [number-of-pairs-satisfying-inequality](https://leetcode.com/problems/number-of-pairs-satisfying-inequality) | [Python3](solutions/2513.number-of-pairs-satisfying-inequality/Python3.py) |
 | 2515 | [calculate-the-influence-of-each-salesperson](https://leetcode.com/problems/calculate-the-influence-of-each-salesperson) | [MySQL](solutions/2515.calculate-the-influence-of-each-salesperson/MySQL.sql) |
 | 2516 | [sort-the-olympic-table](https://leetcode.com/problems/sort-the-olympic-table) | [MySQL](solutions/2516.sort-the-olympic-table/MySQL.sql) |
+| 2517 | [choose-edges-to-maximize-score-in-a-tree](https://leetcode.com/problems/choose-edges-to-maximize-score-in-a-tree) | [Python3](solutions/2517.choose-edges-to-maximize-score-in-a-tree/Python3.py) |
 | 2518 | [the-employee-that-worked-on-the-longest-task](https://leetcode.com/problems/the-employee-that-worked-on-the-longest-task) | [Python3](solutions/2518.the-employee-that-worked-on-the-longest-task/Python3.py) |
 | 2519 | [find-the-original-array-of-prefix-xor](https://leetcode.com/problems/find-the-original-array-of-prefix-xor) | [Python3](solutions/2519.find-the-original-array-of-prefix-xor/Python3.py) |
 | 2520 | [using-a-robot-to-print-the-lexicographically-smallest-string](https://leetcode.com/problems/using-a-robot-to-print-the-lexicographically-smallest-string) | [Python3](solutions/2520.using-a-robot-to-print-the-lexicographically-smallest-string/Python3.py) |
 | 2521 | [paths-in-matrix-whose-sum-is-divisible-by-k](https://leetcode.com/problems/paths-in-matrix-whose-sum-is-divisible-by-k) | [Python3](solutions/2521.paths-in-matrix-whose-sum-is-divisible-by-k/Python3.py) |
 | 2522 | [median-of-a-row-wise-sorted-matrix](https://leetcode.com/problems/median-of-a-row-wise-sorted-matrix) | [Python3](solutions/2522.median-of-a-row-wise-sorted-matrix/Python3.py) |
+| 2523 | [change-null-values-in-a-table-to-the-previous-value](https://leetcode.com/problems/change-null-values-in-a-table-to-the-previous-value) | [MySQL](solutions/2523.change-null-values-in-a-table-to-the-previous-value/MySQL.sql) |
 | 2524 | [largest-positive-integer-that-exists-with-its-negative](https://leetcode.com/problems/largest-positive-integer-that-exists-with-its-negative) | [Python3](solutions/2524.largest-positive-integer-that-exists-with-its-negative/Python3.py) |
 | 2525 | [count-number-of-distinct-integers-after-reverse-operations](https://leetcode.com/problems/count-number-of-distinct-integers-after-reverse-operations) | [Python3](solutions/2525.count-number-of-distinct-integers-after-reverse-operations/Python3.py) |
 | 2526 | [longest-increasing-subsequence-ii](https://leetcode.com/problems/longest-increasing-subsequence-ii) | [Python3](solutions/2526.longest-increasing-subsequence-ii/Python3.py) |
@@ -2432,6 +2467,7 @@
 | 2557 | [number-of-subarrays-with-lcm-equal-to-k](https://leetcode.com/problems/number-of-subarrays-with-lcm-equal-to-k) | [Python3](solutions/2557.number-of-subarrays-with-lcm-equal-to-k/Python3.py) |
 | 2558 | [minimum-number-of-operations-to-sort-a-binary-tree-by-level](https://leetcode.com/problems/minimum-number-of-operations-to-sort-a-binary-tree-by-level) | [Python3](solutions/2558.minimum-number-of-operations-to-sort-a-binary-tree-by-level/Python3.py) |
 | 2559 | [maximum-number-of-non-overlapping-palindrome-substrings](https://leetcode.com/problems/maximum-number-of-non-overlapping-palindrome-substrings) | [Python3](solutions/2559.maximum-number-of-non-overlapping-palindrome-substrings/Python3.py) |
+| 2560 | [closest-fair-integer](https://leetcode.com/problems/closest-fair-integer) | [Python3](solutions/2560.closest-fair-integer/Python3.py) |
 | 2561 | [number-of-distinct-averages](https://leetcode.com/problems/number-of-distinct-averages) | [Python3](solutions/2561.number-of-distinct-averages/Python3.py) |
 | 2562 | [count-ways-to-build-good-strings](https://leetcode.com/problems/count-ways-to-build-good-strings) | [Python3](solutions/2562.count-ways-to-build-good-strings/Python3.py) |
 | 2563 | [split-message-based-on-limit](https://leetcode.com/problems/split-message-based-on-limit) | [Python3](solutions/2563.split-message-based-on-limit/Python3.py) |
@@ -2482,6 +2518,7 @@
 | 2609 | [distinct-prime-factors-of-product-of-array](https://leetcode.com/problems/distinct-prime-factors-of-product-of-array) | [Python3](solutions/2609.distinct-prime-factors-of-product-of-array/Python3.py) |
 | 2610 | [closest-prime-numbers-in-range](https://leetcode.com/problems/closest-prime-numbers-in-range) | [Python3](solutions/2610.closest-prime-numbers-in-range/Python3.py) |
 | 2612 | [minimum-cost-to-buy-apples](https://leetcode.com/problems/minimum-cost-to-buy-apples) | [Python3](solutions/2612.minimum-cost-to-buy-apples/Python3.py) |
+| 2613 | [customers-with-strictly-increasing-purchases](https://leetcode.com/problems/customers-with-strictly-increasing-purchases) | [MySQL](solutions/2613.customers-with-strictly-increasing-purchases/MySQL.sql) |
 | 2614 | [maximum-count-of-positive-integer-and-negative-integer](https://leetcode.com/problems/maximum-count-of-positive-integer-and-negative-integer) | [Python3](solutions/2614.maximum-count-of-positive-integer-and-negative-integer/Python3.py) |
 | 2615 | [make-number-of-distinct-characters-equal](https://leetcode.com/problems/make-number-of-distinct-characters-equal) | [Python3](solutions/2615.make-number-of-distinct-characters-equal/Python3.py) |
 | 2616 | [maximal-score-after-applying-k-operations](https://leetcode.com/problems/maximal-score-after-applying-k-operations) | [Python3](solutions/2616.maximal-score-after-applying-k-operations/Python3.py) |
@@ -2491,6 +2528,7 @@
 | 2620 | [find-consecutive-integers-from-a-data-stream](https://leetcode.com/problems/find-consecutive-integers-from-a-data-stream) | [Python3](solutions/2620.find-consecutive-integers-from-a-data-stream/Python3.py) |
 | 2621 | [find-xor-beauty-of-array](https://leetcode.com/problems/find-xor-beauty-of-array) | [Python3](solutions/2621.find-xor-beauty-of-array/Python3.py) |
 | 2622 | [form-a-chemical-bond](https://leetcode.com/problems/form-a-chemical-bond) | [MySQL](solutions/2622.form-a-chemical-bond/MySQL.sql) |
+| 2623 | [maximum-xor-of-two-non-overlapping-subtrees](https://leetcode.com/problems/maximum-xor-of-two-non-overlapping-subtrees) | [Python3](solutions/2623.maximum-xor-of-two-non-overlapping-subtrees/Python3.py) |
 | 2624 | [difference-between-element-sum-and-digit-sum-of-an-array](https://leetcode.com/problems/difference-between-element-sum-and-digit-sum-of-an-array) | [Python3](solutions/2624.difference-between-element-sum-and-digit-sum-of-an-array/Python3.py) |
 | 2625 | [increment-submatrices-by-one](https://leetcode.com/problems/increment-submatrices-by-one) | [Python3](solutions/2625.increment-submatrices-by-one/Python3.py) |
 | 2626 | [count-the-number-of-good-subarrays](https://leetcode.com/problems/count-the-number-of-good-subarrays) | [Python3](solutions/2626.count-the-number-of-good-subarrays/Python3.py) |
@@ -2504,12 +2542,14 @@
 | 2634 | [minimum-common-value](https://leetcode.com/problems/minimum-common-value) | [Python3](solutions/2634.minimum-common-value/Python3.py) |
 | 2635 | [check-if-point-is-reachable](https://leetcode.com/problems/check-if-point-is-reachable) | [Python3](solutions/2635.check-if-point-is-reachable/Python3.py) |
 | 2636 | [maximum-subsequence-score](https://leetcode.com/problems/maximum-subsequence-score) | [Python3](solutions/2636.maximum-subsequence-score/Python3.py) |
+| 2637 | [merge-overlapping-events-in-the-same-hall](https://leetcode.com/problems/merge-overlapping-events-in-the-same-hall) | [MySQL](solutions/2637.merge-overlapping-events-in-the-same-hall/MySQL.sql) |
 | 2638 | [number-of-subarrays-having-even-product](https://leetcode.com/problems/number-of-subarrays-having-even-product) | [Python3](solutions/2638.number-of-subarrays-having-even-product/Python3.py) |
 | 2639 | [separate-the-digits-in-an-array](https://leetcode.com/problems/separate-the-digits-in-an-array) | [Python3](solutions/2639.separate-the-digits-in-an-array/Python3.py) |
 | 2640 | [maximum-number-of-integers-to-choose-from-a-range-i](https://leetcode.com/problems/maximum-number-of-integers-to-choose-from-a-range-i) | [Python3](solutions/2640.maximum-number-of-integers-to-choose-from-a-range-i/Python3.py) |
 | 2641 | [disconnect-path-in-a-binary-matrix-by-at-most-one-flip](https://leetcode.com/problems/disconnect-path-in-a-binary-matrix-by-at-most-one-flip) | [Python3](solutions/2641.disconnect-path-in-a-binary-matrix-by-at-most-one-flip/Python3.py) |
 | 2642 | [time-to-cross-a-bridge](https://leetcode.com/problems/time-to-cross-a-bridge) | [Python3](solutions/2642.time-to-cross-a-bridge/Python3.py) |
 | 2643 | [concatenate-the-name-and-the-profession](https://leetcode.com/problems/concatenate-the-name-and-the-profession) | [MySQL](solutions/2643.concatenate-the-name-and-the-profession/MySQL.sql) |
+| 2644 | [bitwise-or-of-all-subsequence-sums](https://leetcode.com/problems/bitwise-or-of-all-subsequence-sums) | [Python3](solutions/2644.bitwise-or-of-all-subsequence-sums/Python3.py) |
 | 2645 | [pass-the-pillow](https://leetcode.com/problems/pass-the-pillow) | [Python3](solutions/2645.pass-the-pillow/Python3.py) |
 | 2646 | [kth-largest-sum-in-a-binary-tree](https://leetcode.com/problems/kth-largest-sum-in-a-binary-tree) | [Python3](solutions/2646.kth-largest-sum-in-a-binary-tree/Python3.py) |
 | 2647 | [split-the-array-to-make-coprime-products](https://leetcode.com/problems/split-the-array-to-make-coprime-products) | [Python3](solutions/2647.split-the-array-to-make-coprime-products/Python3.py) |
