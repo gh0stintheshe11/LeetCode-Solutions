@@ -3,7 +3,7 @@
 
 ## Questions List
 
-| Number | Title | Difficulty | Paid | Solutions | Languages |
+| Number | Title | Difficulty | Paid | Solutions | Count |
 |---|---|---|---|---|---|
 | 1 | [Two Sum](https://leetcode.com/problems/two-sum) | Easy | False | [Python3](solutions/1.two-sum/Python3.py), [C](solutions/1.two-sum/C.c), [C++](solutions/1.two-sum/C++.cpp) | 3/19 |
 | 2 | [Add Two Numbers](https://leetcode.com/problems/add-two-numbers) | Medium | False | [C++](solutions/2.add-two-numbers/C++.cpp), [Rust](solutions/2.add-two-numbers/Rust.rs) | 2/19 |

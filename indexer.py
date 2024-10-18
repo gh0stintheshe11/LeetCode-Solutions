@@ -59,7 +59,7 @@ def format_index_page(questions):
 
     # Create the new content for the questions list
     new_content.append(
-        "| Number | Title | Difficulty | Paid | Solutions | Languages |\n"
+        "| Number | Title | Difficulty | Paid | Solutions | Count |\n"
     )
     new_content.append(
         "|---|---|---|---|---|---|\n"
