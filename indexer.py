@@ -1,6 +1,7 @@
 # check all the question folder in the solutions folder, and format a index page for all the questions and their solutions in a index.md file
 
 import os
+import json
 
 
 def list_questions():
@@ -13,13 +14,16 @@ def list_questions():
     for folder in os.listdir(root):
         folder_path = os.path.join(root, folder)
         if os.path.isdir(folder_path):
-            # Get the question number and title from the folder name
-            question_number = folder.split(".")[0]
-            question_title = folder.split(".")[1] if len(folder.split(".")) > 1 else ""
-            solution_languages = []  # Store solution languages with paths
 
+            solutions = []  # Store solution languages with paths
             # Get the solution language from the file names
             for file in os.listdir(folder_path):
+                if file.endswith(".json"):  # Corrected the typo here
+                    # Load the json file
+                    with open(
+                        os.path.join(folder_path, file), "r"
+                    ) as f:  # Use the correct path
+                        question_detail = json.load(f)  # Load the question detail data
                 if not file.endswith(".json"):
                     # Extract the solution language and its file path
                     solution_language = file.split(".")[
@@ -28,14 +32,24 @@ def list_questions():
                     solution_path = os.path.join(
                         folder_path, file
                     )  # Full path to the solution file
-                    solution_languages.append(
+                    solutions.append(
                         (solution_language, solution_path)
                     )  # Store as a tuple
 
-            questions.append((question_number, question_title, solution_languages))
+            questions.append(
+                {
+                    "frontend_question_id": question_detail["frontendQuestionId"],
+                    "question_title_slug": question_detail["titleSlug"],
+                    "question_title": question_detail["title"],
+                    "difficulty": question_detail["difficulty"],
+                    "paid_only": question_detail["paidOnly"],
+                    "total_avaliable_languages": len(question_detail["codeSnippets"]),
+                    "solutions": solutions,
+                }
+            )
 
-    # Sort the questions by the question number from 0 to 9999
-    questions.sort(key=lambda x: int(x[0]))
+    # Sort questions based on the frontend id, from small to large
+    questions = sorted(questions, key=lambda x: int(x["frontend_question_id"]))
     return questions
 
 
@@ -44,13 +58,19 @@ def format_index_page(questions):
     new_content = []
 
     # Create the new content for the questions list
-    new_content.append("| Number | Title | Solutions |\n")
-    new_content.append("|---|---|---|\n")
+    new_content.append(
+        "| Number | Title | Difficulty | Paid | Solutions | Languages |\n"
+    )
+    new_content.append(
+        "|---|---|---|---|---|---|\n"
+    )  # Added missing columns in the separator
     for question in questions:
         # Create a string for the solutions with links to the files
-        solutions = ", ".join([f"[{lang[0]}]({lang[1]})" for lang in question[2]])
+        solutions_formatted = ", ".join(
+            [f"[{lang[0]}]({lang[1]})" for lang in question["solutions"]]
+        )
         new_content.append(
-            f"| {question[0]} | [{question[1]}](https://leetcode.com/problems/{question[1]}) | {solutions} |\n"
+            f"| {question['frontend_question_id']} | [{question['question_title']}](https://leetcode.com/problems/{question['question_title_slug']}) | {question['difficulty']} | {question['paid_only']} | {solutions_formatted} | {len(question['solutions'])}/{question['total_avaliable_languages']} |\n"
         )
     new_content.append("\n")
 
