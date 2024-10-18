@@ -170,7 +170,6 @@ def list_all_solved():
                 difficulty
                 freqBar
                 frontendQuestionId: questionFrontendId
-                isFavor
                 paidOnly: isPaidOnly
                 status
                 title
@@ -180,8 +179,6 @@ def list_all_solved():
                     id
                     slug
                 }
-                hasSolution
-                hasVideoSolution
             }
         }
     }
@@ -217,8 +214,6 @@ def get_question_details(problem_slug):
     query = f"""
     query getQuestionDetail($titleSlug: String!) {{
         question(titleSlug: $titleSlug) {{
-            questionId
-            title
             content
             hints
             exampleTestcases
@@ -227,7 +222,12 @@ def get_question_details(problem_slug):
                 langSlug
                 code
             }}
-            
+            similarQuestionList {{
+                difficulty
+                titleSlug
+                title
+                isPaidOnly
+            }}
         }}
     }}
     """
@@ -248,39 +248,7 @@ def get_question_details(problem_slug):
         )  # Log response content
         raise Exception(f"Failed to get question details: {response.status_code}")
 
-    questions = response.json()["data"]["question"]
-    # get the question id
-    question_id = questions["questionId"]
-    # get the problem title
-    problem_title = questions["title"]
-    # get the content
-    content = questions["content"]
-    # chnage the content from html to markdown for better processing
-    content = BeautifulSoup(content, "html.parser").get_text()
-    # get the hints
-    hints = questions["hints"]
-    # get the example test cases
-    exampleTestcases = questions["exampleTestcases"]
-    # get the code snippets
-    codeSnippets = questions["codeSnippets"]
-    # reformat the codeSnippets to be a dicts with lang as key and code as value
-    # To this
-    codeSnippets = {
-        snippet["lang"]: {"langSlug": snippet["langSlug"], "code": snippet["code"]}
-        for snippet in codeSnippets
-    }
-
-    # format question to a json
-    question = {
-        "question_id": question_id,
-        "problem_slug": problem_slug,
-        "problem_title": problem_title,
-        "content": content,
-        "hints": hints,
-        "exampleTestcases": exampleTestcases,
-        "codeSnippets": codeSnippets,
-    }
-    return question
+    return response.json()["data"]["question"]
 
 
 def get_fastest_accepted_submission(problem_slug):
@@ -511,16 +479,18 @@ def retriver_new():
                 question_details = get_question_details(question["titleSlug"])
                 # create a new folder wiht the question id.slug under the solution folder
                 os.makedirs(
-                    f"solutions/{question['questionId']}.{question['titleSlug']}",
+                    f"solutions/{question['frontendQuestionId']}.{question['titleSlug']}",
                     exist_ok=True,
                 )
+                # combine the question and the question details
+                question.update(question_details)
                 # save the question details to the folder as a json file
                 with open(
-                    f"solutions/{question['questionId']}.{question['titleSlug']}/question.json",
+                    f"solutions/{question['frontendQuestionId']}.{question['titleSlug']}/question.json",
                     "w",
                     encoding="utf-8",
                 ) as f:
-                    json.dump(question_details, f, ensure_ascii=False)
+                    json.dump(question, f, ensure_ascii=False)
 
                 # get the fastest accepted submission
                 fastest_accepted_submission = get_fastest_accepted_submission(
