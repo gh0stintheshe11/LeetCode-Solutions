@@ -440,7 +440,7 @@ def remove_empty_folder():
     for folder in os.listdir("solutions"):
         if len(
             os.listdir(f"solutions/{folder}")
-        ) == 1 and "question.json" in os.listdir(f"solutions/{folder}"):
+        ) < 2: # at least a question.json and a solution file
             folder_path = f"solutions/{folder}"
             if os.path.exists(folder_path):
                 shutil.rmtree(folder_path)
@@ -461,7 +461,7 @@ def retriver_new():
     question_solved = [
         question
         for question in question_solved
-        if question["questionId"] not in question_already_retrieved
+        if question["frontendQuestionId"] not in question_already_retrieved
     ]
 
     while question_solved != []:
@@ -496,35 +496,28 @@ def retriver_new():
                 fastest_accepted_submission = get_fastest_accepted_submission(
                     question["titleSlug"]
                 )
-                # for all the lang in the fastest_accepted_submission, get the submission details
+                # for all the lang in the fastest_accepted_submission, they are new accepted submissions, get the submission details
                 for lang in fastest_accepted_submission:
                     submission_id = fastest_accepted_submission[lang]["id"]
                     langName = fastest_accepted_submission[lang]["langName"]
-
                     # get the submission details
                     submission_details = get_submission_details(submission_id)
 
-                    # Check if submission_details is empty and if this is the only submission
-                    if not submission_details and len(fastest_accepted_submission) == 1:
-                        # Remove the question folder and skip to the next question
-                        question_folder = f"solutions/{question['questionId']}.{question['titleSlug']}"
-                        if os.path.exists(question_folder):
-                            shutil.rmtree(question_folder)  # Remove the folder
+                    # Check if submission_details is None or empty
+                    if submission_details is None:
                         print(
-                            f"Removed folder: {question_folder} as there were no valid submissions."
+                            f"No submission details found for submission ID: {submission_id}. Skipping write."
                         )
-                        continue  # Skip to the next question
-                    elif not submission_details:
-                        # this is not the only submission, skip to next lang
-                        continue
-                    else:
-                        # Save the code to the folder as solution according to the langSlug
-                        with open(
-                            f"solutions/{question['questionId']}.{question['titleSlug']}/{langName.replace(' ', '')}{FILE_TYPE[langName]}",
-                            "w",
-                            encoding="utf-8",
-                        ) as f:
-                            f.write(submission_details)
+
+                        continue  # Skip to the next iteration if no details are found
+
+                    # Save the code to the folder as solution according to the langSlug
+                    with open(
+                        f"solutions/{question['frontendQuestionId']}.{question['titleSlug']}/{langName.replace(' ', '')}{FILE_TYPE[langName]}",
+                        "w",
+                        encoding="utf-8",
+                    ) as f:
+                        f.write(submission_details)
 
         # if there is no question left in the current question_solved, reset the question_solved and run again
         remove_empty_file()
@@ -534,7 +527,7 @@ def retriver_new():
         question_solved = [
             question
             for question in question_solved
-            if question["questionId"] not in question_already_retrieved
+            if question["frontendQuestionId"] not in question_already_retrieved
         ]
 
     # remove the empty file and folder
@@ -564,7 +557,7 @@ def retriver_update():
             )
             # get all the langugaes that already in the existing solution
             existing_solution = os.listdir(
-                f"solutions/{question['questionId']}.{question['titleSlug']}"
+                f"solutions/{question['frontendQuestionId']}.{question['titleSlug']}"
             )
             # remove the question.json from the existing_solution
             existing_solution = [
@@ -597,7 +590,7 @@ def retriver_update():
 
                 # Save the code to the folder as solution according to the langSlug
                 with open(
-                    f"solutions/{question['questionId']}.{question['titleSlug']}/{langName.replace(' ', '')}{FILE_TYPE[langName]}",
+                    f"solutions/{question['frontendQuestionId']}.{question['titleSlug']}/{langName.replace(' ', '')}{FILE_TYPE[langName]}",
                     "w",
                     encoding="utf-8",
                 ) as f:
@@ -624,7 +617,7 @@ def retriver_update_mt_helper(question):
     fastest_accepted_submission = get_fastest_accepted_submission(question["titleSlug"])
     # get all the langugaes that already in the existing solution
     existing_solution = os.listdir(
-        f"solutions/{question['questionId']}.{question['titleSlug']}"
+        f"solutions/{question['frontendQuestionId']}.{question['titleSlug']}"
     )
     # remove the question.json from the existing_solution
     existing_solution = [file for file in existing_solution if file != "question.json"]
@@ -654,7 +647,7 @@ def retriver_update_mt_helper(question):
 
         # Save the code to the folder as solution according to the langSlug
         with open(
-            f"solutions/{question['questionId']}.{question['titleSlug']}/{langName.replace(' ', '')}{FILE_TYPE[langName]}",
+            f"solutions/{question['frontendQuestionId']}.{question['titleSlug']}/{langName.replace(' ', '')}{FILE_TYPE[langName]}",
             "w",
             encoding="utf-8",
         ) as f:
