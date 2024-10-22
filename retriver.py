@@ -479,14 +479,14 @@ def retriver_new():
                 question_details = get_question_details(question["titleSlug"])
                 # create a new folder wiht the question id.slug under the solution folder
                 os.makedirs(
-                    f"solutions/{question['frontendQuestionId']}.{question['titleSlug']}",
+                    f"solutions/{question['titleSlug']}",
                     exist_ok=True,
                 )
                 # combine the question and the question details
                 question.update(question_details)
                 # save the question details to the folder as a json file
                 with open(
-                    f"solutions/{question['frontendQuestionId']}.{question['titleSlug']}/question.json",
+                    f"solutions/{question['titleSlug']}/question.json",
                     "w",
                     encoding="utf-8",
                 ) as f:
@@ -513,7 +513,7 @@ def retriver_new():
 
                     # Save the code to the folder as solution according to the langSlug
                     with open(
-                        f"solutions/{question['frontendQuestionId']}.{question['titleSlug']}/{langName.replace(' ', '')}{FILE_TYPE[langName]}",
+                        f"solutions/{question['titleSlug']}/{langName.replace(' ', '')}{FILE_TYPE[langName]}",
                         "w",
                         encoding="utf-8",
                     ) as f:
@@ -557,7 +557,7 @@ def retriver_update():
             )
             # get all the langugaes that already in the existing solution
             existing_solution = os.listdir(
-                f"solutions/{question['frontendQuestionId']}.{question['titleSlug']}"
+                f"solutions/{question['titleSlug']}"
             )
             # remove the question.json from the existing_solution
             existing_solution = [
@@ -590,7 +590,7 @@ def retriver_update():
 
                 # Save the code to the folder as solution according to the langSlug
                 with open(
-                    f"solutions/{question['frontendQuestionId']}.{question['titleSlug']}/{langName.replace(' ', '')}{FILE_TYPE[langName]}",
+                    f"solutions/{question['titleSlug']}/{langName.replace(' ', '')}{FILE_TYPE[langName]}",
                     "w",
                     encoding="utf-8",
                 ) as f:
@@ -617,7 +617,7 @@ def retriver_update_mt_helper(question):
     fastest_accepted_submission = get_fastest_accepted_submission(question["titleSlug"])
     # get all the langugaes that already in the existing solution
     existing_solution = os.listdir(
-        f"solutions/{question['frontendQuestionId']}.{question['titleSlug']}"
+        f"solutions/{question['titleSlug']}"
     )
     # remove the question.json from the existing_solution
     existing_solution = [file for file in existing_solution if file != "question.json"]
@@ -647,7 +647,7 @@ def retriver_update_mt_helper(question):
 
         # Save the code to the folder as solution according to the langSlug
         with open(
-            f"solutions/{question['frontendQuestionId']}.{question['titleSlug']}/{langName.replace(' ', '')}{FILE_TYPE[langName]}",
+            f"solutions/{question['titleSlug']}/{langName.replace(' ', '')}{FILE_TYPE[langName]}",
             "w",
             encoding="utf-8",
         ) as f:
