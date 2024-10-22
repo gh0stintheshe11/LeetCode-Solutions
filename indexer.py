@@ -70,7 +70,7 @@ def format_index_page(questions):
             [f"[{lang[0]}]({lang[1]})" for lang in question["solutions"]]
         )
         new_content.append(
-            f"| {question['frontend_question_id']} | [{question['question_title']}](https://leetcode.com/problems/{question['question_title_slug']}) | {question['difficulty']} | {question['paid_only']} | {solutions_formatted} | {len(question['solutions'])}/{question['total_avaliable_languages']} |\n"
+            f"| [{question['frontend_question_id']}](https://leetcode.com/problems/{question['question_title_slug']}) | [{question['question_title']}](solutions/{question['question_title_slug']}/question.json) | {question['difficulty']} | {question['paid_only']} | {solutions_formatted} | {len(question['solutions'])}/{question['total_avaliable_languages']} |\n"
         )
     new_content.append("\n")
 
